@@ -1,0 +1,931 @@
+INFO - 2025-01-29 18:32:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-29 19:06:12 --> ErrorException: Undefined variable $categories_list
+[Method: GET, Route: frontend/news/say-it-isnt-so]
+in APPPATH\Views\frontend\view.php on line 9.
+ 1 APPPATH\Views\frontend\view.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categories_list', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 9)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(53): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 19:10:53 --> ErrorException: Undefined variable $categories_list
+[Method: GET, Route: frontend/news/say-it-isnt-so]
+in APPPATH\Views\frontend\view.php on line 9.
+ 1 APPPATH\Views\frontend\view.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categories_list', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 9)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(53): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 19:26:34 --> ErrorException: Undefined variable $categories_list
+[Method: GET, Route: frontend/news/say-it-isnt-so]
+in APPPATH\Views\frontend\view.php on line 9.
+ 1 APPPATH\Views\frontend\view.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categories_list', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 9)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(53): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 19:38:25 --> ErrorException: Array to string conversion
+[Method: GET, Route: frontend/news/say-it-isnt-so]
+in APPPATH\Views\frontend\view.php on line 11.
+ 1 APPPATH\Views\frontend\view.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 11)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(55): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 19:38:26 --> ErrorException: Array to string conversion
+[Method: GET, Route: frontend/news/say-it-isnt-so]
+in APPPATH\Views\frontend\view.php on line 11.
+ 1 APPPATH\Views\frontend\view.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 11)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(55): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 19:44:34 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: frontend/news/say-it-isnt-so]
+in APPPATH\Views\frontend\view.php on line 13.
+ 1 APPPATH\Views\frontend\view.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 13)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(55): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 19:44:58 --> ErrorException: Undefined array key "Category"
+[Method: GET, Route: frontend/news/say-it-isnt-so]
+in APPPATH\Views\frontend\view.php on line 43.
+ 1 APPPATH\Views\frontend\view.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Category"', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 43)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(55): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 19:46:06 --> ErrorException: Undefined array key "Category"
+[Method: GET, Route: frontend/news/say-it-isnt-so]
+in APPPATH\Views\frontend\view.php on line 43.
+ 1 APPPATH\Views\frontend\view.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Category"', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 43)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(55): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:03:00 --> ErrorException: Undefined array key "Category"
+[Method: GET, Route: frontend/news/say-it-isnt-so]
+in APPPATH\Views\frontend\view.php on line 43.
+ 1 APPPATH\Views\frontend\view.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Category"', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 43)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(55): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:13:38 --> Error: Cannot use object of type App\Models\NewsModel as array
+[Method: GET, Route: frontend/news/category/1]
+in APPPATH\Views\frontend\news.php on line 30.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/news', [], true)
+ 4 APPPATH\Controllers\News.php(70): view('frontend/news')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:13:46 --> Error: Cannot use object of type App\Models\NewsModel as array
+[Method: GET, Route: frontend/news/category/4]
+in APPPATH\Views\frontend\news.php on line 30.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/news', [], true)
+ 4 APPPATH\Controllers\News.php(70): view('frontend/news')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:17:12 --> Error: Cannot use object of type App\Models\NewsModel as array
+[Method: GET, Route: frontend/news/category/4]
+in APPPATH\Views\frontend\news.php on line 30.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/news', [], true)
+ 4 APPPATH\Controllers\News.php(70): view('frontend/news')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:19:09 --> Error: Object of class App\Models\NewsModel could not be converted to string
+[Method: GET, Route: frontend/news/category/4]
+in APPPATH\Views\frontend\news.php on line 30.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/news', [], true)
+ 4 APPPATH\Controllers\News.php(70): view('frontend/news')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-29 20:32:51 --> mysqli_sql_exception: Unknown column 'category' in 'field list' in C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `categor...', 0)
+#1 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `categor...')
+#2 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `categor...')
+#3 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `categor...', Array, false)
+#4 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(610): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(252): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+#8 C:\xampp\htdocs\uf4\codeIgniter\app\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+#9 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+#10 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+#11 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\uf4\codeIgniter\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-01-29 20:32:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+[Method: GET, Route: frontend/news/category/4]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 4 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 6 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:32:51 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 4 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 6 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 8 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:32:51 --> [Caused by] mysqli_sql_exception: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 5 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 7 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 9 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-29 20:33:24 --> mysqli_sql_exception: Unknown column 'category' in 'field list' in C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `categor...', 0)
+#1 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `categor...')
+#2 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `categor...')
+#3 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `categor...', Array, false)
+#4 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(610): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(252): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+#8 C:\xampp\htdocs\uf4\codeIgniter\app\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+#9 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(933): App\Controllers\News->newsByCategory('3')
+#10 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+#11 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\uf4\codeIgniter\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-01-29 20:33:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+[Method: GET, Route: frontend/news/category/3]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 4 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 6 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('3')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:33:24 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 4 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 6 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 8 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('3')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:33:24 --> [Caused by] mysqli_sql_exception: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 5 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 7 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 9 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('3')
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-29 20:33:31 --> mysqli_sql_exception: Unknown column 'category' in 'field list' in C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `categor...', 0)
+#1 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `categor...')
+#2 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `categor...')
+#3 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `categor...', Array, false)
+#4 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(610): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(252): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+#8 C:\xampp\htdocs\uf4\codeIgniter\app\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+#9 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(933): App\Controllers\News->newsByCategory('3')
+#10 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+#11 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\uf4\codeIgniter\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-01-29 20:33:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+[Method: GET, Route: frontend/news/category/3]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 4 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 6 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('3')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:33:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 4 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 6 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 8 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('3')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:33:31 --> [Caused by] mysqli_sql_exception: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 5 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 7 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 9 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('3')
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-29 20:35:04 --> mysqli_sql_exception: Unknown column 'category' in 'field list' in C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `categor...', 0)
+#1 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `categor...')
+#2 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `categor...')
+#3 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `categor...', Array, false)
+#4 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(610): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(252): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+#8 C:\xampp\htdocs\uf4\codeIgniter\app\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+#9 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+#10 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+#11 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\uf4\codeIgniter\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-01-29 20:35:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+[Method: GET, Route: frontend/news/category/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 4 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 6 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:35:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 4 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 6 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 8 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:35:04 --> [Caused by] mysqli_sql_exception: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 5 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 7 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 9 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-29 20:35:08 --> mysqli_sql_exception: Unknown column 'category' in 'field list' in C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `categor...', 0)
+#1 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `categor...')
+#2 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `categor...')
+#3 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `categor...', Array, false)
+#4 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(610): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(252): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+#8 C:\xampp\htdocs\uf4\codeIgniter\app\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+#9 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(933): App\Controllers\News->newsByCategory('5')
+#10 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+#11 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\uf4\codeIgniter\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-01-29 20:35:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+[Method: GET, Route: frontend/news/category/5]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 4 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 6 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('5')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:35:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 4 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 6 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 8 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('5')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:35:08 --> [Caused by] mysqli_sql_exception: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 5 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 7 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 9 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('5')
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-29 20:38:00 --> mysqli_sql_exception: Unknown column 'category' in 'field list' in C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `categor...', 0)
+#1 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `categor...')
+#2 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `categor...')
+#3 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `categor...', Array, false)
+#4 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(610): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(252): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+#8 C:\xampp\htdocs\uf4\codeIgniter\app\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+#9 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(933): App\Controllers\News->newsByCategory('5')
+#10 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+#11 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\uf4\codeIgniter\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-01-29 20:38:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+[Method: GET, Route: frontend/news/category/5]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 4 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 6 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('5')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:38:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 4 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 6 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 8 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('5')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:38:00 --> [Caused by] mysqli_sql_exception: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'5\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 5 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 7 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 9 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('5')
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-29 20:38:04 --> mysqli_sql_exception: Unknown column 'category' in 'field list' in C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `categor...', 0)
+#1 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `categor...')
+#2 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `categor...')
+#3 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `categor...', Array, false)
+#4 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(610): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(252): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+#8 C:\xampp\htdocs\uf4\codeIgniter\app\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+#9 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+#10 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+#11 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\uf4\codeIgniter\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-01-29 20:38:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+[Method: GET, Route: frontend/news/category/4]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 4 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 6 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:38:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 4 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 6 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 8 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:38:04 --> [Caused by] mysqli_sql_exception: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'4\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 5 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 7 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 9 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('4')
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-29 20:38:56 --> mysqli_sql_exception: Unknown column 'category' in 'field list' in C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `categor...', 0)
+#1 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `categor...')
+#2 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `categor...')
+#3 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `categor...', Array, false)
+#4 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(610): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(252): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+#8 C:\xampp\htdocs\uf4\codeIgniter\app\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+#9 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+#10 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+#11 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\uf4\codeIgniter\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-01-29 20:38:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+[Method: GET, Route: frontend/news/category/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 4 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 6 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:38:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 4 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 6 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 8 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:38:56 --> [Caused by] mysqli_sql_exception: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 5 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 7 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 9 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-29 20:39:00 --> mysqli_sql_exception: Unknown column 'category' in 'field list' in C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\uf4\codeIgniter\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `categor...', 0)
+#1 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `categor...')
+#2 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `categor...')
+#3 C:\xampp\htdocs\uf4\codeIgniter\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `categor...', Array, false)
+#4 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(610): CodeIgniter\Model->doFind(false, NULL)
+#6 C:\xampp\htdocs\uf4\codeIgniter\system\Model.php(252): CodeIgniter\BaseModel->find()
+#7 C:\xampp\htdocs\uf4\codeIgniter\system\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+#8 C:\xampp\htdocs\uf4\codeIgniter\app\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+#9 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+#10 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+#11 C:\xampp\htdocs\uf4\codeIgniter\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\uf4\codeIgniter\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\uf4\codeIgniter\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-01-29 20:39:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+[Method: GET, Route: frontend/news/category/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 4 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 5 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 6 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:39:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 4 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 6 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 8 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:39:00 --> [Caused by] mysqli_sql_exception: Unknown column 'category' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `category`
+FROM `news`
+WHERE `id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `category`
+FROM `news`
+WHERE `id` = :id:', [...], false)
+ 5 SYSTEMPATH\Model.php(213): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(610): CodeIgniter\Model->doFind(false, null)
+ 7 SYSTEMPATH\Model.php(252): CodeIgniter\BaseModel->find()
+ 8 SYSTEMPATH\BaseModel.php(641): CodeIgniter\Model->doFindColumn('category')
+ 9 APPPATH\Controllers\News.php(66): CodeIgniter\BaseModel->findColumn('category')
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->newsByCategory('1')
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-29 20:43:02 --> ErrorException: Undefined array key "Category"
+[Method: GET, Route: frontend/news/elvis-sighted]
+in APPPATH\Views\frontend\view.php on line 43.
+ 1 APPPATH\Views\frontend\view.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Category"', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php', 43)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\frontend\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/view', [], true)
+ 5 APPPATH\Controllers\News.php(55): view('frontend/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('frontend', 'elvis-sighted')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -1,0 +1,235 @@
+CRITICAL - 2024-11-20 15:53:32 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/elvis-sighted]
+in APPPATH\Views\news\view.php on line 4.
+ 1 APPPATH\Views\news\view.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('elvis-sighted')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:53:43 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/say-it-isnt-so]
+in APPPATH\Views\news\view.php on line 4.
+ 1 APPPATH\Views\news\view.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:53:55 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/caffeination-yes]
+in APPPATH\Views\news\view.php on line 4.
+ 1 APPPATH\Views\news\view.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('caffeination-yes')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:54:31 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/elvis-sighted]
+in APPPATH\Views\news\view.php on line 4.
+ 1 APPPATH\Views\news\view.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('elvis-sighted')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:55:25 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/elvis-sighted]
+in APPPATH\Views\news\view.php on line 4.
+ 1 APPPATH\Views\news\view.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('elvis-sighted')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:55:27 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/elvis-sighted]
+in APPPATH\Views\news\view.php on line 4.
+ 1 APPPATH\Views\news\view.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('elvis-sighted')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:56:07 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/elvis-sighted]
+in APPPATH\Views\news\view.php on line 4.
+ 1 APPPATH\Views\news\view.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('elvis-sighted')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:56:32 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/elvis-sighted]
+in APPPATH\Views\news\view.php on line 4.
+ 1 APPPATH\Views\news\view.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('elvis-sighted')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:57:28 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/elvis-sighted]
+in APPPATH\Views\news\view.php on line 5.
+ 1 APPPATH\Views\news\view.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 5)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('elvis-sighted')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:57:33 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/say-it-isnt-so]
+in APPPATH\Views\news\view.php on line 5.
+ 1 APPPATH\Views\news\view.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 5)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('say-it-isnt-so')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 15:58:22 --> ErrorException: Undefined variable $news_item
+[Method: GET, Route: news/elvis-sighted]
+in APPPATH\Views\news\view.php on line 5.
+ 1 APPPATH\Views\news\view.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_item', 'C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php', 5)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\uf4\\codeIgniter\\app\\Views\\news\\view.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/view', [], true)
+ 5 APPPATH\Controllers\News.php(37): view('news/view')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->show('elvis-sighted')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 18:12:37 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "news/create.php"
+[Method: GET, Route: news/new]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('news/create.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/create', [], true)
+ 3 APPPATH\Controllers\News.php(46): view('news/create')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->new()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 18:13:34 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "news/create.php"
+[Method: GET, Route: news/new]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('news/create.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/create', [], true)
+ 3 APPPATH\Controllers\News.php(46): view('news/create')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->new()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 18:26:08 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "news/create.php"
+[Method: GET, Route: news/new]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('news/create.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/create', [], true)
+ 3 APPPATH\Controllers\News.php(46): view('news/create')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->new()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-20 18:34:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-20 18:34:21 --> [DEPRECATED] Setting lowercase HTTP method key "post" is deprecated. Use uppercase HTTP method like "POST". in SYSTEMPATH\Filters\Filters.php on line 648.
+ 1 SYSTEMPATH\Filters\Filters.php(648): trigger_error('Setting lowercase HTTP method key "post" is deprecated. Use uppercase HTTP method like "POST".', 16384)
+ 2 SYSTEMPATH\Filters\Filters.php(399): CodeIgniter\Filters\Filters->processMethods()
+ 3 SYSTEMPATH\Filters\Filters.php(181): CodeIgniter\Filters\Filters->initialize('news/create')
+ 4 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('news/create', 'before')
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-20 18:34:21 --> CSRF token verified.
+INFO - 2024-11-20 18:34:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-20 18:34:42 --> [DEPRECATED] Setting lowercase HTTP method key "post" is deprecated. Use uppercase HTTP method like "POST". in SYSTEMPATH\Filters\Filters.php on line 648.
+ 1 SYSTEMPATH\Filters\Filters.php(648): trigger_error('Setting lowercase HTTP method key "post" is deprecated. Use uppercase HTTP method like "POST".', 16384)
+ 2 SYSTEMPATH\Filters\Filters.php(399): CodeIgniter\Filters\Filters->processMethods()
+ 3 SYSTEMPATH\Filters\Filters.php(181): CodeIgniter\Filters\Filters->initialize('news/create')
+ 4 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('news/create', 'before')
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-20 18:34:42 --> CSRF token verified.
+CRITICAL - 2024-11-20 18:34:45 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "news/index.php"
+[Method: GET, Route: news]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('news/index.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('news/index', [], true)
+ 3 APPPATH\Controllers\News.php(20): view('news/index')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\News->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\News))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-20 19:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-20 19:07:40 --> [DEPRECATED] Setting lowercase HTTP method key "post" is deprecated. Use uppercase HTTP method like "POST". in SYSTEMPATH\Filters\Filters.php on line 648.
+ 1 SYSTEMPATH\Filters\Filters.php(648): trigger_error('Setting lowercase HTTP method key "post" is deprecated. Use uppercase HTTP method like "POST".', 16384)
+ 2 SYSTEMPATH\Filters\Filters.php(399): CodeIgniter\Filters\Filters->processMethods()
+ 3 SYSTEMPATH\Filters\Filters.php(181): CodeIgniter\Filters\Filters->initialize('news/create')
+ 4 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('news/create', 'before')
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-20 19:07:40 --> CSRF token verified.

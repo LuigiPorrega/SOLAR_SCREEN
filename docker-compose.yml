@@ -1,0 +1,56 @@
+services:
+  mariadb:
+    build:
+      context: ./initdb 
+      dockerfile: Dockerfile 
+    restart: always
+    container_name: luigi-mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: solvam
+      MARIADB_DATABASE: solar_screen
+      MARIADB_INIT_SCRIPTS_ALWAYS_EXECUTE: "true"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./initdb:/docker-entrypoint-initdb.d
+    networks:
+      - solvam
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    container_name: luigi-phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: luigi-mariadb
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: solvam
+      MYSQL_ROOT_PASSWORD: solvam
+    networks:
+      - solvam
+    depends_on:
+      - mariadb
+
+  codeigniter:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: luigi-backend
+    volumes:
+      - ./backend:/var/www/html
+    ports:
+      - "8000:80"
+    depends_on:
+      - mariadb
+    networks:
+      - solvam
+
+networks:
+  solvam:
+    driver: bridge
+
+volumes:
+  mariadb_data:
