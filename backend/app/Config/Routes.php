@@ -20,7 +20,7 @@ $routes->get('logout', [Usuarios::class, 'closeSession']);
 // Rutas para el backend (requieren autenticación)
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     // Dashboard
-    $routes->get('inicio', [Home::class, 'dashboard']); // Cambiado a Home::dashboard
+    $routes->get('inicio', [Home::class, 'dashboard']); 
 
     // Rutas para Simulaciones
     $routes->get('simulaciones', [Simulaciones::class, 'index']);
@@ -49,7 +49,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('users/delete/(:segment)', [Usuarios::class, 'delete']);
     $routes->get('users/(:segment)', [Usuarios::class, 'view']);
 
-    // Rutas para LoginLog
+    // Rutas para LoginLog (solo accesible por administradores)
     $routes->get('loginlog', [LoginLog::class, 'index']);
     $routes->get('loginlog/view/(:segment)', [LoginLog::class, 'view']);
     $routes->get('loginlog/export', [LoginLog::class, 'export']);

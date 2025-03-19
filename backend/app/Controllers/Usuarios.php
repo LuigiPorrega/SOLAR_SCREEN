@@ -289,30 +289,48 @@ class Usuarios extends BaseController
         // Consultamos al modelo para verificar si el usuario existe
         $user = $this->usuariosModel->checkUser($validatedData['username'], $validatedData['password']);
 
+        // Crear un nuevo modelo de loginLog
+        $loginLogModel = new LoginLogModel();
+        $ipAddress = $this->request->getIPAddress();
+        $userAgent = $this->request->getUserAgent();
+
         // Si el usuario es encontrado y las credenciales son correctas
         if ($user) {
-            // Crear sesión de usuario
-            $session = session();
-            $session->set([
-                'user_id' => $user['ID'],
-                'username' => $user['Username'],
-                'role' => $user['Rol'],
-                'isLoggedIn' => true,
-            ]);
+            // Verificar la contraseña usando hash('sha256', $password)
+            $hashedPassword = hash('sha256', $validatedData['password']);
 
-            // Registra el inicio de sesión exitoso
-            $this->logLogin($user['ID'], true);
+            // Si la contraseña es correcta
+            if ($hashedPassword === $user['PasswordHash']) {
+                // Crear sesión de usuario
+                $session = session();
+                $session->set([
+                    'user_id' => $user['ID'],
+                    'username' => $user['Username'],
+                    'role' => $user['Rol'],
+                    'isLoggedIn' => true,
+                ]);
 
-            // Redirige al panel de administración
-            return redirect()->to(base_url('admin'));
+                // Registra el inicio de sesión exitoso en la tabla LoginLog
+                $loginLogModel->logLoginAttempt($user['ID'], true, $ipAddress, $userAgent);
+
+                // Redirige al panel de administración
+                return redirect()->to(base_url('admin/inicio'));
+            } else {
+                // Si la contraseña no coincide, registrar el intento fallido
+                $loginLogModel->logLoginAttempt(null, false, $ipAddress, $userAgent, 1, 'Contraseña incorrecta');
+
+                // Redirige con un mensaje de error y valores de entrada previos
+                return redirect()->to(base_url('login'))->withInput()->with('error', 'Credenciales incorrectas');
+            }
         } else {
-            // Si las credenciales son incorrectas, registra el intento fallido
-            $this->logLogin(null, false);
+            // Si el usuario no se encuentra, registrar el intento fallido
+            $loginLogModel->logLoginAttempt(null, false, $ipAddress, $userAgent, 1, 'Usuario no encontrado');
 
             // Redirige con un mensaje de error y valores de entrada previos
             return redirect()->to(base_url('login'))->withInput()->with('error', 'Credenciales incorrectas');
         }
     }
+
 
 
 
@@ -323,7 +341,7 @@ class Usuarios extends BaseController
         $ip = $this->request->getIPAddress();
         $userAgent = $this->request->getUserAgent()->getAgentString();
         $reason = $success ? null : 'Credenciales incorrectas';
-    
+
         // Si el inicio de sesión es exitoso, usamos el ID del usuario
         if ($success) {
             $loginLogModel->logLoginAttempt($userId, true, $ip, $userAgent, 1, $reason);

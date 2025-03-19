@@ -3,16 +3,50 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\UsuariosModel;
 use App\Models\LoginLogModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class LoginLog extends Controller
 {
     protected $loginLogModel;
+    protected $usuariosModel;
 
     public function __construct()
     {
         $this->loginLogModel = new LoginLogModel();
+        $this->usuariosModel = new UsuariosModel();
+    }
+
+    // Método de inicio de sesión
+    public function login()
+    {
+        // Obtener los datos del formulario
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
+
+        // Buscar al usuario por su nombre de usuario
+        $usuario = $this->usuariosModel->where('Username', $username)->first();
+
+        if ($usuario) {
+            // Verificar la contraseña con SHA2
+            // Usamos SHA2 (256) para comparar la contraseña
+            $hashedPassword = hash('sha256', $password);
+
+            if ($hashedPassword === $usuario['PasswordHash']) {
+                // Login exitoso
+                $this->loginLogModel->logLoginAttempt($usuario['ID'], 1, $this->request->getIPAddress(), $this->request->getUserAgent(), 1, null);
+                return redirect()->to('/dashboard'); // Redirigir al dashboard o página principal
+            } else {
+                // Contraseña incorrecta
+                $this->loginLogModel->logLoginAttempt(null, 0, $this->request->getIPAddress(), $this->request->getUserAgent(), 1, 'Contraseña incorrecta');
+                return redirect()->to('/login')->with('error', 'Contraseña incorrecta');
+            }
+        } else {
+            // Usuario no encontrado
+            $this->loginLogModel->logLoginAttempt(null, 0, $this->request->getIPAddress(), $this->request->getUserAgent(), 1, 'Usuario no encontrado');
+            return redirect()->to('/login')->with('error', 'Usuario no encontrado');
+        }
     }
 
     public function index()
@@ -60,13 +94,13 @@ class LoginLog extends Controller
             // Escribir datos
             foreach ($logs as $log) {
                 fputcsv($file, [
-                    $log['ID'], 
-                    $log['UsuarioID'], 
-                    $log['FechaHora'], 
-                    $log['success'], 
-                    $log['ip_address'], 
-                    $log['user_agent'], 
-                    $log['attempts'], 
+                    $log['ID'],
+                    $log['UsuarioID'],
+                    $log['FechaHora'],
+                    $log['success'],
+                    $log['ip_address'],
+                    $log['user_agent'],
+                    $log['attempts'],
                     $log['reason']
                 ], "\t");
             }

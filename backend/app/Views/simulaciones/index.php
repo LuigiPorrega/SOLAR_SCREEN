@@ -1,5 +1,3 @@
-<?= view('templates/header', ['title' => 'Lista de Simulaciones']) ?>
-
 <section>
     <h2><?= esc($title) ?></h2>
 
@@ -16,14 +14,7 @@
                 Fecha: <?= esc($simulacion['Fecha']) ?>
             </p>
             <p>
-                <a href="<?= base_url('simulaciones/' . $simulacion['ID']) ?>">Ver detalles</a>
-                &nbsp;
-                <?php $session = session();
-                if (!empty($session->get('user'))) { ?>
-                    <a href="<?= base_url('simulaciones/delete/' . $simulacion['ID']) ?>">Eliminar</a>
-                    &nbsp;
-                    <a href="<?= base_url('simulaciones/update/' . $simulacion['ID']) ?>">Actualizar</a>
-                <?php } ?>
+                <a href="<?= base_url('admin/simulaciones/' . $simulacion['ID']) ?>">Ver detalles</a>             
             </p>
         <?php endforeach ?>
     <?php else: ?>
@@ -31,12 +22,13 @@
         <p>No se encontraron simulaciones.</p>
     <?php endif ?>
 
-    <?php $session = session();
-    if (!empty($session->get('user'))) { ?>
-        <section>
-            <a href="<?= base_url('simulaciones/new') ?>">Añadir Simulación</a>
-        </section>
-    <?php } ?>
+    <?php $session = session(); ?>
+    <?php if ($session->get('isLoggedIn')): ?>
+        <?php if ($session->get('role') === 'admin'): ?>
+            <section>
+                <a href="<?= base_url('admin/simulaciones/new') ?>">Añadir Simulación</a>
+            </section>
+        <?php endif; ?>
+    <?php endif; ?>
 </section>
 
-<?= view('templates/footer') ?>

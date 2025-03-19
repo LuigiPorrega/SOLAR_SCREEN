@@ -31,17 +31,17 @@ class Home extends Controller
 
         $data = [
             'title' => 'Dashboard',
-            'nombreUsuario' => $this->session->get('Nombre') // Obtener el nombre del usuario de la sesión
+            'nombreUsuario' => $this->session->get('username') 
         ];
 
         return view('templates/header', $data)
-            . view('dashboard/index', $data) // Cargar la vista del dashboard
+            . view('dashboard/index', $data) 
             . view('templates/footer');
     }
 
     // Función para verificar si el usuario es administrador
     private function isAdmin()
     {
-        return $this->session->has('user_id') && $this->userModel->isAdmin($this->session->get('user_id'));
+        return $this->session->has('user_id') && $this->userModel->hasRole($this->session->get('user_id'), 'admin');
     }
 }

@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class UsuariosModel extends Model
 {
-    protected $table = 'Usuarios'; 
-    protected $primaryKey = 'ID'; 
+    protected $table = 'Usuarios';
+    protected $primaryKey = 'ID';
     protected $allowedFields = [
         'Nombre',
         'Correo',
@@ -20,16 +20,20 @@ class UsuariosModel extends Model
     ];
 
     //Verifica las credenciales del usuario
-     public function checkUser($username, $password)
+    // Model: UsuariosModel.php
+
+    public function checkUser($username, $password)
     {
         $user = $this->where('Username', $username)->first();
 
-        if ($user && password_verify($password, $user['PasswordHash'])) {
+        // Verificamos si el usuario existe y comparamos las contraseñas
+        if ($user && hash('sha256', $password) === $user['PasswordHash']) {
             return $user;
         }
 
         return false;
     }
+
 
     //Verifica si un usuario tiene un rol específico
     public function hasRole($userId, $role)

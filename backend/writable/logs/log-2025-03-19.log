@@ -208,3 +208,208 @@ in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
 14 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
 15 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 16 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 21:14:52 --> BadMethodCallException: Call to undefined method App\Models\UsuariosModel::isAdmin
+[Method: GET, Route: admin/inicio]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Home.php(45): CodeIgniter\Model->__call('isAdmin', [...])
+ 2 APPPATH/Controllers/Home.php(28): App\Controllers\Home->isAdmin()
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->dashboard()
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 21:56:18 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/usuarios/index.php"
+[Method: GET, Route: admin/users]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/usuarios/index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/usuarios/index', [], true)
+ 3 APPPATH/Controllers/Usuarios.php(53): view('admin/usuarios/index')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Usuarios->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 21:59:47 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/usuarios/index.php"
+[Method: GET, Route: admin/users]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/usuarios/index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/usuarios/index', [], true)
+ 3 APPPATH/Controllers/Usuarios.php(53): view('admin/usuarios/index')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Usuarios->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 22:07:26 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "simulaciones/edit.php"
+[Method: GET, Route: admin/simulaciones/update/1]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('simulaciones/edit.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/edit', [], true)
+ 3 APPPATH/Controllers/Simulaciones.php(155): view('simulaciones/edit')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->update('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 22:22:01 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/simulaciones/view.php"
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/simulaciones/view.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/simulaciones/view', [], true)
+ 3 APPPATH/Controllers/Simulaciones.php(81): view('admin/simulaciones/view')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 22:22:41 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/simulaciones/view.php"
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/simulaciones/view.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/simulaciones/view', [], true)
+ 3 APPPATH/Controllers/Simulaciones.php(81): view('admin/simulaciones/view')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-19 22:28:25 --> mysqli_sql_exception: Column 'ID' in WHERE is ambiguous in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Simulac...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Simulac...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Simulac...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Simulac...', Array, false)
+#4 /var/www/html/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /var/www/html/app/Models/SimulacionesModel.php(30): CodeIgniter\BaseModel->first()
+#7 /var/www/html/app/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getSimulaciones('1')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-03-19 22:28:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'ID' in WHERE is ambiguous
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Simulaciones`.*, `Usuarios`.`Nombre`, `Usuarios`.`Username`
+FROM `Simulaciones`
+JOIN `Usuarios` ON `Simulaciones`.`UsuarioID` = `Usuarios`.`ID`
+WHERE `ID` = :ID:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH/Models/SimulacionesModel.php(30): CodeIgniter\BaseModel->first()
+ 5 APPPATH/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getSimulaciones('1')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 22:28:25 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'ID' in WHERE is ambiguous
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Simulaciones`.*, `Usuarios`.`Nombre`, `Usuarios`.`Username`
+FROM `Simulaciones`
+JOIN `Usuarios` ON `Simulaciones`.`UsuarioID` = `Usuarios`.`ID`
+WHERE `ID` = \'1\'
+ LIMIT 1')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Simulaciones`.*, `Usuarios`.`Nombre`, `Usuarios`.`Username`
+FROM `Simulaciones`
+JOIN `Usuarios` ON `Simulaciones`.`UsuarioID` = `Usuarios`.`ID`
+WHERE `ID` = \'1\'
+ LIMIT 1')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Simulaciones`.*, `Usuarios`.`Nombre`, `Usuarios`.`Username`
+FROM `Simulaciones`
+JOIN `Usuarios` ON `Simulaciones`.`UsuarioID` = `Usuarios`.`ID`
+WHERE `ID` = :ID:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH/Models/SimulacionesModel.php(30): CodeIgniter\BaseModel->first()
+ 7 APPPATH/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getSimulaciones('1')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 22:28:25 --> [Caused by] mysqli_sql_exception: Column 'ID' in WHERE is ambiguous
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Simulaciones`.*, `Usuarios`.`Nombre`, `Usuarios`.`Username`
+FROM `Simulaciones`
+JOIN `Usuarios` ON `Simulaciones`.`UsuarioID` = `Usuarios`.`ID`
+WHERE `ID` = \'1\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Simulaciones`.*, `Usuarios`.`Nombre`, `Usuarios`.`Username`
+FROM `Simulaciones`
+JOIN `Usuarios` ON `Simulaciones`.`UsuarioID` = `Usuarios`.`ID`
+WHERE `ID` = \'1\'
+ LIMIT 1')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Simulaciones`.*, `Usuarios`.`Nombre`, `Usuarios`.`Username`
+FROM `Simulaciones`
+JOIN `Usuarios` ON `Simulaciones`.`UsuarioID` = `Usuarios`.`ID`
+WHERE `ID` = \'1\'
+ LIMIT 1')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Simulaciones`.*, `Usuarios`.`Nombre`, `Usuarios`.`Username`
+FROM `Simulaciones`
+JOIN `Usuarios` ON `Simulaciones`.`UsuarioID` = `Usuarios`.`ID`
+WHERE `ID` = :ID:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH/Models/SimulacionesModel.php(30): CodeIgniter\BaseModel->first()
+ 8 APPPATH/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getSimulaciones('1')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 22:30:03 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/simulaciones/view.php"
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/simulaciones/view.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/simulaciones/view', [], true)
+ 3 APPPATH/Controllers/Simulaciones.php(81): view('admin/simulaciones/view')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 22:33:44 --> ErrorException: Undefined variable $session
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 28.
+ 1 APPPATH/Views/simulaciones/index.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $session', '/var/www/html/app/Views/simulaciones/index.php', 28)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(56): view('simulaciones/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-19 22:34:12 --> ErrorException: Undefined variable $session
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 28.
+ 1 APPPATH/Views/simulaciones/index.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $session', '/var/www/html/app/Views/simulaciones/index.php', 28)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(56): view('simulaciones/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
