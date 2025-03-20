@@ -1,0 +1,27 @@
+body {
+    padding-top: 70px; /* Ajuste para evitar que el contenido se oculte detrás de la barra de navegación */
+}
+
+.container {
+    margin-top: 20px; /* Ajuste extra si es necesario */
+}
+
+/* Estilos para las alertas */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Transición suave de opacidad */
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+

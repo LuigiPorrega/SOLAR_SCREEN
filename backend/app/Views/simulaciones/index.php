@@ -1,6 +1,21 @@
 <section>
     <h2><?= esc($title) ?></h2>
 
+    <!-- Mostrar mensajes de éxito -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success">
+            <?= session()->getFlashdata('success') ?>
+        </div>
+    <?php endif; ?>
+
+    <!-- Mostrar mensajes de error -->
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger">
+            <?= session()->getFlashdata('error') ?>
+        </div>
+    <?php endif; ?>
+
+    <!-- Verificar si hay simulaciones -->
     <?php if ($simulaciones !== []): ?>
         <?php foreach ($simulaciones as $simulacion): ?>
             <h3>Simulación ID: <?= esc($simulacion['ID']) ?></h3>
@@ -11,10 +26,10 @@
                 Energía Generada: <?= esc($simulacion['EnergiaGenerada']) ?>
             </p>
             <p>
-                Fecha: <?= esc($simulacion['Fecha']) ?>
+                Fecha: <?= date('d-m-Y', strtotime(esc($simulacion['Fecha']))) ?>
             </p>
             <p>
-                <a href="<?= base_url('admin/simulaciones/' . $simulacion['ID']) ?>">Ver detalles</a>             
+                <a href="<?= base_url('admin/simulaciones/' . $simulacion['ID']) ?>">Ver detalles</a>
             </p>
         <?php endforeach ?>
     <?php else: ?>
@@ -22,6 +37,7 @@
         <p>No se encontraron simulaciones.</p>
     <?php endif ?>
 
+    <!-- Mostrar botón para añadir simulaciones si el usuario es admin -->
     <?php $session = session(); ?>
     <?php if ($session->get('isLoggedIn')): ?>
         <?php if ($session->get('role') === 'admin'): ?>
@@ -31,4 +47,3 @@
         <?php endif; ?>
     <?php endif; ?>
 </section>
-

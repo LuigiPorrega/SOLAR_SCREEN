@@ -1,0 +1,52 @@
+CRITICAL - 2025-03-20 21:24:11 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "simulaciones/edit.php"
+[Method: GET, Route: admin/simulaciones/update/1]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('simulaciones/edit.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/edit', [], true)
+ 3 APPPATH/Controllers/Simulaciones.php(175): view('simulaciones/edit')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->update('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-20 21:58:35 --> Error de validación en los datos.
+CRITICAL - 2025-03-20 22:01:32 --> ErrorException: Undefined array key "Tiempo"
+[Method: GET, Route: admin/simulaciones/update/4]
+in APPPATH/Views/simulaciones/update.php on line 18.
+ 1 APPPATH/Views/simulaciones/update.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Tiempo"', '/var/www/html/app/Views/simulaciones/update.php', 18)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/update.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/update', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(177): view('simulaciones/update')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->update('4')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-20 22:31:50 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/usuarios/index.php"
+[Method: GET, Route: admin/users]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/usuarios/index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/usuarios/index', [], true)
+ 3 APPPATH/Controllers/Usuarios.php(53): view('admin/usuarios/index')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Usuarios->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-20 22:31:58 --> Error: Call to a member function isAdmin() on null
+[Method: GET, Route: admin/loginlog]
+in APPPATH/Views/loginlog/index.php on line 1.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('loginlog/index', [], true)
+ 4 APPPATH/Controllers/LoginLog.php(60): view('loginlog/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\LoginLog->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginLog))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use CodeIgniter\Model;
@@ -9,6 +8,23 @@ class SimulacionesModel extends Model
     protected $table = 'Simulaciones';
     protected $primaryKey = 'ID';  
     protected $allowedFields = ['UsuarioID', 'CondicionLuz', 'EnergiaGenerada', 'Fecha'];
+    protected $db;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->db = \Config\Database::connect();  // Conectamos a la base de datos
+    }
+
+    public function calcularEnergia($condicionLuz, $tiempo)
+    {
+        // Ejecuta la consulta que llama a la función calcular_energia
+        $query = $this->db->query("SELECT calcular_energia(?, ?) AS EnergiaGenerada", [$condicionLuz, $tiempo]);
+        
+        // Retorna el valor calculado
+        return $query->getRow()->EnergiaGenerada;
+    }
 
     /**
      * Obtiene las simulaciones. Si el parámetro $id es proporcionado, devuelve una simulación específica.
@@ -38,9 +54,7 @@ class SimulacionesModel extends Model
             // Si no se pasa ID ni perPage, devolvemos todas las simulaciones
             return $this->findAll();
         } catch (\Exception $e) {
-           
             log_message('error', $e->getMessage());
-            
             return null;
         }
     }

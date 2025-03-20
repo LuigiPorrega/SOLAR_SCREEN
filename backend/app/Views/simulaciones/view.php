@@ -3,7 +3,7 @@
     <h3>Simulación ID: <?= esc($simulacion['ID']) ?></h3>
     <p>Condición de Luz: <?= esc($simulacion['CondicionLuz']) ?></p>
     <p>Energía Generada: <?= esc($simulacion['EnergiaGenerada']) ?></p>
-    <p>Fecha: <?= esc($simulacion['Fecha']) ?></p>
+    <p>Fecha:  <?= date('d-m-Y', strtotime(esc($simulacion['Fecha']))) ?></p>
 
     <p>
     &nbsp;

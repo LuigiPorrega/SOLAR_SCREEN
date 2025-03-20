@@ -1,25 +1,24 @@
-<?= view('templates/header', ['title' => 'Crear Simulación']) ?>
+<form action="<?= base_url('admin/simulaciones/create') ?>" method="post">
+    <?= csrf_field() ?>
 
-<section>
-    <h2><?= esc($title) ?></h2>
+    <div class="form-group">
+        <label for="UsuarioID">Usuario</label>
+        <input type="text" name="UsuarioID" value="<?= session()->get('username') ?>" class="form-control" readonly>
+    </div>
 
-    <?= session()->getFlashdata('error') ?>
-    <?= validation_list_errors() ?>
-
-    <form action="<?= base_url('simulaciones/create') ?>" method="post">
-        <?= csrf_field() ?>
-
+    <div class="form-group">
         <label for="CondicionLuz">Condición de Luz</label>
-        <input type="text" name="CondicionLuz" value="<?= set_value('CondicionLuz') ?>">
-        <br><br>
+        <select name="CondicionLuz" class="form-control" aria-label="Selecciona la condición de luz">
+            <option value="" disabled selected>Selecciona una opción...</option>
+            <option value="Luz solar directa" <?= old('CondicionLuz') == 'Luz solar directa' ? 'selected' : '' ?>>Luz solar directa</option>
+            <option value="Luz artificial" <?= old('CondicionLuz') == 'Luz artificial' ? 'selected' : '' ?>>Luz artificial</option>
+        </select>
+    </div>
 
-        <label for="EnergiaGenerada">Energía Generada</label>
-        <input type="number" name="EnergiaGenerada" step="0.01" value="<?= set_value('EnergiaGenerada') ?>">
-        <br><br>
+    <div class="form-group">
+        <label for="Tiempo">Tiempo (minutos)</label>
+        <input type="number" name="Tiempo" value="<?= old('Tiempo') ?>" class="form-control">
+    </div>
 
-        <input type="submit" name="submit" value="Crear Simulación">
-    </form>
-</section>
-
-<?= view('templates/footer') ?>
-
+    <button type="submit" class="btn btn-primary my-3">Crear Simulación</button>
+</form>
