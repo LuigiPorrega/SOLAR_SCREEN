@@ -25,3 +25,9 @@ body {
     color: #721c24;
 }
 
+/* Hacer que todos los labels estén en negrita */
+label {
+    font-weight: bold !important;
+}
+
+

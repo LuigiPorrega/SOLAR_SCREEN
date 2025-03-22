@@ -1,12 +1,18 @@
-<?php if (!session()->has('user_id') || !model('App\Models\UsersModel')->isAdmin(session()->get('user_id'))): ?>
-    <p>No tienes permisos para acceder a esta página.</p>
+<?php
+// Asegurémonos de obtener el modelo de UsuariosModel
+$usuariosModel = model('App\Models\UsuariosModel');
+
+// Verificamos si el usuario tiene permisos para acceder
+if (!session()->has('user_id') || !$usuariosModel->canAccessBackend(session()->get('user_id'))): ?>
+    <div class="alert alert-danger">
+        <p>No tienes permisos para acceder a esta página.</p>
+    </div>
 <?php else: ?>
-    <?= view('templates/header', ['title' => 'Lista de Registros de Login']) ?>
+    <section class="container mt-4">
+        <h2 class="text-center"><?= esc($title) ?></h2>
+  
 
-    <section>
-        <h2><?= esc($title) ?></h2>
-
-        <a href="<?= base_url('loginlog/export') ?>" class="btn btn-primary">Exportar LoginLog</a>
+        <a href="<?= base_url('loginlog/export') ?>" class="btn btn-primary mt-4">Exportar LoginLog</a>
 
         <?php if ($logs !== []): ?>
             <table class="table table-striped">

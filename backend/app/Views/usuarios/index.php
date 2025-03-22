@@ -1,49 +1,69 @@
-<?php if (!session()->has('user_id') || !model('App\Models\UsersModel')->isAdmin(session()->get('user_id'))): ?>
-    <p>No tienes permisos para acceder a esta página.</p>
+<?php
+// Asegurémonos de obtener el modelo de UsuariosModel
+$usuariosModel = model('App\Models\UsuariosModel');
+
+// Verificamos si el usuario tiene permisos para acceder
+if (!session()->has('user_id') || !$usuariosModel->canAccessBackend(session()->get('user_id'))): ?>
+    <div class="alert alert-danger">
+        <p>No tienes permisos para acceder a esta página.</p>
+    </div>
 <?php else: ?>
-    <?= view('templates/header', ['title' => 'Lista de Usuarios']) ?>
+    <section class="container mt-4">
+        <h2 class="text-center"><?= esc($title) ?></h2>
 
-    <section>
-        <h2><?= esc($title) ?></h2>
+        <!-- Mostrar mensajes de éxito -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success">
+            <?= session()->getFlashdata('success') ?>
+        </div>
+    <?php endif; ?>
 
-        <?php if ($users !== []): ?>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Nombre de Usuario</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($users as $user): ?>
+    <!-- Mostrar mensajes de error -->
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger">
+            <?= session()->getFlashdata('error') ?>
+        </div>
+    <?php endif; ?>
+
+
+        <?php if (!empty($users)): ?>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
                         <tr>
-                            <td><?= esc($user['ID']) ?></td>
-                            <td><?= esc($user['Nombre']) ?></td>
-                            <td><?= esc($user['Correo']) ?></td>
-                            <td><?= esc($user['Username']) ?></td>
-                            <td><?= esc($user['Rol']) ?></td>
-                            <td>
-                                <a href="<?= base_url('users/' . $user['ID']) ?>" class="btn btn-info btn-sm">Ver</a>
-                                <a href="<?= base_url('users/update/' . $user['ID']) ?>" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="<?= base_url('users/delete/' . $user['ID']) ?>" class="btn btn-danger btn-sm">Eliminar</a>
-                            </td>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Correo</th>
+                            <th class="text-center">Nombre de Usuario</th>
+                            <th class="text-center">Rol</th>
+                            <th class="text-center">Acciones</th>
                         </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($users as $user): ?>
+                            <tr>
+                                <td class="text-center"><?= esc($user['ID']) ?></td>
+                                <td class="text-center"><?= esc($user['Nombre']) ?></td>
+                                <td class="text-center"><?= esc($user['Correo']) ?></td>
+                                <td class="text-center"><?= esc($user['Username']) ?></td>
+                                <td class="text-center"><?= esc($user['Rol']) ?></td>
+                                <td class="text-center">
+                                    <a href="<?= base_url('admin/users/' . $user['ID']) ?>" class="btn btn-info btn-sm">Detalles</a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
         <?php else: ?>
-            <h3>No hay usuarios</h3>
-            <p>No se encontraron usuarios.</p>
+            <div class="alert alert-warning">
+                <h3>No hay usuarios</h3>
+                <p>No se encontraron usuarios.</p>
+            </div>
         <?php endif ?>
 
-        <section>
-            <a href="<?= base_url('users/new') ?>" class="btn btn-success">Añadir Usuario</a>
-        </section>
+        <div class="text-center mt-4">
+            <a href="<?= base_url('admin/users/new') ?>" class="btn btn-success">Añadir Usuario</a>
+        </div>
     </section>
-
-    <?= view('templates/footer') ?>
 <?php endif ?>

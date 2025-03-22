@@ -50,3 +50,55 @@ in APPPATH/Views/loginlog/index.php on line 1.
  8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
  9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-20 23:08:05 --> Error: Call to a member function isAdmin() on null
+[Method: GET, Route: admin/loginlog]
+in APPPATH/Views/loginlog/index.php on line 1.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('loginlog/index', [], true)
+ 4 APPPATH/Controllers/LoginLog.php(60): view('loginlog/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\LoginLog->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginLog))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-20 23:09:15 --> Error: Call to a member function isAdmin() on null
+[Method: GET, Route: admin/loginlog]
+in APPPATH/Views/loginlog/index.php on line 1.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('loginlog/index', [], true)
+ 4 APPPATH/Controllers/LoginLog.php(60): view('loginlog/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\LoginLog->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginLog))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-20 23:19:09 --> Error: Call to a member function isAdmin() on null
+[Method: GET, Route: admin/loginlog]
+in APPPATH/Views/loginlog/index.php on line 1.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('loginlog/index', [], true)
+ 4 APPPATH/Controllers/LoginLog.php(60): view('loginlog/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\LoginLog->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginLog))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-20 23:47:23 --> Error: Call to a member function isAdmin() on null
+[Method: GET, Route: admin/loginlog]
+in APPPATH/Views/loginlog/index.php on line 1.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('loginlog/index', [], true)
+ 4 APPPATH/Controllers/LoginLog.php(60): view('loginlog/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\LoginLog->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginLog))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

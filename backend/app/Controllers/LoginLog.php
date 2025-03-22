@@ -80,37 +80,43 @@ class LoginLog extends Controller
     }
 
     public function export()
-    {
-        $logs = $this->loginLogModel->findAll();
+{
+    // Obtiene todos los logs de la base de datos
+    $logs = $this->loginLogModel->findAll();
 
-        $filename = 'login_log_' . date('Y-m-d') . 'Login_log.txt';
-        $filepath = FCPATH . 'exports/' . $filename;
+    // Definir el archivo como 'login_log.txt'
+    $filename = 'login_log.txt';
+    $filepath = FCPATH . 'export/' . $filename;
 
-        $file = fopen($filepath, 'w');
-        if ($file) {
-            // Escribir encabezados
+    // Abre el archivo en modo append (agregar al final)
+    $file = fopen($filepath, 'a');
+    if ($file) {
+        // Escribir los encabezados solo si el archivo está vacío (para evitar duplicación)
+        if (filesize($filepath) == 0) {
             fputcsv($file, ['ID', 'Usuario ID', 'Fecha y Hora', 'Exitoso', 'IP Address', 'User-Agent', 'Intentos', 'Razón'], "\t");
-
-            // Escribir datos
-            foreach ($logs as $log) {
-                fputcsv($file, [
-                    $log['ID'],
-                    $log['UsuarioID'],
-                    $log['FechaHora'],
-                    $log['success'],
-                    $log['ip_address'],
-                    $log['user_agent'],
-                    $log['attempts'],
-                    $log['reason']
-                ], "\t");
-            }
-
-            fclose($file);
-
-            // Descargar el archivo
-            return $this->response->download($filepath, null)->setFileName($filename);
-        } else {
-            return redirect()->back()->with('error', 'No se pudo crear el archivo de exportación.');
         }
+
+        // Escribir los logs en el archivo
+        foreach ($logs as $log) {
+            fputcsv($file, [
+                $log['ID'],
+                $log['UsuarioID'],
+                $log['FechaHora'],
+                $log['success'],
+                $log['ip_address'],
+                $log['user_agent'],
+                $log['attempts'],
+                $log['reason']
+            ], "\t");
+        }
+
+        // Cierra el archivo
+        fclose($file);
+
+        // Regresar el archivo para descargar
+        return $this->response->download($filepath, null)->setFileName($filename);
+    } else {
+        return redirect()->back()->with('error', 'No se pudo crear el archivo de exportación.');
     }
+}
 }

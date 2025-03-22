@@ -37,8 +37,18 @@ class LoginLogModel extends Model
     // Para insertar un nuevo registro con éxito o fallo
     public function logLoginAttempt($userId, $success, $ip, $userAgent, $attempts = 1, $reason = null)
     {
+        // Si el login falla, incrementamos el número de intentos
+        if ($success == 0) {
+            $attempts++;
+        }
+
         // Si el login falla, ponemos UsuarioID a NULL
         $usuarioID = ($success == 1) ? $userId : null;
+
+        // Si el login es exitoso, establecemos un mensaje en reason
+        if ($success == 1 && $reason === null) {
+            $reason = 'Login exitoso';  // O el mensaje que prefieras
+        }
 
         return $this->insert([
             'UsuarioID' => $usuarioID,    // Usamos NULL si el login falla
