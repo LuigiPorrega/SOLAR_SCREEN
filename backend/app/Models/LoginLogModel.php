@@ -8,26 +8,36 @@ class LoginLogModel extends Model
 {
     protected $table = 'LoginLog';
     protected $primaryKey = 'ID';
-    protected $allowedFields = ['UsuarioID', 'FechaHora', 'success', 'ip_address', 'user_agent', 'attempts', 'reason'];
+    protected $allowedFields = ['UsuarioID', 'FechaHora', 'Success', 'IpAddress', 'UserAgent', 'AttemptDate', 'Attempts', 'Reason'];
 
-    // Obtiene los registros de inicio de sesión
-    public function getLoginLog($id = null, $perPage = null)
+    // Obtener los intentos exitosos y fallidos agrupados
+    public function getLoginAttemptsGrouped($perPage = null)
     {
         try {
+            // Intentos exitosos
             $this->select('LoginLog.*, Usuarios.Nombre, Usuarios.Username')
-                ->join('Usuarios', 'LoginLog.UsuarioID = Usuarios.ID');
+                ->join('Usuarios', 'LoginLog.UsuarioID = Usuarios.ID')
+                ->where('Success', 1)  // Solo intentos exitosos
+                ->orderBy('FechaHora', 'DESC');
+            $successfulLogs = $this->findAll();
 
-            // Si se proporciona un ID, buscar un registro específico
-            if ($id !== null) {
-                return $this->find($id);
-            }
+            // Intentos fallidos agrupados por UsuarioID
+            $this->select('UsuarioID, COUNT(*) AS numeros_intentos, MAX(FechaHora) AS ultima_fecha, IpAddress, UserAgent')
+                ->where('Success', 0)  // Solo intentos fallidos
+                ->groupBy('UsuarioID')  // Agrupar por UsuarioID
+                ->orderBy('ultima_fecha', 'DESC');  // Ordenar por la última fecha de intento fallido
+            $failedLogs = $this->findAll();
 
             // Si se especifica paginación, devolver registros paginados
             if ($perPage !== null) {
                 return $this->paginate($perPage);
             }
 
-            return $this->findAll();
+            // Devolver los dos conjuntos de datos
+            return [
+                'successfulLogs' => $successfulLogs,
+                'failedLogs' => $failedLogs
+            ];
         } catch (\Exception $e) {
             log_message('error', '[ERROR] {exception}', ['exception' => $e]);
             return [];
@@ -47,17 +57,41 @@ class LoginLogModel extends Model
 
         // Si el login es exitoso, establecemos un mensaje en reason
         if ($success == 1 && $reason === null) {
-            $reason = 'Login exitoso';  // O el mensaje que prefieras
+            $reason = 'Login exitoso';
         }
 
         return $this->insert([
-            'UsuarioID' => $usuarioID,    // Usamos NULL si el login falla
+            'UsuarioID' => $usuarioID,
             'FechaHora' => date('Y-m-d H:i:s'),
-            'success' => $success,
-            'ip_address' => $ip,
-            'user_agent' => $userAgent,
-            'attempts' => $attempts,
-            'reason' => $reason
+            'Success' => $success,
+            'IpAddress' => $ip,
+            'UserAgent' => $userAgent,
+            'AttemptDate' => date('Y-m-d'),
+            'Attempts' => $attempts,
+            'Reason' => $reason
         ]);
+    }
+
+    // Función de agrupación de intentos fallidos
+    public function getFailedLoginAttempts($perPage = null)
+    {
+        try {
+            // Seleccionamos los campos que necesitamos, agrupamos por UsuarioID (puede ser NULL) y contamos los intentos fallidos
+            $this->select('UsuarioID, COUNT(*) AS numeros_intentos, MAX(FechaHora) AS ultima_fecha, IpAddress, UserAgent')
+                ->where('Success', 0)  // Solo queremos los intentos fallidos
+                ->groupBy('UsuarioID')
+                ->orderBy('ultima_fecha', 'DESC');  // Ordenamos por la última fecha de intento fallido
+
+            // Si se especifica paginación, devolver registros paginados
+            if ($perPage !== null) {
+                return $this->paginate($perPage);
+            }
+
+            // Si no se da paginación, obtener todos los registros
+            return $this->findAll();
+        } catch (\Exception $e) {
+            log_message('error', '[ERROR] {exception}', ['exception' => $e]);
+            return [];
+        }
     }
 }

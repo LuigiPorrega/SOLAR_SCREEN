@@ -51,7 +51,6 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     // Rutas para LoginLog (solo accesible por administradores)
     $routes->get('loginlog', [LoginLog::class, 'index']);
-    $routes->get('loginlog/view/(:segment)', [LoginLog::class, 'view']);
     $routes->get('loginlog/export', [LoginLog::class, 'export']);
 });
 

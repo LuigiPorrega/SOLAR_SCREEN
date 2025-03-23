@@ -1,0 +1,14 @@
+CRITICAL - 2025-03-23 00:10:40 --> ErrorException: Undefined array key "attempts_count"
+[Method: GET, Route: admin/loginlog]
+in APPPATH/Views/loginlog/index.php on line 29.
+ 1 APPPATH/Views/loginlog/index.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "attempts_count"', '/var/www/html/app/Views/loginlog/index.php', 29)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/loginlog/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('loginlog/index', [], true)
+ 5 APPPATH/Controllers/LoginLog.php(60): view('loginlog/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\LoginLog->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginLog))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

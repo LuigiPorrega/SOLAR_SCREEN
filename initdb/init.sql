@@ -1,3 +1,7 @@
+
+-- Habilitar el Event Scheduler
+SET GLOBAL event_scheduler = ON;
+
 -- ======================================
 -- 1. Creación de la Base de Datos
 -- ======================================
@@ -90,17 +94,26 @@ CREATE TABLE IF NOT EXISTS Simulaciones (
 
 -- Tabla LoginLog 
 CREATE TABLE IF NOT EXISTS LoginLog (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    UsuarioID INT NULL,
-    FechaHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    success TINYINT(1) NOT NULL DEFAULT 0,
-    ip_address VARCHAR(45) NOT NULL,
-    user_agent TEXT NOT NULL,
-    attempts INT NOT NULL DEFAULT 0,
-    reason VARCHAR(255),
-    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(ID) ON DELETE SET NULL,
-    INDEX idx_log_accesos (UsuarioID, FechaHora)
+    ID INT AUTO_INCREMENT PRIMARY KEY,                          -- ID del registro
+    UsuarioID INT NULL,                                          -- ID del usuario (referencia a la tabla Usuarios)
+    FechaHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,               -- Fecha y hora del intento
+    Success TINYINT(1) NOT NULL DEFAULT 0,                       -- 1 para éxito, 0 para fallo
+    IpAddress VARCHAR(45) NOT NULL,                              -- IP desde la que se realiza el intento
+    UserAgent TEXT NOT NULL,                                     -- Información sobre el navegador y sistema operativo
+    AttemptDate DATE NOT NULL DEFAULT CURRENT_DATE,              -- Fecha en la que se realizó el intento
+    Attempts INT NOT NULL DEFAULT 1,                              -- Intentos fallidos (solo usado si Success = 0)
+    Reason VARCHAR(255),                                         -- Razón del fallo (por ejemplo, "Contraseña incorrecta")
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(ID) ON DELETE SET NULL,  -- Relación con la tabla Usuarios
+    INDEX idx_log_accesos (UsuarioID, FechaHora)                 -- Índice para facilitar las consultas por Usuario y Fecha
 );
+
+-- Crear un evento programado para eliminar registros de login de más de 3 años
+CREATE EVENT IF NOT EXISTS eliminar_registros_antiguos
+ON SCHEDULE EVERY 1 DAY  -- Ejecutará esta operación cada día
+DO
+    DELETE FROM LoginLog
+    WHERE AttemptDate < CURDATE() - INTERVAL 3 YEAR;
+
 
 -- Tabla Ideas
 CREATE TABLE IF NOT EXISTS Ideas (
