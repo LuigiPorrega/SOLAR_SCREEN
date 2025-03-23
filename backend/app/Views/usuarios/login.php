@@ -1,5 +1,3 @@
-<?= view('templates/header', ['title' => 'Iniciar Sesión']) ?>
-
 <section>
     <h2><?= esc($title) ?></h2>
 

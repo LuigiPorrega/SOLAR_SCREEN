@@ -1,1 +1,0 @@
-__ci_last_regenerate|i:1742679028;_ci_previous_url|s:27:"http://localhost:8000/login";user_id|s:1:"4";username|s:6:"luigip";role|s:5:"admin";isLoggedIn|b:1;_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:8:"username";s:5:"juanp";s:8:"password";s:11:"password123";}}__ci_vars|a:2:{s:13:"_ci_old_input";s:3:"old";s:5:"error";s:3:"old";}error|s:24:"Credenciales incorrectas";

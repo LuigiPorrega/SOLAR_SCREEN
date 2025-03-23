@@ -12,3 +12,68 @@ in APPPATH/Views/loginlog/index.php on line 29.
  9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-23 15:01:59 --> ErrorException: Undefined variable $session
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/templates/header.php on line 42.
+ 1 APPPATH/Views/templates/header.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $session', '/var/www/html/app/Views/templates/header.php', 42)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/templates/header.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('templates/header', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(58): view('templates/header', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-23 15:05:26 --> ErrorException: Undefined variable $usuariosModel
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/templates/header.php on line 42.
+ 1 APPPATH/Views/templates/header.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuariosModel', '/var/www/html/app/Views/templates/header.php', 42)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/templates/header.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('templates/header', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(58): view('templates/header', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-23 15:12:28 --> ParseError: syntax error, unexpected token "else", expecting end of file
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/templates/header.php on line 34.
+ 1 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('templates/header', [], true)
+ 3 APPPATH/Controllers/Simulaciones.php(58): view('templates/header', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-23 15:50:21 --> ErrorException: fopen(/var/www/html/public/export/login_log.csv): Failed to open stream: No such file or directory
+[Method: GET, Route: admin/loginlog/export]
+in APPPATH/Controllers/LoginLog.php on line 81.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(/var/www/html/public/export/login_log.csv): Failed to open stream: No such file or directory', '/var/www/html/app/Controllers/LoginLog.php', 81)
+ 2 APPPATH/Controllers/LoginLog.php(81): fopen('/var/www/html/public/export/login_log.csv', 'a')
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\LoginLog->export()
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginLog))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-23 17:19:59 --> ErrorException: Undefined variable $usuariosModel
+[Method: GET, Route: admin/inicio]
+in APPPATH/Views/dashboard/index.php on line 42.
+ 1 APPPATH/Views/dashboard/index.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuariosModel', '/var/www/html/app/Views/dashboard/index.php', 42)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/dashboard/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('dashboard/index', [], true)
+ 5 APPPATH/Controllers/Home.php(38): view('dashboard/index', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->dashboard()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

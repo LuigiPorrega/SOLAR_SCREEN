@@ -1,5 +1,0 @@
-ID,"Usuario ID","Fecha y Hora",Exitoso,"IP Address",User-Agent,Intentos,Razón
-"""1""","""""","""2025-03-22 23:41:33""","""Fallido""","""172.18.0.1""","""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36""","""2""","""Usuario no encontrado"""
-"""2""","""""","""2025-03-22 23:41:39""","""Fallido""","""172.18.0.1""","""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36""","""2""","""Usuario no encontrado"""
-"""3""","""""","""2025-03-22 23:41:44""","""Fallido""","""172.18.0.1""","""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36""","""2""","""Usuario no encontrado"""
-"""4""","""4""","""2025-03-22 23:41:59""","""Exitoso""","""172.18.0.1""","""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36""","""1""","""Login exitoso"""

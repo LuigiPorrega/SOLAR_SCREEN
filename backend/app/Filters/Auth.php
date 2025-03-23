@@ -10,10 +10,11 @@ class Auth implements FilterInterface
     {
         // Verifica si el usuario no está autenticado
         if (!session()->get('isLoggedIn')) {
-            return redirect()->to('login');
+            // Redirigir a login si no está autenticado
+            return redirect()->to(base_url('login'));
         }
 
-        // Verifica si el usuario es un admin y quiere acceder a una página restringida
+        // Verifica si el usuario tiene el rol de admin
         $role = session()->get('role');
         if ($role === 'admin') {
             // Los administradores tienen acceso a todo
@@ -21,11 +22,20 @@ class Auth implements FilterInterface
         }
 
         // Los usuarios normales tienen restricciones
-        // Si el usuario intenta acceder a páginas restringidas como loginlog, users, etc.
-        $uri = current_url(); // Obtén la URL actual
-        if (strpos($uri, 'admin/users') !== false || strpos($uri, 'admin/loginlog') !== false) {
-            // Si el usuario normal intenta acceder a estas páginas, redirigirlo
-            return redirect()->to('admin/inicio');
+        // Definir las rutas restringidas para los usuarios normales
+        $restrictedRoutes = [
+            'admin/users',
+            'admin/loginlog',
+        ];
+
+        $uri = current_url(); 
+
+        // Verifica si la URL actual contiene alguna de las rutas restringidas
+        foreach ($restrictedRoutes as $restrictedRoute) {
+            if (strpos($uri, $restrictedRoute) !== false) {
+                // Redirige al inicio del admin si un usuario normal intenta acceder a una ruta restringida
+                return redirect()->to(base_url('admin/inicio'));
+            }
         }
     }
 

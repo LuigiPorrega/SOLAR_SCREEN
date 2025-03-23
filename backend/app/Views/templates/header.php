@@ -22,6 +22,10 @@
 </head>
 
 <body>
+    <?php 
+// Asegurémonos de obtener el modelo de UsuariosModel
+$usuariosModel = model('App\Models\UsuariosModel'); ?>
+
     <!-- BARRA DE NAVEGACIÓN -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -37,12 +41,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('admin/ideas') ?>">Ideas</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('admin/users') ?>">Usuarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('admin/loginlog') ?>">LoginLog</a>
-                    </li>
+                    <!-- Mostrar "Usuarios" solo si el usuario es administrador -->
+                    <?php $session = session();
+                    if ($session->has('user_id') && $usuariosModel->canAccessBackend($session->get('user_id'))) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('admin/users') ?>">Usuarios</a>
+                        </li>
+                    <?php endif ?>
+
+                    <!-- Mostrar "LoginLog" solo si el usuario es administrador -->
+                    <?php $session = session();
+                    if ($session->has('user_id') && $usuariosModel->canAccessBackend($session->get('user_id'))) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('admin/loginlog') ?>">LoginLog</a>
+                        </li>
+                    <?php endif ?>
+                    <!-- Mostrar "Logout" solo si el usuario está logueado -->
                     <?php $session = session();
                     if ($session->has('user_id')) : ?>
                         <li class="nav-item">
@@ -56,4 +70,3 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <div class="container">
-       

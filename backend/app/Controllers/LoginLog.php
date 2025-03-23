@@ -12,7 +12,6 @@ class LoginLog extends Controller
     protected $loginLogModel;
     protected $usuariosModel;
 
-    // Constructor: Inicializa los modelos necesarios para el controlador.
     public function __construct()
     {
         $this->loginLogModel = new LoginLogModel(); // Modelo para manejar los registros de logins
@@ -20,45 +19,15 @@ class LoginLog extends Controller
     }
 
     /**
-     * Método de inicio de sesión
-     *
-     * Este método se llama cuando un usuario intenta iniciar sesión.
-     * Verifica si el nombre de usuario y la contraseña son correctos.
-     * Si el login es exitoso, registra el intento de login en el log de inicio de sesión.
-     * Si el login falla (usuario no encontrado o contraseña incorrecta), también se registra el intento fallido.
-     *
-     * @return \CodeIgniter\HTTP\RedirectResponse
+     * Verifica si el usuario tiene acceso de administrador
+     * Lanza una excepción si no tiene permisos.
      */
-    public function login()
+    private function checkAdminAccess()
     {
-        // Obtener los datos del formulario (usuario y contraseña)
-        $username = $this->request->getPost('username');
-        $password = $this->request->getPost('password');
-
-        // Buscar al usuario por su nombre de usuario
-        $usuario = $this->usuariosModel->where('Username', $username)->first();
-
-        if ($usuario) {
-            // Verificar la contraseña con SHA2
-            // Usamos SHA2 (256) para comparar la contraseña
-            $hashedPassword = hash('sha256', $password);
-
-            if ($hashedPassword === $usuario['PasswordHash']) {
-                // Login exitoso
-                // Registrar el intento de login exitoso en la base de datos
-                $this->loginLogModel->logLoginAttempt($usuario['ID'], 1, $this->request->getIPAddress(), $this->request->getUserAgent(), 1, null);
-                return redirect()->to('/dashboard'); // Redirigir al dashboard o página principal
-            } else {
-                // Contraseña incorrecta
-                // Registrar el intento de login fallido (contraseña incorrecta)
-                $this->loginLogModel->logLoginAttempt(null, 0, $this->request->getIPAddress(), $this->request->getUserAgent(), 1, 'Contraseña incorrecta');
-                return redirect()->to('/login')->with('error', 'Contraseña incorrecta');
-            }
-        } else {
-            // Usuario no encontrado
-            // Registrar el intento de login fallido (usuario no encontrado)
-            $this->loginLogModel->logLoginAttempt(null, 0, $this->request->getIPAddress(), $this->request->getUserAgent(), 1, 'Usuario no encontrado');
-            return redirect()->to('/login')->with('error', 'Usuario no encontrado');
+        $session = session();
+        if (!$session->get('user_id') || !$this->usuariosModel->canAccessBackend($session->get('user_id'))) {
+            // Si no tiene permisos de administrador, redirige al inicio
+            return redirect()->to('/'); // Redirige a la página de inicio
         }
     }
 
@@ -72,54 +41,97 @@ class LoginLog extends Controller
      */
     public function index()
     {
+        // Verifica si el usuario tiene acceso de administrador
+        $this->checkAdminAccess();
+
         // Obtener los registros de login agrupados y con paginación
         $data = [
-            'title' => 'Registros de Inicio de Sesión',  // Título de la página
+            'title' => 'Registros de Inicio de Sesión',
             'logs' => $this->loginLogModel->getLoginAttemptsGrouped(null, 20) // Obtiene 20 registros por página
         ];
 
         // Cargar la vista con los registros de login
         return view('templates/header', $data)
-            . view('loginlog/index') // Vista para los registros de login
-            . view('templates/footer'); // Pie de página
+            . view('loginlog/index')
+            . view('templates/footer');
     }
 
     /**
      * Método para exportar los registros de inicio de sesión a un archivo CSV
      *
-     * Este método obtiene todos los registros de login de la base de datos,
-     * los formatea como un archivo CSV y lo ofrece para ser descargado.
-     * Los campos en el CSV están rodeados de comillas para evitar problemas con comas en los datos.
+     * Este método obtiene todos los registros de inicio de sesión desde la base de datos,
+     * los formatea como un archivo CSV y lo ofrece para su descarga.
+     * El archivo CSV es generado en una carpeta externa llamada `private_exports`, 
+     * la cual está ubicada fuera del directorio `public`, garantizando que solo los administradores 
+     * puedan acceder a estos archivos de exportación.
+     * 
+     * Los campos en el CSV estarán rodeados de comillas dobles para evitar problemas con comas u otros
+     * caracteres especiales que puedan aparecer en los datos. Además, los encabezados y registros se 
+     * organizan con un formato específico para que los datos sean fáciles de leer y procesar.
+     * 
+     * El archivo generado tiene el nombre `login_log.csv` y está organizado de manera que se pueda 
+     * realizar la paginación de los registros, de modo que se procesan y exportan en bloques de 100 registros.
      *
      * @return \CodeIgniter\HTTP\Response
      */
     public function export()
     {
+        // Verifica si el usuario tiene acceso de administrador
+        $this->checkAdminAccess();
+
+        // Paginación: paginar por 100 registros por página
+        $page = $this->request->getVar('page') ?: 1;
+        $perPage = 100;
+
         // Obtiene todos los logs de la base de datos
         $logs = $this->loginLogModel->findAll();
+        // Organiza todos los logs con paginación
+        $logs = $this->loginLogModel->paginate($perPage, 'default', $page);
 
         // Definir el archivo como 'login_log.csv'
         $filename = 'login_log.csv';
-        $filepath = FCPATH . 'export/' . $filename;
 
-        // Abre el archivo en modo de escritura (si el archivo no existe, se creará; si existe, se sobrescribirá)
-        $file = fopen($filepath, 'w');
+        // Ruta para guardar fuera del directorio 'public'
+        $filepath = FCPATH . '../private_exports/' . $filename;
+
+        // Asegúrate de que el directorio 'private_exports' exista fuera de public
+        $privateExportsDir = FCPATH . '../private_exports';
+        if (!is_dir($privateExportsDir)) {
+            mkdir($privateExportsDir, 0755, true); // Crea la carpeta si no existe
+        }
+
+        // Abre el archivo en modo de append para agregar los nuevos logs al final del archivo
+        $file = fopen($filepath, 'a');
         if ($file) {
+            // Obtener la fecha actual para separarla en el archivo 
+            $currentDate = date('D-M-y');
+
+            // Escribir la fecha como un separador antes de los registros de hoy
+            fputcsv($file, ["========== REGISTROS DEL " . $currentDate . " =========="]);
+
             // Escribir los encabezados solo si el archivo está vacío (para evitar duplicación)
-            fputcsv($file, ['ID', 'Usuario ID', 'Fecha y Hora', 'Exitoso', 'IP Address', 'User-Agent', 'Intentos', 'Razón'], ",");
+            fputcsv($file, [
+                '"' . str_pad('ID', max(strlen('ID'), 1), ' ', STR_PAD_BOTH) . '"',
+                '"' . str_pad('Usuario ID', max(strlen('Usuario ID'), 4), ' ', STR_PAD_BOTH) . '"',
+                '"' . str_pad('Fecha y Hora', max(strlen('Fecha y Hora'), 19), ' ', STR_PAD_BOTH) . '"',
+                '"' . str_pad('Exitoso', max(strlen('Exitoso'), 1), ' ', STR_PAD_BOTH) . '"',
+                '"' . str_pad('IP Address', max(strlen('IP Address'), 10), ' ', STR_PAD_BOTH) . '"',
+                '"' . str_pad('User-Agent', max(strlen('User-Agent'), 111), ' ', STR_PAD_BOTH) . '"',
+                '"' . str_pad('Intentos', max(strlen('Intentos'), 1), ' ', STR_PAD_BOTH) . '"',
+                '"' . str_pad('Razón', max(strlen('Razón'), 22), ' ', STR_PAD_BOTH) . '"'
+            ], ",");
 
             // Escribir los logs en el archivo con comillas alrededor de cada valor para asegurar que los datos sean fáciles de leer
             foreach ($logs as $log) {
-                // Escribir los datos en formato CSV, asegurando que los campos estén entre comillas
                 fputcsv($file, [
-                    '"' . esc($log['ID']) . '"',                    // ID
-                    '"' . esc($log['UsuarioID'] ?? '') . '"',        // Usuario ID
-                    '"' . esc($log['FechaHora']) . '"',              // Fecha y Hora
-                    '"' . (esc($log['Success']) == 1 ? 'Exitoso' : 'Fallido') . '"', // Exitoso
-                    '"' . esc($log['IpAddress']) . '"',              // IP Address
-                    '"' . esc($log['UserAgent']) . '"',              // User-Agent
-                    '"' . esc($log['Attempts']) . '"',               // Intentos
-                    '"' . esc($log['Reason'] ?? 'No disponible') . '"' // Razón
+                    '"' . str_pad(esc($log['ID']), max(strlen('ID'), strlen(esc($log['ID']))), ' ', STR_PAD_BOTH) . '"',
+                    '"' . str_pad(esc($log['UsuarioID'] ?? ''), max(strlen('Usuario ID'), strlen(esc($log['UsuarioID'] ?? ''))), ' ', STR_PAD_BOTH) . '"',
+                    '"' . str_pad(esc($log['FechaHora']), max(strlen('Fecha y Hora'), strlen(esc($log['FechaHora']))), ' ', STR_PAD_BOTH) . '"',
+                    '"' . str_pad(esc($log['Success'] == 1 ? 'Exitoso' : 'Fallido'), max(strlen('Exitoso'), strlen(esc($log['Success'] == 1 ? 'Exitoso' : 'Fallido'))), ' ', STR_PAD_BOTH) . '"',
+                    '"' . str_pad(esc($log['IpAddress']), max(strlen('IP Address'), strlen(esc($log['IpAddress']))), ' ', STR_PAD_BOTH) . '"',
+                    '"' . str_pad(esc($log['UserAgent']), max(strlen('User-Agent'), strlen(esc($log['UserAgent']))), ' ', STR_PAD_BOTH) . '"',
+                    '"' . str_pad(esc($log['Attempts']), max(strlen('Intentos'), strlen(esc($log['Attempts']))), ' ', STR_PAD_BOTH) . '"',
+                    '"' . str_pad(esc($log['Reason'] ?? 'No disponible'), max(strlen('Razón'), strlen(esc($log['Reason'] ?? 'No disponible'))), ' ', STR_PAD_BOTH) . '"'
                 ], ",");
             }
 
