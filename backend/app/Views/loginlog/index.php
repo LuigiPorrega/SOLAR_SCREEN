@@ -33,7 +33,7 @@ if (!session()->has('user_id') || !$usuariosModel->canAccessBackend(session()->g
                         <tr>
                             <td><?= esc($log['ID']) ?></td>
                             <td><?= esc($log['Username']) ?> (<?= esc($log['Nombre']) ?>)</td>
-                            <td><?= esc($log['FechaHora']) ?></td>
+                            <td><?= date('d-m-y H:i:s', strtotime(esc($log['FechaHora']))) ?></td> 
                             <td><?= esc($log['IpAddress']) ?></td>
                             <td><?= esc($log['UserAgent']) ?></td>
                         </tr>
@@ -63,7 +63,7 @@ if (!session()->has('user_id') || !$usuariosModel->canAccessBackend(session()->g
                         <tr>
                             <td><?= esc($log['UsuarioID'] ?? 'Usuario no encontrado') ?></td>
                             <td><?= esc($log['numeros_intentos']) ?> intentos fallidos</td>
-                            <td><?= esc($log['ultima_fecha']) ?></td>
+                            <td><?= date('d-m-y H:i:s', strtotime(esc($log['ultima_fecha']))) ?></td> <!-- Formato: Día-Mes-Año Hora:Minuto:Segundo -->
                             <td><?= esc($log['IpAddress']) ?></td>
                             <td><?= esc($log['UserAgent']) ?></td>
                         </tr>

@@ -11,7 +11,7 @@ class LoginLogModel extends Model
     protected $allowedFields = ['UsuarioID', 'FechaHora', 'Success', 'IpAddress', 'UserAgent', 'AttemptDate', 'Attempts', 'Reason'];
 
     // Obtener los intentos exitosos y fallidos agrupados
-    public function getLoginAttemptsGrouped($perPage = null)
+    public function getLoginAttemptsGrouped($perPage = null, $page = 1)
     {
         try {
             // Intentos exitosos
@@ -19,19 +19,14 @@ class LoginLogModel extends Model
                 ->join('Usuarios', 'LoginLog.UsuarioID = Usuarios.ID')
                 ->where('Success', 1)  // Solo intentos exitosos
                 ->orderBy('FechaHora', 'DESC');
-            $successfulLogs = $this->findAll();
+            $successfulLogs = ($perPage !== null) ? $this->paginate($perPage, 'default', $page) : $this->findAll();
 
             // Intentos fallidos agrupados por UsuarioID
             $this->select('UsuarioID, COUNT(*) AS numeros_intentos, MAX(FechaHora) AS ultima_fecha, IpAddress, UserAgent')
                 ->where('Success', 0)  // Solo intentos fallidos
                 ->groupBy('UsuarioID')  // Agrupar por UsuarioID
                 ->orderBy('ultima_fecha', 'DESC');  // Ordenar por la última fecha de intento fallido
-            $failedLogs = $this->findAll();
-
-            // Si se especifica paginación, devolver registros paginados
-            if ($perPage !== null) {
-                return $this->paginate($perPage);
-            }
+            $failedLogs = ($perPage !== null) ? $this->paginate($perPage, 'default', $page) : $this->findAll();
 
             // Devolver los dos conjuntos de datos
             return [
@@ -43,6 +38,7 @@ class LoginLogModel extends Model
             return [];
         }
     }
+
 
     // Para insertar un nuevo registro con éxito o fallo
     public function logLoginAttempt($userId, $success, $ip, $userAgent, $attempts = 1, $reason = null)

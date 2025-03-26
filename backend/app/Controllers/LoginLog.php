@@ -44,10 +44,13 @@ class LoginLog extends Controller
         // Verifica si el usuario tiene acceso de administrador
         $this->checkAdminAccess();
 
+        $page = $this->request->getVar('page') ?: 1;
+        $perPage = 100; 
+
         // Obtener los registros de login agrupados y con paginación
         $data = [
             'title' => 'Registros de Inicio de Sesión',
-            'logs' => $this->loginLogModel->getLoginAttemptsGrouped(null, 20) // Obtiene 20 registros por página
+            'logs' => $this->loginLogModel->getLoginAttemptsGrouped($perPage, $page)
         ];
 
         // Cargar la vista con los registros de login
@@ -104,7 +107,7 @@ class LoginLog extends Controller
         $file = fopen($filepath, 'a');
         if ($file) {
             // Obtener la fecha actual para separarla en el archivo 
-            $currentDate = date('D-M-y');
+            $currentDate = date('d-m-Y');
 
             // Escribir la fecha como un separador antes de los registros de hoy
             fputcsv($file, ["========== REGISTROS DEL " . $currentDate . " =========="]);

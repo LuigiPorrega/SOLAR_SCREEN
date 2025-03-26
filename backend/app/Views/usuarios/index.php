@@ -11,7 +11,7 @@ if (!session()->has('user_id') || !$usuariosModel->canAccessBackend(session()->g
     <section class="container mt-4">
         <h2 class="text-center"><?= esc($title) ?></h2>
 
-        <!-- Mostrar mensajes de éxito -->
+    <!-- Mostrar mensajes de éxito -->
     <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success">
             <?= session()->getFlashdata('success') ?>

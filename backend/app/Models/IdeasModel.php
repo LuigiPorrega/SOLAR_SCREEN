@@ -14,7 +14,8 @@ class IdeasModel extends Model
     {
         try {
             $this->select('Ideas.*, Usuarios.Nombre, Usuarios.Username')
-                 ->join('Usuarios', 'Ideas.UsuarioID = Usuarios.ID');
+                 ->join('Usuarios', 'Ideas.UsuarioID = Usuarios.ID')
+                 ->orderBy('Ideas.ID', 'DESC');
 
             if ($id !== null) {
                 return $this->find($id);

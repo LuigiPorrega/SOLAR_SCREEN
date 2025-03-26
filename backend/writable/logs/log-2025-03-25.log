@@ -1,0 +1,68 @@
+CRITICAL - 2025-03-25 22:40:54 --> ErrorException: Undefined variable $usuariosModel
+[Method: GET, Route: admin/ideas/1]
+in APPPATH/Views/ideas/view.php on line 3.
+ 1 APPPATH/Views/ideas/view.php(3): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuariosModel', '/var/www/html/app/Views/ideas/view.php', 3)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/ideas/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('ideas/view', [], true)
+ 5 APPPATH/Controllers/Ideas.php(83): view('ideas/view')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Ideas->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ideas))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-25 22:42:56 --> ErrorException: Undefined array key "User"
+[Method: GET, Route: admin/ideas/1]
+in APPPATH/Views/ideas/view.php on line 22.
+ 1 APPPATH/Views/ideas/view.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "User"', '/var/www/html/app/Views/ideas/view.php', 22)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/ideas/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('ideas/view', [], true)
+ 5 APPPATH/Controllers/Ideas.php(83): view('ideas/view')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Ideas->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ideas))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-25 22:43:08 --> ErrorException: Undefined array key "Usuario"
+[Method: GET, Route: admin/ideas/1]
+in APPPATH/Views/ideas/view.php on line 22.
+ 1 APPPATH/Views/ideas/view.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Usuario"', '/var/www/html/app/Views/ideas/view.php', 22)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/ideas/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('ideas/view', [], true)
+ 5 APPPATH/Controllers/Ideas.php(83): view('ideas/view')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Ideas->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ideas))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-25 23:12:50 --> ErrorException: Undefined array key "Número Idea"
+[Method: GET, Route: admin/ideas]
+in APPPATH/Views/ideas/index.php on line 17.
+ 1 APPPATH/Views/ideas/index.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Número Idea"', '/var/www/html/app/Views/ideas/index.php', 17)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/ideas/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('ideas/index', [], true)
+ 5 APPPATH/Controllers/Ideas.php(57): view('ideas/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Ideas->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ideas))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-25 23:26:32 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "ideas/edit.php"
+[Method: GET, Route: admin/ideas/update/1]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('ideas/edit.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('ideas/edit', [], true)
+ 3 APPPATH/Controllers/Ideas.php(166): view('ideas/edit')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Ideas->update('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ideas))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

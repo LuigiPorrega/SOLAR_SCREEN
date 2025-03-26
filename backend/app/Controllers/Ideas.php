@@ -112,8 +112,14 @@ class Ideas extends BaseController
 
         helper('form');
 
-        // Obtener datos enviados por el formulario
-        $data = $this->request->getPost(['UsuarioID', 'Titulo', 'Descripcion']);
+        // Obtener el ID del usuario desde la sesión
+        $usuarioID = session()->get('user_id');
+
+        // Obtener datos enviados por el formulario, asegurándote de pasar el UsuarioID
+        $data = $this->request->getPost(['Titulo', 'Descripcion']);
+
+        // Agregar el UsuarioID al array de datos
+        $data['UsuarioID'] = $usuarioID;
 
         // Validar los datos del formulario
         if (!$this->validateData($data, [
@@ -132,8 +138,9 @@ class Ideas extends BaseController
         $this->ideasModel->save($data);
 
         // Redirigir a la lista de ideas después de guardar exitosamente
-        return redirect()->to(base_url('ideas'))->with('success', 'Idea creada exitosamente.');
+        return redirect()->to(base_url('admin/ideas'))->with('success', 'Idea creada exitosamente.');
     }
+
 
     /**
      * Muestra el formulario para editar una idea existente.
@@ -163,7 +170,7 @@ class Ideas extends BaseController
         helper('form');
 
         return view('templates/header', $data)
-            . view('ideas/edit')
+            . view('ideas/update')
             . view('templates/footer');
     }
 
@@ -176,31 +183,40 @@ class Ideas extends BaseController
      */
     public function updatedItem($id)
     {
-        $this->checkAdminAccess();
+        $this->checkAdminAccess(); // Aseguramos que el usuario tenga acceso como administrador
 
         helper('form');
 
+        // Obtener el ID del usuario desde la sesión
+        $usuarioID = session()->get('user_id');
+
         // Obtener datos enviados por el formulario
-        $data = $this->request->getPost(['UsuarioID', 'Titulo', 'Descripcion']);
+        $data = $this->request->getPost(['Titulo', 'Descripcion']);
+
+        // Aseguramos que el UsuarioID esté en los datos para la actualización
+        $data['UsuarioID'] = $usuarioID;
 
         // Validar los datos del formulario
         if (!$this->validateData($data, [
-            'UsuarioID' => 'required|integer',
             'Titulo' => 'required|string|max_length[255]',
             'Descripcion' => 'required|string',
         ])) {
-            return redirect()->to(base_url("admin/ideas/update/$id"));
+            // Si la validación falla, redirigir de vuelta al formulario con los errores
+            return redirect()->to(base_url("admin/ideas/update/$id"))
+                ->withInput()
+                ->with('validation', $this->validator);
         }
 
-        // Incluir el ID en los datos para actualizar el registro existente
-        $data['ID'] = (int)$id;
-
-        if (!$this->ideasModel->save($data)) {
-            throw new \RuntimeException("Error al actualizar la idea.");
+        // Guardar los cambios en la base de datos
+        if ($this->ideasModel->update($id, $data)) {
+            // Redirigir a la lista de ideas después de guardar exitosamente
+            return redirect()->to(base_url('admin/ideas'))->with('success', 'Idea actualizada exitosamente.');
         }
 
-        return redirect()->to(base_url('ideas'));
+        // Si ocurre un error al actualizar devolver un mensaje
+        return redirect()->to(base_url("admin/ideas/update/$id"))->with('error', 'Hubo un problema al actualizar la idea.');
     }
+
 
     /**
      * Elimina una idea existente.
@@ -211,12 +227,30 @@ class Ideas extends BaseController
      */
     public function delete($id)
     {
+        // Verificar si el usuario tiene acceso de administrador
         $this->checkAdminAccess();
 
-        if (!$this->ideasModel->delete($id)) {
-            throw new PageNotFoundException("No se encontró la idea con ID: $id");
+        // Verificar si el ID es válido (no vacío o nulo)
+        if (is_null($id) || !is_numeric($id)) {
+            // Redirigir con un mensaje de error si el ID es inválido
+            return redirect()->to(base_url('admin/ideas'))->with('error', 'ID de idea inválido.');
         }
 
-        return redirect()->to(base_url('ideas'));
+        // Intentar eliminar la idea
+        $idea = $this->ideasModel->find($id);
+
+        if (!$idea) {
+            // Si no se encuentra la idea en la base de datos, redirigir con un error
+            return redirect()->to(base_url('admin/ideas'))->with('error', "No se encontró la idea con ID: $id.");
+        }
+
+        // Realizar la eliminación de la idea
+        if ($this->ideasModel->delete($id)) {
+            // Redirigir con un mensaje de éxito si la eliminación es exitosa
+            return redirect()->to(base_url('admin/ideas'))->with('success', 'Idea eliminada exitosamente.');
+        }
+
+        // Si algo salió mal al intentar eliminar, redirigir con un mensaje de error
+        return redirect()->to(base_url('admin/ideas'))->with('error', 'Hubo un error al intentar eliminar la idea.');
     }
 }
