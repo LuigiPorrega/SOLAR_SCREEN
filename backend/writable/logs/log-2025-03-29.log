@@ -1,0 +1,219 @@
+CRITICAL - 2025-03-29 19:42:00 --> CodeIgniter\Database\Exceptions\DataException: There is no primary key defined when trying to make insert.
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 358.
+ 1 SYSTEMPATH/Model.php(358): CodeIgniter\Database\Exceptions\DataException::forEmptyPrimaryKey('insert')
+ 2 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 3 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 4 APPPATH/Controllers/Proveedores.php(159): CodeIgniter\Model->insert([...])
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 20:02:45 --> BadMethodCallException: Call to undefined method App\Models\ProveedoresModel::getAllFundas
+[Method: GET, Route: admin/proveedores/new]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Proveedores.php(101): CodeIgniter\Model->__call('getAllFundas', [])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 20:02:47 --> BadMethodCallException: Call to undefined method App\Models\ProveedoresModel::getAllFundas
+[Method: GET, Route: admin/proveedores/new]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Proveedores.php(101): CodeIgniter\Model->__call('getAllFundas', [])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 20:02:49 --> BadMethodCallException: Call to undefined method App\Models\ProveedoresModel::getAllFundas
+[Method: GET, Route: admin/proveedores/new]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Proveedores.php(101): CodeIgniter\Model->__call('getAllFundas', [])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 20:18:39 --> BadMethodCallException: Call to undefined method App\Models\FundasProveedoresModel::getAllFundas
+[Method: GET, Route: admin/proveedores/new]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Proveedores.php(99): CodeIgniter\Model->__call('getAllFundas', [])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 20:19:28 --> BadMethodCallException: Call to undefined method App\Models\FundasProveedoresModel::getAllFundas
+[Method: GET, Route: admin/proveedores/new]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Proveedores.php(99): CodeIgniter\Model->__call('getAllFundas', [])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 20:23:23 --> Error: Class "App\Controllers\ModelosFundasModel" not found
+[Method: GET, Route: admin/proveedores/new]
+in APPPATH/Controllers/Proveedores.php on line 28.
+ 1 SYSTEMPATH/CodeIgniter.php(903): App\Controllers\Proveedores->__construct()
+ 2 SYSTEMPATH/CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 20:27:13 --> BadMethodCallException: Call to undefined method App\Models\FundasProveedoresModel::getAllFundas
+[Method: GET, Route: admin/proveedores/new]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Proveedores.php(75): CodeIgniter\Model->__call('getAllFundas', [])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 22:01:16 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 357.
+ 1 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH/Models/FundasProveedoresModel.php(26): CodeIgniter\Model->insert([...])
+ 4 APPPATH/Controllers/Proveedores.php(135): App\Models\FundasProveedoresModel->insertRelation(12, '3')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 22:05:45 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 357.
+ 1 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH/Models/FundasProveedoresModel.php(26): CodeIgniter\Model->insert([...])
+ 4 APPPATH/Controllers/Proveedores.php(137): App\Models\FundasProveedoresModel->insertRelation(13, '3')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 22:05:56 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 357.
+ 1 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH/Models/FundasProveedoresModel.php(26): CodeIgniter\Model->insert([...])
+ 4 APPPATH/Controllers/Proveedores.php(137): App\Models\FundasProveedoresModel->insertRelation(14, '3')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 22:06:23 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 357.
+ 1 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH/Models/FundasProveedoresModel.php(26): CodeIgniter\Model->insert([...])
+ 4 APPPATH/Controllers/Proveedores.php(136): App\Models\FundasProveedoresModel->insertRelation(15, '3')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 22:06:35 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 357.
+ 1 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH/Models/FundasProveedoresModel.php(26): CodeIgniter\Model->insert([...])
+ 4 APPPATH/Controllers/Proveedores.php(136): App\Models\FundasProveedoresModel->insertRelation(16, '3')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 22:15:58 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 357.
+ 1 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 2 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 3 APPPATH/Models/FundasProveedoresModel.php(26): CodeIgniter\Model->insert([...])
+ 4 APPPATH/Controllers/Proveedores.php(135): App\Models\FundasProveedoresModel->insertRelation(17, '2')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 23:12:23 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 422.
+ 1 SYSTEMPATH/BaseModel.php(960): CodeIgniter\Model->doInsertBatch([...], null, 100, false)
+ 2 APPPATH/Controllers/Proveedores.php(141): CodeIgniter\BaseModel->insertBatch([...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 23:20:37 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 422.
+ 1 SYSTEMPATH/BaseModel.php(960): CodeIgniter\Model->doInsertBatch([...], null, 100, false)
+ 2 APPPATH/Controllers/Proveedores.php(140): CodeIgniter\BaseModel->insertBatch([...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 23:21:11 --> TypeError: Illegal offset type in isset or empty
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Model.php on line 422.
+ 1 SYSTEMPATH/BaseModel.php(960): CodeIgniter\Model->doInsertBatch([...], null, 100, false)
+ 2 APPPATH/Controllers/Proveedores.php(140): CodeIgniter\BaseModel->insertBatch([...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->create()
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-29 23:26:43 --> Error al insertar relaciones: There is no primary key defined when trying to make insertBatch.
+ERROR - 2025-03-29 23:26:58 --> Error al insertar relaciones: There is no primary key defined when trying to make insertBatch.
+CRITICAL - 2025-03-29 23:44:37 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/Filters/Filters.php(205): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH/Filters/Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH/CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/proveedores/create', 'before')
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-29 23:46:03 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: admin/proveedores/create]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/Filters/Filters.php(205): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH/Filters/Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH/CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/proveedores/create', 'before')
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -1,0 +1,177 @@
+CRITICAL - 2025-03-31 20:05:58 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: admin/proveedores/update/updated/12]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH/Filters/Filters.php(205): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH/Filters/Filters.php(184): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH/CodeIgniter.php(481): CodeIgniter\Filters\Filters->run('admin/proveedores/update/updated/12', 'before')
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 20:06:57 --> BadMethodCallException: Call to undefined method App\Models\FundasProveedoresModel::deleteFundasByProveedor
+[Method: POST, Route: admin/proveedores/update/updated/12]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Proveedores.php(224): CodeIgniter\Model->__call('deleteFundasByProveedor', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->updatedItem('12')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 20:08:55 --> ArgumentCountError: Too few arguments to function App\Models\FundasProveedoresModel::deleteFundasByProveedor(), 1 passed in /var/www/html/app/Controllers/Proveedores.php on line 224 and exactly 2 expected
+[Method: POST, Route: admin/proveedores/update/updated/12]
+in APPPATH/Models/FundasProveedoresModel.php on line 73.
+ 1 APPPATH/Controllers/Proveedores.php(224): App\Models\FundasProveedoresModel->deleteFundasByProveedor('12')
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->updatedItem('12')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-31 20:10:09 --> mysqli_sql_exception: Table 'solar_screen.fundas_proveedores' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('DELETE FROM `fu...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `fu...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `fu...')
+#3 /var/www/html/system/Database/BaseBuilder.php(2843): CodeIgniter\Database\BaseConnection->query('DELETE FROM `fu...', Array, false)
+#4 /var/www/html/app/Models/FundasProveedoresModel.php(78): CodeIgniter\Database\BaseBuilder->delete()
+#5 /var/www/html/app/Controllers/Proveedores.php(224): App\Models\FundasProveedoresModel->deleteFundasByProveedor('12', Array)
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Proveedores->updatedItem('12')
+#7 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+#8 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-03-31 20:10:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.fundas_proveedores' doesn't exist
+[Method: POST, Route: admin/proveedores/update/updated/12]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2843): CodeIgniter\Database\BaseConnection->query('DELETE FROM `fundas_proveedores`
+WHERE `ProveedorID` = :ProveedorID:
+AND `FundaID` IN :FundaID:', [...], false)
+ 2 APPPATH/Models/FundasProveedoresModel.php(78): CodeIgniter\Database\BaseBuilder->delete()
+ 3 APPPATH/Controllers/Proveedores.php(224): App\Models\FundasProveedoresModel->deleteFundasByProveedor('12', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->updatedItem('12')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 20:10:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.fundas_proveedores' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `fundas_proveedores`
+WHERE `ProveedorID` = \'12\'
+AND `FundaID` IN (\'6\',\'8\')')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `fundas_proveedores`
+WHERE `ProveedorID` = \'12\'
+AND `FundaID` IN (\'6\',\'8\')')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2843): CodeIgniter\Database\BaseConnection->query('DELETE FROM `fundas_proveedores`
+WHERE `ProveedorID` = :ProveedorID:
+AND `FundaID` IN :FundaID:', [...], false)
+ 4 APPPATH/Models/FundasProveedoresModel.php(78): CodeIgniter\Database\BaseBuilder->delete()
+ 5 APPPATH/Controllers/Proveedores.php(224): App\Models\FundasProveedoresModel->deleteFundasByProveedor('12', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->updatedItem('12')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 20:10:09 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.fundas_proveedores' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('DELETE FROM `fundas_proveedores`
+WHERE `ProveedorID` = \'12\'
+AND `FundaID` IN (\'6\',\'8\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `fundas_proveedores`
+WHERE `ProveedorID` = \'12\'
+AND `FundaID` IN (\'6\',\'8\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `fundas_proveedores`
+WHERE `ProveedorID` = \'12\'
+AND `FundaID` IN (\'6\',\'8\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2843): CodeIgniter\Database\BaseConnection->query('DELETE FROM `fundas_proveedores`
+WHERE `ProveedorID` = :ProveedorID:
+AND `FundaID` IN :FundaID:', [...], false)
+ 5 APPPATH/Models/FundasProveedoresModel.php(78): CodeIgniter\Database\BaseBuilder->delete()
+ 6 APPPATH/Controllers/Proveedores.php(224): App\Models\FundasProveedoresModel->deleteFundasByProveedor('12', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->updatedItem('12')
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 20:49:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Deletes are not allowed unless they contain a "where" or "like" clause.
+[Method: POST, Route: admin/proveedores/update/updated/12]
+in SYSTEMPATH/Database/BaseBuilder.php on line 2814.
+ 1 APPPATH/Models/FundasProveedoresModel.php(94): CodeIgniter\Database\BaseBuilder->delete()
+ 2 APPPATH/Controllers/Proveedores.php(224): App\Models\FundasProveedoresModel->deleteFundasByProveedor('12', [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->updatedItem('12')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 21:56:57 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "modelos_fundas/index.php"
+[Method: GET, Route: admin/modelosFundas]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('modelos_fundas/index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('modelos_fundas/index', [], true)
+ 3 APPPATH/Controllers/ModelosFundas.php(44): view('modelos_fundas/index')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ModelosFundas->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ModelosFundas))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 21:59:18 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "modelos_fundas/index.php"
+[Method: GET, Route: admin/modelosFundas]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('modelos_fundas/index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('modelos_fundas/index', [], true)
+ 3 APPPATH/Controllers/ModelosFundas.php(44): view('modelos_fundas/index')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ModelosFundas->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ModelosFundas))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 21:59:32 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "modelos_fundas/index.php"
+[Method: GET, Route: admin/modelosFundas]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('modelos_fundas/index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('modelos_fundas/index', [], true)
+ 3 APPPATH/Controllers/ModelosFundas.php(44): view('modelos_fundas/index')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ModelosFundas->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ModelosFundas))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 22:08:39 --> ErrorException: Undefined array key "nombre"
+[Method: GET, Route: admin/modelosFundas]
+in APPPATH/Views/modelosFundas/index.php on line 24.
+ 1 APPPATH/Views/modelosFundas/index.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nombre"', '/var/www/html/app/Views/modelosFundas/index.php', 24)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/modelosFundas/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('modelosFundas/index', [], true)
+ 5 APPPATH/Controllers/ModelosFundas.php(44): view('modelosFundas/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ModelosFundas->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ModelosFundas))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-31 22:09:24 --> ErrorException: Undefined array key "nombre"
+[Method: GET, Route: admin/modelosFundas]
+in APPPATH/Views/modelosFundas/index.php on line 34.
+ 1 APPPATH/Views/modelosFundas/index.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nombre"', '/var/www/html/app/Views/modelosFundas/index.php', 34)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/modelosFundas/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('modelosFundas/index', [], true)
+ 5 APPPATH/Controllers/ModelosFundas.php(44): view('modelosFundas/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\ModelosFundas->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ModelosFundas))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

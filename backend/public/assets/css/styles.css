@@ -30,4 +30,19 @@ label {
     font-weight: bold !important;
 }
 
+/* Aumentar el tamaño de los checkboxes */
+.form-check-input {
+    transform: scale(1.5) !important; /* Aumenta el tamaño del checkbox */
+    margin-top: 0.3rem !important; /* Ajuste para mejor alineación */
+}
 
+/* Cambiar el color del borde del checkbox a azul */
+.form-check-input:focus {
+    border-color: #007bff !important; /* Azul de Bootstrap */
+    box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5) !important; /* Sombra azul alrededor */
+}
+
+/* Asegurar que el checkbox tenga un buen contraste con el fondo */
+.form-check-label {
+    font-size: 1.1rem !important; /* Aumentar ligeramente el tamaño de la etiqueta */
+}

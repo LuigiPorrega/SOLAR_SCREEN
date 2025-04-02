@@ -1,0 +1,88 @@
+CRITICAL - 2025-03-30 18:47:07 --> ErrorException: Undefined array key "Modelo"
+[Method: GET, Route: admin/proveedores/12]
+in APPPATH/Views/proveedores/view.php on line 37.
+ 1 APPPATH/Views/proveedores/view.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Modelo"', '/var/www/html/app/Views/proveedores/view.php', 37)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/view', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(66): view('proveedores/view')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->view('12')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-30 18:52:11 --> ErrorException: Undefined array key "Modelo"
+[Method: GET, Route: admin/proveedores/12]
+in APPPATH/Views/proveedores/view.php on line 38.
+ 1 APPPATH/Views/proveedores/view.php(38): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Modelo"', '/var/www/html/app/Views/proveedores/view.php', 38)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/view', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(66): view('proveedores/view')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->view('12')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-30 18:58:35 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "proveedores/edit.php"
+[Method: GET, Route: admin/proveedores/update/12]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('proveedores/edit.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/edit', [], true)
+ 3 APPPATH/Controllers/Proveedores.php(183): view('proveedores/edit')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->update('12')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-30 19:01:04 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "proveedores/edit.php"
+[Method: GET, Route: admin/proveedores/update/12]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('proveedores/edit.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/edit', [], true)
+ 3 APPPATH/Controllers/Proveedores.php(183): view('proveedores/edit')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->update('12')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-30 19:01:50 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "proveedores/edit.php"
+[Method: GET, Route: admin/proveedores/update/12]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('proveedores/edit.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/edit', [], true)
+ 3 APPPATH/Controllers/Proveedores.php(183): view('proveedores/edit')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->update('12')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-30 19:02:31 --> ErrorException: Undefined variable $idea
+[Method: GET, Route: admin/proveedores/update/12]
+in APPPATH/Views/proveedores/update.php on line 8.
+ 1 APPPATH/Views/proveedores/update.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idea', '/var/www/html/app/Views/proveedores/update.php', 8)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/update.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/update', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(183): view('proveedores/update')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->update('12')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-30 19:09:40 --> BadMethodCallException: Call to undefined method App\Models\FundasProveedoresModel::deleteFundasByProveedor
+[Method: POST, Route: admin/proveedores/update/updated/12]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Proveedores.php(224): CodeIgniter\Model->__call('deleteFundasByProveedor', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->updatedItem('12')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -41,6 +41,12 @@ $usuariosModel = model('App\Models\UsuariosModel'); ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('admin/ideas') ?>">Ideas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('admin/proveedores') ?>">Proveedores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('admin/modelosFundas') ?>">Modelos Fundas</a>
+                    </li>
                     <!-- Mostrar "Usuarios" solo si el usuario es administrador -->
                     <?php $session = session();
                     if ($session->has('user_id') && $usuariosModel->canAccessBackend($session->get('user_id'))) : ?>

@@ -1,0 +1,820 @@
+ERROR - 2025-03-27 20:01:28 --> mysqli_sql_exception: Unknown column 'Fundas_Proveedores.ModeloFundaID' in 'ON' in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT COUNT(*)...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 /var/www/html/system/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 /var/www/html/system/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+#6 /var/www/html/app/Models/ProveedoresModel.php(40): CodeIgniter\BaseModel->paginate(10)
+#7 /var/www/html/app/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(NULL, 10)
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-03-27 20:01:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Fundas_Proveedores.ModeloFundaID' in 'ON'
+[Method: GET, Route: admin/proveedores]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`', [], false)
+ 2 SYSTEMPATH/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH/Models/ProveedoresModel.php(40): CodeIgniter\BaseModel->paginate(10)
+ 5 APPPATH/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 20:01:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Fundas_Proveedores.ModeloFundaID' in 'ON'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`', [], false)
+ 4 SYSTEMPATH/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH/Models/ProveedoresModel.php(40): CodeIgniter\BaseModel->paginate(10)
+ 7 APPPATH/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 20:01:28 --> [Caused by] mysqli_sql_exception: Unknown column 'Fundas_Proveedores.ModeloFundaID' in 'ON'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`', [], false)
+ 5 SYSTEMPATH/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH/Models/ProveedoresModel.php(40): CodeIgniter\BaseModel->paginate(10)
+ 8 APPPATH/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-27 20:05:29 --> mysqli_sql_exception: Unknown column 'Fundas_Proveedores.ModeloFundaID' in 'ON' in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT COUNT(*)...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 /var/www/html/system/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 /var/www/html/system/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+#6 /var/www/html/app/Models/ProveedoresModel.php(40): CodeIgniter\BaseModel->paginate(10)
+#7 /var/www/html/app/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(NULL, 10)
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-03-27 20:05:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Fundas_Proveedores.ModeloFundaID' in 'ON'
+[Method: GET, Route: admin/proveedores]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`', [], false)
+ 2 SYSTEMPATH/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH/Models/ProveedoresModel.php(40): CodeIgniter\BaseModel->paginate(10)
+ 5 APPPATH/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 20:05:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Fundas_Proveedores.ModeloFundaID' in 'ON'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`', [], false)
+ 4 SYSTEMPATH/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH/Models/ProveedoresModel.php(40): CodeIgniter\BaseModel->paginate(10)
+ 7 APPPATH/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 20:05:29 --> [Caused by] mysqli_sql_exception: Unknown column 'Fundas_Proveedores.ModeloFundaID' in 'ON'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`ModeloFundaID` = `ModelosFundas`.`ID`', [], false)
+ 5 SYSTEMPATH/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH/Models/ProveedoresModel.php(40): CodeIgniter\BaseModel->paginate(10)
+ 8 APPPATH/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 20:10:21 --> ErrorException: Undefined variable $ideas
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 29.
+ 1 APPPATH/Views/proveedores/index.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ideas', '/var/www/html/app/Views/proveedores/index.php', 29)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(56): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 20:10:52 --> ErrorException: Undefined variable $ideas
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 29.
+ 1 APPPATH/Views/proveedores/index.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ideas', '/var/www/html/app/Views/proveedores/index.php', 29)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(56): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-27 20:12:19 --> mysqli_sql_exception: Unknown column 'Fundas_Proveedores.ProveedoresID' in 'SELECT' in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Proveed...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Proveed...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Proveed...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Proveed...', Array, false)
+#4 /var/www/html/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(10, 0)
+#6 /var/www/html/system/BaseModel.php(1288): CodeIgniter\BaseModel->findAll(10, 0)
+#7 /var/www/html/app/Models/ProveedoresModel.php(41): CodeIgniter\BaseModel->paginate(10)
+#8 /var/www/html/app/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(NULL, 10)
+#9 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+#10 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+#11 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-03-27 20:12:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Fundas_Proveedores.ProveedoresID' in 'SELECT'
+[Method: GET, Route: admin/proveedores]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Proveedores`.*, `Fundas_Proveedores`.`ProveedoresID`
+FROM `Proveedores`
+LEFT JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+ LIMIT 10', [], false)
+ 2 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll(10, 0)
+ 4 SYSTEMPATH/BaseModel.php(1288): CodeIgniter\BaseModel->findAll(10, 0)
+ 5 APPPATH/Models/ProveedoresModel.php(41): CodeIgniter\BaseModel->paginate(10)
+ 6 APPPATH/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 20:12:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Fundas_Proveedores.ProveedoresID' in 'SELECT'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Proveedores`.*, `Fundas_Proveedores`.`ProveedoresID`
+FROM `Proveedores`
+LEFT JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+ LIMIT 10')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Proveedores`.*, `Fundas_Proveedores`.`ProveedoresID`
+FROM `Proveedores`
+LEFT JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Proveedores`.*, `Fundas_Proveedores`.`ProveedoresID`
+FROM `Proveedores`
+LEFT JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+ LIMIT 10', [], false)
+ 4 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll(10, 0)
+ 6 SYSTEMPATH/BaseModel.php(1288): CodeIgniter\BaseModel->findAll(10, 0)
+ 7 APPPATH/Models/ProveedoresModel.php(41): CodeIgniter\BaseModel->paginate(10)
+ 8 APPPATH/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 20:12:19 --> [Caused by] mysqli_sql_exception: Unknown column 'Fundas_Proveedores.ProveedoresID' in 'SELECT'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Proveedores`.*, `Fundas_Proveedores`.`ProveedoresID`
+FROM `Proveedores`
+LEFT JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+ LIMIT 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Proveedores`.*, `Fundas_Proveedores`.`ProveedoresID`
+FROM `Proveedores`
+LEFT JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Proveedores`.*, `Fundas_Proveedores`.`ProveedoresID`
+FROM `Proveedores`
+LEFT JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+ LIMIT 10')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Proveedores`.*, `Fundas_Proveedores`.`ProveedoresID`
+FROM `Proveedores`
+LEFT JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+ LIMIT 10', [], false)
+ 5 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll(10, 0)
+ 7 SYSTEMPATH/BaseModel.php(1288): CodeIgniter\BaseModel->findAll(10, 0)
+ 8 APPPATH/Models/ProveedoresModel.php(41): CodeIgniter\BaseModel->paginate(10)
+ 9 APPPATH/Controllers/Proveedores.php(50): App\Models\ProveedoresModel->getProveedores(null, 10)
+10 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+11 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+12 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:10:07 --> ErrorException: Undefined variable $ideas
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 29.
+ 1 APPPATH/Views/proveedores/index.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ideas', '/var/www/html/app/Views/proveedores/index.php', 29)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(56): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:13:52 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(56): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:17:48 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(56): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:20:00 --> Error: Class "App\Models\ProveedoresModel" not found
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Controllers/Proveedores.php on line 22.
+ 1 SYSTEMPATH/CodeIgniter.php(903): App\Controllers\Proveedores->__construct()
+ 2 SYSTEMPATH/CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:21:12 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(56): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:22:48 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(56): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:24:14 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(56): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:35:03 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:35:13 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:35:40 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:40:23 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:42:23 --> ErrorException: Undefined array key "ProveedorID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ProveedorID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:45:19 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:46:35 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 47.
+ 1 APPPATH/Views/proveedores/index.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 47)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:49:44 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 52.
+ 1 APPPATH/Views/proveedores/index.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 52)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:51:01 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 52.
+ 1 APPPATH/Views/proveedores/index.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 52)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:52:50 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 52.
+ 1 APPPATH/Views/proveedores/index.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 52)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 21:53:15 --> ErrorException: Undefined array key "Nombre"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 53.
+ 1 APPPATH/Views/proveedores/index.php(53): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Nombre"', '/var/www/html/app/Views/proveedores/index.php', 53)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:00:34 --> Error: Call to a member function links() on null
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 85.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 4 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-03-27 22:04:45 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` O...' at line 1 in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Proveed...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Proveed...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Proveed...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Proveed...', Array, false)
+#4 /var/www/html/app/Models/ProveedoresModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/Proveedores.php(52): App\Models\ProveedoresModel->getProveedores(NULL, 10)
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+#7 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+#8 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-03-27 22:04:45 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` O...' at line 1
+[Method: GET, Route: admin/proveedores]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Proveedores`.* `Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`FundaID` = `ModelosFundas`.`ID`
+ LIMIT 10', [], false)
+ 2 APPPATH/Models/ProveedoresModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/Proveedores.php(52): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:04:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` O...' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Proveedores`.* `Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`FundaID` = `ModelosFundas`.`ID`
+ LIMIT 10')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Proveedores`.* `Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`FundaID` = `ModelosFundas`.`ID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Proveedores`.* `Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`FundaID` = `ModelosFundas`.`ID`
+ LIMIT 10', [], false)
+ 4 APPPATH/Models/ProveedoresModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/Proveedores.php(52): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:04:45 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` O...' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Proveedores`.* `Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`FundaID` = `ModelosFundas`.`ID`
+ LIMIT 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Proveedores`.* `Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`FundaID` = `ModelosFundas`.`ID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Proveedores`.* `Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`FundaID` = `ModelosFundas`.`ID`
+ LIMIT 10')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Proveedores`.* `Fundas_Proveedores`.`FundaID`
+FROM `Proveedores`
+JOIN `Fundas_Proveedores` ON `Proveedores`.`ID` = `Fundas_Proveedores`.`ProveedorID`
+JOIN `ModelosFundas` ON `Fundas_Proveedores`.`FundaID` = `ModelosFundas`.`ID`
+ LIMIT 10', [], false)
+ 5 APPPATH/Models/ProveedoresModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/Proveedores.php(52): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:05:03 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 52.
+ 1 APPPATH/Views/proveedores/index.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 52)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:06:01 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 52.
+ 1 APPPATH/Views/proveedores/index.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 52)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:06:48 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::paginate()
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Models/ProveedoresModel.php on line 32.
+ 1 APPPATH/Controllers/Proveedores.php(52): App\Models\ProveedoresModel->getProveedores(null, 10)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:07:40 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 52.
+ 1 APPPATH/Views/proveedores/index.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 52)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:08:22 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 52.
+ 1 APPPATH/Views/proveedores/index.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 52)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:08:33 --> ErrorException: Undefined array key "ID"
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 52.
+ 1 APPPATH/Views/proveedores/index.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ID"', '/var/www/html/app/Views/proveedores/index.php', 52)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:11:15 --> Error: Call to a member function links() on null
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 75.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 4 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:11:33 --> Error: Call to a member function links() on null
+[Method: GET, Route: admin/proveedores]
+in APPPATH/Views/proveedores/index.php on line 75.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/index', [], true)
+ 4 APPPATH/Controllers/Proveedores.php(59): view('proveedores/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:32:51 --> ErrorException: Undefined array key "Decripcion"
+[Method: GET, Route: admin/proveedores/1]
+in APPPATH/Views/proveedores/view.php on line 21.
+ 1 APPPATH/Views/proveedores/view.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Decripcion"', '/var/www/html/app/Views/proveedores/view.php', 21)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/view', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(83): view('proveedores/view')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 22:59:00 --> ErrorException: Undefined variable $fundas
+[Method: GET, Route: admin/proveedores/new]
+in APPPATH/Views/proveedores/create.php on line 116.
+ 1 APPPATH/Views/proveedores/create.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fundas', '/var/www/html/app/Views/proveedores/create.php', 116)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/create', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(99): view('proveedores/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 23:02:52 --> ErrorException: Undefined variable $fundas
+[Method: GET, Route: admin/proveedores/new]
+in APPPATH/Views/proveedores/create.php on line 116.
+ 1 APPPATH/Views/proveedores/create.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fundas', '/var/www/html/app/Views/proveedores/create.php', 116)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/create', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(99): view('proveedores/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 23:06:15 --> ErrorException: Undefined variable $fundas
+[Method: GET, Route: admin/proveedores/new]
+in APPPATH/Views/proveedores/create.php on line 116.
+ 1 APPPATH/Views/proveedores/create.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fundas', '/var/www/html/app/Views/proveedores/create.php', 116)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/create', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(99): view('proveedores/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-27 23:06:46 --> ErrorException: Undefined variable $fundas
+[Method: GET, Route: admin/proveedores/new]
+in APPPATH/Views/proveedores/create.php on line 116.
+ 1 APPPATH/Views/proveedores/create.php(116): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fundas', '/var/www/html/app/Views/proveedores/create.php', 116)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/proveedores/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('proveedores/create', [], true)
+ 5 APPPATH/Controllers/Proveedores.php(99): view('proveedores/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Proveedores->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Proveedores))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

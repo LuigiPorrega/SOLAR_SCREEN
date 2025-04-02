@@ -5,7 +5,11 @@ use App\Controllers\Home;
 use App\Controllers\Simulaciones;
 use App\Controllers\Ideas;
 use App\Controllers\Usuarios;
+use App\Controllers\Proveedores;
+use App\Controllers\ModelosFundas;
 use App\Controllers\LoginLog;
+
+
 
 $routes->setAutoRoute(false);
 
@@ -30,6 +34,24 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('simulaciones/update/updated/(:segment)', [Simulaciones::class, 'updatedItem']);
     $routes->get('simulaciones/delete/(:segment)', [Simulaciones::class, 'delete']);
     $routes->get('simulaciones/(:segment)', [Simulaciones::class, 'view']);
+
+    // Rutas para Proveedores
+    $routes->get('proveedores', [Proveedores::class, 'index']);
+    $routes->get('proveedores/new', [Proveedores::class, 'new']);
+    $routes->post('proveedores/create', [Proveedores::class, 'create']);
+    $routes->get('proveedores/update/(:segment)', [Proveedores::class, 'update']);
+    $routes->post('proveedores/update/updated/(:segment)', [Proveedores::class, 'updatedItem']);
+    $routes->get('proveedores/delete/(:segment)', [Proveedores::class, 'delete']);
+    $routes->get('proveedores/(:segment)', [Proveedores::class, 'view']);
+
+    // Rutas para ModelosFundas
+    $routes->get('modelosFundas', [ModelosFundas::class, 'index']);
+    $routes->get('modelosFundas/new', [ModelosFundas::class, 'new']);
+    $routes->post('modelosFundas/create', [ModelosFundas::class, 'create']);
+    $routes->get('modelosFundas/update/(:segment)', [ModelosFundas::class, 'update']);
+    $routes->post('modelosFundas/update/updated/(:segment)', [ModelosFundas::class, 'updatedItem']);
+    $routes->get('modelosFundas/delete/(:segment)', [ModelosFundas::class, 'delete']);
+    $routes->get('modelosFundas/(:segment)', [ModelosFundas::class, 'view']);
 
     // Rutas para Ideas
     $routes->get('ideas', [Ideas::class, 'index']);
