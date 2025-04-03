@@ -3,6 +3,7 @@
 use CodeIgniter\Router\RouteCollection;
 use App\Controllers\Home;
 use App\Controllers\Simulaciones;
+use App\Controllers\CondicionesMeteorologicas;
 use App\Controllers\Ideas;
 use App\Controllers\Usuarios;
 use App\Controllers\Proveedores;
@@ -34,6 +35,16 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('simulaciones/update/updated/(:segment)', [Simulaciones::class, 'updatedItem']);
     $routes->get('simulaciones/delete/(:segment)', [Simulaciones::class, 'delete']);
     $routes->get('simulaciones/(:segment)', [Simulaciones::class, 'view']);
+
+    // Rutas para CondicionesMeteorologicas
+    $routes->get('condicionesMeteorologicas', [CondicionesMeteorologicas::class, 'index']);
+    $routes->get('condicionesMeteorologicas/new', [CondicionesMeteorologicas::class, 'new']);
+    $routes->post('condicionesMeteorologicas/create', [CondicionesMeteorologicas::class, 'create']);
+    $routes->get('condicionesMeteorologicas/update/(:segment)', [CondicionesMeteorologicas::class, 'update']);
+    $routes->post('condicionesMeteorologicas/update/updated/(:segment)', [CondicionesMeteorologicas::class, 'updatedItem']);
+    $routes->get('condicionesMeteorologicas/delete/(:segment)', [CondicionesMeteorologicas::class, 'delete']);
+    $routes->get('condicionesMeteorologicas/(:segment)', [CondicionesMeteorologicas::class, 'view']);
+
 
     // Rutas para Proveedores
     $routes->get('proveedores', [Proveedores::class, 'index']);
