@@ -1,48 +1,142 @@
+/* Navbar*/
+.navbar{
+  background-color: #d0eafc;
+  
+}
+/* Cambiar color de texto primario y ponerlo en negrita */
+.navbar .nav-link {
+  color: #007bff !important;  
+}
+
+/* Cambiar color de texto primario y ponerlo en negrita para la marca */
+.navbar .navbar-brand {
+  color: #007bff !important;  
+  font-weight: bold !important; 
+}
+
+
+/* Estilos generales */
 body {
-    padding-top: 70px; /* Ajuste para evitar que el contenido se oculte detrás de la barra de navegación */
+  padding-top: 70px; /* Ajuste para evitar que el contenido se oculte detrás de la barra de navegación */
 }
 
 .container {
-    margin-top: 20px; /* Ajuste extra si es necesario */
+  margin-top: 20px; /* Ajuste extra si es necesario */
 }
 
 /* Estilos para las alertas */
 .alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    opacity: 1;
-    transition: opacity 1s ease-out; /* Transición suave de opacidad */
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: opacity 1s ease-out; /* Transición suave de opacidad */
 }
 
 .alert-success {
-    background-color: #d4edda;
-    color: #155724;
+  background-color: #d4edda;
+  color: #155724;
 }
 
 .alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
 /* Hacer que todos los labels estén en negrita */
 label {
-    font-weight: bold !important;
+  font-weight: bold !important;
 }
 
 /* Aumentar el tamaño de los checkboxes */
 .form-check-input {
-    transform: scale(1.5) !important; /* Aumenta el tamaño del checkbox */
-    margin-top: 0.3rem !important; /* Ajuste para mejor alineación */
+  transform: scale(1.5) !important; /* Aumenta el tamaño del checkbox */
+  margin-top: 0.3rem !important; /* Ajuste para mejor alineación */
 }
 
 /* Cambiar el color del borde del checkbox a azul */
 .form-check-input:focus {
-    border-color: #007bff !important; /* Azul de Bootstrap */
-    box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5) !important; /* Sombra azul alrededor */
+  border-color: #007bff !important; /* Azul de Bootstrap */
+  box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5) !important; /* Sombra azul alrededor */
 }
 
 /* Asegurar que el checkbox tenga un buen contraste con el fondo */
 .form-check-label {
-    font-size: 1.1rem !important; /* Aumentar ligeramente el tamaño de la etiqueta */
+  font-size: 1.1rem !important; /* Aumentar ligeramente el tamaño de la etiqueta */
+}
+
+/* Estilos para la simulación */
+.simulacion {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+}
+
+.funda-recomendada {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.funda-info {
+  display: flex;
+  align-items: center;
+}
+
+.funda-imagen {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.funda-detalles {
+  max-width: 500px;
+}
+
+/* Estilo del botón de acción */
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos generales para los elementos dentro de la simulación */
+.simulacion h3 {
+  margin-bottom: 10px;
+}
+
+.simulacion p {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.simulacion .main {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+
+/* Colores personalizados */
+.border-teal {
+  border-color: #008080 !important; /* Teal */
+}
+
+.text-teal {
+  color: #008080 !important; /* Teal */
+}
+
+.btn-teal {
+  background-color: #008080 !important;
+  border-color: #008080 !important;
+}
+
+.btn-teal:hover {
+  background-color: #006666 !important;
+  border-color: #006666 !important;
 }

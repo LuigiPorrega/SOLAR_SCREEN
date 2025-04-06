@@ -128,3 +128,246 @@ in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
  7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 21:51:57 --> ErrorException: Undefined variable $fundasModel
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 35.
+ 1 APPPATH/Views/simulaciones/index.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fundasModel', '/var/www/html/app/Views/simulaciones/index.php', 35)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(48): view('simulaciones/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:06:35 --> ErrorException: Undefined array key "UsuarioNombre"
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 43.
+ 1 APPPATH/Views/simulaciones/index.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioNombre"', '/var/www/html/app/Views/simulaciones/index.php', 43)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(48): view('simulaciones/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:09:51 --> ErrorException: Undefined array key "UsuarioUsername"
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Controllers/Simulaciones.php on line 47.
+ 1 APPPATH/Controllers/Simulaciones.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioUsername"', '/var/www/html/app/Controllers/Simulaciones.php', 47)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:11:06 --> ErrorException: Undefined array key "UsuarioNombre"
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Controllers/Simulaciones.php on line 47.
+ 1 APPPATH/Controllers/Simulaciones.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioNombre"', '/var/www/html/app/Controllers/Simulaciones.php', 47)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:13:27 --> Error: Call to a member function links() on null
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 31.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 4 APPPATH/Controllers/Simulaciones.php(67): view('simulaciones/index', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:14:09 --> Error: Call to a member function links() on null
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 31.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 4 APPPATH/Controllers/Simulaciones.php(67): view('simulaciones/index', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:19:58 --> Error: Call to a member function links() on null
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 31.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 4 APPPATH/Controllers/Simulaciones.php(67): view('simulaciones/index', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:24:27 --> Error: Call to a member function links() on null
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 30.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 4 APPPATH/Controllers/Simulaciones.php(68): view('simulaciones/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:32:17 --> ErrorException: Undefined property: CodeIgniter\View\View::$fundasModel
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 57.
+ 1 APPPATH/Views/simulaciones/index.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$fundasModel', '/var/www/html/app/Views/simulaciones/index.php', 57)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(72): view('simulaciones/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:34:21 --> ErrorException: Undefined array key "UsuarioNombre"
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 46.
+ 1 APPPATH/Views/simulaciones/index.php(46): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioNombre"', '/var/www/html/app/Views/simulaciones/index.php', 46)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(72): view('simulaciones/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:43:21 --> Error: Call to a member function links() on string
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 31.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 4 APPPATH/Controllers/Simulaciones.php(58): view('simulaciones/index')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:55:49 --> BadMethodCallException: Call to undefined method App\Models\SimulacionesModel::obtenerSimulacionesConUsuario
+[Method: GET, Route: admin/simulaciones]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(43): CodeIgniter\Model->__call('obtenerSimulacionesConUsuario', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-03 22:59:18 --> mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT COUNT(*)...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 /var/www/html/system/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 /var/www/html/system/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+#6 /var/www/html/app/Models/SimulacionesModel.php(38): CodeIgniter\BaseModel->paginate(10)
+#7 /var/www/html/app/Controllers/Simulaciones.php(43): App\Models\SimulacionesModel->getSimulaciones()
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-04-03 22:59:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+[Method: GET, Route: admin/simulaciones]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`', [], false)
+ 2 SYSTEMPATH/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH/Models/SimulacionesModel.php(38): CodeIgniter\BaseModel->paginate(10)
+ 5 APPPATH/Controllers/Simulaciones.php(43): App\Models\SimulacionesModel->getSimulaciones()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:59:18 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`', [], false)
+ 4 SYSTEMPATH/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH/Models/SimulacionesModel.php(38): CodeIgniter\BaseModel->paginate(10)
+ 7 APPPATH/Controllers/Simulaciones.php(43): App\Models\SimulacionesModel->getSimulaciones()
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 22:59:18 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`', [], false)
+ 5 SYSTEMPATH/Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH/BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH/Models/SimulacionesModel.php(38): CodeIgniter\BaseModel->paginate(10)
+ 8 APPPATH/Controllers/Simulaciones.php(43): App\Models\SimulacionesModel->getSimulaciones()
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-03 23:00:58 --> ErrorException: Undefined property: CodeIgniter\View\View::$fundasModel
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Views/simulaciones/index.php on line 54.
+ 1 APPPATH/Views/simulaciones/index.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$fundasModel', '/var/www/html/app/Views/simulaciones/index.php', 54)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/index.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/index', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(49): view('simulaciones/index')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

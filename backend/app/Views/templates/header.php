@@ -22,19 +22,19 @@
 </head>
 
 <body>
-    <?php 
-// Asegurémonos de obtener el modelo de UsuariosModel
-$usuariosModel = model('App\Models\UsuariosModel'); ?>
+    <?php
+    // Asegurémonos de obtener el modelo de UsuariosModel
+    $usuariosModel = model('App\Models\UsuariosModel'); ?>
 
     <!-- BARRA DE NAVEGACIÓN -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container d-flex flex-wrap">
             <a class="navbar-brand" href="<?= base_url('admin/inicio') ?>">Solar Screen</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('admin/simulaciones') ?>">Simulaciones</a>
                     </li>
@@ -61,10 +61,12 @@ $usuariosModel = model('App\Models\UsuariosModel'); ?>
                     <!-- Mostrar "LoginLog" solo si el usuario es administrador -->
                     <?php $session = session();
                     if ($session->has('user_id') && $usuariosModel->canAccessBackend($session->get('user_id'))) : ?>
-                        <li class="nav-item">
+                        <li class="nav-item ml-auto">
                             <a class="nav-link" href="<?= base_url('admin/loginlog') ?>">LoginLog</a>
                         </li>
                     <?php endif ?>
+                </ul>
+                <ul class="navbar-nav">
                     <!-- Mostrar "Logout" solo si el usuario está logueado -->
                     <?php $session = session();
                     if ($session->has('user_id')) : ?>

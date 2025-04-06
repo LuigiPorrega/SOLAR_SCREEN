@@ -14,8 +14,8 @@ $usuariosModel = model('App\Models\UsuariosModel');
             </div>
         <?php endif; ?>
 
-        <h2 class="text-center mb-4">Bienvenido al Dashboard, <?= esc($nombreUsuario) ?></h2>
-        <p class="text-center mb-5">Selecciona una opción del menú para comenzar.</p>
+        <h2 class="text-center mb-4 text-primary">Bienvenido al Dashboard, <?= esc($nombreUsuario) ?></h2>
+        <p class="text-center mb-5 text-success">Selecciona una opción del menú para comenzar.</p>
 
         <div class="row text-center">
             <!-- Simulaciones -->
@@ -58,6 +58,17 @@ $usuariosModel = model('App\Models\UsuariosModel');
                         <h5 class="card-title text-warning"><i class="bi bi-box"></i> Modelos Fundas</h5>
                         <p class="card-text">Gestiona los modelos de las fundas solares.</p>
                         <a href="<?= base_url('admin/modelosFundas') ?>" class="btn btn-warning w-100">Ir a Modelos Fundas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Condiciones Meteorologicas -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-teal">
+                    <div class="card-body">
+                        <h5 class="card-title text-teal"><i class="bi bi-cloud-sun-fill"></i> Condiciones Meteorologicas</h5>
+                        <p class="card-text">Gestiona las condiciones Meteorologicas.</p>
+                        <a href="<?= base_url('admin/condicionesMeteorologicas') ?>" class="btn btn-teal w-100">Ir a Condiciones Meteorologicas</a>
                     </div>
                 </div>
             </div>

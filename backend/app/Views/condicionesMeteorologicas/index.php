@@ -28,19 +28,19 @@
             </a>
         </div>
     <?php endif ?>
+
     <!-- Paginación -->
     <div class="d-flex justify-content-center my-2">
         <nav>
             <b style="font-size: 18px;"><?= $pager->links() ?></b>
         </nav>
     </div>
+
     <!-- Mostrar las condiciones meteorológicas -->
     <?php if ($condiciones !== []): ?>
         <div class="list-group">
             <?php foreach ($condiciones as $condicion): ?>
                 <div class="list-group-item list-group-item-action my-3" style="border: 1px solid cornflowerblue; border-radius: 8px;">
-                    <!-- Card para mostrar los datos y acciones -->
-                    <div class="card p-3">
                         <div class="row">
                             <!-- Datos de la condición meteorológica -->
                             <div class="col-md-2 text-center">
@@ -52,22 +52,22 @@
                                 <span class="text-muted"><?= date('d-m-Y', strtotime($condicion['Fecha'])) ?></span>
                             </div>
                             <div class="col-md-2 text-center">
-                                <strong>Luz Solar</strong><br>
-                                <span class="text-muted"><?= esc($condicion['LuzSolar']) ?> lux</span>
+                                <strong>Luz Solar (kWh)</strong><br>
+                                <span class="text-muted"><?= esc($condicion['LuzSolar']) ?></span>
                             </div>
                             <div class="col-md-2 text-center">
-                                <strong>Temperatura</strong><br>
-                                <span class="text-muted"><?= esc($condicion['Temperatura']) ?>°C</span>
+                                <strong>Temperatura (°C)</strong><br>
+                                <span class="text-muted"><?= esc($condicion['Temperatura']) ?></span>
                             </div>
                             <div class="col-md-2 text-center">
-                                <strong>Humedad</strong><br>
-                                <span class="text-muted"><?= esc($condicion['Humedad']) ?>%</span>
+                                <strong>Humedad (%)</strong><br>
+                                <span class="text-muted"><?= esc($condicion['Humedad']) ?></span>
                             </div>
                             <div class="col-md-2 text-center">
-                                <strong>Viento</strong><br>
-                                <span class="text-muted"><?= esc($condicion['Viento']) ?> km/h</span>
+                                <strong>Viento (km/h)</strong><br>
+                                <span class="text-muted"><?= esc($condicion['Viento']) ?></span>
                             </div>
-                        </div>
+                        
 
                         <!-- Botones de acción (Editar y Eliminar) -->
                         <div class="d-flex justify-content-center mt-4">

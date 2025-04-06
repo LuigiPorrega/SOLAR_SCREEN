@@ -125,6 +125,7 @@ CREATE TABLE IF NOT EXISTS ModelosFundas (
     FechaCreacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+--Tabla Proveedores
 CREATE TABLE IF NOT EXISTS Proveedores (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,              -- Nombre del proveedor

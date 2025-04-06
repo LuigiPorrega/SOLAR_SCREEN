@@ -1,0 +1,945 @@
+ERROR - 2025-04-05 13:52:14 --> mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulac...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulac...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulac...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulac...', Array, false)
+#4 /var/www/html/system/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(610): CodeIgniter\Model->doFind(true, '1')
+#6 /var/www/html/app/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('1')
+#7 /var/www/html/app/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('1')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-04-05 13:52:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 2 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '1')
+ 4 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('1')
+ 5 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('1')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 13:52:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'1\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'1\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 4 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '1')
+ 6 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('1')
+ 7 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('1')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 13:52:15 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'1\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'1\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'1\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 5 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '1')
+ 7 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('1')
+ 8 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('1')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-05 13:55:27 --> mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulac...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulac...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulac...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulac...', Array, false)
+#4 /var/www/html/system/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+#6 /var/www/html/app/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+#7 /var/www/html/app/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-04-05 13:55:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+[Method: GET, Route: admin/simulaciones/4]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 2 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+ 4 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+ 5 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 13:55:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 4 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+ 6 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+ 7 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 13:55:27 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 5 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+ 7 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+ 8 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-05 14:24:19 --> mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulac...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulac...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulac...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulac...', Array, false)
+#4 /var/www/html/system/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+#6 /var/www/html/app/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+#7 /var/www/html/app/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-04-05 14:24:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+[Method: GET, Route: admin/simulaciones/4]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 2 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+ 4 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+ 5 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:24:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 4 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+ 6 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+ 7 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:24:19 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 5 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+ 7 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+ 8 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-05 14:31:13 --> mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulac...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulac...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulac...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulac...', Array, false)
+#4 /var/www/html/system/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+#6 /var/www/html/app/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+#7 /var/www/html/app/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-04-05 14:31:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+[Method: GET, Route: admin/simulaciones/4]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 2 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+ 4 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+ 5 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:31:13 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 4 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+ 6 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+ 7 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:31:13 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'4\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 5 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '4')
+ 7 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('4')
+ 8 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('4')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('4')
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-05 14:31:56 --> mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulac...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulac...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulac...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulac...', Array, false)
+#4 /var/www/html/system/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(610): CodeIgniter\Model->doFind(true, '5')
+#6 /var/www/html/app/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('5')
+#7 /var/www/html/app/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('5')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-04-05 14:31:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+[Method: GET, Route: admin/simulaciones/5]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 2 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '5')
+ 4 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('5')
+ 5 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('5')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:31:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 4 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '5')
+ 6 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('5')
+ 7 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('5')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:31:56 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 5 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '5')
+ 7 APPPATH/Models/SimulacionesModel.php(44): CodeIgniter\BaseModel->find('5')
+ 8 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('5')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-05 14:33:38 --> mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulac...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulac...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulac...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulac...', Array, false)
+#4 /var/www/html/system/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/BaseModel.php(610): CodeIgniter\Model->doFind(true, '5')
+#6 /var/www/html/app/Models/SimulacionesModel.php(38): CodeIgniter\BaseModel->find('5')
+#7 /var/www/html/app/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('5')
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-04-05 14:33:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+[Method: GET, Route: admin/simulaciones/5]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 2 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '5')
+ 4 APPPATH/Models/SimulacionesModel.php(38): CodeIgniter\BaseModel->find('5')
+ 5 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('5')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:33:38 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 4 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '5')
+ 6 APPPATH/Models/SimulacionesModel.php(38): CodeIgniter\BaseModel->find('5')
+ 7 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('5')
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:33:38 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = \'5\'')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `simulaciones`.*, `usuarios`.`Nombre` AS `UsuarioNombre`
+FROM `Simulaciones`
+JOIN `usuarios` ON `usuarios`.`id` = `simulaciones`.`UsuarioID`
+WHERE `Simulaciones`.`ID` = :Simulaciones.ID:', [...], false)
+ 5 SYSTEMPATH/Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/BaseModel.php(610): CodeIgniter\Model->doFind(true, '5')
+ 7 APPPATH/Models/SimulacionesModel.php(38): CodeIgniter\BaseModel->find('5')
+ 8 APPPATH/Controllers/Simulaciones.php(56): App\Models\SimulacionesModel->getSimulaciones('5')
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:35:09 --> BadMethodCallException: Call to undefined method App\Models\ModelosFundasModel::getFundasSimilares
+[Method: GET, Route: admin/simulaciones/5]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(69): CodeIgniter\Model->__call('getFundasSimilares', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-05 14:58:31 --> mysqli_sql_exception: Unknown column 'Simulaciones.ModeloFundaID' in 'ON' in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Modelos...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Modelos...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Modelos...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Modelos...', Array, false)
+#4 /var/www/html/app/Models/SimulacionesModel.php(73): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getFundasSimilares('5')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+#7 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#8 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-04-05 14:58:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Simulaciones.ModeloFundaID' in 'ON'
+[Method: GET, Route: admin/simulaciones/5]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `ModelosFundas`.`ID`, `ModelosFundas`.`Nombre`, `ModelosFundas`.`Tamaño`, `ModelosFundas`.`CapacidadCarga`, `ModelosFundas`.`ImagenURL`, `ModelosFundas`.`TipoFunda`
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = :Simulaciones.CondicionesMeteorologicasID:
+AND `Simulaciones`.`ID` != :Simulaciones.ID:
+ LIMIT 4', [...], false)
+ 2 APPPATH/Models/SimulacionesModel.php(73): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getFundasSimilares('5')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:58:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Simulaciones.ModeloFundaID' in 'ON'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ModelosFundas`.`ID`, `ModelosFundas`.`Nombre`, `ModelosFundas`.`Tamaño`, `ModelosFundas`.`CapacidadCarga`, `ModelosFundas`.`ImagenURL`, `ModelosFundas`.`TipoFunda`
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ModelosFundas`.`ID`, `ModelosFundas`.`Nombre`, `ModelosFundas`.`Tamaño`, `ModelosFundas`.`CapacidadCarga`, `ModelosFundas`.`ImagenURL`, `ModelosFundas`.`TipoFunda`
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `ModelosFundas`.`ID`, `ModelosFundas`.`Nombre`, `ModelosFundas`.`Tamaño`, `ModelosFundas`.`CapacidadCarga`, `ModelosFundas`.`ImagenURL`, `ModelosFundas`.`TipoFunda`
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = :Simulaciones.CondicionesMeteorologicasID:
+AND `Simulaciones`.`ID` != :Simulaciones.ID:
+ LIMIT 4', [...], false)
+ 4 APPPATH/Models/SimulacionesModel.php(73): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getFundasSimilares('5')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 14:58:31 --> [Caused by] mysqli_sql_exception: Unknown column 'Simulaciones.ModeloFundaID' in 'ON'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `ModelosFundas`.`ID`, `ModelosFundas`.`Nombre`, `ModelosFundas`.`Tamaño`, `ModelosFundas`.`CapacidadCarga`, `ModelosFundas`.`ImagenURL`, `ModelosFundas`.`TipoFunda`
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ModelosFundas`.`ID`, `ModelosFundas`.`Nombre`, `ModelosFundas`.`Tamaño`, `ModelosFundas`.`CapacidadCarga`, `ModelosFundas`.`ImagenURL`, `ModelosFundas`.`TipoFunda`
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ModelosFundas`.`ID`, `ModelosFundas`.`Nombre`, `ModelosFundas`.`Tamaño`, `ModelosFundas`.`CapacidadCarga`, `ModelosFundas`.`ImagenURL`, `ModelosFundas`.`TipoFunda`
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `ModelosFundas`.`ID`, `ModelosFundas`.`Nombre`, `ModelosFundas`.`Tamaño`, `ModelosFundas`.`CapacidadCarga`, `ModelosFundas`.`ImagenURL`, `ModelosFundas`.`TipoFunda`
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = :Simulaciones.CondicionesMeteorologicasID:
+AND `Simulaciones`.`ID` != :Simulaciones.ID:
+ LIMIT 4', [...], false)
+ 5 APPPATH/Models/SimulacionesModel.php(73): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getFundasSimilares('5')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-05 15:01:29 --> mysqli_sql_exception: Unknown column 'Simulaciones.ModeloFundaID' in 'ON' in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Modelos...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Modelos...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Modelos...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Modelos...', Array, false)
+#4 /var/www/html/app/Models/SimulacionesModel.php(73): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getFundasSimilares('5')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+#7 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#8 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-04-05 15:01:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Simulaciones.ModeloFundaID' in 'ON'
+[Method: GET, Route: admin/simulaciones/5]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `ModelosFundas`.*
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = :Simulaciones.CondicionesMeteorologicasID:
+AND `Simulaciones`.`ID` != :Simulaciones.ID:
+ LIMIT 4', [...], false)
+ 2 APPPATH/Models/SimulacionesModel.php(73): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getFundasSimilares('5')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:01:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'Simulaciones.ModeloFundaID' in 'ON'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ModelosFundas`.*
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ModelosFundas`.*
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `ModelosFundas`.*
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = :Simulaciones.CondicionesMeteorologicasID:
+AND `Simulaciones`.`ID` != :Simulaciones.ID:
+ LIMIT 4', [...], false)
+ 4 APPPATH/Models/SimulacionesModel.php(73): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getFundasSimilares('5')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:01:29 --> [Caused by] mysqli_sql_exception: Unknown column 'Simulaciones.ModeloFundaID' in 'ON'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `ModelosFundas`.*
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ModelosFundas`.*
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ModelosFundas`.*
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = \'2\'
+AND `Simulaciones`.`ID` != \'5\'
+ LIMIT 4')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `ModelosFundas`.*
+FROM `ModelosFundas`
+JOIN `Simulaciones` ON `Simulaciones`.`ModeloFundaID` = `ModelosFundas`.`ID`
+WHERE `Simulaciones`.`CondicionesMeteorologicasID` = :Simulaciones.CondicionesMeteorologicasID:
+AND `Simulaciones`.`ID` != :Simulaciones.ID:
+ LIMIT 4', [...], false)
+ 5 APPPATH/Models/SimulacionesModel.php(73): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/Simulaciones.php(69): App\Models\SimulacionesModel->getFundasSimilares('5')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:03:01 --> ErrorException: Undefined array key "CondicionClimatica"
+[Method: GET, Route: admin/simulaciones/5]
+in APPPATH/Controllers/Simulaciones.php on line 93.
+ 1 APPPATH/Controllers/Simulaciones.php(93): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "CondicionClimatica"', '/var/www/html/app/Controllers/Simulaciones.php', 93)
+ 2 APPPATH/Controllers/Simulaciones.php(72): App\Controllers\Simulaciones->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:06:22 --> ErrorException: Undefined array key "CondicionClimatica"
+[Method: GET, Route: admin/simulaciones/5]
+in APPPATH/Controllers/Simulaciones.php on line 93.
+ 1 APPPATH/Controllers/Simulaciones.php(93): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "CondicionClimatica"', '/var/www/html/app/Controllers/Simulaciones.php', 93)
+ 2 APPPATH/Controllers/Simulaciones.php(72): App\Controllers\Simulaciones->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:27:52 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/5]
+in APPPATH/Models/SimulacionesModel.php on line 76.
+ 1 APPPATH/Models/SimulacionesModel.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 76)
+ 2 APPPATH/Controllers/Simulaciones.php(72): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:33:55 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/5]
+in APPPATH/Models/SimulacionesModel.php on line 78.
+ 1 APPPATH/Models/SimulacionesModel.php(78): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 78)
+ 2 APPPATH/Controllers/Simulaciones.php(72): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:34:25 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/5]
+in APPPATH/Models/SimulacionesModel.php on line 77.
+ 1 APPPATH/Models/SimulacionesModel.php(77): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 77)
+ 2 APPPATH/Controllers/Simulaciones.php(72): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:38:02 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/5]
+in APPPATH/Models/SimulacionesModel.php on line 81.
+ 1 APPPATH/Models/SimulacionesModel.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 81)
+ 2 APPPATH/Controllers/Simulaciones.php(78): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('5')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:46:40 --> ErrorException: Undefined array key "Tiempo"
+[Method: GET, Route: admin/simulaciones]
+in APPPATH/Controllers/Simulaciones.php on line 51.
+ 1 APPPATH/Controllers/Simulaciones.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Tiempo"', '/var/www/html/app/Controllers/Simulaciones.php', 51)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:55:48 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 81.
+ 1 APPPATH/Models/SimulacionesModel.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 81)
+ 2 APPPATH/Controllers/Simulaciones.php(125): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 15:59:03 --> ErrorException: Undefined variable $condicionesMeteorologicas
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 30.
+ 1 APPPATH/Views/simulaciones/create.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $condicionesMeteorologicas', '/var/www/html/app/Views/simulaciones/create.php', 30)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(150): view('simulaciones/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:02:25 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 81.
+ 1 APPPATH/Models/SimulacionesModel.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 81)
+ 2 APPPATH/Controllers/Simulaciones.php(125): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:11:18 --> Exception: Faltan algunas condiciones meteorológicas necesarias.
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 61.
+ 1 APPPATH/Controllers/Simulaciones.php(111): App\Models\SimulacionesModel->obtenerCondicionMeteorologica('1')
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:15:50 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 81.
+ 1 APPPATH/Models/SimulacionesModel.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 81)
+ 2 APPPATH/Controllers/Simulaciones.php(144): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:16:42 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 81.
+ 1 APPPATH/Models/SimulacionesModel.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 81)
+ 2 APPPATH/Controllers/Simulaciones.php(147): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:18:00 --> ErrorException: Undefined property: App\Controllers\Simulaciones::$db
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Controllers/Simulaciones.php on line 114.
+ 1 APPPATH/Controllers/Simulaciones.php(114): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Simulaciones::$db', '/var/www/html/app/Controllers/Simulaciones.php', 114)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:22:57 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 81.
+ 1 APPPATH/Models/SimulacionesModel.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 81)
+ 2 APPPATH/Controllers/Simulaciones.php(147): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:25:19 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 81.
+ 1 APPPATH/Models/SimulacionesModel.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 81)
+ 2 APPPATH/Controllers/Simulaciones.php(147): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:26:23 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 81.
+ 1 APPPATH/Models/SimulacionesModel.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 81)
+ 2 APPPATH/Controllers/Simulaciones.php(147): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:33:19 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 83.
+ 1 APPPATH/Models/SimulacionesModel.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 83)
+ 2 APPPATH/Controllers/Simulaciones.php(144): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:34:14 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 83.
+ 1 APPPATH/Models/SimulacionesModel.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Models/SimulacionesModel.php', 83)
+ 2 APPPATH/Controllers/Simulaciones.php(144): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:36:31 --> Exception: Faltan algunas condiciones meteorológicas necesarias.
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 61.
+ 1 APPPATH/Models/SimulacionesModel.php(91): App\Models\SimulacionesModel->obtenerCondicionMeteorologica([])
+ 2 APPPATH/Controllers/Simulaciones.php(144): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-05 16:43:24 --> Exception: Faltan algunas condiciones meteorológicas necesarias.
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 53.
+ 1 APPPATH/Models/SimulacionesModel.php(83): App\Models\SimulacionesModel->obtenerCondicionMeteorologica([])
+ 2 APPPATH/Controllers/Simulaciones.php(144): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

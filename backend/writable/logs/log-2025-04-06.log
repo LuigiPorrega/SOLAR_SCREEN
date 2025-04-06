@@ -1,0 +1,25 @@
+CRITICAL - 2025-04-06 11:37:11 --> Exception: Faltan algunas condiciones meteorológicas necesarias.
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Models/SimulacionesModel.php on line 57.
+ 1 APPPATH/Models/SimulacionesModel.php(87): App\Models\SimulacionesModel->obtenerCondicionMeteorologica([])
+ 2 APPPATH/Controllers/Simulaciones.php(144): App\Models\SimulacionesModel->obtenerJustificacionFunda([...], [...])
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 11:42:22 --> ErrorException: Undefined array key "Tiempo"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Views/simulaciones/view.php on line 11.
+ 1 APPPATH/Views/simulaciones/view.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Tiempo"', '/var/www/html/app/Views/simulaciones/view.php', 11)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/view', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(159): view('simulaciones/view')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

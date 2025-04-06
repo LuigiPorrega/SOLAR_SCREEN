@@ -46,6 +46,7 @@ class ModelosFundasModel extends Model
         }
     }
 
+
     // Función para obtener los modelos de fundas activos 
     public function getModelosFundasActivos()
     {
@@ -61,4 +62,16 @@ class ModelosFundasModel extends Model
             return [];
         }
     }
+
+     // Función para obtener una funda según la condición de luz
+     public function getFundaPorCondicionLuz($condicionLuz)
+     {
+         if ($condicionLuz == 'Luz solar directa') {
+             // Si la condición es luz solar directa, buscamos una funda expandible
+             return $this->where('Expansible', 1)->first(); // Devuelve la primera funda expandible
+         } else {
+             // Si no es luz solar directa, buscamos una funda fija
+             return $this->where('Expansible', 0)->first(); // Devuelve la primera funda fija
+         }
+     }
 }
