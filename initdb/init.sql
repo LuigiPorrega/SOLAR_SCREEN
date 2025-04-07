@@ -23,7 +23,7 @@ END$$
 -- Función para calcular la energía generada en función de la luz, tiempo y condiciones meteorológicas
 CREATE FUNCTION IF NOT EXISTS calcular_energia(
     p_condicion_luz VARCHAR(50), 
-    p_tiempo_minutos INT,
+    p_tiempo_minutos DECIMAL(10,2),
     p_luz_solar DECIMAL(10, 2),
     p_temperatura DECIMAL(5, 2),
     p_humedad DECIMAL(5, 2),
@@ -156,6 +156,7 @@ CREATE TABLE IF NOT EXISTS Simulaciones (
     UsuarioID INT NOT NULL,
     CondicionLuz VARCHAR(50) NOT NULL,
     EnergiaGenerada DECIMAL(10, 2) NOT NULL,
+    Tiempo DECIMAL(10,2) NOT NULL,
     Fecha DATE DEFAULT (CURRENT_DATE),
     CondicionesMeteorologicasID INT NOT NULL,  
     FundaID INT NOT NULL,
@@ -355,16 +356,16 @@ INSERT IGNORE INTO Fundas_Proveedores (FundaID, ProveedorID) VALUES
 
 
 -- Inserción en Simulaciones 
-INSERT IGNORE INTO Simulaciones (UsuarioID, CondicionLuz, EnergiaGenerada, CondicionesMeteorologicasID, FundaID)
+INSERT IGNORE INTO Simulaciones (UsuarioID, CondicionLuz, EnergiaGenerada, Tiempo, CondicionesMeteorologicasID, FundaID)
 VALUES
-  (1, 'Luz solar directa', calcular_energia('Luz solar directa', 30, 300, 25, 60, 15), 1, 1),  -- Funda fija ID 1
-  (2, 'Luz artificial', calcular_energia('Luz artificial', 45, 200, 23, 80, 10), 2, 5),     -- Funda expandible ID 5
-  (3, 'Luz solar directa', calcular_energia('Luz solar directa', 60, 400, 30, 50, 20), 3, 7),  -- Funda expandible ID 7
-  (4, 'Luz solar directa', calcular_energia('Luz solar directa', 30, 350, 28, 55, 12), 1, 2),  -- Funda fija ID 2
-  (1, 'Luz artificial', calcular_energia('Luz artificial', 50, 220, 22, 75, 15), 2, 4),     -- Funda expandible ID 4
-  (2, 'Luz solar directa', calcular_energia('Luz solar directa', 60, 450, 32, 60, 18), 3, 6),  -- Funda expandible ID 6
-  (3, 'Luz solar directa', calcular_energia('Luz solar directa', 45, 300, 30, 60, 10), 1, 3),  -- Funda fija ID 3
-  (4, 'Luz artificial', calcular_energia('Luz artificial', 40, 210, 25, 80, 12), 2, 8);     -- Funda expandible ID 8
+  (1, 'Luz solar directa', calcular_energia('Luz solar directa', 30, 300, 25, 60, 15), 30, 1, 1),  -- Funda fija ID 1
+  (2, 'Luz artificial', calcular_energia('Luz artificial', 45, 200, 23, 80, 10), 45, 2, 5),     -- Funda expandible ID 5
+  (3, 'Luz solar directa', calcular_energia('Luz solar directa', 60, 400, 30, 50, 20), 60, 3, 7),  -- Funda expandible ID 7
+  (4, 'Luz solar directa', calcular_energia('Luz solar directa', 30, 350, 28, 55, 12), 30, 1, 2),  -- Funda fija ID 2
+  (1, 'Luz artificial', calcular_energia('Luz artificial', 50, 220, 22, 75, 15), 50, 2, 4),     -- Funda expandible ID 4
+  (2, 'Luz solar directa', calcular_energia('Luz solar directa', 60, 450, 32, 60, 18), 60, 3, 6),  -- Funda expandible ID 6
+  (3, 'Luz solar directa', calcular_energia('Luz solar directa', 45, 300, 30, 60, 10), 45, 1, 3),  -- Funda fija ID 3
+  (4, 'Luz artificial', calcular_energia('Luz artificial', 40, 210, 25, 80, 12), 40, 2, 8);     -- Funda expandible ID 8
 
 
 -- Inserción de nuevas ideas inteligentes

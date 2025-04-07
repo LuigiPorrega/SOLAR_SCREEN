@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Controllers\CondicionesMeteorologicas;
 use CodeIgniter\Model;
 
 class SimulacionesModel extends Model
@@ -15,136 +14,32 @@ class SimulacionesModel extends Model
         'UsuarioID',
         'CondicionLuz',
         'EnergiaGenerada',
+        'Tiempo',
         'Fecha',
         'CondicionesMeteorologicasID',
         'FundaID',
     ];
 
-    
     // Método para obtener las simulaciones con JOIN hacia Usuarios
     public function getSimulaciones($id = null)
     {
         // Si no se pasa un ID, obtenemos las simulaciones con paginación
         if ($id === null) {
-            return $this->select('Simulaciones.*, Usuarios.Nombre AS UsuarioNombre')
+            return $this->select('Simulaciones.ID, Simulaciones.UsuarioID, Simulaciones.CondicionLuz, Simulaciones.EnergiaGenerada, Simulaciones.Tiempo, Simulaciones.Fecha, Simulaciones.CondicionesMeteorologicasID, Simulaciones.FundaID, Usuarios.Nombre AS UsuarioNombre')
                 ->join('Usuarios', 'Usuarios.ID = Simulaciones.UsuarioID')
                 ->join('CondicionesMeteorologicas', 'CondicionesMeteorologicas.ID = Simulaciones.CondicionesMeteorologicasID')
                 ->paginate(10);
         }
 
         // Si se pasa un ID, obtenemos una simulación específica
-        return $this->select('Simulaciones.*, Usuarios.Nombre AS UsuarioNombre, CondicionesMeteorologicas.*')
-            ->join('Usuarios', 'Usuarios.id = Simulaciones.UsuarioID')
+        return $this->select('Simulaciones.ID, Simulaciones.UsuarioID, Simulaciones.CondicionLuz, Simulaciones.EnergiaGenerada, Simulaciones.Tiempo, Simulaciones.Fecha, Simulaciones.CondicionesMeteorologicasID, Simulaciones.FundaID, CondicionesMeteorologicas.LuzSolar, CondicionesMeteorologicas.Temperatura, CondicionesMeteorologicas.Humedad, CondicionesMeteorologicas.Viento, Usuarios.Nombre AS UsuarioNombre')
+            ->join('Usuarios', 'Usuarios.ID = Simulaciones.UsuarioID')
             ->join('CondicionesMeteorologicas', 'CondicionesMeteorologicas.ID = Simulaciones.CondicionesMeteorologicasID')
             ->find($id);
     }
 
-    //Metodo para calcular las condiciones climaticas entre extremas o normales
-    public function obtenerCondicionMeteorologica($condiciones)
-    {
-    
-        // Definir umbrales para condiciones extremas
-        $umbralTemperaturaExtrema = 35;
-        $umbralHumedadExtrema = 90;
-        $umbralVientoExtremo = 50;
-        $umbralLuzSolarExtrema = 1000;
 
-        // Evaluar las condiciones para determinar si son extremas
-        $esExtrema = false;
-
-        //LLamar a las condicionesMeteorologicas antes de compararalas
-
-        // Verificar que las claves existan antes de usarlas
-        if (!isset($condiciones['Temperatura']) || !isset($condiciones['Humedad']) || !isset($condiciones['Viento']) || !isset($condiciones['LuzSolar'])) {
-            throw new \Exception("Faltan algunas condiciones meteorológicas necesarias.");
-        }
-
-        if ($condiciones['Temperatura'] >= $umbralTemperaturaExtrema) {
-            $esExtrema = true;
-        } elseif ($condiciones['Humedad'] >= $umbralHumedadExtrema) {
-            $esExtrema = true;
-        } elseif ($condiciones['Viento'] >= $umbralVientoExtremo) {
-            $esExtrema = true;
-        } elseif ($condiciones['LuzSolar'] >= $umbralLuzSolarExtrema) {
-            $esExtrema = true;
-        }
-
-        return $esExtrema ? 'extrema' : 'normal';
-    }
-
-
-    // Función para justificar la funda fija o expansible
-    public function obtenerJustificacionFunda($simulacion, $fundaPropuesta)
-    {
-        if (isset($simulacion['LuzSolar'], $simulacion['Temperatura'], $simulacion['Humedad'], $simulacion['Viento'])) {
-            $condicionClimatica = $this->obtenerCondicionMeteorologica([
-                'LuzSolar' => $simulacion['LuzSolar'],
-                'Temperatura' => $simulacion['Temperatura'],
-                'Humedad' => $simulacion['Humedad'],
-                'Viento' => $simulacion['Viento'],
-            ]);
-        } else {
-            // Manejar el caso cuando no están presentes
-            // Esto podría ser un log de error o retornar un valor por defecto.
-            $condicionClimatica = $this->obtenerCondicionMeteorologica([]);
-        }
-
-        $justificacion = '';
-
-        if ($condicionClimatica === 'extrema') {
-            if ($fundaPropuesta['TipoFunda'] === 'expansible') {
-                $justificacion = 'La funda expansible se recomienda debido a las condiciones meteorológicas extremas (viento fuerte, temperaturas elevadas).';
-            } else {
-                $justificacion = 'La funda fija no es la opción más adecuada para condiciones extremas, pero es más resistente en condiciones normales.';
-            }
-        } else {
-            if ($fundaPropuesta['TipoFunda'] === 'fija') {
-                $justificacion = 'La funda fija es suficiente debido a que las condiciones meteorológicas son estables.';
-            } else {
-                $justificacion = 'La funda expansible podría ser innecesaria en condiciones estables, ya que las fundas fijas ofrecen mejor protección a largo plazo.';
-            }
-        }
-
-        return $justificacion;
-    }
-
-    //Función para encontrar Fundas Similares
-    public function getFundasSimilares($simulacionID)
-    {
-        try {
-            // Primero obtenemos las condiciones meteorológicas de la simulación
-            $simulacion = $this->db->table('Simulaciones')
-                ->select('CondicionesMeteorologicasID')
-                ->where('ID', $simulacionID)
-                ->get()
-                ->getRowArray();
-
-            // Si no encontramos la simulación, devolver un array vacío
-            if (!$simulacion) {
-                return [];
-            }
-
-            // Obtener el CondicionesMeteorologicasID de la simulación
-            $condicionesMeteorologicasID = $simulacion['CondicionesMeteorologicasID'];
-
-            // Ahora obtener las fundas similares basadas en el mismo CondicionesMeteorologicasID
-            $query = $this->db->table('ModelosFundas')
-                ->select('ModelosFundas.*')
-                ->join('Simulaciones', 'Simulaciones.FundaID = ModelosFundas.ID')
-                ->where('Simulaciones.CondicionesMeteorologicasID', $condicionesMeteorologicasID)
-                ->where('Simulaciones.ID !=', $simulacionID) // Excluir la misma simulación para evitar que se muestre a sí misma
-                ->limit(4) // Límite de fundas similares
-                ->get();
-
-            // Retornar el resultado
-            return $query->getResultArray();
-        } catch (\Exception $e) {
-            log_message('error', 'Error en getFundasSimilares: ' . $e->getMessage());
-            return [];
-        }
-    }
-
-    // Calcular energía generada según la condición de luz y el tiempo
+    // Función para calcular la energía generada según la condición de luz y el tiempo
     public function calcularEnergia($condicionLuz, $tiempo, $luzSolar, $temperatura, $humedad, $viento)
     {
         // Consulta para llamar a la función en la base de datos
@@ -160,6 +55,80 @@ class SimulacionesModel extends Model
         // Obtener el resultado de la función
         return $query->getRow()->EnergiaGenerada;
     }
+
+    // Obtener fundas relacionadas (según condiciones, tipo, o capacidad)
+    public function obtenerFundasSimilares($condicionLuz, $capacidadCarga, $fundaPropuestaID)
+    {
+        return $this->db->table('ModelosFundas')
+            ->select('ModelosFundas.*')
+            ->distinct()
+            ->where('ModelosFundas.CapacidadCarga >=', $capacidadCarga)
+            ->orWhere('ModelosFundas.TipoFunda', $condicionLuz)
+            ->whereNotIn('ModelosFundas.ID', [$fundaPropuestaID])
+            ->limit(4)
+            ->get()
+            ->getResultArray();
+    }
+
+    // Método para determinar la funda recomendada tomando en cuenta la energía generada y la capacidad de carga
+    public function obtenerFundaRecomendada($energiaGenerada, $capacidadCarga)
+    {
+        // Definimos los umbrales en base a la energía generada (en kWh) y la capacidad de carga (en kg).
+        $umbralEnergia = 1.5;  // Energía mínima en kWh para considerar una funda expansible
+        $umbralCapacidadCarga = 20;  // Capacidad mínima en kg para considerar una funda expansible
+
+        // Calculamos la relación entre la energía generada y la capacidad de carga
+        // Usamos un valor de proporción para determinar si la energía es suficiente para justificar una funda expansible
+        $relacionEnergiaCarga = $energiaGenerada / max($capacidadCarga, 1); // Evitamos división por 0
+
+        // Si la relación de energía generada por la carga es baja, se recomienda una funda fija
+        if ($relacionEnergiaCarga < $umbralEnergia) {
+            return 'fija';
+        }
+
+        // Si la energía generada es suficiente y la capacidad de carga es adecuada, se recomienda una funda expansible
+        if ($energiaGenerada >= $umbralEnergia && $capacidadCarga >= $umbralCapacidadCarga) {
+            return 'expansible';
+        }
+
+        // Caso en el que se tenga poca capacidad de carga pero energía alta (por ejemplo, puede que se recomiende una funda fija en este caso)
+        return 'fija';
+    }
+
+    // Método para obtener la justificación de la funda recomendada de forma dinámica
+    public function generarJustificacionFunda($energiaGenerada, $capacidadCarga)
+    {
+        // Definir umbrales dinámicos de energía y capacidad de carga
+        $umbralEnergia = 1.5;  // Energía mínima en kWh para considerar una funda expansible
+        $umbralCapacidadCarga = 20;  // Capacidad mínima en kg para considerar una funda expansible
+
+        // Calculamos la relación entre la energía generada y la capacidad de carga
+        $relacionEnergiaCarga = $energiaGenerada / max($capacidadCarga, 1); // Evitamos división por 0
+
+        // Caso cuando la relación de energía generada por la carga es baja
+        if ($relacionEnergiaCarga < $umbralEnergia) {
+            return "La funda recomendada es una funda fija, ya que la relación entre la energía generada y la capacidad de carga es baja. Esto indica que no se necesita una funda expansible, y se requiere una funda de soporte más estable y constante para cargas pequeñas o moderadas.";
+        }
+
+        // Caso cuando la energía generada es suficientemente alta y la capacidad de carga es adecuada
+        if ($energiaGenerada >= $umbralEnergia && $capacidadCarga >= $umbralCapacidadCarga) {
+            return "La funda recomendada es una funda expansible, ya que la energía generada es suficientemente alta para justificar una funda flexible y adaptable, y la capacidad de carga también es suficiente para soportar cargas mayores de manera eficiente. Una funda expansible proporciona mayor flexibilidad en la adaptación a diferentes cargas.";
+        }
+
+        // Caso cuando la energía generada es alta pero la capacidad de carga es insuficiente
+        if ($energiaGenerada >= $umbralEnergia && $capacidadCarga < $umbralCapacidadCarga) {
+            return "La funda recomendada es una funda fija, ya que aunque la energía generada es alta, la capacidad de carga no es suficiente para soportar cargas mayores de manera segura. Una funda fija será más adecuada para cargas menores, ofreciendo un soporte constante y estable.";
+        }
+
+        // Caso cuando la energía generada es baja pero la capacidad de carga es adecuada
+        if ($energiaGenerada < $umbralEnergia && $capacidadCarga >= $umbralCapacidadCarga) {
+            return "La funda recomendada es una funda fija, ya que aunque la capacidad de carga es adecuada para cargas mayores, la energía generada es baja. En este caso, no se justifica el uso de una funda expansible, y una funda fija es suficiente para cargas pequeñas o moderadas.";
+        }
+
+        // Caso por defecto si no se cumple ninguna condición
+        return "La funda recomendada es una funda estándar, adecuada para la mayoría de las condiciones generadas. La energía y la capacidad de carga no requieren una funda expansible, por lo que una funda estándar puede ser suficiente.";
+    }
+
 
     // Método para obtener el total de registros (necesario para la paginación)
     public function obtenerTotalSimulaciones()

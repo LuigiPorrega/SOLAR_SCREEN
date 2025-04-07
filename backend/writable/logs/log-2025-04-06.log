@@ -23,3 +23,781 @@ in APPPATH/Views/simulaciones/view.php on line 11.
  9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 12:19:46 --> ErrorException: Undefined array key "Descripcion"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Views/simulaciones/view.php on line 28.
+ 1 APPPATH/Views/simulaciones/view.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Descripcion"', '/var/www/html/app/Views/simulaciones/view.php', 28)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/view', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(159): view('simulaciones/view')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 12:24:28 --> BadMethodCallException: Call to undefined method App\Models\SimulacionesModel::obtenerCondicionMeteorologica
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(135): CodeIgniter\Model->__call('obtenerCondicionMeteorologica', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 12:25:15 --> BadMethodCallException: Call to undefined method App\Models\SimulacionesModel::obtenerCondicionMeteorologica
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(135): CodeIgniter\Model->__call('obtenerCondicionMeteorologica', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 12:25:31 --> BadMethodCallException: Call to undefined method App\Models\SimulacionesModel::obtenerCondicionMeteorologica
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(135): CodeIgniter\Model->__call('obtenerCondicionMeteorologica', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 13:25:04 --> BadMethodCallException: Call to undefined method App\Models\SimulacionesModel::obtenerCondicionMeteorologica
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(135): CodeIgniter\Model->__call('obtenerCondicionMeteorologica', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 13:31:54 --> BadMethodCallException: Call to undefined method App\Models\SimulacionesModel::getFundasSimilares
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(125): CodeIgniter\Model->__call('getFundasSimilares', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 13:33:28 --> ErrorException: Undefined variable $otrasFundasPropuestas
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Views/simulaciones/view.php on line 65.
+ 1 APPPATH/Views/simulaciones/view.php(65): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $otrasFundasPropuestas', '/var/www/html/app/Views/simulaciones/view.php', 65)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/view', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(141): view('simulaciones/view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 13:34:31 --> ErrorException: Undefined variable $otrasFundasPropuestas
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Views/simulaciones/view.php on line 65.
+ 1 APPPATH/Views/simulaciones/view.php(65): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $otrasFundasPropuestas', '/var/www/html/app/Views/simulaciones/view.php', 65)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/view', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(138): view('simulaciones/view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 13:35:32 --> ErrorException: Undefined variable $otrasFundasPropuestas
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Views/simulaciones/view.php on line 65.
+ 1 APPPATH/Views/simulaciones/view.php(65): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $otrasFundasPropuestas', '/var/www/html/app/Views/simulaciones/view.php', 65)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/view', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(138): view('simulaciones/view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 13:37:02 --> ErrorException: Undefined variable $otrasFundasPropuestas
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Views/simulaciones/view.php on line 65.
+ 1 APPPATH/Views/simulaciones/view.php(65): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $otrasFundasPropuestas', '/var/www/html/app/Views/simulaciones/view.php', 65)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/view', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(139): view('simulaciones/view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:05:13 --> ErrorException: Undefined array key "CapacidadCarga"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Controllers/Simulaciones.php on line 127.
+ 1 APPPATH/Controllers/Simulaciones.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "CapacidadCarga"', '/var/www/html/app/Controllers/Simulaciones.php', 127)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:13:01 --> ErrorException: Undefined array key "CapacidadCarga"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Controllers/Simulaciones.php on line 127.
+ 1 APPPATH/Controllers/Simulaciones.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "CapacidadCarga"', '/var/www/html/app/Controllers/Simulaciones.php', 127)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:14:17 --> ErrorException: Undefined array key "CapacidadCarga"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Controllers/Simulaciones.php on line 127.
+ 1 APPPATH/Controllers/Simulaciones.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "CapacidadCarga"', '/var/www/html/app/Controllers/Simulaciones.php', 127)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-06 14:15:06 --> mysqli_sql_exception: Table 'solar_screen.Fundas' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Fundas`...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Fundas`...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Fundas`...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`...', Array, false)
+#4 /var/www/html/app/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/Simulaciones.php(127): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar direc...', '25000.00')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+#7 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#8 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-04-06 14:15:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.Fundas' doesn't exist
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= :Fundas.CapacidadCarga:
+OR `Fundas`.`TipoFunda` = :Fundas.TipoFunda:
+ LIMIT 4', [...], false)
+ 2 APPPATH/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/Simulaciones.php(127): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:15:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.Fundas' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= :Fundas.CapacidadCarga:
+OR `Fundas`.`TipoFunda` = :Fundas.TipoFunda:
+ LIMIT 4', [...], false)
+ 4 APPPATH/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/Simulaciones.php(127): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:15:06 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.Fundas' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= :Fundas.CapacidadCarga:
+OR `Fundas`.`TipoFunda` = :Fundas.TipoFunda:
+ LIMIT 4', [...], false)
+ 5 APPPATH/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/Simulaciones.php(127): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:17:35 --> ErrorException: Undefined array key "CapacidadCarga"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Controllers/Simulaciones.php on line 127.
+ 1 APPPATH/Controllers/Simulaciones.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "CapacidadCarga"', '/var/www/html/app/Controllers/Simulaciones.php', 127)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:20:21 --> ErrorException: Undefined array key "CapacidadCarga"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Controllers/Simulaciones.php on line 127.
+ 1 APPPATH/Controllers/Simulaciones.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "CapacidadCarga"', '/var/www/html/app/Controllers/Simulaciones.php', 127)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-06 14:21:03 --> mysqli_sql_exception: Table 'solar_screen.Fundas' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Fundas`...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Fundas`...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Fundas`...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`...', Array, false)
+#4 /var/www/html/app/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/Simulaciones.php(132): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar direc...', '25000.00')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+#7 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#8 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-04-06 14:21:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.Fundas' doesn't exist
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= :Fundas.CapacidadCarga:
+OR `Fundas`.`TipoFunda` = :Fundas.TipoFunda:
+ LIMIT 4', [...], false)
+ 2 APPPATH/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/Simulaciones.php(132): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:21:03 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.Fundas' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= :Fundas.CapacidadCarga:
+OR `Fundas`.`TipoFunda` = :Fundas.TipoFunda:
+ LIMIT 4', [...], false)
+ 4 APPPATH/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/Simulaciones.php(132): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:21:03 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.Fundas' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`.`Nombre`, `Fundas`.`TipoFunda`, `Fundas`.`CapacidadCarga`, `Fundas`.`Tamaño`, `Fundas`.`ImagenURL`, `Fundas`.`Descripcion`
+FROM `Fundas`
+WHERE `Fundas`.`CapacidadCarga` >= :Fundas.CapacidadCarga:
+OR `Fundas`.`TipoFunda` = :Fundas.TipoFunda:
+ LIMIT 4', [...], false)
+ 5 APPPATH/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/Simulaciones.php(132): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-06 14:24:17 --> mysqli_sql_exception: Unknown table 'solar_screen.Fundas' in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Fundas`...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Fundas`...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Fundas`...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`...', Array, false)
+#4 /var/www/html/app/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/Simulaciones.php(132): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar direc...', '25000.00')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+#7 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#8 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-04-06 14:24:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'solar_screen.Fundas'
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`.*
+FROM `ModelosFundas`
+WHERE `Fundas`.`CapacidadCarga` >= :Fundas.CapacidadCarga:
+OR `Fundas`.`TipoFunda` = :Fundas.TipoFunda:
+ LIMIT 4', [...], false)
+ 2 APPPATH/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/Simulaciones.php(132): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:24:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'solar_screen.Fundas'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Fundas`.*
+FROM `ModelosFundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Fundas`.*
+FROM `ModelosFundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`.*
+FROM `ModelosFundas`
+WHERE `Fundas`.`CapacidadCarga` >= :Fundas.CapacidadCarga:
+OR `Fundas`.`TipoFunda` = :Fundas.TipoFunda:
+ LIMIT 4', [...], false)
+ 4 APPPATH/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/Simulaciones.php(132): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:24:17 --> [Caused by] mysqli_sql_exception: Unknown table 'solar_screen.Fundas'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `Fundas`.*
+FROM `ModelosFundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Fundas`.*
+FROM `ModelosFundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Fundas`.*
+FROM `ModelosFundas`
+WHERE `Fundas`.`CapacidadCarga` >= \'25000.00\'
+OR `Fundas`.`TipoFunda` = \'Luz solar directa\'
+ LIMIT 4')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `Fundas`.*
+FROM `ModelosFundas`
+WHERE `Fundas`.`CapacidadCarga` >= :Fundas.CapacidadCarga:
+OR `Fundas`.`TipoFunda` = :Fundas.TipoFunda:
+ LIMIT 4', [...], false)
+ 5 APPPATH/Models/SimulacionesModel.php(66): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/Simulaciones.php(132): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:26:53 --> ErrorException: Undefined array key "Descripcion"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Views/simulaciones/view.php on line 66.
+ 1 APPPATH/Views/simulaciones/view.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Descripcion"', '/var/www/html/app/Views/simulaciones/view.php', 66)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/view.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/view', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(150): view('simulaciones/view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 14:54:33 --> ErrorException: Undefined array key "CapacidadCarga"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Controllers/Simulaciones.php on line 136.
+ 1 APPPATH/Controllers/Simulaciones.php(136): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "CapacidadCarga"', '/var/www/html/app/Controllers/Simulaciones.php', 136)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 15:38:29 --> ParseError: syntax error, unexpected token "public"
+[Method: GET, Route: admin/simulaciones/1]
+in APPPATH/Controllers/Simulaciones.php on line 168.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('/var/www/html/app/Controllers/Simulaciones.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Simulaciones')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Simulaciones')
+ 4 SYSTEMPATH/CodeIgniter.php(887): class_exists('\\App\\Controllers\\Simulaciones', true)
+ 5 SYSTEMPATH/CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-06 16:10:08 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= '25000.00'
+...' at line 1 in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `DISTINC...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#4 /var/www/html/app/Models/SimulacionesModel.php(67): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/app/Controllers/Simulaciones.php(143): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar direc...', '25000.00', '1')
+#6 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+#7 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+#8 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /var/www/html/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-04-06 16:10:08 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= '25000.00'
+...' at line 1
+[Method: GET, Route: admin/simulaciones/1]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINCT` `ModelosFundas`.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= :ModelosFundas.CapacidadCarga:
+OR `ModelosFundas`.`TipoFunda` = :ModelosFundas.TipoFunda:
+AND `ModelosFundas`.`ID` NOT IN :ModelosFundas.ID:
+ LIMIT 4', [...], false)
+ 2 APPPATH/Models/SimulacionesModel.php(67): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH/Controllers/Simulaciones.php(143): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 16:10:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= '25000.00'
+...' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINCT` `ModelosFundas`.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= \'25000.00\'
+OR `ModelosFundas`.`TipoFunda` = \'Luz solar directa\'
+AND `ModelosFundas`.`ID` NOT IN (\'1\')
+ LIMIT 4')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINCT` `ModelosFundas`.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= \'25000.00\'
+OR `ModelosFundas`.`TipoFunda` = \'Luz solar directa\'
+AND `ModelosFundas`.`ID` NOT IN (\'1\')
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINCT` `ModelosFundas`.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= :ModelosFundas.CapacidadCarga:
+OR `ModelosFundas`.`TipoFunda` = :ModelosFundas.TipoFunda:
+AND `ModelosFundas`.`ID` NOT IN :ModelosFundas.ID:
+ LIMIT 4', [...], false)
+ 4 APPPATH/Models/SimulacionesModel.php(67): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH/Controllers/Simulaciones.php(143): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00', '1')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 16:10:08 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= '25000.00'
+...' at line 1
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `DISTINCT` `ModelosFundas`.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= \'25000.00\'
+OR `ModelosFundas`.`TipoFunda` = \'Luz solar directa\'
+AND `ModelosFundas`.`ID` NOT IN (\'1\')
+ LIMIT 4', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINCT` `ModelosFundas`.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= \'25000.00\'
+OR `ModelosFundas`.`TipoFunda` = \'Luz solar directa\'
+AND `ModelosFundas`.`ID` NOT IN (\'1\')
+ LIMIT 4')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINCT` `ModelosFundas`.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= \'25000.00\'
+OR `ModelosFundas`.`TipoFunda` = \'Luz solar directa\'
+AND `ModelosFundas`.`ID` NOT IN (\'1\')
+ LIMIT 4')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINCT` `ModelosFundas`.*
+FROM `ModelosFundas`
+WHERE `ModelosFundas`.`CapacidadCarga` >= :ModelosFundas.CapacidadCarga:
+OR `ModelosFundas`.`TipoFunda` = :ModelosFundas.TipoFunda:
+AND `ModelosFundas`.`ID` NOT IN :ModelosFundas.ID:
+ LIMIT 4', [...], false)
+ 5 APPPATH/Models/SimulacionesModel.php(67): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH/Controllers/Simulaciones.php(143): App\Models\SimulacionesModel->obtenerFundasSimilares('Luz solar directa', '25000.00', '1')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->view('1')
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 16:16:30 --> ErrorException: Undefined variable $condicionesMeteorologicas
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 30.
+ 1 APPPATH/Views/simulaciones/create.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $condicionesMeteorologicas', '/var/www/html/app/Views/simulaciones/create.php', 30)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(173): view('simulaciones/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 18:03:39 --> ErrorException: Undefined variable $condicionesMeteorologicas
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 30.
+ 1 APPPATH/Views/simulaciones/create.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $condicionesMeteorologicas', '/var/www/html/app/Views/simulaciones/create.php', 30)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(173): view('simulaciones/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 18:08:27 --> BadMethodCallException: Call to undefined method App\Models\SimulacionesModel::getCondicionesMeteorologicas
+[Method: GET, Route: admin/simulaciones/new]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(174): CodeIgniter\Model->__call('getCondicionesMeteorologicas', [])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 18:09:09 --> BadMethodCallException: Call to undefined method App\Models\ModelosFundasModel::getAllFundas
+[Method: GET, Route: admin/simulaciones/new]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(175): CodeIgniter\Model->__call('getAllFundas', [])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 18:24:01 --> BadMethodCallException: Call to undefined method App\Models\SimulacionesModel::getCondicionesMeteorologicas
+[Method: GET, Route: admin/simulaciones/new]
+in SYSTEMPATH/Model.php on line 932.
+ 1 APPPATH/Controllers/Simulaciones.php(174): CodeIgniter\Model->__call('getCondicionesMeteorologicas', [])
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 18:28:28 --> ErrorException: Undefined variable $condicionesMeteorologicas
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 11.
+ 1 APPPATH/Views/simulaciones/create.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $condicionesMeteorologicas', '/var/www/html/app/Views/simulaciones/create.php', 11)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(174): view('simulaciones/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 18:34:16 --> ErrorException: Undefined variable $condicionesMeteorologicas
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 13.
+ 1 APPPATH/Views/simulaciones/create.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $condicionesMeteorologicas', '/var/www/html/app/Views/simulaciones/create.php', 13)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(174): view('simulaciones/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 18:38:08 --> ErrorException: Undefined variable $condicionesMeteorologicas
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 14.
+ 1 APPPATH/Views/simulaciones/create.php(14): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $condicionesMeteorologicas', '/var/www/html/app/Views/simulaciones/create.php', 14)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(174): view('simulaciones/create')
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 18:41:56 --> ErrorException: Undefined array key "Nombre"
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 29.
+ 1 APPPATH/Views/simulaciones/create.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Nombre"', '/var/www/html/app/Views/simulaciones/create.php', 29)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(177): view('simulaciones/create', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 18:59:44 --> ErrorException: Undefined variable $data
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 2.
+ 1 APPPATH/Views/simulaciones/create.php(2): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', '/var/www/html/app/Views/simulaciones/create.php', 2)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(177): view('simulaciones/create', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 20:01:29 --> ErrorException: Undefined variable $data
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 2.
+ 1 APPPATH/Views/simulaciones/create.php(2): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', '/var/www/html/app/Views/simulaciones/create.php', 2)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(177): view('simulaciones/create', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 20:03:53 --> ErrorException: Array to string conversion
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 2.
+ 1 APPPATH/Views/simulaciones/create.php(2): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', '/var/www/html/app/Views/simulaciones/create.php', 2)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(177): view('simulaciones/create', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 20:04:59 --> ErrorException: Undefined variable $data
+[Method: GET, Route: admin/simulaciones/new]
+in APPPATH/Views/simulaciones/create.php on line 27.
+ 1 APPPATH/Views/simulaciones/create.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', '/var/www/html/app/Views/simulaciones/create.php', 27)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/create.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/create', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(177): view('simulaciones/create', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->new()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 20:46:29 --> ErrorException: Undefined array key "Descripcion"
+[Method: GET, Route: admin/simulaciones/update/8]
+in APPPATH/Views/simulaciones/update.php on line 31.
+ 1 APPPATH/Views/simulaciones/update.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Descripcion"', '/var/www/html/app/Views/simulaciones/update.php', 31)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/update.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/update', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(267): view('simulaciones/update', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->update('8')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 21:18:36 --> ErrorException: Undefined array key "LuzSolar"
+[Method: GET, Route: admin/simulaciones/update/8]
+in APPPATH/Controllers/Simulaciones.php on line 260.
+ 1 APPPATH/Controllers/Simulaciones.php(260): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LuzSolar"', '/var/www/html/app/Controllers/Simulaciones.php', 260)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->update('8')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-06 21:26:01 --> ErrorException: Undefined variable $fundaRecomendada
+[Method: GET, Route: admin/simulaciones/update/8]
+in APPPATH/Views/simulaciones/update.php on line 45.
+ 1 APPPATH/Views/simulaciones/update.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fundaRecomendada', '/var/www/html/app/Views/simulaciones/update.php', 45)
+ 2 SYSTEMPATH/View/View.php(234): include('/var/www/html/app/Views/simulaciones/update.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('simulaciones/update', [], true)
+ 5 APPPATH/Controllers/Simulaciones.php(287): view('simulaciones/update', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Simulaciones->update('8')
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Simulaciones))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

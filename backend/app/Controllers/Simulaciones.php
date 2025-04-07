@@ -100,82 +100,88 @@ class Simulaciones extends BaseController
 
     public function view($id = null)
     {
-        // Obtener la simulación
-        $simulacion = $this->simulacionesModel->getSimulaciones($id);
+        try {
+            // Obtener la simulación
+            $simulacion = $this->simulacionesModel->getSimulaciones($id);
 
-        if (!$simulacion) {
-            throw new PageNotFoundException("No se encontró la simulación con ID: $id");
+            if (!$simulacion) {
+                throw new PageNotFoundException("No se encontró la simulación con ID: $id");
+            }
+
+            // Obtener el ID de las condiciones meteorológicas desde la simulación
+            $condicionesMeteorologicasID = $simulacion['CondicionesMeteorologicasID'];
+
+            // Usamos el modelo CondicionesMeteorologicasModel para obtener las condiciones meteorológicas
+            $condicionesMeteorologicas = $this->condicionesMeteorologicasModel->find($condicionesMeteorologicasID);
+
+            // Verificar que las condiciones meteorológicas existen
+            if (!$condicionesMeteorologicas) {
+                throw new \Exception("No se encontraron las condiciones meteorológicas para esta simulación.");
+            }
+
+            // Obtener la funda propuesta (asociada con la simulación)
+            $fundaPropuesta = $this->fundasModel->find($simulacion['FundaID']);
+
+            // Verifica si la funda propuesta contiene la clave 'CapacidadCarga'
+            if (!isset($fundaPropuesta['CapacidadCarga'])) {
+                throw new \Exception("La funda propuesta no tiene la clave 'CapacidadCarga'.");
+            }
+
+            // Obtener la energía generada de la simulación
+            $energiaGenerada = $simulacion['EnergiaGenerada'];
+
+            // Obtener la funda recomendada con base en la energía generada y la capacidad de carga
+            $fundaRecomendada = $this->simulacionesModel->obtenerFundaRecomendada($energiaGenerada, $fundaPropuesta['CapacidadCarga']);
+
+            // Obtener la justificación dinámica para la funda propuesta
+            $justificacionFunda = $this->simulacionesModel->generarJustificacionFunda($energiaGenerada, $fundaPropuesta['CapacidadCarga']);
+
+            // Obtener otras 4 fundas propuestas basadas en la simulación (ajustar según los parámetros de la simulación)
+            $otrasFundasPropuestas = $this->simulacionesModel->obtenerFundasSimilares(
+                $simulacion['CondicionLuz'],
+                $fundaPropuesta['CapacidadCarga'],
+                $fundaPropuesta['ID']
+            );
+
+            // Preparar los datos para la vista
+            $data = [
+                'simulacion' => $simulacion,
+                'condicionesMeteorologicas' => $condicionesMeteorologicas,
+                'fundaPropuesta' => $fundaPropuesta,
+                'fundaRecomendada' => $fundaRecomendada,
+                'justificacionFunda' => $justificacionFunda,
+                'otrasFundasPropuestas' => $otrasFundasPropuestas, // Pasamos las fundas propuestas aquí
+                'title' => 'Detalle de la Simulación',
+            ];
+
+            // Mostrar la vista
+            return view('templates/header', $data)
+                . view('simulaciones/view', $data)
+                . view('templates/footer');
+        } catch (\Exception $e) {
+            // En caso de error, mostramos un mensaje adecuado
+            return redirect()->to('/error')->with('error', $e->getMessage());
         }
-
-        // Obtener el ID de las condiciones meteorológicas desde la simulación
-        $condicionesMeteorologicasID = $simulacion['CondicionesMeteorologicasID'];
-
-        // Usamos el modelo CondicionesMeteorologicasModel para obtener las condiciones meteorológicas
-        $condicionesMeteorologicas = $this->condicionesMeteorologicasModel->find($condicionesMeteorologicasID);
-
-        // Verificar que las condiciones meteorológicas existen
-        if (!$condicionesMeteorologicas) {
-            throw new \Exception("No se encontraron las condiciones meteorológicas para esta simulación.");
-        }
-
-        // Extraer las condiciones meteorológicas del resultado de la base de datos
-        $condiciones = [
-            'LuzSolar' => $condicionesMeteorologicas['LuzSolar'] ?? null,
-            'Temperatura' => $condicionesMeteorologicas['Temperatura'] ?? null,
-            'Humedad' => $condicionesMeteorologicas['Humedad'] ?? null,
-            'Viento' => $condicionesMeteorologicas['Viento'] ?? null
-        ];
-
-        // Verificar que todas las condiciones necesarias estén presentes
-        if (in_array(null, $condiciones, true)) {
-            throw new \Exception("Faltan algunas condiciones meteorológicas necesarias.");
-        }
-
-        // Obtener la condición climática usando el modelo de simulaciones
-        $condicionClimatica = $this->simulacionesModel->obtenerCondicionMeteorologica($condiciones);
-
-        // Obtener la funda propuesta
-        $fundaPropuesta = $this->fundasModel->find($simulacion['FundaID']);
-
-        // Obtener otras 4 fundas propuestas (basadas en condiciones similares)
-        $otrasFundasPropuestas = $this->simulacionesModel->getFundasSimilares($simulacion['ID']);
-
-        // Obtener la justificación de la funda
-        $justificacionFunda = $this->simulacionesModel->obtenerJustificacionFunda($simulacion, $fundaPropuesta);
-
-        // Preparar los datos para la vista
-        $data = [
-            'simulacion' => $simulacion,
-            'condicionesMeteorologicas' => $condicionesMeteorologicas,
-            'fundaPropuesta' => $fundaPropuesta,
-            'otrasFundasPropuestas' => $otrasFundasPropuestas,
-            'justificacionFunda' => $justificacionFunda,
-            'condicionClimatica' => $condicionClimatica,
-            'title' => 'Detalle de la Simulación',
-        ];
-
-        // Mostrar la vista
-        return view('templates/header', $data)
-            . view('simulaciones/view')
-            . view('templates/footer');
     }
-
-
-
 
     public function new()
     {
         $this->checkAdminAccess();
 
         helper('form');
+
+        // Obtener las condiciones meteorológicas para el formulario
+        $condicionesMeteorologicas = $this->condicionesMeteorologicasModel->findAll();
+
         return view('templates/header', ['title' => 'Crear Simulación'])
-            . view('simulaciones/create')
+            . view('simulaciones/create', ['condicionesMeteorologicas' => $condicionesMeteorologicas])
             . view('templates/footer');
     }
 
+
     public function create()
     {
-        $this->checkAdminAccess(); // Verifica si el usuario tiene permisos de administrador
+        $this->checkAdminAccess();
 
         helper('form');
 
@@ -189,97 +195,176 @@ class Simulaciones extends BaseController
         }
 
         // Obtenemos los datos del formulario
-        $data = $this->request->getPost(['CondicionLuz', 'Tiempo']); // Obtenemos la condición de luz y el tiempo
+        $data = $this->request->getPost(['CondicionLuz', 'Tiempo', 'LuzSolar', 'Temperatura', 'Humedad', 'Viento', 'CondicionesMeteorologicasID']);
 
         // Validar los datos del formulario
-        if (!$this->validateData($data, [
+        if (!$this->validate([
             'CondicionLuz' => 'required|string|max_length[50]',
-            'Tiempo' => 'required|integer',
+            'Tiempo' => 'required|decimal',
+            'CondicionesMeteorologicasID' => 'required|integer', // Validamos que la condición meteorológica se pase correctamente
         ])) {
             return redirect()->to(base_url('admin/simulaciones'))->with('validation', $this->validator);
         }
 
-        // Llamamos al método calcularEnergia del modelo
-        $energiaGenerada = $this->simulacionesModel->calcularEnergia($data['CondicionLuz'], $data['Tiempo']);
+        // Calcular la energía generada
+        $energiaGenerada = $this->simulacionesModel->calcularEnergia(
+            $data['CondicionLuz'],
+            $data['Tiempo'],
+            $data['LuzSolar'],
+            $data['Temperatura'],
+            $data['Humedad'],
+            $data['Viento']
+        );
 
-        // Añadimos la energía generada al array de datos
-        $data['EnergiaGenerada'] = $energiaGenerada;
-        $data['Fecha'] = date('Y-m-d'); // Añadimos la fecha de creación
-        $data['UsuarioID'] = $userId; // Asociamos el ID del usuario logueado con la simulación
+        // Obtener la funda recomendada
+        $capacidadCarga = 20; // Aquí debes poner la capacidad de carga para determinar la funda recomendada
+        $fundaRecomendada = $this->simulacionesModel->obtenerFundaRecomendada($energiaGenerada, $capacidadCarga);
+        $justificacionFunda = $this->simulacionesModel->generarJustificacionFunda($energiaGenerada, $capacidadCarga);
 
-        // Obtener la funda más apropiada para la simulación (basado en la condición de luz)
-        $funda = $this->fundasModel->getFundaPorCondicionLuz($data['CondicionLuz']); // Necesitas una función que obtenga la funda según la luz
+        // Obtener las fundas opcionales
+        $fundasOpcionales = $this->simulacionesModel->obtenerFundasSimilares($data['CondicionLuz'], $capacidadCarga, $fundaRecomendada);
 
-        // Añadir la funda recomendada al array de datos de simulación
-        $data['FundaID'] = $funda ? $funda['ID'] : null;
+        // Preparar los datos para la vista
+        $data = [
+            'title' => 'Crear Simulación',
+            'condicionesMeteorologicas' => $this->condicionesMeteorologicasModel->findAll(),
+            'energiaGenerada' => $energiaGenerada,
+            'fundaRecomendada' => $fundaRecomendada,
+            'justificacionFunda' => $justificacionFunda,
+            'fundasOpcionales' => $fundasOpcionales,
+        ];
 
-        // Guardamos los datos en la base de datos
-        if (!$this->simulacionesModel->save($data)) {
-            return redirect()->to(base_url('admin/simulaciones'))->with('error', 'Error al crear la simulación.');
-        }
-
-        return redirect()->to(base_url('admin/simulaciones'))->with('success', 'Simulación creada exitosamente.');
+        // Pasar los datos a la vista
+        return view('templates/header', $data)
+            . view('simulaciones/create', $data)
+            . view('templates/footer');
     }
+
 
     public function update($id)
     {
         $this->checkAdminAccess();
-
         helper('form');
 
+        // Obtener la simulación existente por su ID
         $simulacion = $this->simulacionesModel->find($id);
         if (!$simulacion) {
             throw new PageNotFoundException("No se encontró la simulación con ID: $id");
         }
 
+        // Obtener las condiciones meteorológicas relacionadas
+        $condicionesMeteorologicas = $this->condicionesMeteorologicasModel->find($simulacion['CondicionesMeteorologicasID']);
+        if (!$condicionesMeteorologicas) {
+            throw new PageNotFoundException("No se encontraron las condiciones meteorológicas para esta simulación.");
+        }
+
+        // Obtenemos los valores necesarios de las condiciones meteorológicas
+        $luzSolar = $condicionesMeteorologicas['LuzSolar'];
+        $temperatura = $condicionesMeteorologicas['Temperatura'];
+        $humedad = $condicionesMeteorologicas['Humedad'];
+        $viento = $condicionesMeteorologicas['Viento'];
+
+        // Asegurarnos de que LuzSolar tiene un valor válido
+        if (empty($luzSolar) || $luzSolar <= 0) {
+            return redirect()->to(base_url("admin/simulaciones/update/$id"))->with('error', 'LuzSolar no es válida');
+        }
+
+        // Calcular la energía generada
+        $energiaGenerada = $this->simulacionesModel->calcularEnergia(
+            $simulacion['CondicionLuz'],  // Condición de luz (por ejemplo, "Luz Solar Directa")
+            $simulacion['Tiempo'],         // Tiempo (en minutos)
+            $luzSolar,                     // Luz solar en lux (de las condiciones meteorológicas)
+            $temperatura,                  // Temperatura en °C
+            $humedad,                      // Humedad en porcentaje
+            $viento                        // Viento en km/h
+        );
+
+        // Otros cálculos para la funda recomendada y similares
+        $capacidadCarga = 20; // Definir capacidad de carga
+        $fundaRecomendada = $this->simulacionesModel->obtenerFundaRecomendada($energiaGenerada, $capacidadCarga);
+        $justificacionFunda = $this->simulacionesModel->generarJustificacionFunda($energiaGenerada, $capacidadCarga);
+
+        // Obtener las fundas opcionales
+        $fundasOpcionales = $this->simulacionesModel->obtenerFundasSimilares($simulacion['CondicionLuz'], $capacidadCarga, $fundaRecomendada);
+
+        // Obtener las condiciones meteorológicas para el formulario
+        $condicionesMeteorologicasList = $this->condicionesMeteorologicasModel->findAll();
+
+        // Pasar los datos de la simulación, la energía generada, la funda recomendada y las fundas opcionales a la vista
         $data = [
-            'simulacion' => $simulacion,
             'title' => 'Editar Simulación',
+            'simulacion' => $simulacion,
+            'energiaGenerada' => $energiaGenerada,
+            'fundaRecomendada' => $fundaRecomendada,
+            'justificacionFunda' => $justificacionFunda,
+            'fundasOpcionales' => $fundasOpcionales,
+            'condicionesMeteorologicas' => $condicionesMeteorologicasList
         ];
 
         return view('templates/header', $data)
-            . view('simulaciones/update')
+            . view('simulaciones/update', $data)
             . view('templates/footer');
     }
+
 
     public function updatedItem($id)
     {
         $this->checkAdminAccess();
+        helper(['form', 'url']);
 
-        helper('form');
-
-        if (!is_numeric($id) || $id <= 0) {
-            return redirect()->to(base_url('admin/simulaciones'))->with('error', 'ID de simulación no válido.');
-        }
-
-        $data = $this->request->getPost(['CondicionLuz', 'EnergiaGenerada']);
-
-        if (!$this->validateData($data, [
-            'CondicionLuz' => 'required|string|max_length[50]',
-            'EnergiaGenerada' => 'required|decimal',
+        // Validación de datos del formulario
+        if (!$this->validate([
+            'CondicionLuz' => 'required',
+            'Tiempo' => 'required|numeric',
+            'CondicionesMeteorologicasID' => 'required|is_not_unique[CondicionesMeteorologicas.ID]'
         ])) {
-            return redirect()->to(base_url("admin/simulaciones/update/$id"))->withInput()->with('error', 'Validación fallida');
+            return redirect()->to(base_url('admin/simulaciones/update/' . $id))
+                ->withInput()
+                ->with('error', 'Por favor complete todos los campos correctamente.');
         }
 
+        // Obtener la simulación existente
         $simulacion = $this->simulacionesModel->find($id);
         if (!$simulacion) {
-            return redirect()->to(base_url('admin/simulaciones'))->with('error', 'Simulación no encontrada.');
+            throw new PageNotFoundException("No se encontró la simulación con ID: $id");
         }
 
-        if (empty($data['EnergiaGenerada'])) {
-            $energiaGenerada = $this->simulacionesModel->calcularEnergia($data['CondicionLuz'], $simulacion['Tiempo']);
-            $data['EnergiaGenerada'] = $energiaGenerada;
+        // Obtener las condiciones meteorológicas para recalcular la energía
+        $condicionesMeteorologicas = $this->condicionesMeteorologicasModel->find($this->request->getPost('CondicionesMeteorologicasID'));
+        if (!$condicionesMeteorologicas) {
+            return redirect()->to(base_url('admin/simulaciones/update/' . $id))
+                ->with('error', 'Las condiciones meteorológicas seleccionadas no son válidas.');
         }
 
-        $data['ID'] = (int)$id;
-        $data['Fecha'] = date('Y-m-d');
+        // Obtener los valores necesarios de las condiciones meteorológicas
+        $luzSolar = $condicionesMeteorologicas['LuzSolar'];
+        $temperatura = $condicionesMeteorologicas['Temperatura'];
+        $humedad = $condicionesMeteorologicas['Humedad'];
+        $viento = $condicionesMeteorologicas['Viento'];
 
-        if (!$this->simulacionesModel->save($data)) {
-            return redirect()->to(base_url("admin/simulaciones/update/$id"))->with('error', 'Error al actualizar.');
-        }
+        // Calcular la energía generada con la función en la base de datos
+        $energiaGenerada = $this->simulacionesModel->calcularEnergia(
+            $this->request->getPost('CondicionLuz'),  // Condición de luz (por ejemplo, "Luz Solar Directa")
+            $this->request->getPost('Tiempo'),        // Tiempo (en minutos)
+            $luzSolar,                                // Luz solar en lux
+            $temperatura,                             // Temperatura
+            $humedad,                                 // Humedad
+            $viento                                   // Viento
+        );
 
-        return redirect()->to(base_url('admin/simulaciones'))->with('success', 'Simulación actualizada exitosamente.');
+        // Actualizar la simulación con los nuevos datos
+        $this->simulacionesModel->update($id, [
+            'CondicionLuz' => $this->request->getPost('CondicionLuz'),
+            'Tiempo' => $this->request->getPost('Tiempo'),
+            'CondicionesMeteorologicasID' => $this->request->getPost('CondicionesMeteorologicasID'),
+            'EnergiaGenerada' => $energiaGenerada  // Guardar la nueva energía generada
+        ]);
+
+        // Redirigir con un mensaje de éxito
+        return redirect()->to(base_url('admin/simulaciones'))
+            ->with('success', 'Simulación actualizada exitosamente.');
     }
+
 
     public function delete($id)
     {

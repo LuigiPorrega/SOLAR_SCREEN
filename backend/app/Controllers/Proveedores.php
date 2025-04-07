@@ -34,16 +34,22 @@ class Proveedores extends BaseController
 
     public function index()
     {
+        // Obtener los proveedores con paginación
+        $proveedores = $this->proveedoresModel->getProveedores();
+
+        // Asegurarse de que 'pager' esté disponible en los datos
         $data = [
-            'proveedores' => $this->proveedoresModel->getProveedores(null),
-            'pager' => $this->proveedoresModel->pager,
+            'proveedores' => $proveedores,
+            'pager' => $this->proveedoresModel->pager,  // Asegurarse de pasar el objeto pager
             'title' => 'Lista de Proveedores',
         ];
 
+        // Cargar la vista con los datos
         return view('templates/header', $data)
             . view('proveedores/index')
             . view('templates/footer');
     }
+
 
     public function view($id = null)
     {
@@ -221,7 +227,7 @@ class Proveedores extends BaseController
         $selectedFundas = $this->request->getPost('FundaID') ?: [];
 
         // Eliminar las fundas antiguas del proveedor
-        $this->fundasProveedoresModel->deleteFundasByProveedor($id,$selectedFundas);
+        $this->fundasProveedoresModel->deleteFundasByProveedor($id, $selectedFundas);
 
         // Asignar las nuevas fundas al proveedor
         foreach ($selectedFundas as $fundaID) {

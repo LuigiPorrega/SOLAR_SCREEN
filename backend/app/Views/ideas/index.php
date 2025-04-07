@@ -13,6 +13,14 @@
         </div>
     <?php endif; ?>
     <h2 class="text-center mb-4"><?= esc($title) ?></h2>
+
+    <!-- Paginación arriba -->
+    <div class="d-flex justify-content-center my-2">
+        <nav>
+            <b style="font-size: 18px;"><?= $pager->links() ?></b>
+        </nav>
+    </div>
+    
     <!--Insert disponible solo para administradores-->
     <?php
     // Asegurémonos de obtener el modelo de UsuariosModel
@@ -26,6 +34,7 @@
             </a>
         </div>
     <?php endif ?>
+
     <?php if ($ideas !== []): ?>
         <div class="list-group">
             <?php foreach ($ideas as $idea): ?>

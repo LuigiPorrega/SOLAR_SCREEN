@@ -1,52 +1,56 @@
 <section class="container">
     <h2 class="text-center"><?= esc($title) ?></h2>
+    <form action="<?= base_url('admin/simulaciones/create') ?>" method="post">
+        <?= csrf_field() ?>
 
-    <!-- Formulario para nueva simulación -->
-    <form method="post" action="<?= base_url('admin/simulaciones/create') ?>" class="my-4">
-        <?= csrf_field() ?> <!-- Protección contra CSRF -->
-
-        <!-- Condición de Luz -->
-        <div class="mb-3">
-            <label for="CondicionLuz" class="form-label">Condición de Luz</label>
-            <select class="form-select" id="CondicionLuz" name="CondicionLuz" required>
-                <option value="">Selecciona una opción...</option>
-                <option value="Luz solar directa">Luz solar directa</option>
-                <option value="Luz artificial">Luz artificial</option>
-                <option value="Nublado">Nublado</option>
+        <!-- Campo: Condición de Luz -->
+        <div class="form-group">
+            <label for="CondicionLuz">Condición de Luz</label>
+            <select name="CondicionLuz" id="CondicionLuz" class="form-control">
+                <option value="">Selecciona la condición de luz</option>
+                <option value="Luz Solar Directa" <?= set_select('CondicionLuz', 'Luz Solar Directa') ?>>Luz Solar Directa</option>
+                <option value="Luz Artificial" <?= set_select('CondicionLuz', 'Luz Artificial') ?>>Luz Artificial</option>
             </select>
         </div>
 
-        <!-- Tiempo de recarga (minutos) -->
-        <div class="mb-3">
-            <label for="Tiempo" class="form-label">Tiempo de recarga (en minutos)</label>
-            <input type="number" class="form-control" id="Tiempo" name="Tiempo" min="1" required>
+        <!-- Campo: Tiempo -->
+        <div class="form-group">
+            <label for="Tiempo">Tiempo (minutos)</label>
+            <input type="number" name="Tiempo" id="Tiempo" class="form-control" value="<?= set_value('Tiempo') ?>" required>
         </div>
 
-        <!-- Condiciones meteorológicas -->
-        <div class="mb-3">
-            <label for="CondicionesMeteorologicasID" class="form-label">Condiciones Meteorológicas</label>
-            <select class="form-select" id="CondicionesMeteorologicasID" name="CondicionesMeteorologicasID" required>
-                <option value="">Selecciona las condiciones meteorológicas...</option>
+        <!-- Campo: Condiciones Meteorológicas -->
+        <div class="form-group">
+            <label for="CondicionesMeteorologicasID">Condiciones Meteorológicas</label>
+            <select name="CondicionesMeteorologicasID" id="CondicionesMeteorologicasID" class="form-control" required>
+                <option value="">Selecciona una condición meteorológica</option>
                 <?php foreach ($condicionesMeteorologicas as $condicion): ?>
-                    <option value="<?= esc($condicion['ID']) ?>">
-                        <?= esc($condicion['Descripcion']) ?>
+                    <option value="<?= $condicion['ID'] ?>" <?= set_select('CondicionesMeteorologicasID', $condicion['ID']) ?>>
+                        Luz Solar: <?= $condicion['LuzSolar'] ?>, Temperatura: <?= $condicion['Temperatura'] ?>°C
                     </option>
                 <?php endforeach; ?>
             </select>
         </div>
 
-        <!-- Funda recomendada -->
-        <div class="mb-3">
-            <label for="FundaID" class="form-label">Funda recomendada</label>
-            <select class="form-select" id="FundaID" name="FundaID" required>
-                <option value="">Selecciona una funda...</option>
-                <?php foreach ($fundas as $funda): ?>
-                    <option value="<?= esc($funda['ID']) ?>">
-                        <?= esc($funda['Nombre']) ?>
-                    </option>
+        <!-- Mostrar la energía generada -->
+        <?php if (isset($energiaGenerada)): ?>
+            <h3>Energía Generada: <?= $energiaGenerada ?> kWh</h3>
+
+            <h4>Funda Recomendada:</h4>
+            <p><strong><?= esc($fundaRecomendada) ?></strong></p>
+            <p><em><?= esc($justificacionFunda) ?></em></p>
+
+            <h4>Fundas Opcionales:</h4>
+            <ul>
+                <?php foreach ($fundasOpcionales as $funda): ?>
+                    <li>
+                        <label>
+                            <input type="radio" name="FundaID" value="<?= $funda['ID'] ?>"> <?= esc($funda['Nombre']) ?> - Capacidad de Carga: <?= esc($funda['CapacidadCarga']) ?> kg
+                        </label>
+                    </li>
                 <?php endforeach; ?>
-            </select>
-        </div>
+            </ul>
+        <?php endif; ?>
 
         <!-- Botones de envío -->
         <div class="d-flex justify-content-center">
