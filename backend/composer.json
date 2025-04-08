@@ -13,6 +13,7 @@
         "php": "^8.1",
         "ext-intl": "*",
         "ext-mbstring": "*",
+        "tecnickcom/tcpdf": "^6.4",
         "laminas/laminas-escaper": "^2.13",
         "psr/log": "^3.0"
     },

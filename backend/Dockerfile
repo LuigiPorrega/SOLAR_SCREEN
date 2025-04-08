@@ -6,7 +6,11 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libpng-dev \
     libzip-dev \
-    libicu-dev
+    libicu-dev \
+    git \
+    unzip \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
 # Instalar y habilitar extensiones de PHP
 RUN docker-php-ext-install mysqli pdo_mysql gd zip intl
@@ -23,5 +27,14 @@ WORKDIR /var/www/html
 # Copiar los archivos de la aplicación
 COPY . /var/www/html
 
-# Cambiar los permisos
+# Instalar Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Ejecutar composer install para instalar las dependencias de PHP automáticamente, incluyendo TCPDF
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Cambiar los permisos para que Apache tenga acceso a los archivos
 RUN chown -R www-data:www-data /var/www/html
+
+# Exponer el puerto 80
+EXPOSE 80

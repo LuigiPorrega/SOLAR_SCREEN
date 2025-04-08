@@ -22,6 +22,12 @@ class ModelosFundas extends BaseController
         $this->usuariosModel = new UsuariosModel();
     }
 
+     /**
+     * Verifica si el usuario tiene permisos de administrador.
+     * Lanza una excepción si no tiene acceso.
+     *
+     * @throws PermissionException
+     */
     private function checkAdminAccess()
     {
         $session = session();
@@ -32,6 +38,12 @@ class ModelosFundas extends BaseController
         }
     }
 
+    /**
+     * Muestra una lista de todos los modelos de fundas.
+     * Paginación incluida.
+     *
+     * @return string Vista con la lista de modelos de fundas.
+     */
     public function index()
     {
         $data = [
@@ -45,6 +57,14 @@ class ModelosFundas extends BaseController
             . view('templates/footer');
     }
 
+    /**
+     * Muestra los detalles de un modelo de funda específico.
+     * Obtiene también los proveedores asociados a dicho modelo.
+     *
+     * @param int|null $id ID del modelo de funda.
+     * @return string Vista con los detalles del modelo de funda.
+     * @throws PageNotFoundException Si no se encuentra el modelo de funda.
+     */
     public function view($id = null)
     {
         $modeloFunda = $this->modelosFundasModel->getModelosFundas($id);
@@ -67,6 +87,12 @@ class ModelosFundas extends BaseController
             . view('templates/footer');
     }
 
+     /**
+     * Muestra el formulario para crear un nuevo modelo de funda.
+     * Obtiene los proveedores disponibles para asociar al modelo.
+     *
+     * @return string Vista del formulario de creación de modelo de funda.
+     */
     public function new()
     {
         $this->checkAdminAccess();
@@ -84,6 +110,14 @@ class ModelosFundas extends BaseController
             . view('templates/footer');
     }
 
+
+    /**
+     * Crea un nuevo modelo de funda y lo guarda en la base de datos.
+     * Valida los datos del formulario y maneja la subida de la imagen.
+     * Relaciona los proveedores seleccionados con el modelo de funda.
+     *
+     * @return RedirectResponse Redirige al listado de modelos de fundas con mensaje de éxito.
+     */
     public function create()
     {
         $this->checkAdminAccess();
@@ -188,6 +222,14 @@ class ModelosFundas extends BaseController
 
 
 
+    /**
+     * Muestra el formulario para editar un modelo de funda.
+     * Obtiene los proveedores asociados y todos los proveedores disponibles.
+     *
+     * @param int $id ID del modelo de funda que se editará.
+     * @return string Vista del formulario de edición de modelo de funda.
+     * @throws PageNotFoundException Si no se encuentra el modelo de funda.
+     */
     public function update($id)
     {
         $this->checkAdminAccess();
@@ -220,6 +262,14 @@ class ModelosFundas extends BaseController
             . view('templates/footer');
     }
 
+
+    /**
+     * Actualiza los datos de un modelo de funda en la base de datos.
+     * Maneja la actualización de imagen y proveedores.
+     *
+     * @param int $id ID del modelo de funda que se actualizará.
+     * @return RedirectResponse Redirige al listado de modelos de fundas con mensaje de éxito.
+     */
     public function updatedItem($id)
     {
         $this->checkAdminAccess();
@@ -305,6 +355,13 @@ class ModelosFundas extends BaseController
         return redirect()->to('/admin/modelosFundas')->with('success', 'Modelo de Funda actualizado exitosamente');
     }
 
+    /**
+     * Elimina un modelo de funda de la base de datos.
+     * También elimina la imagen asociada y las relaciones con proveedores.
+     *
+     * @param int $id ID del modelo de funda que se eliminará.
+     * @return RedirectResponse Redirige al listado de modelos de fundas con mensaje de éxito.
+     */
     public function delete($id)
     {
         $this->checkAdminAccess();

@@ -9,7 +9,7 @@ use App\Models\CondicionesMeteorologicasModel;
 use App\Exceptions\PermissionException;
 use App\Models\ModelosFundasModel;
 use CodeIgniter\HTTP\RedirectResponse;
-use \TCPDF;
+
 
 class Simulaciones extends BaseController
 {
@@ -17,6 +17,7 @@ class Simulaciones extends BaseController
     protected $usuariosModel;
     protected $condicionesMeteorologicasModel;
     protected $fundasModel;
+
 
     public function __construct()
     {
@@ -26,6 +27,13 @@ class Simulaciones extends BaseController
         $this->fundasModel = new ModelosFundasModel();
     }
 
+    /**
+     * Verifica si el usuario tiene acceso de administrador.
+     * Si no tiene acceso, lanza una excepción de permiso.
+     *
+     * @return void
+     * @throws PermissionException
+     */
     private function checkAdminAccess()
     {
         $session = session();
@@ -36,15 +44,21 @@ class Simulaciones extends BaseController
         }
     }
 
+    /**
+     * Muestra la lista de simulaciones.
+     * Permite al usuario realizar una simulación y ver la lista de simulaciones existentes.
+     *
+     * @return string
+     */
     public function index()
     {
         // Verificamos si el tiempo fue enviado por el usuario
-        $tiempo = $this->request->getPost('tiempo');  // Suponiendo que el campo en el formulario se llama 'tiempo'
+        $tiempo = $this->request->getPost('tiempo');
 
         // Validamos que el tiempo sea un número y mayor que 0
         if (!is_numeric($tiempo) || $tiempo <= 0) {
-            // Si el tiempo no es válido, asignamos un valor predeterminado o devolvemos un error
-            $tiempo = 60; // Asignamos un valor predeterminado, 60 minutos
+            // Si el tiempo no es válido, asignamos un valor predeterminado 
+            $tiempo = 60;
         }
 
         // Obtener las simulaciones de la base de datos
@@ -98,6 +112,14 @@ class Simulaciones extends BaseController
             . view('templates/footer');
     }
 
+    /**
+     * Muestra los detalles de una simulación específica.
+     * Permite ver los datos de la simulación, las condiciones meteorológicas y la funda recomendada.
+     *
+     * @param int|null $id
+     * @return string
+     * @throws PageNotFoundException
+     */
     public function view($id = null)
     {
         try {
@@ -164,6 +186,12 @@ class Simulaciones extends BaseController
         }
     }
 
+    /**
+     * Muestra el formulario para crear una nueva simulación.
+     * Esta función es accesible solo para administradores.
+     *
+     * @return string
+     */
     public function new()
     {
         $this->checkAdminAccess();
@@ -179,6 +207,12 @@ class Simulaciones extends BaseController
     }
 
 
+    /**
+     * Procesa el formulario para crear una nueva simulación.
+     * Esta función es accesible solo para administradores.
+     *
+     * @return RedirectResponse
+     */
     public function create()
     {
         $this->checkAdminAccess();
@@ -241,6 +275,14 @@ class Simulaciones extends BaseController
     }
 
 
+    /**
+     * Muestra el formulario para editar una simulación existente.
+     * Esta función es accesible solo para administradores.
+     *
+     * @param int $id
+     * @return string
+     * @throws PageNotFoundException
+     */
     public function update($id)
     {
         $this->checkAdminAccess();
@@ -307,6 +349,14 @@ class Simulaciones extends BaseController
     }
 
 
+    /**
+     * Actualiza una simulación existente con nuevos datos.
+     * Esta función es accesible solo para administradores.
+     *
+     * @param int $id ID de la simulación que se actualizará.
+     * @return RedirectResponse
+     * @throws PageNotFoundException
+     */
     public function updatedItem($id)
     {
         $this->checkAdminAccess();
@@ -366,6 +416,13 @@ class Simulaciones extends BaseController
     }
 
 
+    /**
+     * Elimina una simulación existente.
+     * Esta función es accesible solo para administradores.
+     *
+     * @param int $id ID de la simulación que se eliminará.
+     * @return RedirectResponse
+     */
     public function delete($id)
     {
         $this->checkAdminAccess();
@@ -390,36 +447,4 @@ class Simulaciones extends BaseController
             return redirect()->to(base_url('admin/simulaciones'))->with('error', $e->getMessage());
         }
     }
-
-    /**
-     * Descarga la simulación en formato PDF.
-     *
-     * @param int $id ID de la simulación
-     */
-    /* public function generarPDF($id)
-    {
-        $simulacion = $this->simulacionesModel->getSimulaciones($id);
-
-        if (!$simulacion) {
-            throw new PageNotFoundException("Simulación no encontrada.");
-        }
-
-        $funda = $this->fundasModel->find($simulacion['FundaID']);
-
-        // Configuración y generación del PDF usando TCPDF
-        $pdf = new \TCPDF();
-        $pdf->AddPage();
-        $pdf->SetFont('helvetica', '', 12);
-        $pdf->Write(0, 'Simulación #' . $simulacion['ID'], '', 0, 'L', true, 0, false, false, 0);
-        $pdf->Write(0, 'Condición de luz: ' . $simulacion['CondicionLuz'], '', 0, 'L', true, 0, false, false, 0);
-        $pdf->Write(0, 'Energía generada: ' . $simulacion['EnergiaGenerada'], '', 0, 'L', true, 0, false, false, 0);
-        $pdf->Write(0, 'Funda recomendada: ' . $funda['Nombre'], '', 0, 'L', true, 0, false, false, 0);
-        $pdf->Write(0, 'Capacidad de carga: ' . $funda['CapacidadCarga'], '', 0, 'L', true, 0, false, false, 0);
-        $pdf->Write(0, 'Tipo de funda: ' . $funda['TipoFunda'], '', 0, 'L', true, 0, false, false, 0);
-
-        // Imprimir la imagen de la funda
-        $pdf->Image($funda['ImagenURL'], 15, 80, 30, 30, '', '', '', false, 300, '', false, false, 0, false, false, false);
-
-        $pdf->Output('simulacion_' . $simulacion['ID'] . '.pdf', 'D');
-    }*/
 }

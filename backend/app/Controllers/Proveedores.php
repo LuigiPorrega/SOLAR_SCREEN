@@ -22,6 +22,12 @@ class Proveedores extends BaseController
         $this->fundasProveedoresModel = new FundasProveedoresModel();
     }
 
+    /**
+     * Verifica si el usuario tiene acceso de administrador.
+     * Lanza una excepción si el acceso no está autorizado.
+     *
+     * @throws PermissionException
+     */
     private function checkAdminAccess()
     {
         $session = session();
@@ -32,6 +38,12 @@ class Proveedores extends BaseController
         }
     }
 
+    /**
+     * Muestra la lista de proveedores con paginación.
+     * Solo accesible por administradores.
+     *
+     * @return string
+     */
     public function index()
     {
         // Obtener los proveedores con paginación
@@ -51,6 +63,14 @@ class Proveedores extends BaseController
     }
 
 
+    /**
+     * Muestra el detalle de un proveedor específico.
+     * Lanza una excepción si el proveedor no se encuentra.
+     *
+     * @param int|null $id ID del proveedor.
+     * @return string
+     * @throws PageNotFoundException
+     */
     public function view($id = null)
     {
         $proveedor = $this->proveedoresModel->getProveedores($id);
@@ -73,6 +93,12 @@ class Proveedores extends BaseController
             . view('templates/footer');
     }
 
+    /**
+     * Muestra el formulario para crear un nuevo proveedor.
+     * Solo accesible para administradores.
+     *
+     * @return string
+     */
     public function new()
     {
         $this->checkAdminAccess();
@@ -88,6 +114,12 @@ class Proveedores extends BaseController
     }
 
 
+    /**
+     * Crea un nuevo proveedor.
+     * Valida los datos del formulario y los guarda en la base de datos.
+     *
+     * @return RedirectResponse
+     */
     public function create()
     {
         // Validar los datos del formulario
@@ -162,6 +194,14 @@ class Proveedores extends BaseController
         return redirect()->to('admin/proveedores')->with('success', 'Proveedor creado correctamente.');
     }
 
+    /**
+     * Muestra el formulario para editar un proveedor existente.
+     * Solo accesible por administradores.
+     *
+     * @param int $id ID del proveedor que se actualizará.
+     * @return string
+     * @throws PageNotFoundException
+     */
     public function update($id)
     {
         $this->checkAdminAccess();
@@ -190,6 +230,14 @@ class Proveedores extends BaseController
             . view('templates/footer');
     }
 
+
+    /**
+     * Actualiza los datos de un proveedor existente.
+     * Realiza las validaciones y actualiza la base de datos.
+     *
+     * @param int $id ID del proveedor que se actualizará.
+     * @return RedirectResponse
+     */
     public function updatedItem($id)
     {
         $this->checkAdminAccess();
@@ -242,6 +290,13 @@ class Proveedores extends BaseController
     }
 
 
+    /**
+     * Elimina un proveedor de la base de datos.
+     * Solo accesible para administradores.
+     *
+     * @param int $id ID del proveedor a eliminar.
+     * @return RedirectResponse
+     */
     public function delete($id)
     {
         $this->checkAdminAccess();
