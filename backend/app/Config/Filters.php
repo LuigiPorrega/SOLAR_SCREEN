@@ -30,11 +30,12 @@ class Filters extends BaseFilters
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'cors'          => Cors::class,
+        'cors'          => \App\Filters\Cors::class,
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
         'auth'          => \App\Filters\Auth::class,
+        'apiaccesscontrol'     => \App\Filters\ApiAccessControl::class,
     ];
 
     /**
@@ -70,13 +71,14 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
-            // 'honeypot',
-            // 'csrf',
-            // 'invalidchars',
+            'forcehttps',
+            'pagecache',
+            'cors',
         ],
         'after' => [
-            // 'honeypot',
-            // 'secureheaders',
+            'pagecache',
+            'performance',
+            'toolbar',
         ],
     ];
 
@@ -94,7 +96,7 @@ class Filters extends BaseFilters
      * @var array<string, list<string>>
      */
     public array $methods = [
-        'post' => ['csrf'],
+        'post' => [],
     ];
 
     /**

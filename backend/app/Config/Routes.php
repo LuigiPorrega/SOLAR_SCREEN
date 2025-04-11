@@ -9,6 +9,13 @@ use App\Controllers\Usuarios;
 use App\Controllers\Proveedores;
 use App\Controllers\ModelosFundas;
 use App\Controllers\LoginLog;
+use App\Controllers\Api\CondicionesMeteorologicasApi;
+use App\Controllers\Api\IdeasApi;
+use App\Controllers\Api\UsuariosApiController;
+use App\Controllers\Api\ModelosFundasApi;
+use App\Controllers\Api\ProveedoresApi;
+use App\Controllers\Api\SimulacionesApi;
+use App\Filters\ApiAccessControl;
 
 
 
@@ -87,3 +94,63 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('loginlog/export', [LoginLog::class, 'export']);
 });
 
+ //FRONTEND
+// API RESTful
+$routes->group('api', function($routes) {
+
+    // Rutas para Condiciones Meteorológicas
+    $routes->get('condicionesMeteorologicas', 'Api\CondicionesMeteorologicasApi::index');
+    $routes->get('condicionesMeteorologicas/(:num)', 'Api\CondicionesMeteorologicasApi::view/$1');
+
+    // Rutas para Ideas
+    $routes->get('ideas', 'Api\IdeasApi::index');
+    $routes->get('ideas/(:num)', 'Api\IdeasApi::view/$1');
+   
+    //Rutas para ModeloFundas
+    $routes->get('modelosFundas', 'Api\ModelosFundasApi::index');
+    $routes->get('modelosFundas/(:num)', 'Api\ModelosFundasApi::view/$1');
+    
+    //Rutas para Proveedores
+    $routes->get('proveedores', 'Api\ProveedoresApi::index');
+    $routes->get('proveedores/(:num)', 'Api\ProveedoresApi::view/$1');
+    
+    //Rutas para Simulaciones
+    $routes->get('simulaciones', 'Api\SimulacionesApi::index');
+    $routes->get('simulaciones/(:num)', 'Api\SimulacionesApi::view/$1');
+    
+    //Ruta para autenticación de Usuarios
+    $routes->post('usuarios/login', 'Api\UsuariosApiController::login');
+    $routes->get('usuarios/checkAccess', 'Api\UsuariosApiController::checkAccess');
+});
+
+//API RESTfull protegidas
+$routes->group('api', ['filter' => 'apiaccesscontrol'], function($routes) {
+    
+    // Rutas para Condiciones Meteorológicas
+    $routes->post('condicionesMeteorologicas', 'Api\CondicionesMeteorologicasApi::create');
+    $routes->put('condicionesMeteorologicas/(:num)', 'Api\CondicionesMeteorologicasApi::update/$1');
+    $routes->delete('condicionesMeteorologicas/(:num)', 'Api\CondicionesMeteorologicasApi::delete/$1');
+
+    // Rutas para Ideas
+    $routes->post('ideas', 'Api\IdeasApi::create');
+    $routes->put('ideas/(:num)', 'Api\IdeasApi::update/$1');
+    $routes->delete('ideas/(:num)', 'Api\IdeasApi::delete/$1');
+
+    //Rutas para ModeloFundas
+    $routes->post('modelosFundas', 'Api\ModelosFundasApi::create');
+    $routes->put('modelosFundas/(:num)', 'Api\ModelosFundasApi::update/$1');
+    $routes->delete('modelosFundas/(:num)', 'Api\ModelosFundasApi::delete/$1');
+
+    //Rutas para Proveedores
+    $routes->post('proveedores', 'Api\ProveedoresApi::create');
+    $routes->put('proveedores/(:num)', 'Api\ProveedoresApi::update/$1');
+    $routes->delete('proveedores/(:num)', 'Api\ProveedoresApi::delete/$1');
+
+    //Rutas para Simulaciones
+    $routes->post('simulaciones', 'Api\SimulacionesApi::create');
+    $routes->put('simulaciones/(:num)', 'Api\SimulacionesApi::update/$1');
+    $routes->delete('simulaciones/(:num)', 'Api\SimulacionesApi::delete/$1');
+
+    //Ruta para autenticación de Usuarios
+    $routes->post('usuarios/logout', 'Api\UsuariosApiController::logout');
+});

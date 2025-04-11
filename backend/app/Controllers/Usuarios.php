@@ -191,8 +191,6 @@ class Usuarios extends BaseController
     }
 
 
-
-
     /**
      * Muestra el formulario para editar un usuario existente.
      * Esta función es accesible solo para administradores.

@@ -301,7 +301,12 @@ class ModelosFundas extends BaseController
         if ($file && $file->isValid()) {
             // Obtener la ruta de la imagen actual
             $modeloFunda = $this->modelosFundasModel->find($id);
-            $imagenActual = $modeloFunda['ImagenURL'];
+            if (!$modeloFunda) {
+                throw new PageNotFoundException("No se encontró el modelo de funda con ID: $id");
+            }
+            
+            // Acceder a las propiedades como un objeto
+            $imagenActual = $modeloFunda->ImagenURL;
 
             // Si existe una imagen actual, eliminarla antes de guardar la nueva
             if (!empty($imagenActual) && file_exists(ROOTPATH . 'public/' . $imagenActual)) {
@@ -379,8 +384,8 @@ class ModelosFundas extends BaseController
         }
 
         // Obtener la imagen de la funda para eliminarla
-        $imagenActual = $modeloFunda['ImagenURL'];
-        $tipoFunda = $modeloFunda['TipoFunda'] === 'expandible' ? 'fundas_expansibles' : 'fundas_fijas';
+        $imagenActual = $modeloFunda->ImagenURL;
+        $tipoFunda = $modeloFunda->TipoFunda === 'expandible' ? 'fundas_expansibles' : 'fundas_fijas';
 
         // Eliminar la imagen si existe
         if (!empty($imagenActual) && file_exists(ROOTPATH . 'public/' . $imagenActual)) {
