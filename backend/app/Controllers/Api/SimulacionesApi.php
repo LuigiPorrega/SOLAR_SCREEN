@@ -37,60 +37,64 @@ class SimulacionesApi extends BaseController
     // Crear una nueva simulación
     public function create()
     {
-        $session = session();
+        $data = $this->request->getJSON(true);
 
-        // Verificar si el usuario está logueado
-        if (!$session->get('isLoggedIn')) {
-            return $this->failUnauthorized('No autenticado.');
-        }
-
-        // Verificar si el usuario tiene el rol adecuado (ej. Admin o Usuario con permisos)
-        $role = $session->get('role');
-        if ($role !== 'admin') {
-            return $this->failForbidden('No tienes permiso para crear simulaciones.');
-        }
-
-        $data = $this->request->getPost();
-
-        // Validar los datos del formulario
+        // Validar los datos de entrada
         if (!$this->validate([
-            'CondicionLuz' => 'required|string|max_length[50]',
-            'Tiempo' => 'required|decimal',
+            'UsuarioID' => 'required|integer',
+            'CondicionLuz' => 'required|string|max_length[255]',
+            'EnergiaGenerada' => 'required|numeric',
+            'Tiempo' => 'required|numeric',
+            'Fecha' => 'required|valid_date',
             'CondicionesMeteorologicasID' => 'required|integer',
+            'FundaID' => 'required|integer',
         ])) {
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        $this->simulacionesModel->save($data);
-        return $this->respondCreated('Simulación creada exitosamente');
+        // Si la validación pasa, proceder con la inserción
+        try {
+            // Insertar la nueva simulación
+            $simulacionId = $this->simulacionesModel->insert($data);
+
+            // Verificar si la inserción fue exitosa
+            if ($simulacionId) {
+                return $this->respondCreated([
+                    'status' => 'success',
+                    'message' => 'Simulación creada exitosamente.',
+                    'data' => $data
+                ]);
+            } else {
+                return $this->failServerError("Error al crear la simulación.");
+            }
+        } catch (\Exception $e) {
+            // Manejar cualquier excepción
+            return $this->failServerError("Error al crear la simulación: " . $e->getMessage());
+        }
     }
+
 
     // Actualizar una simulación existente
     public function update($id)
     {
-        $session = session();
+        // Obtener los datos del usuario desde la sesión
+        $usuario = session()->get('userData');
 
-        // Verificar si el usuario está logueado
-        if (!$session->get('isLoggedIn')) {
-            return $this->failUnauthorized('No autenticado.');
-        }
-
-        // Verificar si el usuario tiene el rol adecuado (ej. Admin o Usuario con permisos)
-        $role = $session->get('role');
-        if ($role !== 'admin') {
+        // Verificar si el usuario tiene rol 'admin'
+        if ($usuario && $usuario->rol !== 'admin') {
             return $this->failForbidden('No tienes permiso para actualizar simulaciones.');
         }
 
-        // Verificar si la simulación existe
+        // Obtener la simulación a actualizar
         $simulacion = $this->simulacionesModel->find($id);
         if (!$simulacion) {
             return $this->failNotFound('Simulación no encontrada');
         }
 
-        // Obtener datos crudos desde el body de la petición
-        $data = $this->request->getRawInput();
+        // Obtener los datos del cuerpo de la solicitud (body)
+        $data = $this->request->getJSON(true); // `true` convierte el JSON a un array
 
-        // Validar los datos recibidos
+        // Validar los datos
         if (!$this->validate([
             'CondicionLuz' => 'required|string|max_length[50]',
             'Tiempo' => 'required|decimal',
@@ -99,28 +103,32 @@ class SimulacionesApi extends BaseController
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Actualizar la simulación con los nuevos datos
-        $this->simulacionesModel->update($id, $data);
+        // Asegurarse de que el ID esté incluido en los datos para la actualización
+        $data['ID'] = $id; // Es posible que el ID venga en el cuerpo de la solicitud, pero se asegura de que esté presente
+
+        // Actualizar la simulación
+        $updated = $this->simulacionesModel->update($id, $data);
+
+        // Verificar si la actualización fue exitosa
+        if (!$updated) {
+            return $this->failServerError('No se pudo actualizar la simulación.');
+        }
+
         return $this->respondUpdated('Simulación actualizada exitosamente');
     }
+
 
     // Eliminar una simulación
     public function delete($id)
     {
-        $session = session();
+        // Obtener los datos del usuario desde la sesión
+        $usuario = session()->get('userData');
 
-        // Verificar si el usuario está logueado
-        if (!$session->get('isLoggedIn')) {
-            return $this->failUnauthorized('No autenticado.');
-        }
-
-        // Verificar si el usuario tiene el rol adecuado (ej. Admin)
-        $role = $session->get('role');
-        if ($role !== 'admin') {
+        // Verificar si el usuario tiene rol 'admin'
+        if ($usuario->rol !== 'admin') {
             return $this->failForbidden('No tienes permiso para eliminar simulaciones.');
         }
 
-        // Verificar si la simulación existe
         $simulacion = $this->simulacionesModel->find($id);
         if (!$simulacion) {
             return $this->failNotFound('Simulación no encontrada');

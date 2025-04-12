@@ -1,7 +1,10 @@
 FROM php:8.1-apache
 
-# Instalar dependencias del sistema operativo
-RUN apt-get update && apt-get install -y \
+# Install dependencies and upgrade to the latest versions
+RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y
+
+# Install system dependencies and remove unused cache
+RUN apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
@@ -10,31 +13,39 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     curl \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
-# Instalar y habilitar extensiones de PHP
+# Install PHP extensions
 RUN docker-php-ext-install mysqli pdo_mysql gd zip intl
 
-# Habilitar mod_rewrite para Apache
+# Enable mod_rewrite for Apache
 RUN a2enmod rewrite
 
-# Copiar la configuración de Apache
+# Copy the custom Apache configuration file to the container
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
-# Establecer el directorio de trabajo
+# Add a rule to make Apache pass the Authorization header correctly
+RUN echo "SetEnvIf Authorization \"(.*)\" HTTP_AUTHORIZATION=$1" >> /etc/apache2/apache2.conf
+
+# Set the working directory
 WORKDIR /var/www/html
 
-# Copiar los archivos de la aplicación
+# Copy application files into the container
 COPY . /var/www/html
 
-# Instalar Composer
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Ejecutar composer install para instalar las dependencias de PHP automáticamente, incluyendo TCPDF
+# Run composer install to install PHP dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Cambiar los permisos para que Apache tenga acceso a los archivos
+# Change file permissions to allow Apache to access the files
 RUN chown -R www-data:www-data /var/www/html
 
-# Exponer el puerto 80
+# Expose the port the app is running on
 EXPOSE 80
+
+# Set a non-root user for better security (optional)
+RUN useradd -ms /bin/bash myuser
+USER myuser

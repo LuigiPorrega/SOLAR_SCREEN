@@ -5,7 +5,6 @@ namespace App\Controllers\Api;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\ModelosFundasModel;
 use App\Models\FundasProveedoresModel;
-use CodeIgniter\HTTP\ResponseInterface;
 
 class ModelosFundasApi extends ResourceController
 {
@@ -32,98 +31,76 @@ class ModelosFundasApi extends ResourceController
     public function view($id = null)
     {
         $modeloFunda = $this->model->find($id);
-
-        if ($modeloFunda) {
-            // Obtener los proveedores asociados al modelo de funda
-            $proveedores = $this->fundasProveedoresModel->getProveedoresByFunda($id);
-            return $this->respond([
-                'status' => 'success',
-                'data' => [
-                    'modeloFunda' => $modeloFunda,
-                    'proveedores' => $proveedores
-                ]
-            ]);
-        } else {
+        if (!$modeloFunda) {
             return $this->failNotFound("Modelo de funda no encontrado");
         }
+
+        $proveedores = $this->fundasProveedoresModel->getProveedoresByFunda($id);
+
+        return $this->respond([
+            'status' => 'success',
+            'data' => [
+                'modeloFunda' => $modeloFunda,
+                'proveedores' => $proveedores
+            ]
+        ]);
     }
 
     // POST /api/modelosFundas
     public function create()
     {
-        $session = session();
-
-        // Verifica si el usuario está logueado
-        if (!$session->get('isLoggedIn')) {
-            return $this->failUnauthorized('No autenticado.');
-        }
-
         $data = $this->request->getPost();
 
-        // Validar datos
+        // Validación con ProveedorID obligatorio
         if (!$this->validate([
             'Nombre' => 'required|min_length[3]|max_length[255]',
             'Tamaño' => 'required|min_length[3]|max_length[100]',
             'CapacidadCarga' => 'required|numeric',
             'Expansible' => 'required|in_list[0,1]',
             'TipoFunda' => 'required|min_length[3]|max_length[100]',
+            'ProveedorID' => 'required|array|min_length[1]', // Asegura que sea obligatorio
         ])) {
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Guardar el nuevo modelo de funda
-        $modelData = [
-            'Nombre' => $data['Nombre'],
-            'Tamaño' => $data['Tamaño'],
-            'CapacidadCarga' => $data['CapacidadCarga'],
-            'Expansible' => $data['Expansible'],
-            'TipoFunda' => $data['TipoFunda'],
-            'FechaCreacion' => date('Y-m-d H:i:s')
-        ];
+        // Establecer valores predeterminados si no están en la solicitud
+        $data['FechaCreacion'] = date('Y-m-d H:i:s');
+        $data['UsuarioID'] = session()->get('userId') ?: 1; // Si no hay sesión, usar un valor por defecto
 
-        $this->model->insert($modelData);
+        // Insertar el nuevo modelo de funda
+        $this->model->insert($data);
         $newModelId = $this->model->insertID();
 
-        // Asociar proveedores (si existen)
+        // Relacionar la nueva funda con los proveedores especificados
         if (!empty($data['ProveedorID'])) {
-            $dataRelaciones = [];
+            $relaciones = [];
             foreach ($data['ProveedorID'] as $proveedorID) {
-                $dataRelaciones[] = [
+                $relaciones[] = [
                     'FundaID' => $newModelId,
                     'ProveedorID' => $proveedorID
                 ];
             }
-            $this->fundasProveedoresModel->insertBatch($dataRelaciones);
+            $this->fundasProveedoresModel->insertBatch($relaciones); // Insertar en la tabla intermedia
         }
 
         return $this->respondCreated([
             'status' => 'success',
             'message' => 'Modelo de funda creado correctamente',
-            'data' => $modelData
+            'data' => $data
         ]);
     }
 
     // PUT /api/modelosFundas/{id}
     public function update($id = null)
     {
-        $session = session();
-        $role = $session->get('role');
-        $userId = $session->get('userId');
-
-        // Verificar si el modelo de funda existe
         $modeloFunda = $this->model->find($id);
         if (!$modeloFunda) {
             return $this->failNotFound("Modelo de funda no encontrado");
         }
 
-        // Verificar si el usuario tiene permisos para actualizar
-        if ($role !== 'admin' && $modeloFunda['UsuarioID'] !== $userId) {
-            return $this->failForbidden('No tienes permiso para actualizar este modelo de funda.');
-        }
+        $data = $this->request->getJSON(true);
 
-        $data = $this->request->getRawInput();
-
-        // Validar los datos
+        // Validación
         if (!$this->validate([
             'Nombre' => 'required|min_length[3]|max_length[255]',
             'Tamaño' => 'required|min_length[3]|max_length[100]',
@@ -134,60 +111,42 @@ class ModelosFundasApi extends ResourceController
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        $modelData = [
-            'Nombre' => $data['Nombre'],
-            'Tamaño' => $data['Tamaño'],
-            'CapacidadCarga' => $data['CapacidadCarga'],
-            'Expansible' => $data['Expansible'],
-            'TipoFunda' => $data['TipoFunda'],
-        ];
+        // Actualizar la funda
+        $this->model->update($id, $data);
 
-        $this->model->update($id, $modelData);
-
-        // Actualizar proveedores
-        if (!empty($data['ProveedorID'])) {
-            // Eliminar las relaciones anteriores
+        // Actualizar la relación con los proveedores
+        if (isset($data['ProveedorID']) && !empty($data['ProveedorID'])) {
+            // Eliminar las relaciones existentes
             $this->fundasProveedoresModel->where('FundaID', $id)->delete();
 
-            // Insertar nuevas relaciones
-            $dataRelaciones = [];
+            // Insertar las nuevas relaciones
+            $relaciones = [];
             foreach ($data['ProveedorID'] as $proveedorID) {
-                $dataRelaciones[] = [
+                $relaciones[] = [
                     'FundaID' => $id,
                     'ProveedorID' => $proveedorID
                 ];
             }
-            $this->fundasProveedoresModel->insertBatch($dataRelaciones);
+            $this->fundasProveedoresModel->insertBatch($relaciones);
         }
 
         return $this->respondUpdated([
             'status' => 'success',
             'message' => 'Modelo de funda actualizado correctamente',
-            'data' => $modelData
+            'data' => $data
         ]);
     }
 
     // DELETE /api/modelosFundas/{id}
     public function delete($id = null)
     {
-        $session = session();
-        $role = $session->get('role');
-
-        // Verificar si el modelo de funda existe
         $modeloFunda = $this->model->find($id);
         if (!$modeloFunda) {
             return $this->failNotFound("Modelo de funda no encontrado");
         }
 
-        // Verificar si el usuario tiene permisos para eliminar
-        if ($role !== 'admin') {
-            return $this->failForbidden('Solo los administradores pueden eliminar modelos de funda.');
-        }
-
-        // Eliminar las relaciones con proveedores
+        // Eliminar las relaciones en la tabla intermedia
         $this->fundasProveedoresModel->where('FundaID', $id)->delete();
-
-        // Eliminar el modelo de funda
         $this->model->delete($id);
 
         return $this->respondDeleted([

@@ -53,7 +53,7 @@ class Simulaciones extends BaseController
     public function index()
     {
         // Verificamos si el tiempo fue enviado por el usuario
-        $tiempo = $this->request->getPost('tiempo');
+        $tiempo = $this->request->getPost('tiempo') ?? 60;
 
         // Validamos que el tiempo sea un número y mayor que 0
         if (!is_numeric($tiempo) || $tiempo <= 0) {
@@ -237,7 +237,7 @@ class Simulaciones extends BaseController
             'Tiempo' => 'required|decimal',
             'CondicionesMeteorologicasID' => 'required|integer', // Validamos que la condición meteorológica se pase correctamente
         ])) {
-            return redirect()->to(base_url('admin/simulaciones'))->with('validation', $this->validator);
+            return redirect()->to(base_url('admin/simulaciones'))->with('success', $this->validator);
         }
 
         // Calcular la energía generada
@@ -295,7 +295,7 @@ class Simulaciones extends BaseController
         }
 
         // Obtener las condiciones meteorológicas relacionadas
-        $condicionesMeteorologicas = $this->condicionesMeteorologicasModel->find($simulacion['CondicionesMeteorologicasID']);
+        $condicionesMeteorologicas = $this->condicionesMeteorologicasModel->find($simulacion->CondicionesMeteorologicasID);
         if (!$condicionesMeteorologicas) {
             throw new PageNotFoundException("No se encontraron las condiciones meteorológicas para esta simulación.");
         }

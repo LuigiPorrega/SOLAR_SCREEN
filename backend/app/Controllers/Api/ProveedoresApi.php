@@ -5,7 +5,6 @@ namespace App\Controllers\Api;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\ProveedoresModel;
 use App\Models\FundasProveedoresModel;
-use CodeIgniter\HTTP\ResponseInterface;
 
 class ProveedoresApi extends ResourceController
 {
@@ -32,12 +31,10 @@ class ProveedoresApi extends ResourceController
     public function view($id = null)
     {
         $proveedor = $this->proveedoresModel->find($id);
-
         if (!$proveedor) {
             return $this->failNotFound("Proveedor no encontrado");
         }
 
-        // Obtener las fundas asociadas a este proveedor
         $fundas = $this->fundasProveedoresModel->getFundasByProveedor($id);
 
         return $this->respond([
@@ -52,38 +49,24 @@ class ProveedoresApi extends ResourceController
     // POST /api/proveedores
     public function create()
     {
-        $session = session();
-
-        // Verifica si el usuario está logueado
-        if (!$session->get('isLoggedIn')) {
-            return $this->failUnauthorized('No autenticado.');
-        }
-
-        // Verifica si el usuario tiene el rol adecuado (ej. Admin o Gerente)
-        $role = $session->get('role');
-        if ($role !== 'admin') {
-            return $this->failForbidden('No tienes permiso para crear proveedores.');
-        }
-
         $data = $this->request->getPost();
 
-        // Validar los datos
+        // Validar la entrada
         if (!$this->validate([
             'Nombre' => 'required|min_length[3]|max_length[255]',
             'Pais' => 'required|min_length[3]|max_length[100]',
             'ContactoNombre' => 'required|min_length[3]|max_length[255]',
-            'ContactoTelefono' => 'required|regex_match[/^\+[0-9]{1,4}[0-9]{7,15}$/]', // Prefijo internacional y 7-15 dígitos
+            'ContactoTelefono' => 'required|regex_match[/^\+[0-9]{1,4}[0-9]{7,15}$/]',
             'ContactoEmail' => 'required|valid_email',
             'SitioWeb' => 'permit_empty|valid_url',
             'Direccion' => 'required|min_length[3]|max_length[255]',
             'Descripcion' => 'required|min_length[10]',
-            'FundaID' => 'required|is_array', // Validar que sea un array
+            'FundaID' => 'required|is_array',
         ])) {
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Procesar los datos del proveedor
-        $data = [
+        $processedData = [
             'Nombre' => $data['Nombre'],
             'Pais' => $data['Pais'],
             'ContactoNombre' => $data['ContactoNombre'],
@@ -96,11 +79,10 @@ class ProveedoresApi extends ResourceController
             'Activo' => 1,
         ];
 
-        // Guardar el proveedor
-        $proveedorID = $this->proveedoresModel->insert($data);
+        $proveedorID = $this->proveedoresModel->insert($processedData);
         $newProveedor = $this->proveedoresModel->find($proveedorID);
 
-        // Asociar las fundas seleccionadas
+        // Relacionar proveedores con fundas
         $fundasSeleccionadas = $data['FundaID'] ?? [];
         if (!empty($fundasSeleccionadas)) {
             $dataRelaciones = [];
@@ -123,28 +105,25 @@ class ProveedoresApi extends ResourceController
     // PUT /api/proveedores/{id}
     public function update($id = null)
     {
-        $session = session();
-        $role = $session->get('role');
-
-        // Verificar si el proveedor existe
         $proveedor = $this->proveedoresModel->find($id);
         if (!$proveedor) {
             return $this->failNotFound("Proveedor no encontrado");
         }
 
-        // Verificar si el usuario tiene permisos para actualizar
-        if ($role !== 'admin') {
-            return $this->failForbidden('Solo los administradores pueden actualizar proveedores.');
+        // Obtener datos de la solicitud como objeto JSON
+        $data = $this->request->getJSON();  // Se usa getJSON en lugar de getPost()
+
+        // Verificar si los datos están presentes
+        if (empty($data)) {
+            return $this->failValidationErrors('No se recibieron datos para actualizar');
         }
 
-        $data = $this->request->getRawInput();
-
-        // Validar los datos
+        // Validar la entrada
         if (!$this->validate([
             'Nombre' => 'required|min_length[3]|max_length[255]',
             'Pais' => 'required|min_length[3]|max_length[100]',
             'ContactoNombre' => 'required|min_length[3]|max_length[255]',
-            'ContactoTelefono' => 'required|regex_match[/^\+[0-9]{1,4}[0-9]{7,15}$/]', // Prefijo internacional y 7-15 dígitos
+            'ContactoTelefono' => 'required|regex_match[/^\+[0-9]{1,4}[0-9]{7,15}$/]',
             'ContactoEmail' => 'required|valid_email',
             'SitioWeb' => 'permit_empty|valid_url',
             'Direccion' => 'required|min_length[3]|max_length[255]',
@@ -153,33 +132,45 @@ class ProveedoresApi extends ResourceController
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Procesar los datos
-        $data = [
-            'Nombre' => $data['Nombre'],
-            'Pais' => $data['Pais'],
-            'ContactoNombre' => $data['ContactoNombre'],
-            'ContactoTelefono' => preg_replace('/[^0-9]/', '', $data['ContactoTelefono']),
-            'ContactoEmail' => strtolower($data['ContactoEmail']),
-            'SitioWeb' => !empty($data['SitioWeb']) ? (preg_match('#^https?://#', $data['SitioWeb']) ? $data['SitioWeb'] : 'https://' . $data['SitioWeb']) : null,
-            'Direccion' => $data['Direccion'],
-            'Descripcion' => $data['Descripcion'],
+        // Procesar los datos antes de guardarlos
+        $processedData = [
+            'Nombre' => $data->Nombre,  // Acceso usando la notación de objeto
+            'Pais' => $data->Pais,
+            'ContactoNombre' => $data->ContactoNombre,
+            'ContactoTelefono' => preg_replace('/[^0-9+]/', '', $data->ContactoTelefono),  // Eliminamos caracteres no numéricos
+            'ContactoEmail' => strtolower($data->ContactoEmail),
+            'SitioWeb' => !empty($data->SitioWeb) ? (preg_match('#^https?://#', $data->SitioWeb) ? $data->SitioWeb : 'https://' . $data->SitioWeb) : null,
+            'Direccion' => $data->Direccion,
+            'Descripcion' => $data->Descripcion,
         ];
 
-        // Actualizar el proveedor
-        $this->proveedoresModel->update($id, $data);
+        // Actualizar los datos del proveedor
+        $this->proveedoresModel->update($id, $processedData);
 
-        // Actualizar fundas asociadas
-        $fundasSeleccionadas = $data['FundaID'] ?? [];
-        $this->fundasProveedoresModel->deleteFundasByProveedor($id, $fundasSeleccionadas);
+        // Verificar que FundaID esté presente y sea un array no vacío
+        $fundasSeleccionadas = !empty($data->FundaID) && is_array($data->FundaID) ? $data->FundaID : [];
 
-        $dataRelaciones = [];
-        foreach ($fundasSeleccionadas as $fundaID) {
-            $dataRelaciones[] = [
-                'FundaID' => $fundaID,
-                'ProveedorID' => $id
-            ];
+        // Si no hay fundas seleccionadas, evitamos la inserción
+        if (!empty($fundasSeleccionadas)) {
+            // Eliminar relaciones anteriores de fundas para este proveedor
+            $this->fundasProveedoresModel->deleteFundasByProveedor($id, $fundasSeleccionadas);
+
+            // Preparar datos para insertar
+            $dataRelaciones = [];
+            foreach ($fundasSeleccionadas as $fundaID) {
+                $dataRelaciones[] = [
+                    'FundaID' => $fundaID,
+                    'ProveedorID' => $id
+                ];
+            }
+
+            // Si el array de relaciones no está vacío, hacemos el insert
+            if (!empty($dataRelaciones)) {
+                $this->fundasProveedoresModel->insertBatch($dataRelaciones);
+            } else {
+                return $this->failValidationErrors('No se proporcionaron fundas válidas.');
+            }
         }
-        $this->fundasProveedoresModel->insertBatch($dataRelaciones);
 
         return $this->respondUpdated([
             'status' => 'success',
@@ -187,27 +178,16 @@ class ProveedoresApi extends ResourceController
         ]);
     }
 
+
     // DELETE /api/proveedores/{id}
     public function delete($id = null)
     {
-        $session = session();
-        $role = $session->get('role');
-
-        // Verificar si el proveedor existe
         $proveedor = $this->proveedoresModel->find($id);
         if (!$proveedor) {
             return $this->failNotFound("Proveedor no encontrado");
         }
 
-        // Verificar si el usuario tiene permisos para eliminar
-        if ($role !== 'admin') {
-            return $this->failForbidden('Solo los administradores pueden eliminar proveedores.');
-        }
-
-        // Eliminar TODAS las relaciones con fundas (pasamos array vacío)
         $this->fundasProveedoresModel->deleteFundasByProveedor($id, []);
-
-        // Eliminar proveedor
         $this->proveedoresModel->delete($id);
 
         return $this->respondDeleted([
