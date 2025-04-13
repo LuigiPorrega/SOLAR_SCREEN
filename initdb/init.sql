@@ -121,6 +121,8 @@ CREATE TABLE IF NOT EXISTS ModelosFundas (
     CapacidadCarga DECIMAL(10, 2) NOT NULL,       -- Capacidad de carga en mAh o similar
     Expansible BOOLEAN DEFAULT FALSE,             -- Si la funda puede expandirse (TRUE o FALSE)
     ImagenURL VARCHAR(255),                       -- Ruta de la imagen de la funda
+    Cantidad INT DEFAULT 0,                       
+    Precio DECIMAL(10,2) NOT NULL, 
     TipoFunda ENUM('fija', 'expandible') NOT NULL,-- Tipo de funda (fija o expandible)
     FechaCreacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -165,6 +167,21 @@ CREATE TABLE IF NOT EXISTS Simulaciones (
     FOREIGN KEY (FundaID) REFERENCES ModelosFundas(ID) ON DELETE CASCADE,
     INDEX idx_simulaciones_combo (UsuarioID, CondicionLuz)
 );
+
+--Tabla Carrito
+CREATE TABLE Carrito (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    UsuarioId INT NOT NULL,
+    ModelosFundasId INT NOT NULL,
+    Cantidad INT NOT NULL DEFAULT 1,
+    Precio DECIMAL(10,2) NOT NULL,
+    Creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_carrito_usuario FOREIGN KEY (UsuarioId) REFERENCES Usuarios(ID) ON DELETE CASCADE,
+    CONSTRAINT fk_carrito_modelo FOREIGN KEY (ModelosFundasId) REFERENCES ModelosFundas(ID) ON DELETE CASCADE,
+    CONSTRAINT uc_usuario_modelo UNIQUE (UsuarioId, ModelosFundasId)
+);
+
 
 -- ======================================
 -- 4. Procedimientos Almacenados
@@ -259,93 +276,96 @@ VALUES
   ('2025-03-23', 410, 31, 50, 20);  -- Día soleado con viento moderado
 
 
--- Inserción de modelos de fundas fijas con rutas de imagen 
-INSERT IGNORE INTO ModelosFundas (Nombre, Tamaño, CapacidadCarga, Expansible, ImagenURL, TipoFunda) VALUES
-  ('A ADDTOP Cargador Solar', '15x8 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F1.jpeg', 'fija'),
-  ('Saraupup Cargador Solar', '15x8 cm', 38800, FALSE, 'assets/imagenes/fundas_fijas/F2.jpeg', 'fija'),
-  ('Hiluckey Power Bank Solar', '17x9 cm', 26800, FALSE, 'assets/imagenes/fundas_fijas/F3.jpeg', 'fija'),
-  ('Riapow Power Bank Solar', '16x9 cm', 27000, FALSE, 'assets/imagenes/fundas_fijas/F4.jpeg', 'fija'),
-  ('Goal Zero Sherpa 100AC', '24x10 cm', 25600, FALSE, 'assets/imagenes/fundas_fijas/F5.jpeg', 'fija'),
-  ('Anker PowerCore Solar 20000', '15x8 cm', 20000, FALSE, 'assets/imagenes/fundas_fijas/F6.jpeg', 'fija'),
-  ('RAVPower Solar Power Bank', '16x9 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F7.jpeg', 'fija'),
-  ('Nekteck Solar Charger', '18x9 cm', 22000, FALSE, 'assets/imagenes/fundas_fijas/F8.jpeg', 'fija'),
-  ('Blavor Solar Power Bank', '18x10 cm', 26800, FALSE, 'assets/imagenes/fundas_fijas/F9.jpeg', 'fija'),
-  ('Aeiusny Solar Power Bank', '16x8 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F10.jpeg', 'fija'),
-  ('Maxoak K2 Solar Power Bank', '21x11 cm', 50000, FALSE, 'assets/imagenes/fundas_fijas/F11.jpeg', 'fija'),
-  ('X-DRAGON Solar Power Bank', '16x9 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F12.jpeg', 'fija'),
-  ('Solpex Power Bank Solar', '17x8 cm', 30000, FALSE, 'assets/imagenes/fundas_fijas/F13.jpeg', 'fija'),
-  ('Chgeek Solar Power Bank', '17x8 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F14.jpeg', 'fija'),
-  ('ECO-WORTHY Solar Power Bank', '15x8 cm', 26800, FALSE, 'assets/imagenes/fundas_fijas/F15.jpeg', 'fija'),
-  ('Poweradd Apollo 2 Solar', '15x7 cm', 20000, FALSE, 'assets/imagenes/fundas_fijas/F16.jpeg', 'fija'),
-  ('iMuto Portable Solar Charger', '16x9 cm', 30000, FALSE, 'assets/imagenes/fundas_fijas/F17.jpeg', 'fija'),
-  ('Tacklife Solar Power Bank', '18x9 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F18.jpeg', 'fija'),
-  ('Leechi Solar Power Bank', '16x8 cm', 24000, FALSE, 'assets/imagenes/fundas_fijas/F19.jpeg', 'fija'),
-  ('Vinsic Solar Power Bank', '15x7 cm', 20000, FALSE, 'assets/imagenes/fundas_fijas/F20.jpeg', 'fija'),
-  ('Varta Power Bank Solar', '17x9 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F21.jpeg', 'fija'),
-  ('Intocircuit Solar Power Bank', '15x8 cm', 26000, FALSE, 'assets/imagenes/fundas_fijas/F22.jpeg', 'fija'),
-  ('Tera Grand Solar Power Bank', '17x8 cm', 27000, FALSE, 'assets/imagenes/fundas_fijas/F23.jpeg', 'fija'),
-  ('Zeefo Solar Power Bank', '16x9 cm', 23000, FALSE, 'assets/imagenes/fundas_fijas/F24.jpeg', 'fija'),
-  ('Oukitel Solar Power Bank', '19x10 cm', 30000, FALSE, 'assets/imagenes/fundas_fijas/F25.jpeg', 'fija'),
-  ('Vintar Solar Charger', '16x9 cm', 27000, FALSE, 'assets/imagenes/fundas_fijas/F26.jpeg', 'fija'),
-  ('Tommy Solar Power Bank', '15x8 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F27.jpeg', 'fija'),
-  ('Yunseity Solar Power Bank', '15x8 cm', 22000, FALSE, 'assets/imagenes/fundas_fijas/F28.jpeg', 'fija'),
-  ('DOKO Solar Power Bank', '17x9 cm', 28000, FALSE, 'assets/imagenes/fundas_fijas/F29.jpeg', 'fija'),
-  ('Awei Solar Charger', '16x9 cm', 24000, FALSE, 'assets/imagenes/fundas_fijas/F30.jpeg', 'fija');
+-- Inserción de modelos de fundas fijas 
+INSERT IGNORE INTO ModelosFundas 
+(Nombre, Tamaño, CapacidadCarga, Expansible, ImagenURL, TipoFunda, Cantidad, Precio) 
+VALUES
+  ('A ADDTOP Cargador Solar', '15x8 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F1.jpeg', 'fija', 15, 39.99),
+  ('Saraupup Cargador Solar', '15x8 cm', 38800, FALSE, 'assets/imagenes/fundas_fijas/F2.jpeg', 'fija', 10, 49.99),
+  ('Hiluckey Power Bank Solar', '17x9 cm', 26800, FALSE, 'assets/imagenes/fundas_fijas/F3.jpeg', 'fija', 12, 45.50),
+  ('Riapow Power Bank Solar', '16x9 cm', 27000, FALSE, 'assets/imagenes/fundas_fijas/F4.jpeg', 'fija', 8, 42.00),
+  ('Goal Zero Sherpa 100AC', '24x10 cm', 25600, FALSE, 'assets/imagenes/fundas_fijas/F5.jpeg', 'fija', 5, 109.90),
+  ('Anker PowerCore Solar 20000', '15x8 cm', 20000, FALSE, 'assets/imagenes/fundas_fijas/F6.jpeg', 'fija', 50, 66.90),
+  ('RAVPower Solar Power Bank', '16x9 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F7.jpeg', 'fija', 30, 49.99),
+  ('Nekteck Solar Charger', '18x9 cm', 22000, FALSE, 'assets/imagenes/fundas_fijas/F8.jpeg', 'fija', 22, 52.99),
+  ('Blavor Solar Power Bank', '18x10 cm', 26800, FALSE, 'assets/imagenes/fundas_fijas/F9.jpeg', 'fija', 30, 125.00),
+  ('Aeiusny Solar Power Bank', '16x8 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F10.jpeg', 'fija', 21, 120.35),
+  ('Maxoak K2 Solar Power Bank', '21x11 cm', 50000, FALSE, 'assets/imagenes/fundas_fijas/F11.jpeg', 'fija', 60, 49.99),
+  ('X-DRAGON Solar Power Bank', '16x9 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F12.jpeg', 'fija', 55, 98.99),
+  ('Solpex Power Bank Solar', '17x8 cm', 30000, FALSE, 'assets/imagenes/fundas_fijas/F13.jpeg', 'fija', 28, 57.25),
+  ('Chgeek Solar Power Bank', '17x8 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F14.jpeg', 'fija', 26, 64.75),
+  ('ECO-WORTHY Solar Power Bank', '15x8 cm', 26800, FALSE, 'assets/imagenes/fundas_fijas/F15.jpeg', 'fija', 32, 59.90),
+  ('Poweradd Apollo 2 Solar', '15x7 cm', 20000, FALSE, 'assets/imagenes/fundas_fijas/F16.jpeg', 'fija', 18, 44.99),
+  ('iMuto Portable Solar Charger', '16x9 cm', 30000, FALSE, 'assets/imagenes/fundas_fijas/F17.jpeg', 'fija', 14, 79.99),
+  ('Tacklife Solar Power Bank', '18x9 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F18.jpeg', 'fija', 20, 51.50),
+  ('Leechi Solar Power Bank', '16x8 cm', 24000, FALSE, 'assets/imagenes/fundas_fijas/F19.jpeg', 'fija', 11, 48.00),
+  ('Vinsic Solar Power Bank', '15x7 cm', 20000, FALSE, 'assets/imagenes/fundas_fijas/F20.jpeg', 'fija', 17, 39.99),
+  ('Varta Power Bank Solar', '17x9 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F21.jpeg', 'fija', 19, 47.00),
+  ('Intocircuit Solar Power Bank', '15x8 cm', 26000, FALSE, 'assets/imagenes/fundas_fijas/F22.jpeg', 'fija', 23, 61.80),
+  ('Tera Grand Solar Power Bank', '17x8 cm', 27000, FALSE, 'assets/imagenes/fundas_fijas/F23.jpeg', 'fija', 14, 58.00),
+  ('Zeefo Solar Power Bank', '16x9 cm', 23000, FALSE, 'assets/imagenes/fundas_fijas/F24.jpeg', 'fija', 13, 53.75),
+  ('Oukitel Solar Power Bank', '19x10 cm', 30000, FALSE, 'assets/imagenes/fundas_fijas/F25.jpeg', 'fija', 9, 68.90),
+  ('Vintar Solar Charger', '16x9 cm', 27000, FALSE, 'assets/imagenes/fundas_fijas/F26.jpeg', 'fija', 7, 50.50),
+  ('Tommy Solar Power Bank', '15x8 cm', 25000, FALSE, 'assets/imagenes/fundas_fijas/F27.jpeg', 'fija', 15, 47.30),
+  ('Yunseity Solar Power Bank', '15x8 cm', 22000, FALSE, 'assets/imagenes/fundas_fijas/F28.jpeg', 'fija', 16, 42.75),
+  ('DOKO Solar Power Bank', '17x9 cm', 28000, FALSE, 'assets/imagenes/fundas_fijas/F29.jpeg', 'fija', 13, 60.40),
+  ('Awei Solar Charger', '16x9 cm', 24000, FALSE, 'assets/imagenes/fundas_fijas/F30.jpeg', 'fija', 18, 55.99);
 
 
--- Inserción de modelos de fundas expandibles con rutas de imagen corregidas
-INSERT IGNORE INTO ModelosFundas (Nombre, Tamaño, CapacidadCarga, Expansible, ImagenURL, TipoFunda) VALUES
-  ('FEELLE Cargador Solar Power Bank', '20x10 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E1.jpeg', 'expandible'),
-  ('Riapow Power Bank Solar', '20x10 cm', 27000, TRUE, 'assets/imagenes/fundas_expandibles/E2.jpeg', 'expandible'),
-  ('Hiluckey 15W Power Bank Solar', '20x10 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E3.jpeg', 'expandible'),
-  ('Mesuvida 60W Solar Panel', '30x15 cm', 50000, TRUE, 'assets/imagenes/fundas_expandibles/E4.jpeg', 'expandible'),
-  ('Suaoki Solar Power Bank', '18x8 cm', 20000, TRUE, 'assets/imagenes/fundas_expandibles/E5.jpeg', 'expandible'),
-  ('ECO-WORTHY Solar Charger', '25x12 cm', 35000, TRUE, 'assets/imagenes/fundas_expandibles/E6.jpeg', 'expandible'),
-  ('Blavor Solar Power Bank', '18x9 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E7.jpeg', 'expandible'),
-  ('Nekteck Solar Charger', '19x10 cm', 22000, TRUE, 'assets/imagenes/fundas_expandibles/E8.jpeg', 'expandible'),
-  ('Aoyama Solar Power Bank', '18x8 cm', 27000, TRUE, 'assets/imagenes/fundas_expandibles/E9.jpeg', 'expandible'),
-  ('Anker PowerCore Solar 20000', '15x8 cm', 20000, TRUE, 'assets/imagenes/fundas_expandibles/E10.jpeg', 'expandible'),
-  ('RAVPower Solar Power Bank', '19x9 cm', 24000, TRUE, 'assets/imagenes/fundas_expandibles/E11.jpeg', 'expandible'),
-  ('Goal Zero Yeti Solar Generator', '50x25 cm', 100000, TRUE, 'assets/imagenes/fundas_expandibles/E12.jpeg', 'expandible'),
-  ('Outxe Solar Power Bank', '20x10 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E13.jpeg', 'expandible'),
-  ('X-DRAGON Solar Power Bank', '18x8 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E14.jpeg', 'expandible'),
-  ('Tacklife Solar Power Bank', '16x8 cm', 24000, TRUE, 'assets/imagenes/fundas_expandibles/E15.jpeg', 'expandible'),
-  ('Tera Grand Solar Power Bank', '20x10 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E16.jpeg', 'expandible'),
-  ('Maxoak Solar Power Bank', '21x11 cm', 50000, TRUE, 'assets/imagenes/fundas_expandibles/E17.jpeg', 'expandible'),
-  ('Solpex Solar Charger', '18x9 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E18.jpeg', 'expandible'),
-  ('Oukitel Solar Power Bank', '19x10 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E19.jpeg', 'expandible'),
-  ('Tommy Solar Power Bank', '16x8 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E20.jpeg', 'expandible'),
-  ('Vinsic Solar Power Bank', '18x9 cm', 22000, TRUE, 'assets/imagenes/fundas_expandibles/E21.jpeg', 'expandible'),
-  ('DOKO Solar Power Bank', '16x8 cm', 24000, TRUE, 'assets/imagenes/fundas_expandibles/E22.jpeg', 'expandible'),
-  ('Yunseity Solar Power Bank', '15x7 cm', 22000, TRUE, 'assets/imagenes/fundas_expandibles/E23.jpeg', 'expandible'),
-  ('Leechi Solar Power Bank', '18x9 cm', 23000, TRUE, 'assets/imagenes/fundas_expandibles/E24.jpeg', 'expandible'),
-  ('Chgeek Solar Power Bank', '17x8 cm', 26000, TRUE, 'assets/imagenes/fundas_expandibles/E25.jpeg', 'expandible'),
-  ('Awei Solar Charger', '16x9 cm', 24000, TRUE, 'assets/imagenes/fundas_expandibles/E26.jpeg', 'expandible'),
-  ('ECO-WORTHY Solar Power Bank', '20x10 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E27.jpeg', 'expandible'),
-  ('Zeefo Solar Power Bank', '18x9 cm', 23000, TRUE, 'assets/imagenes/fundas_expandibles/E28.jpeg', 'expandible'),
-  ('Varta Solar Power Bank', '17x8 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E29.jpeg', 'expandible'),
-  ('Intocircuit Solar Power Bank', '16x8 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E30.jpeg', 'expandible'),
-  ('Blavor Solar Charger', '20x10 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E31.jpeg', 'expandible');
+-- Inserción de modelos de fundas expandibles 
+INSERT IGNORE INTO ModelosFundas 
+(Nombre, Tamaño, CapacidadCarga, Expansible, ImagenURL, TipoFunda, Cantidad, Precio) 
+VALUES
+  ('FEELLE Cargador Solar Power Bank', '20x10 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E1.jpeg', 'expandible', 7, 59.99),
+  ('Riapow Power Bank Solar', '20x10 cm', 27000, TRUE, 'assets/imagenes/fundas_expandibles/E2.jpeg', 'expandible', 6, 54.50),
+  ('Hiluckey 15W Power Bank Solar', '20x10 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E3.jpeg', 'expandible', 10, 58.75),
+  ('Mesuvida 60W Solar Panel', '30x15 cm', 50000, TRUE, 'assets/imagenes/fundas_expandibles/E4.jpeg', 'expandible', 3, 139.00),
+  ('Suaoki Solar Power Bank', '18x8 cm', 20000, TRUE, 'assets/imagenes/fundas_expandibles/E5.jpeg', 'expandible', 9, 49.95),
+  ('ECO-WORTHY Solar Charger', '25x12 cm', 35000, TRUE, 'assets/imagenes/fundas_expandibles/E6.jpeg', 'expandible', 4, 72.00),
+  ('Blavor Solar Power Bank', '18x9 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E7.jpeg', 'expandible', 8, 61.50),
+  ('Nekteck Solar Charger', '19x10 cm', 22000, TRUE, 'assets/imagenes/fundas_expandibles/E8.jpeg', 'expandible', 12, 55.00),
+  ('Aoyama Solar Power Bank', '18x8 cm', 27000, TRUE, 'assets/imagenes/fundas_expandibles/E9.jpeg', 'expandible', 7, 60.00),
+  ('Anker PowerCore Solar 20000', '15x8 cm', 20000, TRUE, 'assets/imagenes/fundas_expandibles/E10.jpeg', 'expandible', 11, 66.90),
+  ('RAVPower Solar Power Bank', '19x9 cm', 24000, TRUE, 'assets/imagenes/fundas_expandibles/E11.jpeg', 'expandible', 10, 63.00),
+  ('Goal Zero Yeti Solar Generator', '50x25 cm', 100000, TRUE, 'assets/imagenes/fundas_expandibles/E12.jpeg', 'expandible', 2, 299.99),
+  ('Outxe Solar Power Bank', '20x10 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E13.jpeg', 'expandible', 6, 68.75),
+  ('X-DRAGON Solar Power Bank', '18x8 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E14.jpeg', 'expandible', 9, 64.00),
+  ('Tacklife Solar Power Bank', '16x8 cm', 24000, TRUE, 'assets/imagenes/fundas_expandibles/E15.jpeg', 'expandible', 8, 62.20),
+  ('Tera Grand Solar Power Bank', '20x10 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E16.jpeg', 'expandible', 7, 60.80),
+  ('Maxoak Solar Power Bank', '21x11 cm', 50000, TRUE, 'assets/imagenes/fundas_expandibles/E17.jpeg', 'expandible', 6, 84.50),
+  ('Solpex Solar Charger', '18x9 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E18.jpeg', 'expandible', 10, 66.30),
+  ('Oukitel Solar Power Bank', '19x10 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E19.jpeg', 'expandible', 5, 72.99),
+  ('Tommy Solar Power Bank', '16x8 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E20.jpeg', 'expandible', 9, 60.50),
+  ('Vinsic Solar Power Bank', '18x9 cm', 22000, TRUE, 'assets/imagenes/fundas_expandibles/E21.jpeg', 'expandible', 11, 54.99),
+  ('DOKO Solar Power Bank', '16x8 cm', 24000, TRUE, 'assets/imagenes/fundas_expandibles/E22.jpeg', 'expandible', 13, 58.80),
+  ('Yunseity Solar Power Bank', '15x7 cm', 22000, TRUE, 'assets/imagenes/fundas_expandibles/E23.jpeg', 'expandible', 10, 52.00),
+  ('Leechi Solar Power Bank', '18x9 cm', 23000, TRUE, 'assets/imagenes/fundas_expandibles/E24.jpeg', 'expandible', 6, 57.10),
+  ('Chgeek Solar Power Bank', '17x8 cm', 26000, TRUE, 'assets/imagenes/fundas_expandibles/E25.jpeg', 'expandible', 14, 60.25),
+  ('Awei Solar Charger', '16x9 cm', 24000, TRUE, 'assets/imagenes/fundas_expandibles/E26.jpeg', 'expandible', 12, 59.00),
+  ('ECO-WORTHY Solar Power Bank', '20x10 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E27.jpeg', 'expandible', 5, 61.90),
+  ('Zeefo Solar Power Bank', '18x9 cm', 23000, TRUE, 'assets/imagenes/fundas_expandibles/E28.jpeg', 'expandible', 6, 58.00),
+  ('Varta Solar Power Bank', '17x8 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E29.jpeg', 'expandible', 10, 64.75),
+  ('Intocircuit Solar Power Bank', '16x8 cm', 25000, TRUE, 'assets/imagenes/fundas_expandibles/E30.jpeg', 'expandible', 8, 60.00),
+  ('Blavor Solar Charger', '20x10 cm', 30000, TRUE, 'assets/imagenes/fundas_expandibles/E31.jpeg', 'expandible', 10, 69.90);
 
 
 -- Inserción de proveedores
 INSERT IGNORE INTO Proveedores (
   Nombre, Pais, ContactoNombre, ContactoTelefono, ContactoEmail, SitioWeb, Direccion, Descripcion, FechaCreacion, Activo
 ) VALUES
-  ('Proveedora Solar 1', 'España', 'Juan Pérez', '912345678', 'contacto@solar1.com', 'https://solar1.com', 'Calle Falsa 123, Madrid', 'Proveedor líder en paneles solares', NOW(), TRUE),
-  ('Proveedora Solar 2', 'China', 'Li Wei', '861234567890', 'contacto@solar2.com', 'https://solar2.com', 'Calle Real 456, Pekín', 'Proveedor especializado en paneles solares fotovoltaicos', NOW(), TRUE),
-  ('Proveedora Solar 3', 'EE. UU.', 'Michael Johnson', '3051234567', 'contacto@solar3.com', 'https://solar3.com', '1234 Sunshine Blvd, Florida', 'Proveedor con más de 20 años de experiencia', NOW(), TRUE),
-  ('Proveedora Solar 4', 'Alemania', 'Klaus Müller', '4915123456789', 'contacto@solar4.com', 'https://solar4.com', 'Berliner Str. 10, Berlín', 'Proveedor de soluciones energéticas sostenibles', NOW(), TRUE),
-  ('Proveedora Solar 5', 'México', 'Carlos López', '5551234567', 'contacto@solar5.com', 'https://solar5.com', 'Avenida Solar 88, Ciudad de México', 'Proveedor en expansión en América Latina', NOW(), TRUE),
-  ('Proveedora Solar 6', 'Reino Unido', 'Emma Watson', '441632960961', 'contacto@solar6.com', 'https://solar6.com', 'Solar St. 50, Londres', 'Innovador en paneles solares de alta eficiencia', NOW(), TRUE),
-  ('Proveedora Solar 7', 'Francia', 'Pierre Dubois', '331234567890', 'contacto@solar7.com', 'https://solar7.com', 'Rue de le energie 32, París', 'Especialista en energías renovables', NOW(), TRUE),
-  ('Proveedora Solar 8', 'Italia', 'Giovanni Rossi', '390612345678', 'contacto@solar8.com', 'https://solar8.com', 'Via del Sole 12, Roma', 'Empresa con proyectos solares en Europa y África', NOW(), TRUE),
-  ('Proveedora Solar 9', 'Canadá', 'Sara McDonald', '14161234567', 'contacto@solar9.com', 'https://solar9.com', 'Maple Rd. 22, Toronto', 'Famosos por su tecnología solar avanzada', NOW(), TRUE),
-  ('Proveedora Solar 10', 'Japón', 'Taro Yamada', '81312345678', 'contacto@solar10.com', 'https://solar10.com', 'Tokyo Tower 3F, Tokio', 'Proveedor de paneles solares de última generación', NOW(), TRUE);
+  ('SunProtect Solutions', 'España', 'Lucía Ramírez', '34912345678', 'lucia@sunprotect.es', 'https://sunprotect.es', 'Calle Sol 21, Madrid', 'Especialistas en fundas solares y cobertores para instalaciones fotovoltaicas', NOW(), TRUE),
+  ('SolarShield Manufacturing', 'Alemania', 'Hans Becker', '4915212345678', 'hans@solarshield.de', 'https://solarshield.de', 'Energieweg 45, Berlín', 'Fabricante líder de cubiertas y fundas resistentes UV para paneles solares', NOW(), TRUE),
+  ('HelioCover Tech', 'Estados Unidos', 'Sarah Thompson', '12025550123', 'sarah@heliocover.com', 'https://heliocover.com', '500 Green Energy Dr, Austin, TX', 'Proveedor de fundas solares inteligentes con sensores de protección', NOW(), TRUE),
+  ('SolCare Italia', 'Italia', 'Marco Bianchi', '390612345670', 'marco@solcare.it', 'https://solcare.it', 'Via Energia 10, Roma', 'Distribuidor italiano de accesorios y fundas solares para proyectos residenciales', NOW(), TRUE),
+  ('Fotoprotect China Ltd.', 'China', 'Mei Zhang', '8613812345678', 'mei@fotoprotect.cn', 'https://fotoprotect.cn', 'Tech Park 88, Shenzhen', 'Fabricante de fundas protectoras solares exportadas a más de 40 países', NOW(), TRUE),
+  ('GreenWrap UK', 'Reino Unido', 'James Evans', '441632960960', 'james@greenwrap.co.uk', 'https://greenwrap.co.uk', 'Solar Lane 7, Manchester', 'Proveedor de fundas ecológicas para paneles solares en climas lluviosos', NOW(), TRUE),
+  ('EcoSun Coberturas', 'Brasil', 'Ana Souza', '5521998765432', 'ana@ecosun.com.br', 'https://ecosun.com.br', 'Rua do Sol 100, São Paulo', 'Empresa enfocada en soluciones de protección solar para sistemas rurales', NOW(), TRUE),
+  ('SunGuard France', 'Francia', 'Clément Lefèvre', '33123456789', 'clement@sunguard.fr', 'https://sunguard.fr', 'Rue du Photovoltaïque 55, Lyon', 'Distribuidor de fundas con aislamiento térmico para techos solares', NOW(), TRUE),
+  ('SolarWrap Canada Inc.', 'Canadá', 'Emily Wilson', '14165550111', 'emily@solarwrap.ca', 'https://solarwrap.ca', 'Innovation Park 12, Vancouver', 'Proveedor norteamericano de cubiertas para paneles en ambientes extremos', NOW(), TRUE),
+  ('Kyokai Solar Covers', 'Japón', 'Haruki Tanaka', '81334567890', 'tanaka@kyokaisolar.jp', 'https://kyokaisolar.jp', 'Akihabara Tech Plaza, Tokio', 'Desarrollador japonés de fundas solares automatizadas y resistentes al tifón', NOW(), TRUE);
 
 
-
-  -- Relación de fundas con proveedores
+-- Relación de fundas con proveedores
 INSERT IGNORE INTO Fundas_Proveedores (FundaID, ProveedorID) VALUES
   (1, 1), (2, 2), (3, 3), (4, 4), (5, 5),
   (6, 6), (7, 7), (8, 8), (9, 9), (10, 10),
@@ -381,6 +401,13 @@ VALUES
   (1, 'Sistema de energía solar para vehículos eléctricos', 'Diseño de un sistema solar que cargue vehículos eléctricos de manera autónoma mientras se encuentran estacionados al sol.'),
   (3, 'Solar powerbank con tecnología de carga rápida', 'Incorporar tecnología de carga rápida en powerbanks solares para mejorar la eficiencia en la carga de dispositivos.'),
   (4, 'Incorporación de inteligencia artificial para optimización energética', 'Uso de inteligencia artificial para gestionar de forma eficiente la energía producida por los paneles solares, optimizando el uso y almacenamiento de energía.');
+
+
+--Inserción en Carrito
+INSERT IGNORE INTO Carrito (UsuarioId, ModelosFundasId, Cantidad, Precio)
+VALUES 
+(1, 15, 2, 59.99),
+(1, 26, 1, 50.50);
 
 
 -- ======================================
