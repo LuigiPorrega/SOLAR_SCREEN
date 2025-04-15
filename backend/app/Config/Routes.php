@@ -9,6 +9,7 @@ use App\Controllers\Usuarios;
 use App\Controllers\Proveedores;
 use App\Controllers\ModelosFundas;
 use App\Controllers\LoginLog;
+use App\Controllers\Carrito;
 use App\Controllers\Api\CondicionesMeteorologicasApi;
 use App\Controllers\Api\IdeasApi;
 use App\Controllers\Api\UsuariosApiController;
@@ -32,7 +33,7 @@ $routes->get('admin/logout', [Usuarios::class, 'closeSession']);
 // Rutas para el backend (requieren autenticación)
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     // Dashboard
-    $routes->get('inicio', [Home::class, 'dashboard']); 
+    $routes->get('inicio', [Home::class, 'dashboard']);
 
     // Rutas para Simulaciones
     $routes->get('simulaciones', [Simulaciones::class, 'index']);
@@ -92,11 +93,19 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     // Rutas para LoginLog (solo accesible por administradores)
     $routes->get('loginlog', [LoginLog::class, 'index']);
     $routes->get('loginlog/export', [LoginLog::class, 'export']);
+
+
+    // Rutas para el Carrito
+    $routes->get('carrito', [Carrito::class, 'index']);
+    $routes->post('carrito/add', [Carrito::class, 'add']);
+    $routes->post('carrito/update/(:segment)', [Carrito::class, 'update']);
+    $routes->post('carrito/delete/(:segment)', [Carrito::class, 'delete']);
+    $routes->post('carrito/vaciarCarrito', [Carrito::class, 'vaciarCarrito']);
 });
 
- //FRONTEND
+//FRONTEND
 // API RESTful
-$routes->group('api', function($routes) {
+$routes->group('api', function ($routes) {
 
     // Rutas para Condiciones Meteorológicas
     $routes->get('condicionesMeteorologicas', 'Api\CondicionesMeteorologicasApi::index');
@@ -105,27 +114,27 @@ $routes->group('api', function($routes) {
     // Rutas para Ideas
     $routes->get('ideas', 'Api\IdeasApi::index');
     $routes->get('ideas/(:num)', 'Api\IdeasApi::view/$1');
-   
+
     //Rutas para ModeloFundas
     $routes->get('modelosFundas', 'Api\ModelosFundasApi::index');
     $routes->get('modelosFundas/(:num)', 'Api\ModelosFundasApi::view/$1');
-    
+
     //Rutas para Proveedores
     $routes->get('proveedores', 'Api\ProveedoresApi::index');
     $routes->get('proveedores/(:num)', 'Api\ProveedoresApi::view/$1');
-    
+
     //Rutas para Simulaciones
     $routes->get('simulaciones', 'Api\SimulacionesApi::index');
     $routes->get('simulaciones/(:num)', 'Api\SimulacionesApi::view/$1');
-    
+
     //Ruta para autenticación de Usuarios
     $routes->post('usuarios/login', 'Api\UsuariosApiController::login');
     $routes->get('usuarios/checkAccess', 'Api\UsuariosApiController::checkAccess');
 });
 
 //API RESTfull protegidas
-$routes->group('api', ['filter' => 'apiaccesscontrol'], function($routes) {
-    
+$routes->group('api', ['filter' => 'apiaccesscontrol'], function ($routes) {
+
     // Rutas para Condiciones Meteorológicas
     $routes->post('condicionesMeteorologicas', 'Api\CondicionesMeteorologicasApi::create');
     $routes->put('condicionesMeteorologicas/(:num)', 'Api\CondicionesMeteorologicasApi::update/$1');
@@ -153,4 +162,11 @@ $routes->group('api', ['filter' => 'apiaccesscontrol'], function($routes) {
 
     //Ruta para autenticación de Usuarios
     $routes->post('usuarios/logout', 'Api\UsuariosApiController::logout');
+
+    // Rutas para Carrito
+    $routes->get('carrito', 'Api\CarritoApi::index'); 
+    $routes->post('carrito', 'Api\CarritoApi::add');  
+    $routes->put('carrito/(:num)', 'Api\CarritoApi::update/$1'); 
+    $routes->delete('carrito/(:num)', 'Api\CarritoApi::delete/$1');
+
 });

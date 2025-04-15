@@ -1,0 +1,39 @@
+CRITICAL - 2025-04-15 21:43:27 --> CodeIgniter\Validation\Exceptions\ValidationException: "min" is not a valid rule.
+[Method: POST, Route: api/carrito]
+in SYSTEMPATH/Validation/Validation.php on line 348.
+ 1 SYSTEMPATH/Validation/Validation.php(348): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('min')
+ 2 SYSTEMPATH/Validation/Validation.php(204): CodeIgniter\Validation\Validation->processRules('Cantidad', 'Cantidad', '3', [...], [...], 'Cantidad')
+ 3 SYSTEMPATH/Controller.php(137): CodeIgniter\Validation\Validation->run()
+ 4 APPPATH/Controllers/Api/CarritoApi.php(43): CodeIgniter\Controller->validate([...])
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-15 21:46:56 --> CodeIgniter\Validation\Exceptions\ValidationException: "min" is not a valid rule.
+[Method: PUT, Route: api/carrito/1]
+in SYSTEMPATH/Validation/Validation.php on line 348.
+ 1 SYSTEMPATH/Validation/Validation.php(348): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('min')
+ 2 SYSTEMPATH/Validation/Validation.php(204): CodeIgniter\Validation\Validation->processRules('Cantidad', 'Cantidad', '3', [...], [...], 'Cantidad')
+ 3 SYSTEMPATH/Controller.php(137): CodeIgniter\Validation\Validation->run()
+ 4 APPPATH/Controllers/Api/CarritoApi.php(83): CodeIgniter\Controller->validate([...])
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->update('1')
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-15 21:47:34 --> CodeIgniter\Validation\Exceptions\ValidationException: "min" is not a valid rule.
+[Method: PUT, Route: api/carrito/1]
+in SYSTEMPATH/Validation/Validation.php on line 348.
+ 1 SYSTEMPATH/Validation/Validation.php(348): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('min')
+ 2 SYSTEMPATH/Validation/Validation.php(204): CodeIgniter\Validation\Validation->processRules('Cantidad', 'Cantidad', '2', [...], [...], 'Cantidad')
+ 3 SYSTEMPATH/Controller.php(137): CodeIgniter\Validation\Validation->run()
+ 4 APPPATH/Controllers/Api/CarritoApi.php(83): CodeIgniter\Controller->validate([...])
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->update('1')
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -51,36 +51,33 @@ class ModelosFundasApi extends ResourceController
     {
         $data = $this->request->getPost();
 
-        // Validación con ProveedorID obligatorio
+        // Validación con los nuevos campos incluidos
         if (!$this->validate([
             'Nombre' => 'required|min_length[3]|max_length[255]',
             'Tamaño' => 'required|min_length[3]|max_length[100]',
             'CapacidadCarga' => 'required|numeric',
             'Expansible' => 'required|in_list[0,1]',
             'TipoFunda' => 'required|min_length[3]|max_length[100]',
-            'ProveedorID' => 'required|array|min_length[1]', // Asegura que sea obligatorio
+            'Cantidad' => 'required|integer|min[0]',
+            'Precio' => 'required|numeric|min[0]',
+            'ProveedorID' => 'required|array|min_length[1]',
         ])) {
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Establecer valores predeterminados si no están en la solicitud
         $data['FechaCreacion'] = date('Y-m-d H:i:s');
-        $data['UsuarioID'] = session()->get('userId') ?: 1; // Si no hay sesión, usar un valor por defecto
 
-        // Insertar el nuevo modelo de funda
         $this->model->insert($data);
         $newModelId = $this->model->insertID();
 
-        // Relacionar la nueva funda con los proveedores especificados
+        // Insertar relaciones con proveedores
         if (!empty($data['ProveedorID'])) {
-            $relaciones = [];
-            foreach ($data['ProveedorID'] as $proveedorID) {
-                $relaciones[] = [
-                    'FundaID' => $newModelId,
-                    'ProveedorID' => $proveedorID
-                ];
-            }
-            $this->fundasProveedoresModel->insertBatch($relaciones); // Insertar en la tabla intermedia
+            $relaciones = array_map(fn($id) => [
+                'FundaID' => $newModelId,
+                'ProveedorID' => $id
+            ], $data['ProveedorID']);
+
+            $this->fundasProveedoresModel->insertBatch($relaciones);
         }
 
         return $this->respondCreated([
@@ -100,33 +97,30 @@ class ModelosFundasApi extends ResourceController
 
         $data = $this->request->getJSON(true);
 
-        // Validación
+        // Validación con los nuevos campos incluidos
         if (!$this->validate([
             'Nombre' => 'required|min_length[3]|max_length[255]',
             'Tamaño' => 'required|min_length[3]|max_length[100]',
             'CapacidadCarga' => 'required|numeric',
             'Expansible' => 'required|in_list[0,1]',
             'TipoFunda' => 'required|min_length[3]|max_length[100]',
+            'Cantidad' => 'required|integer|min[0]',
+            'Precio' => 'required|numeric|min[0]',
         ])) {
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Actualizar la funda
         $this->model->update($id, $data);
 
-        // Actualizar la relación con los proveedores
-        if (isset($data['ProveedorID']) && !empty($data['ProveedorID'])) {
-            // Eliminar las relaciones existentes
+        // Actualizar relaciones con proveedores si vienen en el payload
+        if (isset($data['ProveedorID'])) {
             $this->fundasProveedoresModel->where('FundaID', $id)->delete();
 
-            // Insertar las nuevas relaciones
-            $relaciones = [];
-            foreach ($data['ProveedorID'] as $proveedorID) {
-                $relaciones[] = [
-                    'FundaID' => $id,
-                    'ProveedorID' => $proveedorID
-                ];
-            }
+            $relaciones = array_map(fn($provID) => [
+                'FundaID' => $id,
+                'ProveedorID' => $provID
+            ], $data['ProveedorID']);
+
             $this->fundasProveedoresModel->insertBatch($relaciones);
         }
 
@@ -145,7 +139,6 @@ class ModelosFundasApi extends ResourceController
             return $this->failNotFound("Modelo de funda no encontrado");
         }
 
-        // Eliminar las relaciones en la tabla intermedia
         $this->fundasProveedoresModel->where('FundaID', $id)->delete();
         $this->model->delete($id);
 

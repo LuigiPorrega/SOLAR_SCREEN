@@ -81,6 +81,18 @@
             <?php endif; ?>
         </div>
 
+        <!-- Campo para la Cantidad -->
+        <div class="form-group mb-3">
+            <label for="Cantidad">Cantidad en Stock</label>
+            <input type="number" name="Cantidad" id="Cantidad" class="form-control" required>
+        </div>
+
+        <!-- Campo para el Precio -->
+        <div class="form-group mb-3">
+            <label for="Precio">Precio (€)</label>
+            <input type="text" name="Precio" id="Precio" class="form-control" required>
+        </div>
+
         <!-- Campo para seleccionar múltiples proveedores -->
         <div class="form-group mb-3">
             <label for="ProveedorID" class="font-weight-bold">Selecciona Proveedor</label><br>

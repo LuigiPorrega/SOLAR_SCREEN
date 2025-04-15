@@ -19,6 +19,8 @@ class ModelosFundasModel extends Model
         'CapacidadCarga',
         'Expansible',
         'ImagenURL',
+        'Cantidad',
+        'Precio',
         'TipoFunda',
         'FechaCreacion',
     ];
@@ -29,7 +31,7 @@ class ModelosFundasModel extends Model
         try {
             // Consulta básica para obtener los datos
             $query = $this->db->table('ModelosFundas')
-                ->select('ModelosFundas.ID, ModelosFundas.Nombre, ModelosFundas.Tamaño, ModelosFundas.CapacidadCarga, ModelosFundas.Expansible, ModelosFundas.ImagenURL, ModelosFundas.TipoFunda, ModelosFundas.FechaCreacion')
+                ->select('ModelosFundas.ID, ModelosFundas.Nombre, ModelosFundas.Tamaño, ModelosFundas.CapacidadCarga, ModelosFundas.Expansible, ModelosFundas.ImagenURL, ModelosFundas.Cantidad, ModelosFundas.Precio, ModelosFundas.TipoFunda, ModelosFundas.FechaCreacion')
                 ->orderBy('ModelosFundas.ID', 'DESC');
 
             // Si se proporciona un ID, filtrar por ese ID específico
@@ -52,7 +54,7 @@ class ModelosFundasModel extends Model
     {
         try {
             $query = $this->db->table('ModelosFundas')
-                ->select('ModelosFundas.ID, ModelosFundas.Nombre, ModelosFundas.Tamaño, ModelosFundas.CapacidadCarga, ModelosFundas.Expansible, ModelosFundas.ImagenURL, ModelosFundas.TipoFunda, ModelosFundas.FechaCreacion')
+            ->select('ModelosFundas.ID, ModelosFundas.Nombre, ModelosFundas.Tamaño, ModelosFundas.CapacidadCarga, ModelosFundas.Expansible, ModelosFundas.ImagenURL, ModelosFundas.Cantidad, ModelosFundas.Precio, ModelosFundas.TipoFunda, ModelosFundas.FechaCreacion')
                 ->where('ModelosFundas.Activo', 1) 
                 ->orderBy('ModelosFundas.ID', 'DESC');
 

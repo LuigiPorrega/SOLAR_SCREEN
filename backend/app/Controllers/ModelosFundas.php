@@ -22,7 +22,7 @@ class ModelosFundas extends BaseController
         $this->usuariosModel = new UsuariosModel();
     }
 
-     /**
+    /**
      * Verifica si el usuario tiene permisos de administrador.
      * Lanza una excepción si no tiene acceso.
      *
@@ -87,7 +87,7 @@ class ModelosFundas extends BaseController
             . view('templates/footer');
     }
 
-     /**
+    /**
      * Muestra el formulario para crear un nuevo modelo de funda.
      * Obtiene los proveedores disponibles para asociar al modelo.
      *
@@ -152,6 +152,8 @@ class ModelosFundas extends BaseController
             'CapacidadCarga' => 'required|numeric',
             'Expansible' => 'required|in_list[0,1]',
             'TipoFunda' => 'required|min_length[3]|max_length[100]',
+            'Cantidad' => 'required|integer|min_length[1]',
+            'Precio' => 'required|decimal',
         ])) {
             return redirect()->back()->withInput()->with('error', 'Por favor revisa los campos.');
         }
@@ -183,6 +185,8 @@ class ModelosFundas extends BaseController
             'Expansible' => $this->request->getVar('Expansible'),
             'ImagenURL' => '/assets/imagenes/' . $tipoFunda . '/' . $imagenNombreFinal,  // Guardamos la URL de la imagen
             'TipoFunda' => $this->request->getVar('TipoFunda'),
+            'Cantidad' => $this->request->getVar('Cantidad'),
+            'Precio' => $this->request->getVar('Precio'),
             'FechaCreacion' => date('Y-m-d H:i:s'),
         ];
 
@@ -281,6 +285,8 @@ class ModelosFundas extends BaseController
             'CapacidadCarga',
             'Expansible',
             'TipoFunda',
+            'Cantidad',
+            'Precio',
         ]);
 
         // Verificar si el campo de la imagen ha cambiado
@@ -293,6 +299,8 @@ class ModelosFundas extends BaseController
             'CapacidadCarga' => 'required|numeric',
             'Expansible' => 'required|in_list[0,1]',
             'TipoFunda' => 'required|string|max_length[100]',
+            'Cantidad' => 'required|integer|min_length[1]',
+            'Precio' => 'required|decimal',
         ])) {
             return redirect()->back()->withInput()->with('validation', $this->validator);
         }
@@ -304,7 +312,7 @@ class ModelosFundas extends BaseController
             if (!$modeloFunda) {
                 throw new PageNotFoundException("No se encontró el modelo de funda con ID: $id");
             }
-            
+
             // Acceder a las propiedades como un objeto
             $imagenActual = $modeloFunda->ImagenURL;
 
@@ -413,5 +421,4 @@ class ModelosFundas extends BaseController
         // Si algo falla en el proceso de eliminación
         return redirect()->to(base_url('admin/modelosFundas'))->with('error', 'Hubo un error al intentar eliminar el modelo de funda.');
     }
-
 }

@@ -1,19 +1,17 @@
 /* Navbar*/
-.navbar{
+.navbar {
   background-color: #d0eafc;
-  
 }
 /* Cambiar color de texto primario y ponerlo en negrita */
 .navbar .nav-link {
-  color: #007bff !important;  
+  color: #007bff !important;
 }
 
 /* Cambiar color de texto primario y ponerlo en negrita para la marca */
 .navbar .navbar-brand {
-  color: #007bff !important;  
-  font-weight: bold !important; 
+  color: #007bff !important;
+  font-weight: bold !important;
 }
-
 
 /* Estilos generales */
 body {
@@ -121,7 +119,6 @@ label {
   margin-bottom: 10px;
 }
 
-
 /* Colores personalizados */
 .border-teal {
   border-color: #008080 !important; /* Teal */
@@ -133,10 +130,26 @@ label {
 
 .btn-teal {
   background-color: #008080 !important;
+  color: #fff !important;
   border-color: #008080 !important;
 }
 
 .btn-teal:hover {
   background-color: #006666 !important;
   border-color: #006666 !important;
+}
+
+.text-purple {
+  color: #6f42c1 !important;
+}
+.border-purple {
+  border-color: #6f42c1 !important;
+}
+.btn-purple {
+  background-color: #6f42c1 !important;
+  color: #fff !important;
+  border: none !important;
+}
+.btn-purple:hover {
+  background-color: #5936a2 !important;
 }

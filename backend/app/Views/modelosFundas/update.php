@@ -51,6 +51,24 @@
             </select>
         </div>
 
+        <!-- Cantidad en stock -->
+        <div class="form-group">
+            <label for="Cantidad">Cantidad en Stock</label>
+            <input type="number" name="Cantidad" id="Cantidad" class="form-control"
+                value="<?= old('Cantidad', $modeloFunda['Cantidad']) ?>"
+                min="0" required>
+        </div>
+
+        <!-- Precio -->
+        <div class="form-group">
+            <label for="Precio">Precio (€)</label>
+            <input type="number" name="Precio" id="Precio" class="form-control"
+                value="<?= old('Precio', $modeloFunda['Precio']) ?>"
+                step="0.01" min="0" required>
+        </div>
+
+
+
         <!-- Barra de selección de imagen y previsualización (izquierda para la barra, derecha para la imagen) -->
         <div class="form-group d-flex justify-content-between align-items-center">
             <!-- Barra de selección de imagen -->
@@ -95,10 +113,10 @@
         </div>
 
         <!-- Botones de acción -->
-<div class="form-group text-center mt-5">
-    <button type="submit" class="btn btn-primary mx-3">Actualizar Modelo de Funda</button>
-    <a href="<?= site_url('admin/modelosFundas') ?>" class="btn btn-secondary mx-3">Cancelar</a>
-</div>
+        <div class="form-group text-center mt-5">
+            <button type="submit" class="btn btn-primary mx-3">Actualizar Modelo de Funda</button>
+            <a href="<?= site_url('admin/modelosFundas') ?>" class="btn btn-secondary mx-3">Cancelar</a>
+        </div>
 
 
         <script>

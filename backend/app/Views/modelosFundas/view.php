@@ -19,6 +19,8 @@
                         <p><strong>Capacidad de Carga:</strong> <?= esc($modeloFunda['CapacidadCarga']) ?> mAh</p>
                         <p><strong>Tipo de Funda:</strong> <?= esc($modeloFunda['TipoFunda']) ?></p>
                         <p><strong>Expansible:</strong> <?= ($modeloFunda['Expansible'] == 1) ? 'Sí' : 'No' ?></p>
+                        <p><strong>Cantidad en Stock:</strong> <?= esc($modeloFunda['Cantidad']) ?></p>
+                        <p><strong>Precio:</strong> <?= number_format($modeloFunda['Precio'], 2) ?> €</p>
                         <p><strong>Fecha de Creación:</strong> <span class="font-italic"><?= date('d-m-Y', strtotime($modeloFunda['FechaCreacion'])) ?></span></p>
                     </div>
                 </div>

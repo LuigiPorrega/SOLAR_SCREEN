@@ -27,7 +27,9 @@ class ApiAccessControl implements FilterInterface
             $decoded = JWT::decode($token, new Key($key, 'HS256'));
 
             // Usar el session para almacenar los datos del usuario
-            session()->set('userData', $decoded->data);
+           session()->set('userData', $decoded->data);
+           
+
         } catch (\Exception $e) {
             // Retornar un error si el token no es válido
             return \Config\Services::response()->setStatusCode(ResponseInterface::HTTP_UNAUTHORIZED, 'Token inválido o expirado.');

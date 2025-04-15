@@ -103,6 +103,17 @@ $usuariosModel = model('App\Models\UsuariosModel');
                 </div>
             <?php endif ?>
 
+            <!-- Carrito -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-purple">
+                    <div class="card-body">
+                        <h5 class="card-title text-purple"><i class="bi bi-cart-fill"></i> Carrito</h5>
+                        <p class="card-text">Gestiona los productos añadidos al carrito.</p>
+                        <a href="<?= base_url('admin/carrito') ?>" class="btn btn-purple w-100">Ir al Carrito</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
