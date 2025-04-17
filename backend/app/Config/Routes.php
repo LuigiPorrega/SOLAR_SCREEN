@@ -104,6 +104,9 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 });
 
 //FRONTEND
+// Mostrar resumen de rutas disponibles al entrar a /api
+$routes->get('api', 'Api\ApiOverview::index');
+
 // API RESTful
 $routes->group('api', function ($routes) {
 

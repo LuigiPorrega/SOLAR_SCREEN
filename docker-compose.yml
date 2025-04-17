@@ -65,6 +65,8 @@ services:
       - codeigniter
     networks:
       - solvam
+    stdin_open: true
+    tty: true
 
 networks:
   solvam:
