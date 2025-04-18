@@ -13,11 +13,26 @@ class CondicionesMeteorologicasApi extends ResourceController
     protected $modelName = CondicionesMeteorologicasModel::class;
     protected $format    = 'json';
 
-    // GET /api/condicionesMeteorologicas
-    public function index()
-    {
-        return $this->respond($this->model->findAll());
-    }
+   // GET /api/condicionesMeteorologicas?page=1
+public function index()
+{
+    // Número de elementos por página (puedes ajustar este valor o tomarlo por query param si quieres)
+    $perPage = $this->request->getGet('perPage') ?? 10;
+
+    // Obtener datos paginados
+    $data = $this->model->paginate($perPage);
+    $pager = $this->model->pager;
+
+    // Enviar respuesta con info de paginación
+    return $this->respond([
+        'status'       => 'success',
+        'data'         => $data,
+        'currentPage'  => $pager->getCurrentPage(),
+        'perPage'      => $pager->getPerPage(),
+        'totalItems'   => $pager->getTotal(),
+        'totalPages'   => $pager->getPageCount(),
+    ]);
+}
 
     // GET /api/condicionesMeteorologicas/{id}
     public function view($id = null)
@@ -98,6 +113,9 @@ class CondicionesMeteorologicasApi extends ResourceController
         }
 
         $this->model->delete($id);
-        return $this->respondDeleted(["message" => "Condición meteorológica eliminada."]);
+        return $this->respondDeleted([
+            'status' => 'success',
+            "message" => "Condición meteorológica eliminada."
+        ]);
     }
 }

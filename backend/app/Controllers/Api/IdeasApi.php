@@ -15,16 +15,22 @@ class IdeasApi extends ResourceController
 
     public function index()
     {
-        return $this->respond($this->model->findAll());
-    }
+        // Número de elementos por página, con valor por defecto de 10
+        $perPage = $this->request->getGet('perPage') ?? 10;
 
-    public function view($id = null)
-    {
-        $idea = $this->model->find($id);
-        if (!$idea) {
-            return $this->failNotFound("Idea no encontrada con el ID: $id");
-        }
-        return $this->respond($idea);
+        // Obtener ideas paginadas
+        $ideas = $this->model->paginate($perPage);
+        $pager = $this->model->pager;
+
+        // Devolver respuesta con información de paginación
+        return $this->respond([
+            'status'       => 'success',
+            'data'         => $ideas,
+            'currentPage'  => $pager->getCurrentPage(),
+            'perPage'      => $pager->getPerPage(),
+            'totalItems'   => $pager->getTotal(),
+            'totalPages'   => $pager->getPageCount(),
+        ]);
     }
 
     public function create()
@@ -92,6 +98,7 @@ class IdeasApi extends ResourceController
         $this->model->delete($id);
 
         return $this->respondDeleted([
+            'status' => 'success',
             'message' => 'Idea eliminada exitosamente.'
         ]);
     }

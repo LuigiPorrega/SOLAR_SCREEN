@@ -17,15 +17,26 @@ class ModelosFundasApi extends ResourceController
         $this->fundasProveedoresModel = new FundasProveedoresModel();
     }
 
-    // GET /api/modelosFundas
+    // GET /api/modelosFundas?page=1&perPage=10
     public function index()
     {
-        $modelosFundas = $this->model->findAll();
+        $perPage = $this->request->getGet('perPage') ?? 10;
+        $page = $this->request->getGet('page') ?? 1;
+
+        $offset = ($page - 1) * $perPage;
+        $total = $this->model->countAll();
+        $modelos = $this->model->findAll($perPage, $offset);
+
         return $this->respond([
             'status' => 'success',
-            'data' => $modelosFundas
+            'data' => $modelos,
+            'currentPage' => (int) $page,
+            'perPage' => (int) $perPage,
+            'totalItems' => $total,
+            'totalPages' => ceil($total / $perPage),
         ]);
     }
+
 
     // GET /api/modelosFundas/{id}
     public function view($id = null)
@@ -49,7 +60,7 @@ class ModelosFundasApi extends ResourceController
     // POST /api/modelosFundas
     public function create()
     {
-        $data = $this->request->getPost();
+        $data = $this->request->getJSON(true);
 
         // Validación con los nuevos campos incluidos
         if (!$this->validate([
@@ -58,11 +69,15 @@ class ModelosFundasApi extends ResourceController
             'CapacidadCarga' => 'required|numeric',
             'Expansible' => 'required|in_list[0,1]',
             'TipoFunda' => 'required|min_length[3]|max_length[100]',
-            'Cantidad' => 'required|integer|min[0]',
-            'Precio' => 'required|numeric|min[0]',
-            'ProveedorID' => 'required|array|min_length[1]',
+            'Cantidad' => 'required|integer|greater_than_equal_to[0]',
+            'Precio' => 'required|numeric|greater_than_equal_to[0]',
+            'ProveedorID' => 'permit_empty'
         ])) {
             return $this->failValidationErrors($this->validator->getErrors());
+        }
+
+        if (isset($data['ProveedorID']) && !is_array($data['ProveedorID'])) {
+            $data['ProveedorID'] = [$data['ProveedorID']];
         }
 
         $data['FechaCreacion'] = date('Y-m-d H:i:s');
@@ -104,10 +119,15 @@ class ModelosFundasApi extends ResourceController
             'CapacidadCarga' => 'required|numeric',
             'Expansible' => 'required|in_list[0,1]',
             'TipoFunda' => 'required|min_length[3]|max_length[100]',
-            'Cantidad' => 'required|integer|min[0]',
-            'Precio' => 'required|numeric|min[0]',
+            'Cantidad' => 'required|integer|greater_than_equal_to[0]',
+            'Precio' => 'required|numeric|greater_than_equal_to[0]',
+            'ProveedorID' => 'permit_empty'
         ])) {
             return $this->failValidationErrors($this->validator->getErrors());
+        }
+
+        if (isset($data['ProveedorID']) && !is_array($data['ProveedorID'])) {
+            $data['ProveedorID'] = [$data['ProveedorID']];
         }
 
         $this->model->update($id, $data);
@@ -116,10 +136,15 @@ class ModelosFundasApi extends ResourceController
         if (isset($data['ProveedorID'])) {
             $this->fundasProveedoresModel->where('FundaID', $id)->delete();
 
+            // Asegurar que sea un array
+            $proveedores = is_array($data['ProveedorID'])
+                ? $data['ProveedorID']
+                : [$data['ProveedorID']];
+
             $relaciones = array_map(fn($provID) => [
                 'FundaID' => $id,
                 'ProveedorID' => $provID
-            ], $data['ProveedorID']);
+            ], $proveedores);
 
             $this->fundasProveedoresModel->insertBatch($relaciones);
         }

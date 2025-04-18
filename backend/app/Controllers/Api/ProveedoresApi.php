@@ -49,7 +49,7 @@ class ProveedoresApi extends ResourceController
     // POST /api/proveedores
     public function create()
     {
-        $data = $this->request->getPost();
+        $data = $this->request->getJSON(true);
 
         // Validar la entrada
         if (!$this->validate([
@@ -111,7 +111,7 @@ class ProveedoresApi extends ResourceController
         }
 
         // Obtener datos de la solicitud como objeto JSON
-        $data = $this->request->getJSON();  // Se usa getJSON en lugar de getPost()
+        $data = $this->request->getJSON(true);  
 
         // Verificar si los datos están presentes
         if (empty($data)) {

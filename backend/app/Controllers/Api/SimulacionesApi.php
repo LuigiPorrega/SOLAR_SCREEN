@@ -114,7 +114,11 @@ class SimulacionesApi extends BaseController
             return $this->failServerError('No se pudo actualizar la simulación.');
         }
 
-        return $this->respondUpdated('Simulación actualizada exitosamente');
+        return $this->respondUpdated([
+            'status' => 'success',
+            'message' => 'Simulación actualizada exitosamente.',
+            'data' => $data
+        ]);
     }
 
 
@@ -136,6 +140,9 @@ class SimulacionesApi extends BaseController
 
         // Eliminar la simulación
         $this->simulacionesModel->delete($id);
-        return $this->respondDeleted('Simulación eliminada exitosamente');
+        return $this->respondDeleted([
+            'status' => 'success',
+            'message' => 'Simulación eliminada exitosamente'
+        ]);
     }
 }

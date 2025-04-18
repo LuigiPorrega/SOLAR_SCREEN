@@ -11,6 +11,7 @@ class ApiOverview extends ResourceController
         return $this->respond([
             'condicionesMeteorologicas' => [
                 'GET' => '/api/condicionesMeteorologicas',
+                'GET paginado' => '/api/condicionesMeteorologicas?page=1&limit=10',
                 'GET by ID' => '/api/condicionesMeteorologicas/{id}',
                 'POST' => '/api/condicionesMeteorologicas',
                 'PUT' => '/api/condicionesMeteorologicas/{id}',
@@ -18,6 +19,7 @@ class ApiOverview extends ResourceController
             ],
             'ideas' => [
                 'GET' => '/api/ideas',
+                'GET paginado' => '/api/ideas?page=1&limit=10',
                 'GET by ID' => '/api/ideas/{id}',
                 'POST' => '/api/ideas',
                 'PUT' => '/api/ideas/{id}',
@@ -25,6 +27,7 @@ class ApiOverview extends ResourceController
             ],
             'modelosFundas' => [
                 'GET' => '/api/modelosFundas',
+                'GET paginado' => '/api/modelosFundas?page=1&limit=10',
                 'GET by ID' => '/api/modelosFundas/{id}',
                 'POST' => '/api/modelosFundas',
                 'PUT' => '/api/modelosFundas/{id}',
@@ -32,6 +35,7 @@ class ApiOverview extends ResourceController
             ],
             'proveedores' => [
                 'GET' => '/api/proveedores',
+                'GET paginado' => '/api/proveedores?page=1&limit=10',
                 'GET by ID' => '/api/proveedores/{id}',
                 'POST' => '/api/proveedores',
                 'PUT' => '/api/proveedores/{id}',
@@ -39,14 +43,15 @@ class ApiOverview extends ResourceController
             ],
             'simulaciones' => [
                 'GET' => '/api/simulaciones',
+                'GET paginado' => '/api/simulaciones?page=1&limit=10',
                 'GET by ID' => '/api/simulaciones/{id}',
                 'POST' => '/api/simulaciones',
                 'PUT' => '/api/simulaciones/{id}',
                 'DELETE' => '/api/simulaciones/{id}',
             ],
             'usuarios' => [
-                'POST' => '/api/usuarios/login',
-                'GET' => '/api/usuarios/checkAccess',
+                'POST login' => '/api/usuarios/login',
+                'GET checkAccess' => '/api/usuarios/checkAccess',
                 'POST logout' => '/api/usuarios/logout',
             ],
             'carrito' => [
