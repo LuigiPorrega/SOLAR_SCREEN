@@ -10,21 +10,16 @@ export interface CarritoItem {
 }
 
 // Respuesta del GET /api/carrito
-export interface ApiResponseCarrito {
+export interface ApiResponseCarritoList {
   status: string;
   data: CarritoItem[];
 }
 
-// Respuesta de POST (add al carrito)
-export interface ApiResponseCarritoAdd {
+// Respuesta de POST y  PUT
+export interface ApiResponseCarritoCreateUpdate {
   status: string;
   message: string;
-}
-
-// Respuesta de PUT (actualizar cantidad)
-export interface ApiResponseCarritoUpdate {
-  status: string;
-  message: string;
+  data: CarritoItem;
 }
 
 // Respuesta de DELETE

@@ -55,6 +55,18 @@ class CarritoApi extends ResourceController
         if ($existente) {
             $nuevaCantidad = $existente['Cantidad'] + $data['Cantidad'];
             $this->model->update($existente['ID'], ['Cantidad' => $nuevaCantidad]);
+
+            $actualizado = $this->model
+                ->select('Carrito.*, ModelosFundas.Nombre as NombreFunda')
+                ->join('ModelosFundas', 'ModelosFundas.ID = Carrito.ModelosFundasId')
+                ->where('Carrito.ID', $existente['ID'])
+                ->first();
+
+            return $this->respond([
+                'status' => 'success',
+                'message' => 'Cantidad actualizada en el carrito',
+                'data' => $actualizado
+            ]);
         } else {
             $this->model->insert([
                 'UsuarioId' => $userId,
@@ -63,13 +75,23 @@ class CarritoApi extends ResourceController
                 'Precio' => $data['Precio'],
                 'Creado_en' => date('Y-m-d H:i:s')
             ]);
-        }
 
-        return $this->respondCreated([
-            'status' => 'success',
-            'message' => 'Producto añadido al carrito'
-        ]);
+            $insertId = $this->model->insertID();
+
+            $nuevo = $this->model
+                ->select('Carrito.*, ModelosFundas.Nombre as NombreFunda')
+                ->join('ModelosFundas', 'ModelosFundas.ID = Carrito.ModelosFundasId')
+                ->where('Carrito.ID', $insertId)
+                ->first();
+
+            return $this->respondCreated([
+                'status' => 'success',
+                'message' => 'Producto añadido al carrito',
+                'data' => $nuevo
+            ]);
+        }
     }
+
 
     // PUT /api/carrito/{id}
     public function update($id = null)
@@ -96,11 +118,19 @@ class CarritoApi extends ResourceController
 
         $this->model->update($id, ['Cantidad' => $input['Cantidad']]);
 
+        $actualizado = $this->model
+            ->select('Carrito.*, ModelosFundas.Nombre as NombreFunda')
+            ->join('ModelosFundas', 'ModelosFundas.ID = Carrito.ModelosFundasId')
+            ->where('Carrito.ID', $id)
+            ->first();
+
         return $this->respond([
             'status' => 'success',
-            'message' => 'Cantidad actualizada correctamente'
+            'message' => 'Cantidad actualizada correctamente',
+            'data' => $actualizado
         ]);
     }
+
 
     // DELETE /api/carrito/{id}
     public function delete($id = null)

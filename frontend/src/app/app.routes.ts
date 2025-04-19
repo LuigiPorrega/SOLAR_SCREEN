@@ -1,3 +1,89 @@
 import { Routes } from '@angular/router';
+import {InicioComponent} from './inicio/inicio.component';
+import {
+  CondicionMeteorologicaListComponent
+} from './condiciones-meteorologicas/condicion-meteorologica-list/condicion-meteorologica-list.component';
+import {
+  CondicionMeteorologicaEditComponent
+} from './condiciones-meteorologicas/condicion-meteorologica-edit/condicion-meteorologica-edit.component';
+import {FundaListComponent} from './fundas/funda-list/funda-list.component';
+import {FundaEditComponent} from './fundas/funda-edit/funda-edit.component';
+import {FundaDetailComponent} from './fundas/funda-detail/funda-detail.component';
+import {IdeaEditComponent} from './ideas/idea-edit/idea-edit.component';
+import {IdeaListComponent} from './ideas/idea-list/idea-list.component';
+import {SimulacionListComponent} from './simulaciones/simulacion-list/simulacion-list.component';
+import {SimulacionEditComponent} from './simulaciones/simulacion-edit/simulacion-edit.component';
+import {CartComponent} from './cart/cart.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'inicio',
+    pathMatch: 'full',
+  },
+  {
+    path: 'inicio',
+    component: InicioComponent,
+  },
+  {
+    path: 'condicion-meteorologica-list',
+    component: CondicionMeteorologicaListComponent,
+  },
+  {
+    path: 'condicion-meteorologica-add',
+    component: CondicionMeteorologicaEditComponent,
+  },
+  {
+    path: 'condicion-meteorologica-edit/:id',
+    component: CondicionMeteorologicaEditComponent,
+  },
+  {
+    path: 'funda-list',
+    component: FundaListComponent,
+  },
+  {
+    path: 'funda-add',
+    component: FundaEditComponent,
+  },
+  {
+    path: 'funda-edit/:id',
+    component: FundaEditComponent,
+  },
+  {
+    path: 'funda-detail/:id',
+    component: FundaDetailComponent,
+  },
+  {
+    path: 'idea-list',
+    component: IdeaListComponent,
+  },
+  {
+    path: 'idea-add',
+    component: IdeaEditComponent,
+  },
+  {
+    path: 'idea-edit/:id',
+    component: IdeaEditComponent,
+  },
+  {
+    path: 'simulacion-list',
+    component: SimulacionListComponent,
+  },
+  {
+    path: 'simulacion-add',
+    component: SimulacionEditComponent,
+  },
+  {
+    path: 'simulacion-edit/:id',
+    component: SimulacionEditComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'inicio',
+    pathMatch: 'full',
+  }
+];
