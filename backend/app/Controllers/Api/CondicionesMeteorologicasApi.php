@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Controllers\Api;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\CondicionesMeteorologicasModel;
 use CodeIgniter\API\ResponseTrait;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class CondicionesMeteorologicasApi extends ResourceController
 {
@@ -13,26 +14,46 @@ class CondicionesMeteorologicasApi extends ResourceController
     protected $modelName = CondicionesMeteorologicasModel::class;
     protected $format    = 'json';
 
-   // GET /api/condicionesMeteorologicas?page=1
-public function index()
-{
-    // Número de elementos por página (puedes ajustar este valor o tomarlo por query param si quieres)
-    $perPage = $this->request->getGet('perPage') ?? 10;
+    // Función para obtener datos del usuario desde el JWT
+    private function getUserDataFromToken()
+    {
+        $authHeader = $this->request->getHeaderLine('Authorization');
+        $key = getenv('JWT_SECRET') ?: 'clave_secreta_demo'; // Usa la clave secreta desde el env
 
-    // Obtener datos paginados
-    $data = $this->model->paginate($perPage);
-    $pager = $this->model->pager;
+        if (!$authHeader || !str_starts_with($authHeader, 'Bearer ')) {
+            return null;
+        }
 
-    // Enviar respuesta con info de paginación
-    return $this->respond([
-        'status'       => 'success',
-        'data'         => $data,
-        'currentPage'  => $pager->getCurrentPage(),
-        'perPage'      => $pager->getPerPage(),
-        'totalItems'   => $pager->getTotal(),
-        'totalPages'   => $pager->getPageCount(),
-    ]);
-}
+        $token = str_replace('Bearer ', '', $authHeader);
+
+        try {
+            $decoded = JWT::decode($token, new Key($key, 'HS256'));
+            return $decoded->data;
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    // GET /api/condicionesMeteorologicas?page=1
+    public function index()
+    {
+        // Número de elementos por página
+        $perPage = $this->request->getGet('perPage') ?? 10;
+
+        // Obtener datos paginados
+        $data = $this->model->paginate($perPage);
+        $pager = $this->model->pager;
+
+        // Enviar respuesta con info de paginación
+        return $this->respond([
+            'status'       => 'success',
+            'data'         => $data,
+            'currentPage'  => $pager->getCurrentPage(),
+            'perPage'      => $pager->getPerPage(),
+            'totalItems'   => $pager->getTotal(),
+            'totalPages'   => $pager->getPageCount(),
+        ]);
+    }
 
     // GET /api/condicionesMeteorologicas/{id}
     public function view($id = null)
@@ -47,9 +68,9 @@ public function index()
     // POST /api/condicionesMeteorologicas
     public function create()
     {
-        $session = session();
         $data = $this->request->getJSON(true);
 
+        // Validar los datos de entrada
         if (!$this->validate([
             'Fecha' => 'required|valid_date',
             'LuzSolar' => 'required|numeric',
@@ -60,7 +81,14 @@ public function index()
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        $data['UsuarioID'] = $session->get('userId');
+        // Obtener datos del usuario desde el JWT
+        $userData = $this->getUserDataFromToken();
+        if (!$userData) {
+            return $this->failUnauthorized('No autorizado. Token inválido o expirado');
+        }
+
+        // Asignar el UsuarioID al crear la condición meteorológica
+        $data['UsuarioID'] = $userData->user_id;
 
         // Insertar datos en la base de datos
         $this->model->insert($data);
@@ -76,13 +104,27 @@ public function index()
     // PUT /api/condicionesMeteorologicas/{id}
     public function update($id = null)
     {
+        // Obtener los datos del usuario desde el JWT
+        $userData = $this->getUserDataFromToken();
+        if (!$userData) {
+            return $this->failUnauthorized('No autorizado. Token inválido o expirado');
+        }
+
+        // Obtener la condición meteorológica a actualizar
         $data = $this->model->find($id);
         if (!$data) {
             return $this->failNotFound("Condición meteorológica con ID $id no encontrada.");
         }
 
+        // Verificar si el usuario es el propietario o es admin
+        if ($data['UsuarioID'] !== $userData->user_id && $userData->rol !== 'admin') {
+            return $this->failForbidden('No tienes permiso para actualizar esta condición meteorológica.');
+        }
+
+        // Obtener los datos del cuerpo de la solicitud (body)
         $input = $this->request->getJSON(true);
 
+        // Validar los datos
         if (!$this->validate([
             'Fecha' => 'required|valid_date',
             'LuzSolar' => 'required|numeric',
@@ -93,7 +135,7 @@ public function index()
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Actualizar datos en la base de datos
+        // Actualizar la condición meteorológica
         $this->model->update($id, $input);
 
         // Devolver respuesta con mensaje adicional
@@ -104,14 +146,27 @@ public function index()
         ]);
     }
 
-
     // DELETE /api/condicionesMeteorologicas/{id}
     public function delete($id = null)
     {
-        if (!$this->model->find($id)) {
+        // Obtener los datos del usuario desde el JWT
+        $userData = $this->getUserDataFromToken();
+        if (!$userData) {
+            return $this->failUnauthorized('No autorizado. Token inválido o expirado');
+        }
+
+        // Obtener la condición meteorológica a eliminar
+        $data = $this->model->find($id);
+        if (!$data) {
             return $this->failNotFound("Condición meteorológica con ID $id no encontrada.");
         }
 
+        // Verificar si el usuario es el propietario o es admin
+        if ($data['UsuarioID'] !== $userData->user_id && $userData->rol !== 'admin') {
+            return $this->failForbidden('No tienes permiso para eliminar esta condición meteorológica.');
+        }
+
+        // Eliminar la condición meteorológica
         $this->model->delete($id);
         return $this->respondDeleted([
             'status' => 'success',

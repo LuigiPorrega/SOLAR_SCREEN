@@ -1,0 +1,29 @@
+.border-orange {
+  border: 3px solid orange;
+  border-radius: 10px;
+}
+.text-orange {
+  color: orange;
+}
+.modal-header {
+  background-color: #faf6b2;
+  color: #dc2424 !important;
+}
+.btn-close{
+  background-color: #faf6b2;
+  color: white !important;
+}
+.btn-orange {
+  background-color: #FFA500;
+  border-color: #FFA500;
+  color: white;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-orange:hover {
+  background-color: #cc5200;
+  border-color: #cc5200;
+  color: white;
+}
+
+

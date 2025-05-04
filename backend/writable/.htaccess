@@ -1,6 +1,20 @@
+# Denegar el acceso por defecto
 <IfModule authz_core_module>
-	Require all denied
+    Require all denied
 </IfModule>
 <IfModule !authz_core_module>
-	Deny from all
+    Deny from all
 </IfModule>
+
+# Permitir CORS desde localhost:4200
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "http://localhost:4200"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+    Header set Access-Control-Allow-Credentials "true"
+</IfModule>
+
+<Directory /var/www/html/public>
+    AllowOverride All
+    Require all granted
+</Directory>

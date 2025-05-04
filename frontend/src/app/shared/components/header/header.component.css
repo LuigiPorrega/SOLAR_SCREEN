@@ -1,0 +1,244 @@
+/* Estilos generales para el header */
+.top-line {
+  height: 7px;               /* Grosor de la línea */
+  width: 100%;                /* Que ocupe todo el ancho */
+  background-color: #FFA500;  /* Cambia al color que quieras */
+  position: fixed;            /* Para que siempre esté visible arriba */
+  top: 0;
+  left: 0;
+  z-index: 1000;              /* Para que esté por encima de otros elementos */
+}
+
+.active{
+  color:  #faf6b2;
+}
+
+.wrapper {
+  display: flex;
+}
+
+li{
+  margin: 10px 25px 0 0;
+}
+
+.main-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.main-header-top-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start; /* los alinea arriba */
+  padding-top: 10px;
+  margin-right: 35px;
+}
+
+.main-header-top-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: flex-start;
+}
+
+
+.main-header-top-nav ul li {
+  margin-left: 25px;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem; /* texto más grande */
+  font-weight: 600;
+}
+.main-header-top-nav ul li a {
+  color: #f1c40f; /* amarillo oscuro */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.main-header-top-nav ul li a:hover {
+  color: #ffda44; /* más claro al pasar el ratón */
+}
+
+.main-header-top-nav fa-icon {
+  font-size: 1.2rem; /* iconos más grandes */
+  color: #FFA500; /* color del icono */
+}
+
+.login-container {
+  position: relative;
+}
+
+.h5{
+  color: #d35400;;
+}
+.form-label{
+  color: #d35400;;
+}
+
+.login-box {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 250px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.login-box.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
+/* Opcional: cerrar al hacer clic fuera */
+body:not(.login-open) .login-box {
+  display: none;
+}
+
+
+
+.login-widget a {
+  font-size: 1rem;
+  color: #f1c40f;
+  font-weight: 600;
+}
+
+
+.cart-widget {
+  margin-left: 24vh;
+  margin-top: 22px;
+}
+.cantidadCart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 8px;
+  background-color: #f1c40f !important;
+}
+
+
+.totalCart{
+  color: #f1c40f;
+
+}
+
+.top-menu {
+  display: block; /* Mostrar siempre */
+  background-color: #fff;
+  padding: 10px 0;
+}
+
+.top-menu .main-menu ul {
+  display: flex;
+  justify-content: center;
+}
+
+.top-menu .main-menu ul li {
+  margin: 0 15px;
+}
+
+.hamburger-menu {
+  display: none; /* Ocultamos en pantallas grandes */
+  cursor: pointer;
+  font-size: 10px;
+}
+
+/* Enlace general */
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #d35400; /* texto naranja oscuro */
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Recuadro para íconos */
+.navbar-nav .nav-link fa-icon {
+  background-color: #f9d71c;     /* color del recuadro */
+  color: white;                  /* color del ícono */
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+
+
+/* Enlace hover o activo */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  background-color: rgba(243, 156, 18, 0.2); /* naranja translúcido */
+  color: #d35400; /* texto más suave, no blanco */
+}
+
+
+
+.search {
+  font-weight: bold;
+  color: orange;
+  border-color: orange;
+}
+
+.search:hover {
+  color: white;
+  background-color: orange;
+  border-color: orange;
+}
+
+
+/* General Logo Styling */
+#logo.main-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.fw-bold{
+  font-weight: bold;
+  font-size: 1rem;
+}
+.enlaces{
+  font-weight: bold;
+  font-size: 1rem;
+}
+ /*Posicionamiento menu y barra de busqueda*/
+ .navigation-container {
+   display: grid;
+   grid-template-columns: auto minmax(200px, 1fr); /* Dos columnas: nav y barra de búsqueda */
+   align-items: center; /* Centra verticalmente los elementos */
+   gap: 20px; /* Espaciado entre las columnas */
+   width: 100%; /* Asegura que ocupe todo el ancho */
+ }
+
+.search-form {
+  display: flex; /* Alinea los elementos dentro del formulario */
+  justify-content: flex-end; /* Alinea la barra de búsqueda a la derecha */
+  margin-right: 5vh;
+}
+
+.search-form .form-control {
+  max-width: 300px; /* Ancho máximo del campo de búsqueda */
+}
+
+.search-form .search {
+  margin-left: 10px; /* Espacio entre el input y el botón */
+}

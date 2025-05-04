@@ -1,0 +1,38 @@
+.contact-form {
+  max-width: 600px;
+}
+
+.text-orange {
+  color: #f39c12;
+}
+
+.contact-page input,
+.contact-page textarea {
+  border: 2px solid #f1c40f;
+  border-radius: 5px;
+}
+
+.contact-page input:focus,
+.contact-page textarea:focus {
+  outline: none;
+  border-color: #e67e22;
+  box-shadow: 0 0 5px #f1c40f;
+}
+
+.btn-warning:hover {
+  background-color: #e67e22;
+  color: white;
+}
+
+.social-icons a {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2) !important;
+}
+
+.social-icons a:hover fa-icon {
+  color: #ff9900 !important; /* Cambia a naranja vivo al hacer hover */
+}

@@ -1,0 +1,23 @@
+.about-page {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.about-page img {
+  max-width: 100%;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.about-page img:hover {
+  transform: scale(1.03);
+}
+
+.text-orange {
+  color: #f39c12;
+}
+
+.btn-warning:hover {
+  background-color: #e67e22;
+  color: white;
+}

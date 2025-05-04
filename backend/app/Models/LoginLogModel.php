@@ -56,7 +56,7 @@ class LoginLogModel extends Model
             $reason = 'Login exitoso';
         }
 
-        return $this->insert([
+        $data = [
             'UsuarioID' => $usuarioID,
             'FechaHora' => date('Y-m-d H:i:s'),
             'Success' => $success,
@@ -65,8 +65,15 @@ class LoginLogModel extends Model
             'AttemptDate' => date('Y-m-d'),
             'Attempts' => $attempts,
             'Reason' => $reason
-        ]);
+        ];
+
+        // Log para verificar los datos antes de insertar
+        log_message('debug', 'Datos para insertar en LoginLog: ' . print_r($data, true));
+
+        // Realizar la inserción y devolver el resultado
+        return $this->insert($data);
     }
+    
 
     // Función de agrupación de intentos fallidos
     public function getFailedLoginAttempts($perPage = null)

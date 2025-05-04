@@ -1,0 +1,115 @@
+<div class="contact-page container py-5">
+  <h2 class="text-center text-warning mb-4">Contáctanos</h2>
+
+  <p class="text-center mb-5">
+    ¿Tienes preguntas sobre nuestras fundas solares para recarga móvil? ¡Nos encantaría ayudarte!
+  </p>
+
+  <ng-form [formGroup]="contactoForm">
+    <!-- floating nombre-->
+    <div class="form-floating mb-3">
+      <input type="text"  class="form-control"
+             formControlName="nombre" id="nombre" placeholder="Nombre">
+      <label for="nombre" class="form-label text-orange">Nombre</label>
+    </div>
+    <!-- controlo las validaciones-->
+    @if(nombre.invalid && (nombre.dirty || nombre.touched)){
+      @if(nombre.errors?. ['required']){
+        <!-- alert-danger o alert-warning (amarillo) -->
+        <div class="alert alert-danger" role="alert">
+          El campo Nombre es obligatorio
+        </div>
+      }
+      @if(nombre.errors?. ['notOnlyWhiteSpace']){
+        <!-- alert-danger o alert-warning (amarillo) -->
+        <div class="alert alert-danger" role="alert">
+          El campo Nombre no puede ser espacios en blancos
+        </div>
+      }
+      @if(nombre.errors?. ['forbiddenName']){
+        <!-- alert-danger o alert-warning (amarillo) -->
+        <div class="alert alert-danger" role="alert">
+          El campo Nombre, no puede contener palabras como: 'xxx,sex,drug';
+        </div>
+      }
+    }
+
+      <!-- floating email-->
+      <div class="form-floating mb-3">
+        <input type="email"  class="form-control"
+               formControlName="email" id="email" placeholder="Email">
+        <label for="email" class="form-label text-orange">Correo Electronico</label>
+      </div>
+      <!-- controlo las validaciones-->
+      @if(email.invalid && (email.dirty || email.touched)) {
+        @if(email.errors?. ['required']){
+          <!-- alert-danger o alert-warning (amarillo) -->
+          <div class="alert alert-danger" role="alert">
+            El campo Correo Electronico es obligatorio
+          </div>
+        }
+        @if(email.errors?. ['email']){
+          <!-- alert-danger o alert-warning (amarillo) -->
+          <div class="alert alert-danger" role="alert">
+            El campo Correo Electronico debe ser un formado valido
+          </div>
+        }
+      }
+
+    <!-- floating mensaje-->
+    <div class="form-floating mb-3">
+      <textarea class="form-control"
+                formControlName="mensaje"
+                id="mensaje"
+                placeholder="Mensaje"
+                style="height: 100px"></textarea>
+      <label for="mensaje" class="form-label text-orange">Mensaje</label>
+    </div>
+    <!-- controlo las validaciones-->
+    @if(mensaje.invalid && (mensaje.dirty || mensaje.touched)){
+      @if(mensaje.errors?. ['required']){
+        <!-- alert-danger o alert-warning (amarillo) -->
+        <div class="alert alert-danger" role="alert">
+          El campo Mensaje es obligatorio
+        </div>
+      }
+      @if(mensaje.errors?. ['notOnlyWhiteSpace']){
+        <!-- alert-danger o alert-warning (amarillo) -->
+        <div class="alert alert-danger" role="alert">
+          El campo Mensaje no puede ser espacios en blancos
+        </div>
+      }
+      @if(mensaje.errors?. ['forbiddenName']){
+        <!-- alert-danger o alert-warning (amarillo) -->
+        <div class="alert alert-danger" role="alert">
+          El campo Mensaje, no puede contener palabras como: 'xxx,sex,drug';
+        </div>
+      }
+    }
+
+    <div class="d-grid">
+      <button type="submit" class="btn btn-warning text-white fw-bold"
+      (click)="onSubmit()" [disabled]="contactoForm.invalid">Enviar mensaje
+      </button>
+    </div>
+  </ng-form>
+
+  <div class="mt-5 text-center">
+    <h5 class="text-orange">O visítanos en nuestras redes:</h5>
+    <div class="social-icons mt-3">
+      <a href="https://www.facebook.com" target="_blank" class="me-3">
+        <fa-icon [icon]="faFacebook" class="text-orange fs-3"></fa-icon>
+      </a>
+      <a href="https://www.instagram.com" target="_blank">
+        <fa-icon [icon]="faInstagram" class="text-orange fs-3"></fa-icon>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- Toast-->
+@if(toastShow){
+  <ngb-toast class="toast-container {{toast.color}} p-2 position-fixed top-0 end-0" style="z-index: 1200">
+    {{toast.body}}
+  </ngb-toast>
+}
+<!--Fin toast-->

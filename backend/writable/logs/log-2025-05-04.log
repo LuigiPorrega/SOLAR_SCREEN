@@ -1,0 +1,125 @@
+CRITICAL - 2025-05-04 18:00:40 --> CodeIgniter\Database\Exceptions\DataException: There is no data to insert.
+[Method: POST, Route: api/usuarios/login]
+in SYSTEMPATH/BaseModel.php on line 826.
+ 1 SYSTEMPATH/BaseModel.php(826): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+ 2 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([], true)
+ 3 APPPATH/Controllers/Api/UsuariosApiController.php(82): CodeIgniter\Model->insert([...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 18:53:35 --> ErrorException: Undefined array key "password"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 59.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 59)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 18:54:45 --> ErrorException: Undefined array key "password"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 59.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 59)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 18:55:54 --> ErrorException: Undefined array key "password"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 63.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 63)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 18:56:54 --> ErrorException: Undefined array key "password"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 59.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 59)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 18:58:44 --> ErrorException: Undefined array key "password"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 63.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 63)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 19:00:42 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "login
+"
+[Method: GET, Route: api/usuarios/login%0A]
+in SYSTEMPATH/Router/Router.php on line 737.
+ 1 SYSTEMPATH/Router/Router.php(204): CodeIgniter\Router\Router->checkDisallowedChars('api/usuarios/login
+')
+ 2 SYSTEMPATH/CodeIgniter.php(834): CodeIgniter\Router\Router->handle('api/usuarios/login
+')
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 19:06:42 --> ErrorException: Undefined array key "password"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 63.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 63)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 19:09:42 --> ErrorException: Undefined array key "password"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 58.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 58)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 19:10:51 --> ErrorException: Undefined array key "password"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 62.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 62)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 19:15:17 --> ErrorException: Undefined array key "password"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 65.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(65): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 65)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-04 19:20:09 --> ErrorException: Undefined array key "id"
+[Method: POST, Route: api/usuarios/login]
+in APPPATH/Controllers/Api/UsuariosApiController.php on line 80.
+ 1 APPPATH/Controllers/Api/UsuariosApiController.php(80): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', '/var/www/html/app/Controllers/Api/UsuariosApiController.php', 80)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\UsuariosApiController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\UsuariosApiController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

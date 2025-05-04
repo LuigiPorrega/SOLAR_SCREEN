@@ -22,6 +22,9 @@ RUN docker-php-ext-install mysqli pdo_mysql gd zip intl
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite
 
+# Habilitar mod_headers
+RUN a2enmod headers
+
 # Copy the custom Apache configuration file to the container
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 

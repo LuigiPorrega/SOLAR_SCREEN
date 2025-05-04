@@ -17,7 +17,7 @@ export interface ApiResponseCondicionesMeteorologicas {
   totalPages: number;
 }
 
-export interface ApiResponseCondicionCreateUpdate {
+export interface ApiResponseCondicionMeteorologicaCreateUpdate {
   status: string;
   message: string;
   data: CondicionMeteorologica;

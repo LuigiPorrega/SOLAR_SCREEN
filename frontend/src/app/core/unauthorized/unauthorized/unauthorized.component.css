@@ -1,0 +1,30 @@
+/* Animación de entrada */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text{
+  color: #FFA500;
+}
+
+/* Aplica la animación al modal */
+.modal-content {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Estilo adicional para los íconos */
+.fas.fa-exclamation-circle {
+  font-size: 1.5rem;
+}
+
+.fas.fa-ban {
+  color: #e74c3c;
+}
+

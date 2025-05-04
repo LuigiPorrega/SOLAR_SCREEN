@@ -1,0 +1,27 @@
+<!-- Modal de acceso denegado -->
+<div class="modal show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,0.5);">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content border border-2 border-danger">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title d-flex align-items-center">
+          <fa-icon [icon]="faExclamationCircle" class="me-2" size="lg"></fa-icon>
+          Acceso denegado
+        </h5>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <fa-icon [icon]="faBan" class="text-danger fa-4x mb-3"></fa-icon>
+          <h6 class="text">No tienes permisos suficientes para acceder a esta página.</h6>
+          <h6 class="text">Tu rol actual no autoriza esta acción.</h6>
+          <p class="text-muted mt-3">
+            <small class="text-warning">Serás redirigido automáticamente al inicio en 10 segundos...</small>
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a routerLink="/" class="btn btn-outline-danger">Volver al inicio ahora</a>
+      </div>
+    </div>
+  </div>
+</div>
+

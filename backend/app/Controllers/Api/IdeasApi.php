@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Controllers\Api;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\IdeasModel;
 use CodeIgniter\API\ResponseTrait;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class IdeasApi extends ResourceController
 {
@@ -12,6 +13,26 @@ class IdeasApi extends ResourceController
 
     protected $modelName = IdeasModel::class;
     protected $format    = 'json';
+
+    // Función para obtener datos del usuario desde el JWT
+    private function getUserDataFromToken()
+    {
+        $authHeader = $this->request->getHeaderLine('Authorization');
+        $key = getenv('JWT_SECRET') ?: 'clave_secreta_demo'; // Usa la clave secreta desde el env
+
+        if (!$authHeader || !str_starts_with($authHeader, 'Bearer ')) {
+            return null;
+        }
+
+        $token = str_replace('Bearer ', '', $authHeader);
+
+        try {
+            $decoded = JWT::decode($token, new Key($key, 'HS256'));
+            return $decoded->data;
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
 
     public function index()
     {
@@ -22,7 +43,6 @@ class IdeasApi extends ResourceController
         $ideas = $this->model->paginate($perPage);
         $pager = $this->model->pager;
 
-        // Devolver respuesta con información de paginación
         return $this->respond([
             'status'       => 'success',
             'data'         => $ideas,
@@ -45,13 +65,19 @@ class IdeasApi extends ResourceController
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Asignar la fecha de creación
+        // Obtener datos del usuario
+        $userData = $this->getUserDataFromToken();
+        if (!$userData) {
+            return $this->failUnauthorized('No autorizado. Token inválido o expirado');
+        }
+
+        // Asignar el usuario actual al crear la idea
+        $data['usuario_id'] = $userData->user_id;
         $data['FechaCreacion'] = date('Y-m-d H:i:s');
 
         // Insertar en la base de datos
         $this->model->insert($data);
 
-        // Devolver respuesta con mensaje
         return $this->respondCreated([
             'status' => 'success',
             'message' => 'Idea creada exitosamente.',
@@ -64,6 +90,17 @@ class IdeasApi extends ResourceController
         $idea = $this->model->find($id);
         if (!$idea) {
             return $this->failNotFound("Idea no encontrada con el ID: $id");
+        }
+
+        // Obtener datos del usuario
+        $userData = $this->getUserDataFromToken();
+        if (!$userData) {
+            return $this->failUnauthorized('No autorizado. Token inválido o expirado');
+        }
+
+        // Verificar si el usuario es el autor o es admin
+        if ($idea['usuario_id'] !== $userData->user_id && $userData->rol !== 'admin') {
+            return $this->failForbidden('No autorizado para modificar esta idea');
         }
 
         $data = $this->request->getJSON(true);
@@ -79,7 +116,6 @@ class IdeasApi extends ResourceController
         // Actualizar la idea en la base de datos
         $this->model->update($id, $data);
 
-        // Devolver respuesta con mensaje
         return $this->respond([
             'status' => 'success',
             'message' => 'Idea actualizada exitosamente.',
@@ -87,14 +123,25 @@ class IdeasApi extends ResourceController
         ]);
     }
 
-
-
     public function delete($id = null)
     {
-        if (!$this->model->find($id)) {
+        $idea = $this->model->find($id);
+        if (!$idea) {
             return $this->failNotFound("Idea no encontrada con el ID: $id");
         }
 
+        // Obtener datos del usuario
+        $userData = $this->getUserDataFromToken();
+        if (!$userData) {
+            return $this->failUnauthorized('No autorizado. Token inválido o expirado');
+        }
+
+        // Verificar si el usuario es el autor o es admin
+        if ($idea['usuario_id'] !== $userData->user_id && $userData->rol !== 'admin') {
+            return $this->failForbidden('No autorizado para eliminar esta idea');
+        }
+
+        // Eliminar la idea de la base de datos
         $this->model->delete($id);
 
         return $this->respondDeleted([

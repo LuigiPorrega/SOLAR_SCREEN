@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <form [formGroup]="loginForm">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+          <!-- floating username-->
+          <div class="form-floating mb-3">
+            <input type="text"  class="form-control"
+                   formControlName="username" id="username" placeholder="Username">
+            <label for="username" class="form-label text-orange">Username</label>
+          </div>
+          <!-- controlo las validaciones-->
+          @if(username.invalid && (username.dirty || username.touched)){
+            @if(username.errors?.['required']){
+              <!-- alert-danger o alert-warning (amarillo) -->
+              <div class="alert alert-danger" role="alert">
+                El campo Usuario es obligatorio
+              </div>
+            }
+            @if(username.errors?.['notOnlyWhiteSpace']){
+              <!-- alert-danger o alert-warning (amarillo) -->
+              <div class="alert alert-danger" role="alert">
+                El campo Usuario no puede ser espacios en blancos
+              </div>
+            }
+          }
+          <!-- floating password-->
+          <div class="form-floating mb-3">
+            <input type="password"  class="form-control"
+                   formControlName="password" id="password" placeholder="Contrasseña">
+            <label for="password" class="form-label text-orange">Contrasseña</label>
+          </div>
+          <!-- controlo las validaciones-->
+          @if(password.invalid && (password.dirty || password.touched)){
+            @if(password.errors?.['required']){
+              <!-- alert-danger o alert-warning (amarillo) -->
+              <div class="alert alert-danger" role="alert">
+                El campo Contrasseña es obligatorio
+              </div>
+            }
+          }
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-warning" routerLink="/registrarse" data-bs-dismiss="modal">Registrarse</button>
+        <button type="submit" class="btn btn-warning text-white fw-bold" (click)="onSubmit()">Iniciar</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- Toast-->
+@if(toastShow){
+  <div class="toast show {{ toast.color }} position-fixed top-0 end-0 m-3" style="z-index: 1200;">
+    <div class="toast-body">
+      {{ toast.body }}
+    </div>
+  </div>
+}
+<!--Fin toast-->
