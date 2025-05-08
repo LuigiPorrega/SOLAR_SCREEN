@@ -32,6 +32,7 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         'auth'          => \App\Filters\Auth::class,
         'cors'          => \App\Filters\CorsFilter::class, 
+        'apiaccesscontrol' => \App\Filters\ApiAccessControl::class,
     ];
 
     /**
@@ -54,7 +55,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
-           'cors' => ['except' => 'api/*'],
+           'cors',
         ],
         'after' => [
             'toolbar',

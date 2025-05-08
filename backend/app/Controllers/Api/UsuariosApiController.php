@@ -19,12 +19,13 @@ class UsuariosApiController extends BaseController
         $this->loginLogModel = new LoginLogModel(); // Inicializa el modelo de LoginLog
     }
 
-    private function setCorsHeaders()
-    {
-        $this->response->setHeader('Access-Control-Allow-Origin', 'http://localhost:8000/login');
-        $this->response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-        $this->response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    }
+    public function setCorsHeaders()
+{
+    $this->response->setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    $this->response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    $this->response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    $this->response->setHeader('Access-Control-Allow-Credentials', 'true');
+}
 
     public function login()
     {
@@ -149,4 +150,53 @@ class UsuariosApiController extends BaseController
             ])->setStatusCode(401);
         }
     }
+
+    public function registrarse()
+{
+    $this->setCorsHeaders();
+
+    if ($this->request->getMethod() === 'options') {
+        return $this->response->setStatusCode(204);
+    }
+
+    $data = $this->request->getJSON();
+
+    if (
+        !isset($data->nombre) ||
+        !isset($data->correo) ||
+        !isset($data->fechaNacimiento) ||
+        !isset($data->username) ||
+        !isset($data->password)
+    ) {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'Todos los campos obligatorios deben ser enviados.'
+        ])->setStatusCode(400);
+    }
+
+    // Verificar si el usuario ya existe
+    if ($this->usuariosModel->where('Username', $data->username)->first()) {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'El usuario ya existe.'
+        ])->setStatusCode(409);
+    }
+
+    $this->usuariosModel->insert([
+        'Nombre' => $data->nombre,
+        'Correo' => $data->correo,
+        'FechaNacimiento' => $data->fechaNacimiento,
+        'GoogleID' => isset($data->googleID) ? $data->googleID : null,
+        'Username' => $data->username,
+        'PasswordHash' => hash('sha256', $data->password),
+        'Rol' => 'usuario'
+        // 'Fecha_Registro' se llena automáticamente con curdate()
+    ]);
+
+    return $this->response->setJSON([
+        'status' => 'success',
+        'message' => 'Usuario registrado correctamente.'
+    ])->setStatusCode(201);
+}
+
 }

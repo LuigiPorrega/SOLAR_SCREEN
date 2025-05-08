@@ -1,1 +1,72 @@
-<p>registrarse works!</p>
+<form [formGroup]="registrarseForm" (ngSubmit)="onSubmit()" class="container mt-4" style="max-width: 500px;">
+  <h2 class="mb-4 text-center">Registrarse</h2>
+
+  <!-- Nombre -->
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre completo">
+    <label for="nombre">Nombre completo</label>
+  </div>
+  <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+    <div *ngIf="nombre.errors?.['required']" class="alert alert-danger">
+      El campo Nombre es obligatorio
+    </div>
+  </div>
+
+  <!-- Correo -->
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="correo" formControlName="correo" placeholder="Correo electrónico">
+    <label for="correo">Correo electrónico</label>
+  </div>
+  <div *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+    <div *ngIf="correo.errors?.['required']" class="alert alert-danger">El campo Correo es obligatorio</div>
+    <div *ngIf="correo.errors?.['email']" class="alert alert-danger">El correo no es válido</div>
+  </div>
+
+  <!-- Fecha de Nacimiento -->
+  <div class="form-floating mb-3">
+    <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento">
+    <label for="fechaNacimiento">Fecha de nacimiento</label>
+  </div>
+  <div *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)">
+    <div *ngIf="fechaNacimiento.errors?.['required']" class="alert alert-danger">
+      La fecha de nacimiento es obligatoria
+    </div>
+  </div>
+
+  <!-- Username -->
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="username" formControlName="username" placeholder="Nombre de usuario">
+    <label for="username">Nombre de usuario</label>
+  </div>
+  <div *ngIf="username.invalid && (username.dirty || username.touched)">
+    <div *ngIf="username.errors?.['required']" class="alert alert-danger">
+      El campo Usuario es obligatorio
+    </div>
+  </div>
+
+  <!-- Contraseña -->
+  <div class="form-floating mb-3">
+    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Contraseña">
+    <label for="password">Contraseña</label>
+  </div>
+  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+    <div *ngIf="password.errors?.['required']" class="alert alert-danger">El campo Contraseña es obligatorio</div>
+    <div *ngIf="password.errors?.['minlength']" class="alert alert-danger">
+      La contraseña debe tener al menos 6 caracteres
+    </div>
+  </div>
+
+  <!-- Botón -->
+  <div class="d-flex justify-content-center">
+    <button type="submit" class="btn btn-warning text-white fw-bold" [disabled]="registrarseForm.invalid">
+      Registrarse
+    </button>
+  </div>
+</form>
+
+<!-- Toast -->
+<div *ngIf="toastShow" class="toast show {{ toast.color }} position-fixed top-0 end-0 m-3" style="z-index: 1200;">
+  <div class="toast-body">
+    {{ toast.body }}
+  </div>
+</div>

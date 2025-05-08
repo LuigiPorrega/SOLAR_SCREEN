@@ -53,6 +53,7 @@ class ApiOverview extends ResourceController
                 'POST login' => '/api/usuarios/login',
                 'GET checkAccess' => '/api/usuarios/checkAccess',
                 'POST logout' => '/api/usuarios/logout',
+                'POST registrarse' => '/api/usuarios/registrarse',
             ],
             'carrito' => [
                 'GET' => '/api/carrito',

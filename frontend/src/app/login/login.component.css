@@ -26,4 +26,18 @@
   color: white;
 }
 
+:host {
+  display: block;
+}
 
+.modal-content {
+  background-color: white !important;
+  color: black !important;
+  z-index: 1055 !important;
+  opacity: 1 !important;
+}
+
+.modal {
+  z-index: 1050 !important;
+  opacity: 1 !important;
+}

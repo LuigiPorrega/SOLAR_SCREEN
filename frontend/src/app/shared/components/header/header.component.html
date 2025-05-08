@@ -1,4 +1,7 @@
-
+<!-- Modal Login -->
+<ng-template #loginTemplate let-modal="modal">
+  <app-login></app-login>
+</ng-template>
 
 <div class="top-line"></div>
 <header class="main-header headroom--not-bottom headroom headroom--top" id="main-header">
@@ -20,14 +23,24 @@
             <span class="fw-bold">About</span>
           </a></li>
 
-          <!-- Lanzo el modal del Login -->
-          <li class="login-container position-relative" data-bs-toggle="modal" data-bs-target="#loginModal">
-            <a routerLink="login" routerLinkActive="active" class="d-flex align-items-center">
+          <!-- Login / Logout dinámico -->
+          <li class="login-container position-relative">
+            <ng-container *ngIf="!isLoggedIn; else loggedInBlock">
+              <a class="d-flex align-items-center" (click)="abrirModalLogin()">
                 <fa-icon [icon]="faUser"></fa-icon>
-                <span class="fw-bold">Mi cuenta</span>
-            </a>
+                <span class="fw-bold">Login</span>
+              </a>
+            </ng-container>
+
+            <ng-template #loggedInBlock>
+              <a (click)="logout()" class="d-flex align-items-center" style="cursor: pointer;">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="fw-bold">Logout ({{ userName }} - {{ userRole }})</span>
+              </a>
+            </ng-template>
           </li>
-        </ul>
+
+
 
         <div class="cart-widget">
           <a class="nav-link position-relative d-flex align-items-center" routerLink="/cart" routerLinkActive="active">
@@ -42,6 +55,7 @@
             </span>
           </a>
         </div>
+        </ul>
       </div>
     </div>
   </div>

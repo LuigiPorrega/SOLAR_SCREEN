@@ -242,3 +242,7 @@ body:not(.login-open) .login-box {
 .search-form .search {
   margin-left: 10px; /* Espacio entre el input y el botón */
 }
+
+.user-nav li a {
+  cursor: pointer;
+}
