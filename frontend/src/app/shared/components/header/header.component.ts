@@ -7,7 +7,7 @@ import {
   faAddressCard,
   faCartShopping, faGear, faLightbulb,
   faMobile,
-  faPhone,
+  faPhone, faScrewdriverWrench,
   faSolarPanel,
   faSun,
   faUser
@@ -37,12 +37,12 @@ import {LoginComponent} from '../../../login/login.component';
 })
 export class HeaderComponent implements OnInit {
   //llamo al controllador de la autenticación del login
-  private readonly authService: AuthService = inject(AuthService);
+  protected readonly authService: AuthService = inject(AuthService);
   //llamo al router
-  private readonly router: Router = inject(Router);
+  protected readonly router: Router = inject(Router);
   //llamo al servicio del cart
-  private readonly cartService: CartService = inject(CartService);
-  private readonly ngZone: NgZone = inject(NgZone);
+  protected readonly cartService: CartService = inject(CartService);
+  protected readonly ngZone: NgZone = inject(NgZone);
 
   protected modalService: NgbModal = inject(NgbModal);
   protected modalConfig: NgbModalConfig = inject(NgbModalConfig);
@@ -86,7 +86,7 @@ export class HeaderComponent implements OnInit {
   }
   toastShow = false;
 
-  private showToast(message: string, color: string, duration: number) {
+  protected showToast(message: string, color: string, duration: number) {
     this.toast.body = message;
     this.toast.color = color;
     this.toastShow = true;
@@ -127,7 +127,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  private actualizarEstadoLogin(): void {
+  protected actualizarEstadoLogin(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
     this.userName = this.authService.getUserName();
     this.userRole = this.authService.getUserRole();
@@ -159,6 +159,11 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  goToBackend() {
+    window.open('http://localhost:8000/admin/inicio', '_blank');
+  }
+
   protected readonly faGear = faGear;
+  protected readonly faScrewdriverWrench = faScrewdriverWrench;
 }
 

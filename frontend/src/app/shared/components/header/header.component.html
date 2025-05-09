@@ -40,6 +40,14 @@
             </ng-template>
           </li>
 
+          <!-- redirige al backend-->
+          <li>
+            <a *ngIf="authService.getUserRole() === 'admin'" (click)="goToBackend()" style="cursor: pointer;">
+              <fa-icon [icon]="faScrewdriverWrench"></fa-icon>
+              <span class="fw-bold">Panel de Administración</span>
+            </a>
+          </li>
+
 
 
         <div class="cart-widget">
