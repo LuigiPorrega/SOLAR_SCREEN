@@ -112,14 +112,6 @@ export class HeaderComponent implements OnInit {
   public userRole: string | null = null;
 
   ngOnInit(): void {
-    // Al iniciar el componente, verificar si ya está logueado
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.isLoggedIn = true;
-      const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-      this.userName = userData.username || '';
-      this.userRole = userData.role || '';
-    }
     this.actualizarEstadoLogin();
     // Suscribirse a cambios del localStorage si los controlas desde otros componentes (opcional)
     window.addEventListener('storage', () => {
@@ -137,27 +129,11 @@ export class HeaderComponent implements OnInit {
     this.modalService.open(LoginComponent, { centered: true, size: 'lg' });
   }
 
-  logout(): void {
-    this.authService.logout().subscribe({
-      next: () => {
-        this.ngZone.run(() => {
-          // Elimina los datos del usuario
-          localStorage.removeItem('token');
-          localStorage.removeItem('userData');
-          this.isLoggedIn = false;
-
-          // Redirige a la página de login
-          this.router.navigateByUrl('/login').then(() => {
-            this.showToast('Sesión cerrada correctamente', 'bg-success', 1500);
-          });
-        });
-      },
-      error: (err) => {
-        console.error('Error en el logout', err);
-        this.showToast('Error al cerrar sesión', 'bg-danger', 2000);
-      }
-    });
+  logout() {
+    this.authService.logout();
   }
+
+
 
   goToBackend() {
     window.open('http://localhost:8000/admin/inicio', '_blank');
@@ -165,5 +141,7 @@ export class HeaderComponent implements OnInit {
 
   protected readonly faGear = faGear;
   protected readonly faScrewdriverWrench = faScrewdriverWrench;
+
+
 }
 

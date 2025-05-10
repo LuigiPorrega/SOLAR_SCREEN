@@ -1,33 +1,30 @@
-import { HttpInterceptorFn } from '@angular/common/http';
-import jwt_decode from 'jwt-decode';
+import { Injectable } from '@angular/core';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  if (!req.url.includes('/login') && !req.url.includes('/registrarse')) {
-    const token = localStorage.getItem('token');
-    console.log('Interceptor ejecutado. Token:', token);
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const userDataStr = localStorage.getItem('userData');
+    let token = null;
+
+    try {
+      const userData = userDataStr ? JSON.parse(userDataStr) : {};
+      token = userData.token;
+    } catch (e) {
+      console.error('Error parsing userData', e);
+    }
 
     if (token) {
-      try {
-        const decodedToken: any = jwt_decode(token);
-        const expirationTime = decodedToken.exp;
-
-        if (expirationTime * 1000 < Date.now()) {
-          console.log('Token expirado');
-          return next(req);
-        } else {
-          const authReq = req.clone({
-            setHeaders: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-          return next(authReq);
+      const authReq = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
         }
-      } catch (error) {
-        console.error('Error al decodificar el token', error);
-        return next(req);
-      }
+      });
+      return next.handle(authReq);
     }
-  }
 
-  return next(req);
-};
+    return next.handle(req);
+  }
+}

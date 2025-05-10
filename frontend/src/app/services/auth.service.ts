@@ -1,9 +1,11 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Subject, tap} from 'rxjs';
 import { RegistroUsuario } from '../common/InterfeceRegistroUsuario';
 import {Router} from '@angular/router';
+import { JwtHelperService } from "@auth0/angular-jwt";
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ import {Router} from '@angular/router';
 export class AuthService {
   private readonly http: HttpClient = inject(HttpClient);
   private readonly router: Router = inject(Router);
+  private jwtHelper = new JwtHelperService();
   private logoutSubject = new Subject<void>();
 
   constructor() {
@@ -74,8 +77,6 @@ export class AuthService {
     }
   }
 
-
-
   getUserRole(): string | null {
     const userData = localStorage.getItem('userData');
     if (userData) {
@@ -92,21 +93,74 @@ export class AuthService {
     return null;
   }
 
-  logout() {
-    return this.http.post(environment.baseURL + '/usuarios/logout', {}).pipe(
-      tap(() => {
-        // Limpiar completamente el estado local del usuario
-        console.log('Cerrando sesión y limpiando datos...');
-        localStorage.removeItem('token');  // Eliminar token
-        localStorage.removeItem('userData');  // Eliminar datos de usuario
-      })
-    );
+  logout(callBackend: boolean = true): void {
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    const token = userData.token;
+
+    if (callBackend && token) {
+      this.http.post('http://localhost:8000/api/usuarios/logout', {}, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).subscribe({
+        next: () => console.log('Logout OK'),
+        error: err => console.warn('Error al cerrar sesión:', err),
+        complete: () => this.clearUserData()
+      });
+    } else {
+      this.clearUserData();
+    }
+  }
+
+  private clearUserData(): void {
+    localStorage.removeItem('userData');
+    location.reload(); // o router.navigate
+  }
+
+  public async logoutBackendPHP(): Promise<void> {
+    try {
+      const response = await fetch('http://localhost:8000/logout', {
+        method: 'POST',
+        credentials: 'include', // MUY IMPORTANTE para enviar la cookie
+      });
+
+      if (!response.ok) {
+        throw new Error('Logout en backend fallido');
+      }
+
+      console.log('Logout backend exitoso');
+    } catch (error: unknown) {
+      console.error('Error en logout backend:', error);
+    }
   }
 
   isLoggedIn(): boolean {
-    const token = localStorage.getItem('token');
-   /* return !!token && this.isTokenValid(token);*/
-    return !!localStorage.getItem('token');
+    const userDataStr = localStorage.getItem('userData');
+    if (!userDataStr) return false;
+
+    try {
+      const userData = JSON.parse(userDataStr);
+      const token = userData.token;
+
+      if (!token || typeof token !== 'string') return false;
+
+      // Valida el token
+      const decoded: any = jwtDecode(token);
+      const now = Math.floor(Date.now() / 1000);
+
+      if (decoded.exp && decoded.exp < now) {
+        console.warn('Token expirado');
+        this.logout(false);  // sin llamar a backend
+        return false;
+      }
+
+      return true;
+
+    } catch (err) {
+      console.error('Error al decodificar token:', err);
+      this.logout(false);  // limpia sin llamar a backend
+      return false;
+    }
   }
 
   private isTokenValid(token: string): boolean {

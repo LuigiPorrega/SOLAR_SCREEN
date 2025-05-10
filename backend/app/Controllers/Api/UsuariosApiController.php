@@ -7,6 +7,8 @@ use App\Models\UsuariosModel;
 use App\Models\LoginLogModel;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use CodeIgniter\RESTful\ResourceController;
+use Config\Services;
 
 class UsuariosApiController extends BaseController
 {
@@ -20,12 +22,12 @@ class UsuariosApiController extends BaseController
     }
 
     public function setCorsHeaders()
-{
-    $this->response->setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    $this->response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    $this->response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    $this->response->setHeader('Access-Control-Allow-Credentials', 'true');
-}
+    {
+        $this->response->setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+        $this->response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        $this->response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+        $this->response->setHeader('Access-Control-Allow-Credentials', 'true');
+    }
 
     public function login()
     {
@@ -71,7 +73,7 @@ class UsuariosApiController extends BaseController
         }
 
         // Generar token JWT
-        $key = getenv('JWT_SECRET') ?: 'clave_secreta_demo';
+        $secretKey = getenv('JWT_SECRET') ?: 'clave_secreta_demo';
         $issuedAt = time();
         $expirationTime = $issuedAt + 3600;
         $payload = [
@@ -83,7 +85,7 @@ class UsuariosApiController extends BaseController
             ]
         ];
 
-        $jwt = JWT::encode($payload, $key, 'HS256');
+        $jwt = JWT::encode($payload, $secretKey, 'HS256');
 
         return $this->response->setJSON([
             'status' => 'success',
@@ -100,31 +102,44 @@ class UsuariosApiController extends BaseController
 
     public function logout()
     {
-        $this->setCorsHeaders(); // Configurar encabezados CORS
+        $authorizationHeader = $this->request->getHeaderLine('Authorization');
 
-        if ($this->request->getMethod() === 'options') {
-            return $this->response->setStatusCode(204);
+        if (empty($authorizationHeader) || !str_starts_with($authorizationHeader, 'Bearer ')) {
+            return $this->response->setStatusCode(400)->setJSON([
+                'status' => 'error',
+                'message' => 'Token de autorización inválido o faltante'
+            ]);
         }
 
-        // Como JWT es stateless, no se puede "invalidar" directamente.
-        // Opcionalmente, podrías manejar una blacklist de tokens si lo necesitas.
+        $token = trim(str_replace('Bearer', '', $authorizationHeader));
+        $secretKey = getenv('JWT_SECRET') ?: 'clave_secreta_demo';
 
-        return $this->response->setJSON([
-            'status' => 'success',
-            'message' => 'Logout simulado (JWT no requiere logout real)'
-        ]);
+        try {
+            $decoded = JWT::decode($token, new Key($secretKey, 'HS256'));
+
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Sesión cerrada correctamente'
+            ]);
+        } catch (\Exception $e) {
+            return $this->response->setStatusCode(401)->setJSON([
+                'status' => 'error',
+                'message' => 'Token inválido',
+                'error' => $e->getMessage()
+            ]);
+        }
     }
 
     public function checkAccess()
     {
-        $this->setCorsHeaders(); // Configurar encabezados CORS
+        $this->setCorsHeaders();
 
         if ($this->request->getMethod() === 'options') {
             return $this->response->setStatusCode(204);
         }
 
         $authHeader = $this->request->getHeaderLine('Authorization');
-        $key = getenv('JWT_SECRET') ?: 'clave_secreta_demo';
+        $secretKey = getenv('JWT_SECRET') ?: 'clave_secreta_demo';
 
         if (!$authHeader || !str_starts_with($authHeader, 'Bearer ')) {
             return $this->response->setJSON([
@@ -136,7 +151,7 @@ class UsuariosApiController extends BaseController
         $token = trim(str_replace('Bearer', '', $authHeader));
 
         try {
-            $decoded = JWT::decode($token, new Key($key, 'HS256'));
+            $decoded = JWT::decode($token, new Key($secretKey, 'HS256'));
 
             return $this->response->setJSON([
                 'status' => 'success',
@@ -146,57 +161,57 @@ class UsuariosApiController extends BaseController
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'status' => 'error',
-                'message' => 'Token inválido o expirado'
+                'message' => 'Token inválido o expirado',
+                'error' => $e->getMessage()
             ])->setStatusCode(401);
         }
     }
 
     public function registrarse()
-{
-    $this->setCorsHeaders();
+    {
+        $this->setCorsHeaders();
 
-    if ($this->request->getMethod() === 'options') {
-        return $this->response->setStatusCode(204);
-    }
+        if ($this->request->getMethod() === 'options') {
+            return $this->response->setStatusCode(204);
+        }
 
-    $data = $this->request->getJSON();
+        $data = $this->request->getJSON();
 
-    if (
-        !isset($data->nombre) ||
-        !isset($data->correo) ||
-        !isset($data->fechaNacimiento) ||
-        !isset($data->username) ||
-        !isset($data->password)
-    ) {
+        if (
+            !isset($data->nombre) ||
+            !isset($data->correo) ||
+            !isset($data->fechaNacimiento) ||
+            !isset($data->username) ||
+            !isset($data->password)
+        ) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Todos los campos obligatorios deben ser enviados.'
+            ])->setStatusCode(400);
+        }
+
+        // Verificar si el usuario ya existe
+        if ($this->usuariosModel->where('Username', $data->username)->first()) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'El usuario ya existe.'
+            ])->setStatusCode(409);
+        }
+
+        $this->usuariosModel->insert([
+            'Nombre' => $data->nombre,
+            'Correo' => $data->correo,
+            'FechaNacimiento' => $data->fechaNacimiento,
+            'GoogleID' => isset($data->googleID) ? $data->googleID : null,
+            'Username' => $data->username,
+            'PasswordHash' => hash('sha256', $data->password),
+            'Rol' => 'usuario'
+            // 'Fecha_Registro' se llena automáticamente con curdate()
+        ]);
+
         return $this->response->setJSON([
-            'status' => 'error',
-            'message' => 'Todos los campos obligatorios deben ser enviados.'
-        ])->setStatusCode(400);
+            'status' => 'success',
+            'message' => 'Usuario registrado correctamente.'
+        ])->setStatusCode(201);
     }
-
-    // Verificar si el usuario ya existe
-    if ($this->usuariosModel->where('Username', $data->username)->first()) {
-        return $this->response->setJSON([
-            'status' => 'error',
-            'message' => 'El usuario ya existe.'
-        ])->setStatusCode(409);
-    }
-
-    $this->usuariosModel->insert([
-        'Nombre' => $data->nombre,
-        'Correo' => $data->correo,
-        'FechaNacimiento' => $data->fechaNacimiento,
-        'GoogleID' => isset($data->googleID) ? $data->googleID : null,
-        'Username' => $data->username,
-        'PasswordHash' => hash('sha256', $data->password),
-        'Rol' => 'usuario'
-        // 'Fecha_Registro' se llena automáticamente con curdate()
-    ]);
-
-    return $this->response->setJSON([
-        'status' => 'success',
-        'message' => 'Usuario registrado correctamente.'
-    ])->setStatusCode(201);
-}
-
 }

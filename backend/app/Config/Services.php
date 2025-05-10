@@ -3,6 +3,7 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseService;
+use \Firebase\JWT\JWT;
 
 /**
  * Services Configuration file.
@@ -19,14 +20,19 @@ use CodeIgniter\Config\BaseService;
  */
 class Services extends BaseService
 {
-    /*
-     * public static function example($getShared = true)
-     * {
-     *     if ($getShared) {
-     *         return static::getSharedInstance('example');
-     *     }
+    /**
+     * Devuelve una instancia de la librería JWT.
      *
-     *     return new \CodeIgniter\Example();
-     * }
+     * @param bool $getShared
+     * @return JWT
      */
+    public static function jwt($getShared = true)
+    {
+        if ($getShared) {
+            return static::getSharedInstance('jwt');
+        }
+
+        // Retorna una nueva instancia de la librería JWT
+        return new JWT();
+    }
 }
