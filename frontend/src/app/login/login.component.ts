@@ -1,6 +1,6 @@
-import { Component, ElementRef, inject, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormValidators } from '../validators/formValidators';
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -115,5 +115,10 @@ export class LoginComponent implements OnInit {
 
   public get password(): any {
     return this.loginForm.get('password');
+  }
+
+  redirigirARegistro(): void {
+    this.activeModal.close();
+    this.router.navigate(['/registrarse']);
   }
 }

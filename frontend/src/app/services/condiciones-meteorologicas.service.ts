@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {
@@ -29,10 +29,10 @@ export class CondicionesMeteorologicasService {
     return this.http.get<CondicionMeteorologica>(environment.baseURL +'/condicionesMeteorologicas/' +id);
   };
 
-  //función para crear una nueva condición Meteorologica
-  addCondicionMeteorologica(condicionMeteorologica: CondicionMeteorologica): Observable<ApiResponseCondicionMeteorologicaCreateUpdate> {
-    return this.http.post<ApiResponseCondicionMeteorologicaCreateUpdate>(environment.baseURL +'/condicionesMeteorologicas' , condicionMeteorologica);
-  };
+  addCondicionMeteorologica(condicion: CondicionMeteorologica, headers: HttpHeaders): Observable<any> {
+    return this.http.post(`${environment.baseURL}/condicionesMeteorologicas`, condicion, { headers });
+  }
+
 
   //función para modificar una condición Meteorologica
   updateCondicionMeteorologica(condicionMeteorologica: CondicionMeteorologica): Observable<ApiResponseCondicionMeteorologicaCreateUpdate> {

@@ -40,7 +40,9 @@ export class AuthService {
           // 🔐 Si el usuario es admin, hacer login adicional en backend PHP
           if (userData.role === 'admin') {
             this.loginBackendPHP(data.username, data.password)
-              .then(() => console.log('Login backend exitoso'))
+              .then(() => {
+                console.log('Login backend exitoso');
+              })
               .catch((err) => console.error('Error login backend:', err));
           }
         }
@@ -49,7 +51,7 @@ export class AuthService {
   }
 
 // Función auxiliar para login silencioso en backend PHP
-  private async loginBackendPHP(username: string, password: string): Promise<string> {
+  protected async loginBackendPHP(username: string, password: string): Promise<string> {
     try {
       const response = await fetch('http://localhost:8000/login', {
         method: 'POST',
@@ -98,9 +100,10 @@ export class AuthService {
     const token = userData.token;
 
     if (callBackend && token) {
-      this.http.post('http://localhost:8000/api/usuarios/logout', {}, {
+      const logoutUrl = 'http://localhost:8000/api/usuarios/logout';
+      this.http.post(logoutUrl, {}, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token?.trim()}`
         }
       }).subscribe({
         next: () => console.log('Logout OK'),
@@ -112,7 +115,7 @@ export class AuthService {
     }
   }
 
-  private clearUserData(): void {
+  clearUserData(): void {
     localStorage.removeItem('userData');
     location.reload(); // o router.navigate
   }
@@ -163,7 +166,7 @@ export class AuthService {
     }
   }
 
-  private isTokenValid(token: string): boolean {
+   isTokenValid(token: string): boolean {
     // Aquí podrías agregar una validación de expiración del token
     // por ejemplo, si el token es un JWT y tiene una fecha de expiración
     try {

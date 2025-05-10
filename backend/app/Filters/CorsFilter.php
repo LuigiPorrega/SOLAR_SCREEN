@@ -10,7 +10,6 @@ class CorsFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        // Solo modificar cabeceras, no enviar headers directamente
         $response = service('response');
         $response->setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
         $response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
@@ -20,6 +19,9 @@ class CorsFilter implements FilterInterface
         if ($request->getMethod() === 'options') {
             return $response->setStatusCode(204);
         }
+
+        // Devuelve el response para asegurarte de que los headers se apliquen
+        return $response;
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null) {}

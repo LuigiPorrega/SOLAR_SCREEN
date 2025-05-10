@@ -1,30 +1,22 @@
-import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpInterceptorFn } from '@angular/common/http';
+import { HttpRequest, HttpHandlerFn } from '@angular/common/http';
+import { inject } from '@angular/core';
 
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: HttpHandlerFn) => {
+  const rawToken = localStorage.getItem('token');
+  const token = rawToken ? rawToken.trim() : null;
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const userDataStr = localStorage.getItem('userData');
-    let token = null;
+  // Rutas que no deben llevar token
+  const isAuthRoute = req.url.includes('/usuarios/login') || req.url.includes('/usuarios/registrarse');
 
-    try {
-      const userData = userDataStr ? JSON.parse(userDataStr) : {};
-      token = userData.token;
-    } catch (e) {
-      console.error('Error parsing userData', e);
-    }
-
-    if (token) {
-      const authReq = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      return next.handle(authReq);
-    }
-
-    return next.handle(req);
+  if (token && !isAuthRoute) {
+    const authReq = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return next(authReq);
   }
-}
+
+  return next(req);
+};
