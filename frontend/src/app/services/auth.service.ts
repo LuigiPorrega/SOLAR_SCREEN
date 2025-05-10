@@ -176,7 +176,6 @@ export class AuthService {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     this.loginStatusSubject.next(null);
-    this.router.navigate(['/login']);
   }
 
   public async logoutBackendPHP(): Promise<void> {

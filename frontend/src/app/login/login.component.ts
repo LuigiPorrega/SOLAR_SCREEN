@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormValidators } from '../validators/formValidators';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
+import {timeout} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit {
         const nombre = userData.username;
 
         // Mostrar mensaje de bienvenida
-        this.showToast(`Bienvenido ${nombre}`, 'bg-success text-light', 1500);
+        this.showToast(`Bienvenido ${nombre}`, 'bg-success text-light', 3000);
         this.cerrarModal();
 
         // Redirigir según el rol

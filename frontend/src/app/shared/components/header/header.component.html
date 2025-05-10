@@ -6,14 +6,14 @@
 <div class="top-line"></div>
 <header class="main-header headroom--not-bottom headroom headroom--top" id="main-header">
   <div class="wrapper">
-    <div id="logo" class="main-logo">
+    <div id="logo" class="main-logo my-4">
       <a routerLink="/inicio" routerLinkActive="active" title="Solar Screen">
         <img src="/images/Solar_Screen.png" alt="Solar Screen">
       </a>
     </div>
     <div class="main-header-top-nav">
       <div class="main-header-top-nav-inner">
-        <ul class="user-nav">
+        <ul class="user-nav my-3">
           <li><a routerLink="/contacto" routerLinkActive="active" title="Contacto">
             <fa-icon [icon]= "faPhone"></fa-icon>
             <span class="fw-bold">Contacto</span>
@@ -35,7 +35,12 @@
             <ng-template #loggedInBlock>
               <a (click)="logout()" class="d-flex align-items-center" style="cursor: pointer;">
                 <fa-icon [icon]="faUser"></fa-icon>
-                <span class="fw-bold">Logout ({{ userName }} - {{ userRole }})</span>
+                   <span class="fw-bold" *ngIf="!isLoggingOut">
+                     Logout ({{ userName }} - {{ userRole }})
+                   </span>
+                   <div *ngIf="isLoggingOut" class="spinner-border spinner-border-sm text-warning ms-2" role="status">
+                  <span class="visually-hidden">Cerrando sesión...</span>
+                </div>
               </a>
             </ng-template>
           </li>
@@ -47,23 +52,27 @@
               <span class="fw-bold">Panel de Administración</span>
             </a>
           </li>
+        </ul>
 
-
-
-        <div class="cart-widget">
-          <a class="nav-link position-relative d-flex align-items-center" routerLink="/cart" routerLinkActive="active">
-            <div class="position-relative me-2">
-              <fa-icon [icon]="faCartShopping" class="fs-5"></fa-icon>
-              <span class="cantidadCart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange">
+<div>
+  <ul>
+    <div class="cart-widget">
+      <a class="nav-link position-relative d-flex align-items-center" routerLink="/cart" routerLinkActive="active">
+        <div class="position-relative me-2">
+          <fa-icon [icon]="faCartShopping" class="fs-5"></fa-icon>
+          <span class="cantidadCart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange">
                     {{ cantidadCarrito | number : '1.0-2' }}
               </span>
-            </div>
-            <span class="totalCart text-nowrap ms-2 fw-bold">
+        </div>
+        <span class="totalCart text-nowrap ms-2 fw-bold">
                    {{ precioCarrito | number:'1.2-2' }} €
             </span>
-          </a>
-        </div>
-        </ul>
+      </a>
+    </div>
+  </ul>
+
+</div>
+
       </div>
     </div>
   </div>

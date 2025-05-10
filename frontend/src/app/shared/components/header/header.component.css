@@ -115,7 +115,8 @@ body:not(.login-open) .login-box {
 
 
 .cart-widget {
-  margin-left: 24vh;
+  margin-left: auto;
+  margin-right: 120px;
   margin-top: 22px;
 }
 .cantidadCart{

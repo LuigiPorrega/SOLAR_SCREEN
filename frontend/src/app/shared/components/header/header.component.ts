@@ -1,4 +1,5 @@
-import {Component, inject, OnInit, ViewChild, TemplateRef, NgZone} from '@angular/core';
+import {Component, inject, OnInit,
+  NgZone, ChangeDetectorRef} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {CartService} from '../../../services/cart.service';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
@@ -42,14 +43,16 @@ export class HeaderComponent implements OnInit {
   protected readonly router: Router = inject(Router);
   //llamo al servicio del cart
   protected readonly cartService: CartService = inject(CartService);
-  protected readonly ngZone: NgZone = inject(NgZone);
 
   protected modalService: NgbModal = inject(NgbModal);
   protected modalConfig: NgbModalConfig = inject(NgbModalConfig);
-
-  constructor() {
+  //Variable para el spinning
+  public isLoggingOut: boolean = false;
+  private ngZone: NgZone = inject(NgZone);
+  constructor(private cdr: ChangeDetectorRef) {
     this.modalConfig.backdrop = 'static'; // No permitir cerrar el modal al hacer clic fuera
     this.modalConfig.keyboard = false; // No permitir cerrarlo con el teclado (Esc)
+
 
     //Cantidad Carrito
     this.cartService.cantidadCarrito.subscribe({
@@ -124,8 +127,26 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.isLoggingOut = true;
+
+    // Realiza el logout en el servicio
     this.authService.logout();
+
+    // Usa setTimeout para manejar el spinner y el cambio de estado
+    setTimeout(() => {
+      // Cambia el estado de isLoggingOut y actualiza la vista
+      this.isLoggingOut = false;
+
+      // Aquí forzamos la detección de cambios para que la vista se actualice inmediatamente
+      this.cdr.detectChanges();
+
+      // Después de logout, redirige a la página de login
+      this.ngZone.run(() => {
+        this.router.navigate(['/login']);
+      });
+    }, 2000); // Duración del spinner
   }
+
 
 
 
@@ -135,8 +156,6 @@ export class HeaderComponent implements OnInit {
 
   protected readonly faGear = faGear;
   protected readonly faScrewdriverWrench = faScrewdriverWrench;
-
-
   protected readonly faCloudSunRain = faCloudSunRain;
 }
 
