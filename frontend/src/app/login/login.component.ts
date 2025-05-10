@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if (this.loginForm.invalid) {
-      // Marcar todos los controles como tocados para mostrar los errores
       this.loginForm.markAllAsTouched();
       return;
     }

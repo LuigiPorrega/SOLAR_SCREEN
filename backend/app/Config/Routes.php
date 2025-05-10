@@ -37,7 +37,7 @@ $routes->get('/', [Home::class, 'index']);
 // Rutas de autenticación
 $routes->get('login', [Usuarios::class, 'loginForm']);
 $routes->post('login', [Usuarios::class, 'checkUser']);
-$routes->get('admin/logout', [Usuarios::class, 'closeSession']);
+$routes->post('admin/logout', [Usuarios::class, 'closeSession']);
 
 // Rutas para el backend (requieren autenticación)
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {

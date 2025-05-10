@@ -14,7 +14,7 @@ export class AuthService {
   private readonly http: HttpClient = inject(HttpClient);
   private readonly router: Router = inject(Router);
   private jwtHelper = new JwtHelperService();
-  private loginStatusSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
+  private loginStatusSubject = new BehaviorSubject<any>(this.getUserData());
   public loginStatus$ = this.loginStatusSubject.asObservable();
 
   constructor() {}
@@ -23,22 +23,25 @@ export class AuthService {
     return this.http.post<any>(environment.baseURL + '/usuarios/login', data).pipe(
       tap((res) => {
         if (res && res.status === 'success') {
-          this.loginStatusSubject.next(true);
-          console.log('Respuesta del backend:', res);
-          const token = res.data.token;
           const userData = res.data;
+          const token = userData.token;
+          const decoded: any = jwtDecode(token);
 
           // Guardar token y datos de usuario
-          console.log("Token guardado:", token);
           localStorage.setItem('token', token);
           localStorage.setItem('user', JSON.stringify({
             username: userData.username,
-            role: userData.role,
-            //Notifica el estado del login
-
+            role: userData.role || 'user',
+            token: userData.token
           }));
 
-          // 🔐 Si el usuario es admin, hacer login adicional en backend PHP
+          // Emitir los datos completos del usuario en el BehaviorSubject
+          this.loginStatusSubject.next({
+            username: userData.username,
+            role: userData.role || 'user'
+          });
+
+          // 🔐 Si el usuario es admin, hacer login en backend PHP
           if (userData.role === 'admin') {
             this.loginBackendPHP(data.username, data.password)
               .then(() => {
@@ -56,7 +59,7 @@ export class AuthService {
       }),
 
       catchError((error) => {
-        console.error('Login failed', error);  // Log the error for debugging
+        console.error('Login failed', error);
         return throwError(() => new Error('Login failed'));
       })
     );
@@ -93,6 +96,27 @@ export class AuthService {
     }
   }
 
+  getUserData() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      try {
+        const parsedUserData = JSON.parse(userData);
+        const token = parsedUserData.token;
+
+        // Verificamos si el token es válido
+        if (this.isTokenValid(token)) {
+          return parsedUserData;
+        } else {
+          this.clearUserData();
+          return null;
+        }
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
   getUserRole(): string | null {
     const userData = localStorage.getItem('user');
     if (!userData) return null;
@@ -117,6 +141,14 @@ export class AuthService {
     const userData = JSON.parse(localStorage.getItem('user') || '{}');
     const token = userData.token;
 
+    const backendLogout = async () => {
+      try {
+        await this.logoutBackendPHP();
+      } catch (err) {
+        console.warn('Error cerrando sesión PHP:', err);
+      }
+    };
+
     if (callBackend && token) {
       const logoutUrl = 'http://localhost:8000/api/usuarios/logout';
       this.http.post(logoutUrl, {}, {
@@ -124,27 +156,35 @@ export class AuthService {
           Authorization: `Bearer ${token?.trim()}`
         }
       }).subscribe({
-        next: () => console.log('Logout OK'),
-        error: (err) => console.warn('Error al cerrar sesión:', err),
-        complete: () => this.clearUserData()
+        next: async () => {
+          await backendLogout();
+          this.clearUserData();
+        },
+        error: async (err) => {
+          console.warn('Error al cerrar sesión JWT:', err);
+          await backendLogout();
+          this.clearUserData();
+        }
       });
     } else {
-      this.clearUserData();
+      backendLogout().finally(() => this.clearUserData());
     }
   }
+
 
   clearUserData(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    this.loginStatusSubject.next(false);
+    this.loginStatusSubject.next(null);
     this.router.navigate(['/login']);
   }
 
   public async logoutBackendPHP(): Promise<void> {
+    console.log('Cerrando sesión, enviando solicitud al backend...');
     try {
-      const response = await fetch('http://localhost:8000/logout', {
+      const response = await fetch('http://localhost:8000/admin/logout', {
         method: 'POST',
-        credentials: 'include', // MUY IMPORTANTE para enviar la cookie
+        credentials: 'include',
       });
 
       if (!response.ok) {
@@ -158,39 +198,16 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    const userDataStr = localStorage.getItem('user');
-    if (!userDataStr) return false;
-
-    try {
-      const userData = JSON.parse(userDataStr);
-      const token = userData.token;
-
-      if (!token || typeof token !== 'string') return false;
-
-      const decoded: any = jwtDecode(token);
-      const now = Math.floor(Date.now() / 1000);
-
-      if (decoded.exp && decoded.exp < now) {
-        console.warn('Token expirado');
-        this.logout(false);  // sin llamar a backend
-        return false;
-      }
-
-      return true;
-
-    } catch (err) {
-      console.error('Error al decodificar token:', err);
-      this.logout(false);  // limpia sin llamar a backend
-      return false;
-    }
+    const userData = this.getUserData();
+    return userData !== null;
   }
 
   isTokenValid(token: string): boolean {
     try {
-      const decodedToken = JSON.parse(atob(token.split('.')[1])); // Decodificando el JWT
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
       const expiration = decodedToken.exp;
       const now = Math.floor(Date.now() / 1000);
-      return expiration > now; // El token sigue siendo válido
+      return expiration > now;
     } catch (error) {
       return false;
     }

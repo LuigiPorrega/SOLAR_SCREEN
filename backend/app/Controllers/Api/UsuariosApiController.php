@@ -81,7 +81,8 @@ class UsuariosApiController extends BaseController
             'exp' => $expirationTime,
             'data' => [
                 'id' => $user['ID'],
-                'username' => $user['Username']
+                'username' => $user['Username'],
+                'role' => $user['Rol'],
             ]
         ];
 
