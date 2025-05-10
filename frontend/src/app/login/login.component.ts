@@ -78,7 +78,8 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/');
         }
       },
-      error: error => {
+      error: (error) => {
+        console.log(error);  // Inspect the error structure
         const errorMsg = error.error?.message || 'Error desconocido';
         this.showToast('Credenciales incorrectas: ' + errorMsg, 'bg-danger text-light', 2000);
       }

@@ -1,10 +1,10 @@
 import { inject, Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import {Subject, tap} from 'rxjs';
+import { catchError, Subject, tap, throwError } from 'rxjs';
 import { RegistroUsuario } from '../common/InterfeceRegistroUsuario';
-import {Router} from '@angular/router';
-import { JwtHelperService } from "@auth0/angular-jwt";
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import jwtDecode from 'jwt-decode';
 
 @Injectable({
@@ -16,13 +16,12 @@ export class AuthService {
   private jwtHelper = new JwtHelperService();
   private logoutSubject = new Subject<void>();
 
-  constructor() {
-  }
+  constructor() {}
 
   login(data: { username: string, password: string }) {
     return this.http.post<any>(environment.baseURL + '/usuarios/login', data).pipe(
       tap((res) => {
-        if (res.status === 'success') {
+        if (res && res.status === 'success') { // Añadir comprobación de `res` antes de acceder
           console.log('Respuesta del backend:', res);
           const token = res.data.token;
           const userData = res.data;
@@ -30,11 +29,9 @@ export class AuthService {
           // Guardar token y datos de usuario
           console.log("Token guardado:", token);
           localStorage.setItem('token', token);
-          localStorage.setItem('userData', JSON.stringify(userData));
           localStorage.setItem('user', JSON.stringify({
-            role: userData.role,
             username: userData.username,
-            token: token
+            role: userData.role
           }));
 
           // 🔐 Si el usuario es admin, hacer login adicional en backend PHP
@@ -45,46 +42,63 @@ export class AuthService {
               })
               .catch((err) => console.error('Error login backend:', err));
           }
+        } else {
+          console.error('Respuesta del backend no válida:', res);
         }
+
+        if (localStorage != null) {
+          this.router.navigate(['/inicio']);
+        }
+      }),
+
+      catchError((error) => {
+        console.error('Login failed', error);  // Log the error for debugging
+        return throwError(() => new Error('Login failed'));
       })
     );
+
   }
 
-// Función auxiliar para login silencioso en backend PHP
-  protected async loginBackendPHP(username: string, password: string): Promise<string> {
+  // Función auxiliar para login silencioso en backend PHP
+  private async loginBackendPHP(username: string, password: string): Promise<string> {
     try {
       const response = await fetch('http://localhost:8000/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        credentials: 'include',
-        body: new URLSearchParams({
-          username,
-          password
-        })
+        credentials: 'include', // necesario para cookies/sesión
+        body: new URLSearchParams({ username, password }).toString(),
       });
 
       if (!response.ok) {
-        throw new Error('Login en backend fallido');
+        throw new Error('Error HTTP: ' + response.status);
       }
 
-      return await response.text();
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error('Error desconocido en el login backend');
+      const responseText = await response.text();
+      console.log('Respuesta del backend:', responseText);
+
+      if (responseText.includes('Credenciales incorrectas')) {
+        throw new Error('Credenciales incorrectas');
       }
+
+      return 'Login exitoso';
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      throw error;
     }
   }
 
   getUserRole(): string | null {
-    const userData = localStorage.getItem('userData');
-    if (userData) {
-      return JSON.parse(userData).role || null;
+    const userData = localStorage.getItem('user');
+    if (!userData) return null;
+
+    try {
+      const user = JSON.parse(userData);
+      return user?.role ?? null;
+    } catch {
+      return null;
     }
-    return null;
   }
 
   getUserName(): string | null {
@@ -107,7 +121,7 @@ export class AuthService {
         }
       }).subscribe({
         next: () => console.log('Logout OK'),
-        error: err => console.warn('Error al cerrar sesión:', err),
+        error: (err) => console.warn('Error al cerrar sesión:', err),
         complete: () => this.clearUserData()
       });
     } else {
@@ -116,8 +130,10 @@ export class AuthService {
   }
 
   clearUserData(): void {
-    localStorage.removeItem('userData');
-    location.reload(); // o router.navigate
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('userData'); // solo si la usas
+    location.reload(); // o this.router.navigate(['/login']);
   }
 
   public async logoutBackendPHP(): Promise<void> {
@@ -147,7 +163,6 @@ export class AuthService {
 
       if (!token || typeof token !== 'string') return false;
 
-      // Valida el token
       const decoded: any = jwtDecode(token);
       const now = Math.floor(Date.now() / 1000);
 
@@ -166,9 +181,7 @@ export class AuthService {
     }
   }
 
-   isTokenValid(token: string): boolean {
-    // Aquí podrías agregar una validación de expiración del token
-    // por ejemplo, si el token es un JWT y tiene una fecha de expiración
+  isTokenValid(token: string): boolean {
     try {
       const decodedToken = JSON.parse(atob(token.split('.')[1])); // Decodificando el JWT
       const expiration = decodedToken.exp;
@@ -180,6 +193,6 @@ export class AuthService {
   }
 
   registrarse(data: RegistroUsuario) {
-    return this.http.post<any>(environment.baseURL + '/usuarios/registrarse', data);
+    return this.http.post<any>(`${environment.baseURL}/usuarios/registrarse`, data);
   }
 }

@@ -19,10 +19,9 @@ class CorsFilter implements FilterInterface
         if ($request->getMethod() === 'options') {
             return $response->setStatusCode(204);
         }
-
-        // Devuelve el response para asegurarte de que los headers se apliquen
-        return $response;
     }
-
-    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null) {}
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
+    {
+        // Aquí puedes agregar headers CORS también si lo deseas
+    }
 }

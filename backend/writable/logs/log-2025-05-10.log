@@ -1,0 +1,4 @@
+CRITICAL - 2025-05-10 16:05:34 --> ErrorException: Class App\Filters\CorsFilter contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (CodeIgniter\Filters\FilterInterface::after)
+[Method: GET, Route: admin/inicio]
+in APPPATH/Filters/CorsFilter.php on line 9.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()

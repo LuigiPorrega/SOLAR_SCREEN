@@ -7,7 +7,7 @@
 
 # Manejo explícito de solicitudes OPTIONS
 RewriteCond %{REQUEST_METHOD} OPTIONS
-RewriteRule ^(.*)$ $1 [R=200,L]
+RewriteRule ^(.*)$ $1 [L]
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On

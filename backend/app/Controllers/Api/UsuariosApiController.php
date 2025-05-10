@@ -86,6 +86,8 @@ class UsuariosApiController extends BaseController
         ];
 
         $jwt = JWT::encode($payload, $secretKey, 'HS256');
+        log_message('debug', 'Login exitoso, generando token y respuesta JSON');
+
 
         return $this->response->setJSON([
             'status' => 'success',
