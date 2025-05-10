@@ -112,17 +112,11 @@ export class HeaderComponent implements OnInit {
   public userRole: string | null = null;
 
   ngOnInit(): void {
-    this.actualizarEstadoLogin();
-    // Suscribirse a cambios del localStorage si los controlas desde otros componentes (opcional)
-    window.addEventListener('storage', () => {
-      this.actualizarEstadoLogin();
+    this.authService.loginStatus$.subscribe(isLogged => {
+      this.isLoggedIn = isLogged;
+      this.userName = this.authService.getUserName();
+      this.userRole = this.authService.getUserRole();
     });
-  }
-
-  protected actualizarEstadoLogin(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
-    this.userName = this.authService.getUserName();
-    this.userRole = this.authService.getUserRole();
   }
 
   abrirModalLogin(): void {

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { catchError, Subject, tap, throwError } from 'rxjs';
+import {BehaviorSubject, catchError, Subject, tap, throwError} from 'rxjs';
 import { RegistroUsuario } from '../common/InterfeceRegistroUsuario';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -14,14 +14,16 @@ export class AuthService {
   private readonly http: HttpClient = inject(HttpClient);
   private readonly router: Router = inject(Router);
   private jwtHelper = new JwtHelperService();
-  private logoutSubject = new Subject<void>();
+  private loginStatusSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
+  public loginStatus$ = this.loginStatusSubject.asObservable();
 
   constructor() {}
 
   login(data: { username: string, password: string }) {
     return this.http.post<any>(environment.baseURL + '/usuarios/login', data).pipe(
       tap((res) => {
-        if (res && res.status === 'success') { // Añadir comprobación de `res` antes de acceder
+        if (res && res.status === 'success') {
+          this.loginStatusSubject.next(true);
           console.log('Respuesta del backend:', res);
           const token = res.data.token;
           const userData = res.data;
@@ -31,7 +33,9 @@ export class AuthService {
           localStorage.setItem('token', token);
           localStorage.setItem('user', JSON.stringify({
             username: userData.username,
-            role: userData.role
+            role: userData.role,
+            //Notifica el estado del login
+
           }));
 
           // 🔐 Si el usuario es admin, hacer login adicional en backend PHP
@@ -102,7 +106,7 @@ export class AuthService {
   }
 
   getUserName(): string | null {
-    const userData = localStorage.getItem('userData');
+    const userData = localStorage.getItem('user');
     if (userData) {
       return JSON.parse(userData).username || null;
     }
@@ -110,7 +114,7 @@ export class AuthService {
   }
 
   logout(callBackend: boolean = true): void {
-    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    const userData = JSON.parse(localStorage.getItem('user') || '{}');
     const token = userData.token;
 
     if (callBackend && token) {
@@ -132,8 +136,8 @@ export class AuthService {
   clearUserData(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    localStorage.removeItem('userData'); // solo si la usas
-    location.reload(); // o this.router.navigate(['/login']);
+    this.loginStatusSubject.next(false);
+    this.router.navigate(['/login']);
   }
 
   public async logoutBackendPHP(): Promise<void> {
@@ -154,7 +158,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    const userDataStr = localStorage.getItem('userData');
+    const userDataStr = localStorage.getItem('user');
     if (!userDataStr) return false;
 
     try {
