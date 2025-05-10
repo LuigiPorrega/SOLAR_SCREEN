@@ -20,6 +20,7 @@ import {ContactoComponent} from './pages/contacto/contacto.component';
 import {AboutComponent} from './pages/about/about.component';
 import {UnauthorizedComponent} from './core/unauthorized/unauthorized/unauthorized.component';
 import {RegistrarseComponent} from './registrarse/registrarse.component';
+import {ClimaBuscadorComponent} from './clima/clima-buscador/clima-buscador.component';
 
 export const routes: Routes = [
   {
@@ -51,6 +52,10 @@ export const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent,
+  },
+  {
+    path: 'clima-buscador',
+    component: ClimaBuscadorComponent,
   },
   {
     path: 'condicion-meteorologica-list',

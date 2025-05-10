@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Consultar Clima Actual</h2>
+  <input [(ngModel)]="ciudad" placeholder="Escribe una ciudad" class="form-control mb-2" />
+  <button (click)="buscarClima()" class="btn btn-primary">Buscar</button>
+
+  <div *ngIf="clima" class="mt-4">
+    <h4>Clima en {{ clima.name }}</h4>
+    <p><strong>Temperatura:</strong> {{ clima.main.temp }} °C</p>
+    <p><strong>Humedad:</strong> {{ clima.main.humidity }} %</p>
+    <p><strong>Viento:</strong> {{ clima.wind.speed }} m/s</p>
+    <button (click)="guardarComoCondicion()" class="btn btn-success mt-2">Guardar como Condición Meteorológica</button>
+  </div>
+
+  <div *ngIf="mensaje" class="mt-3 alert alert-info">
+    {{ mensaje }}
+  </div>
+</div>

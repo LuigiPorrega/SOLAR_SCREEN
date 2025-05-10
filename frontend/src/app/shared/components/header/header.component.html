@@ -1,5 +1,5 @@
 <!-- Modal Login -->
-<ng-template #loginTemplate let-modal="modal">
+<ng-template>
   <app-login></app-login>
 </ng-template>
 
@@ -87,6 +87,12 @@
               <a class="nav-link fw-bold" routerLink="/simulacion-list" routerLinkActive="active">
                 <fa-icon [icon]="faSolarPanel" class="me-2"></fa-icon>
                 <span class="enlaces">SIMULADOR DE CARGA</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" routerLink="/clima-buscador" routerLinkActive="active">
+                <fa-icon [icon]="faCloudSunRain" class="me-2"></fa-icon>
+                <span class="enlaces">CLIMA ACTUAL</span>
               </a>
             </li>
             <li class="nav-item">

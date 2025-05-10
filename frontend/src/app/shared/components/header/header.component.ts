@@ -5,7 +5,7 @@ import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import {
   faAddressCard,
-  faCartShopping, faGear, faLightbulb,
+  faCartShopping, faCloudSunRain, faGear, faLightbulb,
   faMobile,
   faPhone, faScrewdriverWrench,
   faSolarPanel,
@@ -143,5 +143,6 @@ export class HeaderComponent implements OnInit {
   protected readonly faScrewdriverWrench = faScrewdriverWrench;
 
 
+  protected readonly faCloudSunRain = faCloudSunRain;
 }
 
