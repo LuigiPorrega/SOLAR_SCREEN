@@ -61,23 +61,23 @@ export class LoginComponent implements OnInit {
     // Llamada al servicio de autenticación
     this.authService.login(credentials).subscribe({
       next: value => {
-        const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-        const role = userData.role;
-        const nombre = userData.username;
+        const role = value.role || 'usuario';  // Usa el valor devuelto por el backend si viene
+        const nombre = credentials.username;
+
 
         // Mostrar mensaje de bienvenida
-        this.showToast(`Bienvenido ${nombre}`, 'bg-success text-light', 3000);
-        this.cerrarModal();
+        this.showToast(`Bienvenido ${nombre}`, 'bg-success text-light', 1500);
+        setTimeout(() => {
+          this.cerrarModal();
 
-        // Redirigir según el rol
-        if (role === 'admin') {
-          this.router.navigateByUrl('/admin/inicio');
-        } else if (role === 'usuario') {
-          this.router.navigateByUrl('/funda-list');
-        } else {
-          this.router.navigateByUrl('/');
-        }
-      },
+          if (role === 'admin') {
+            this.router.navigateByUrl('/admin/inicio');
+          } else if (role === 'usuario') {
+            this.router.navigateByUrl('/funda-list');
+          } else {
+            this.router.navigateByUrl('/');
+          }
+        }, 1500)},
       error: (error) => {
         console.log(error);  // Inspect the error structure
         const errorMsg = error.error?.message || 'Error desconocido';

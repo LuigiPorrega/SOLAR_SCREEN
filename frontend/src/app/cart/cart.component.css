@@ -1,0 +1,31 @@
+.card {
+  border-radius: 15px;
+}
+
+.card img {
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+img {
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.modal-body strong {
+  color: #dc3545;
+}

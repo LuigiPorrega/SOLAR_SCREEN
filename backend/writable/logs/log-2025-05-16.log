@@ -1,0 +1,60 @@
+CRITICAL - 2025-05-16 00:24:53 --> ErrorException: Undefined array key "UsuarioID"
+[Method: PUT, Route: api/condicionesMeteorologicas/10]
+in APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php on line 120.
+ 1 APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioID"', '/var/www/html/app/Controllers/Api/CondicionesMeteorologicasApi.php', 120)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CondicionesMeteorologicasApi->update('10')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CondicionesMeteorologicasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-16 00:25:00 --> ErrorException: Undefined array key "UsuarioID"
+[Method: PUT, Route: api/condicionesMeteorologicas/10]
+in APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php on line 120.
+ 1 APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioID"', '/var/www/html/app/Controllers/Api/CondicionesMeteorologicasApi.php', 120)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CondicionesMeteorologicasApi->update('10')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CondicionesMeteorologicasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-16 00:25:03 --> ErrorException: Undefined array key "UsuarioID"
+[Method: PUT, Route: api/condicionesMeteorologicas/10]
+in APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php on line 120.
+ 1 APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioID"', '/var/www/html/app/Controllers/Api/CondicionesMeteorologicasApi.php', 120)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CondicionesMeteorologicasApi->update('10')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CondicionesMeteorologicasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-16 00:25:05 --> ErrorException: Undefined array key "UsuarioID"
+[Method: PUT, Route: api/condicionesMeteorologicas/10]
+in APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php on line 120.
+ 1 APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioID"', '/var/www/html/app/Controllers/Api/CondicionesMeteorologicasApi.php', 120)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CondicionesMeteorologicasApi->update('10')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CondicionesMeteorologicasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-16 00:25:05 --> ErrorException: Undefined array key "UsuarioID"
+[Method: PUT, Route: api/condicionesMeteorologicas/10]
+in APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php on line 120.
+ 1 APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioID"', '/var/www/html/app/Controllers/Api/CondicionesMeteorologicasApi.php', 120)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CondicionesMeteorologicasApi->update('10')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CondicionesMeteorologicasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-16 00:25:06 --> ErrorException: Undefined array key "UsuarioID"
+[Method: PUT, Route: api/condicionesMeteorologicas/10]
+in APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php on line 120.
+ 1 APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioID"', '/var/www/html/app/Controllers/Api/CondicionesMeteorologicasApi.php', 120)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CondicionesMeteorologicasApi->update('10')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CondicionesMeteorologicasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -1,1 +1,75 @@
-<p>simulacion-edit works!</p>
+<div class="sim-card container glass p-5 rounded shadow-lg mt-5 animate__animated animate__fadeIn">
+  <h2 class="text-center fw-bold mb-4 text-gradient">⚡ Simulación Solar Inteligente</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardarSimulacion()">
+
+    <div class="form-check form-switch mb-4">
+      <input type="checkbox" class="form-check-input" id="toggleApi" (change)="toggleApiUso()" />
+      <label class="form-check-label" for="toggleApi">Usar API de Clima</label>
+    </div>
+
+    <div *ngIf="usarApi" class="mb-3">
+      <label>Ciudad:</label>
+      <input type="text" formControlName="ciudad" class="form-control" placeholder="Ej. Madrid" />
+    </div>
+
+    <div *ngIf="!usarApi" class="mb-3">
+      <label>Condiciones meteorológicas guardadas:</label>
+      <select formControlName="condicionID" class="form-select">
+        <option *ngFor="let c of condiciones" [value]="c.ID">
+          {{ c.Fecha }} - Luz: {{ c.LuzSolar }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Funda:</label>
+      <select formControlName="fundaID" class="form-select">
+        <option *ngFor="let f of fundas" [value]="f.ID">{{ f.Nombre }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Tiempo de exposición (horas):</label>
+      <input type="number" class="form-control" formControlName="tiempo" min="1" />
+    </div>
+
+    <div class="mb-3">
+      <label>Fecha:</label>
+      <input type="date" class="form-control" formControlName="fecha" />
+    </div>
+
+    <div class="text-center my-4">
+      <button type="button" class="btn btn-outline-primary me-3 px-4" (click)="simular()">Simular</button>
+      <button class="btn btn-success px-4" type="submit">Guardar</button>
+    </div>
+
+    <div *ngIf="energiaGenerada !== null" class="alert alert-info text-center fw-bold">
+      ⚙️ Energía generada estimada: {{ energiaGenerada }} W
+    </div>
+
+    <div *ngIf="mensajeSimulacion" class="text-muted text-center mt-2">
+      {{ mensajeSimulacion }}
+    </div>
+  </form>
+</div>
+
+<!-- Modal login -->
+<div class="modal fade show" *ngIf="showLoginModal" style="display: block;" tabindex="-1" role="dialog" aria-modal="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content border border-warning">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title">Acción no permitida</h5>
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p><strong>Debes iniciar sesión</strong> para guardar esta simulación.</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
+        <button class="btn btn-primary" (click)="redirigirALogin()">Iniciar sesión</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showLoginModal" class="modal-backdrop fade show"></div>

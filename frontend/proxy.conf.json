@@ -1,0 +1,12 @@
+{
+  "/api-clima": {
+    "target": "https://api.openweathermap.org",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api-clima": ""
+    }
+  }
+}
+

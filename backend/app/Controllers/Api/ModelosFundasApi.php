@@ -20,12 +20,33 @@ class ModelosFundasApi extends ResourceController
     // GET /api/modelosFundas?page=1&perPage=10
     public function index()
     {
-        $perPage = $this->request->getGet('perPage') ?? 10;
+        $perPage = $this->request->getGet('perPage') ?? 9;
         $page = $this->request->getGet('page') ?? 1;
+        $tipoFunda = $this->request->getGet('tipoFunda');  // Puede ser 'fija' o 'expandible'
 
         $offset = ($page - 1) * $perPage;
         $total = $this->model->countAll();
-        $modelos = $this->model->findAll($perPage, $offset);
+
+        // Si tipoFunda es "fija" o "expandible", se filtra por Expansible
+        if ($tipoFunda) {
+            $expansible = ($tipoFunda == 'expandible') ? 1 : 0;
+            $modelos = $this->model->where('Expansible', $expansible)->findAll($perPage, $offset);
+        } else {
+            $modelos = $this->model->findAll($perPage, $offset);
+        }
+
+        foreach ($modelos as &$modelo) {
+            $url = $modelo['ImagenURL'] ?? '';
+
+            // Normalizamos para asegurarnos de que se forme una URL completa
+            if (!empty($url) && !str_starts_with($url, 'http')) {
+                if ($url[0] !== '/') {
+                    $url = '/' . $url;
+                }
+
+                $modelo['ImagenURL'] = base_url($url);
+            }
+        }
 
         return $this->respond([
             'status' => 'success',

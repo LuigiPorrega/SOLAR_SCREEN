@@ -27,7 +27,7 @@ class ApiOverview extends ResourceController
             ],
             'modelosFundas' => [
                 'GET' => '/api/modelosFundas',
-                'GET paginado' => '/api/modelosFundas?page=1&limit=10',
+                'GET paginado' => '/api/modelosFundas?page=1&limit=9',
                 'GET by ID' => '/api/modelosFundas/{id}',
                 'POST' => '/api/modelosFundas',
                 'PUT' => '/api/modelosFundas/{id}',

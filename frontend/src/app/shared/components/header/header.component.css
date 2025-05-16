@@ -247,3 +247,57 @@ body:not(.login-open) .login-box {
 .user-nav li a {
   cursor: pointer;
 }
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: 10px;
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-header {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--glass-shadow);
+  border-radius: 0 0 1rem 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc107;
+  transform: translateY(-2px);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-form input, .search-form button {
+  border-radius: 0.5rem;
+}
+
+header .fa-icon, .nav-link fa-icon {
+  color: #ffc107;
+}
+
+header .enlaces {
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+.icon-hover-effect {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #f3f4f6; /* Gris claro */
+}
+
+.icon-hover-effect:hover {
+  transform: scale(1.2);
+  color: #ffffff;
+}

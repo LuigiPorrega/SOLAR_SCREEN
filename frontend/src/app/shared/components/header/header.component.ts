@@ -123,7 +123,7 @@ export class HeaderComponent implements OnInit {
   }
 
   abrirModalLogin(): void {
-    this.modalService.open(LoginComponent, { centered: true, size: 'lg' });
+    this.modalService.open(LoginComponent, { centered: true, size: 'sx' });
   }
 
   logout() {
@@ -131,6 +131,7 @@ export class HeaderComponent implements OnInit {
 
     // Realiza el logout en el servicio
     this.authService.logout();
+
 
     // Usa setTimeout para manejar el spinner y el cambio de estado
     setTimeout(() => {
@@ -144,7 +145,8 @@ export class HeaderComponent implements OnInit {
       this.ngZone.run(() => {
         this.router.navigate(['/login']);
       });
-    }, 2000); // Duración del spinner
+    }, 2500); // Duración del spinner
+    this.showToast('Hasta luego', 'bg-success text-light', 2000);
   }
 
 

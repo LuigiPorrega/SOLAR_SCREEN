@@ -1,0 +1,34 @@
+.tipo-card {
+  cursor: pointer;
+  border: 2px dashed #ffc107;
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.tipo-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px rgba(255, 193, 7, 0.4);
+}
+
+.tipo-card.selected {
+  border-color: #28a745;
+  background-color: #e6ffe6;
+  box-shadow: 0 0 15px rgba(40, 167, 69, 0.5);
+}
+
+.funda-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.funda-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.image {
+  max-height: 180px;
+  object-fit: contain;
+}
+
+.toast {
+  min-width: 250px;
+}

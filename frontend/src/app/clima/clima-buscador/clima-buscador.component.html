@@ -1,17 +1,85 @@
-<div class="container">
-  <h2>Consultar Clima Actual</h2>
-  <input [(ngModel)]="ciudad" placeholder="Escribe una ciudad" class="form-control mb-2" />
-  <button (click)="buscarClima()" class="btn btn-primary">Buscar</button>
+<section class="text-center text-white d-flex align-items-center" style="height: 80vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/images/mobile-cases-bg.jpg') center/cover no-repeat;">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Energía Renovable en tu Bolsillo</h1>
+    <p class="lead">Simula, compara y elige la funda que carga tu móvil con el sol o el viento.</p>
+    <a class="btn btn-success btn-lg mt-4" routerLink="/simulador">Probar Simulación</a>
+  </div>
+</section>
 
+<div class="container mt-4">
+  <h2>Simulador de Energía Solar</h2>
+
+  <!-- Entrada para ciudad -->
+  <input [(ngModel)]="ciudad" placeholder="Escribe una ciudad" class="form-control mb-2" />
+  <button (click)="buscarClima()" class="btn btn-primary">Buscar Clima</button>
+
+  <!-- Clima actual -->
   <div *ngIf="clima" class="mt-4">
     <h4>Clima en {{ clima.name }}</h4>
     <p><strong>Temperatura:</strong> {{ clima.main.temp }} °C</p>
     <p><strong>Humedad:</strong> {{ clima.main.humidity }} %</p>
     <p><strong>Viento:</strong> {{ clima.wind.speed }} m/s</p>
-    <button (click)="guardarComoCondicion()" class="btn btn-success mt-2">Guardar como Condición Meteorológica</button>
   </div>
 
-  <div *ngIf="mensaje" class="mt-3 alert alert-info">
+  <!-- Formulario de simulación -->
+  <form [formGroup]="simulacionForm" class="mt-4">
+    <div class="form-group">
+      <label>Tiempo de simulación (horas):</label>
+      <input type="number" formControlName="tiempo" class="form-control" min="1" placeholder="Ej: 5" />
+    </div>
+
+    <div class="form-group mt-2">
+      <label>Tipo de luz:</label>
+      <select formControlName="luz" class="form-control">
+        <option value="">Selecciona una opción</option>
+        <option value="natural">Luz Natural</option>
+        <option value="artificial">Luz Artificial</option>
+      </select>
+    </div>
+
+    <button type="button" (click)="generarSimulacion()" class="btn btn-success mt-3">
+      Generar Simulación
+    </button>
+  </form>
+
+  <!-- Resultados de simulación -->
+  <div *ngIf="energiaGenerada" class="mt-4">
+    <h4>Resultados de Simulación</h4>
+    <p><strong>Energía Generada:</strong> {{ energiaGenerada | number:'1.0-2' }} Wh</p>
+    <p><strong>% de Batería Cargada:</strong> {{ porcentajeBateria | number:'1.0-0' }}%</p>
+  </div>
+
+  <!-- Gráfico -->
+  <div class="mt-4">
+    <canvas id="grafico"></canvas>
+  </div>
+
+  <!-- Botones de exportación -->
+  <div class="mt-3">
+    <button (click)="exportarPDF()" class="btn btn-outline-danger me-2">Exportar PDF</button>
+    <button (click)="exportarCSV()" class="btn btn-outline-primary">Exportar CSV</button>
+  </div>
+
+  <!-- Mensaje -->
+  <div *ngIf="mensaje" class="alert alert-info mt-3">
     {{ mensaje }}
+  </div>
+</div>
+
+<!-- Modal de advertencia -->
+<div class="modal fade" id="modalLoginRequerido" tabindex="-1" aria-labelledby="modalLoginRequeridoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="modalLoginRequeridoLabel">Autenticación requerida</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        Debes iniciar sesión para poder guardar la simulación.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
   </div>
 </div>

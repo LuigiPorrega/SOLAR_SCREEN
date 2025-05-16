@@ -1,0 +1,40 @@
+<div class="container mt-4 p-4 rounded shadow" style="background: linear-gradient(135deg, #8ec5fc, #e0c3fc);">
+  <h2 class="text-center mb-4">🔍 Consulta el clima</h2>
+
+  <div class="d-flex gap-2 justify-content-center mb-3">
+    <input type="text" class="form-control w-50" placeholder="Introduce una ciudad..." [(ngModel)]="ciudad">
+    <button class="btn btn-primary" (click)="buscarClima()">Buscar</button>
+  </div>
+
+  <!-- Spinner solo una vez -->
+  <div *ngIf="cargando" class="text-center">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p>Cargando clima...</p>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="error" class="alert alert-danger text-center">
+    {{ error }}
+  </div>
+
+  <!-- Resultados -->
+  <div *ngIf="!cargando && resultado" class="mt-4 text-center">
+    <h4>🌍 {{ resultado.name }} ({{ resultado.sys.country }})</h4>
+    <p>🌡️ Temperatura: {{ resultado.main.temp }}°C</p>
+    <p>☁️ Estado: {{ resultado.weather[0].description }}</p>
+    <p>💨 Viento: {{ resultado.wind.speed }} km/h</p>
+
+    <div class="clima-visual-container mt-5">
+      <h2>Visualización Climática Interactiva</h2>
+      <p>En esta sección podrás explorar los datos climáticos de manera gráfica.</p>
+
+      <div style="display: block; height: 400px;">
+        <canvas baseChart
+                [data]="chartData"
+                [type]="chartType"
+                [options]="chartOptions">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,42 @@
-<p>condicion-meteorologica-edit works!</p>
+<div class="container mt-4 glass-card animate-fade-in">
+  <h2 class="text-center mb-4 text-gradient">{{ isEditMode ? 'Editar Condición' : 'Nueva Condición' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="mb-3">
+      <label class="form-label">Fecha</label>
+      <input formControlName="Fecha" type="date" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Luz Solar</label>
+      <input formControlName="LuzSolar" type="number" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Temperatura</label>
+      <input formControlName="Temperatura" type="number" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Humedad</label>
+      <input formControlName="Humedad" type="number" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Viento</label>
+      <input formControlName="Viento" type="number" class="form-control" />
+    </div>
+
+    <!-- Botón de crear solo si tiene permisos -->
+    <button *ngIf="puedeCrear()" type="submit" class="btn btn-glow btn-success w-100">
+      {{ isEditMode ? 'Actualizar' : 'Crear' }}
+    </button>
+
+    <!-- Alerta si no tiene permisos -->
+    <div *ngIf="!puedeCrear()" class="alert alert-warning d-flex justify-content-between align-items-center mt-3">
+      <div>
+        <strong>Atención:</strong> Debes iniciar sesión para {{ isEditMode ? 'actualizar' : 'crear' }} una condición.
+      </div>
+      <button class="btn btn-sm btn-primary ms-3" [routerLink]="['/login']">Iniciar sesión</button>
+    </div>
+
+    <!-- Cancelar visible siempre -->
+    <button class="btn btn-secondary mt-3 w-100" [routerLink]="['/condiciones']">Cancelar</button>
+  </form>
+</div>

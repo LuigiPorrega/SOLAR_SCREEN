@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@fontsource/poppins";
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ==== HEADER VISUAL UPGRADE ==== */
+
+/* Fondo animado con gradiente */
+.header-gradient {
+  background: linear-gradient(135deg, #4f46e5, #a855f7);
+  animation: gradientShift 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism effect */
+.glass {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para botones */
+.btn-modern {
+  background: linear-gradient(to right, #6366f1, #8b5cf6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.4);
+}
+
+.btn-modern:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.6);
+}
+
+/* Estilo para íconos del header */
+.icon-hover-effect {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #f3f4f6; /* Tailwind: gray-100 */
+}
+
+.icon-hover-effect:hover {
+  transform: scale(1.2);
+  color: #ffffff;
+}
+
+/* Transiciones suaves */
+.transition-soft {
+  transition: all 0.3s ease;
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .header-gradient {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+  }
+
+  .glass {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-modern {
+    background: linear-gradient(to right, #4f46e5, #6366f1);
+  }
+}
+
+
+

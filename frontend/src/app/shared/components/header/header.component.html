@@ -4,7 +4,7 @@
 </ng-template>
 
 <div class="top-line"></div>
-<header class="main-header headroom--not-bottom headroom headroom--top" id="main-header">
+<header class="header-gradient text-white glass shadow-md p-4 flex items-center justify-between transition-soft">
   <div class="wrapper">
     <div id="logo" class="main-logo my-4">
       <a routerLink="/inicio" routerLinkActive="active" title="Solar Screen">
@@ -15,11 +15,11 @@
       <div class="main-header-top-nav-inner">
         <ul class="user-nav my-3">
           <li><a routerLink="/contacto" routerLinkActive="active" title="Contacto">
-            <fa-icon [icon]= "faPhone"></fa-icon>
+            <fa-icon [icon]="faPhone" class="icon-hover-effect"></fa-icon>
             <span class="fw-bold">Contacto</span>
           </a></li>
           <li><a routerLink="/about" routerLinkActive="active">
-            <fa-icon [icon]= "faAddressCard"></fa-icon>
+            <fa-icon [icon]="faAddressCard" class="icon-hover-effect"></fa-icon>
             <span class="fw-bold">About</span>
           </a></li>
 
@@ -27,14 +27,15 @@
           <li class="login-container position-relative">
             <ng-container *ngIf="!isLoggedIn; else loggedInBlock">
               <a class="d-flex align-items-center" (click)="abrirModalLogin()">
-                <fa-icon [icon]="faUser"></fa-icon>
+                <fa-icon [icon]="faUser" class="icon-hover-effect"></fa-icon>
                 <span class="fw-bold">Login</span>
+                <i class="bi bi-cart icon-hover-effect"></i>
               </a>
             </ng-container>
 
             <ng-template #loggedInBlock>
               <a (click)="logout()" class="d-flex align-items-center" style="cursor: pointer;">
-                <fa-icon [icon]="faUser"></fa-icon>
+                <fa-icon [icon]="faUser" class="icon-hover-effect"></fa-icon>
                    <span class="fw-bold" *ngIf="!isLoggingOut">
                      Logout ({{ userName }} - {{ userRole }})
                    </span>
@@ -48,7 +49,7 @@
           <!-- redirige al backend-->
           <li>
             <a *ngIf="authService.getUserRole() === 'admin'" (click)="goToBackend()" style="cursor: pointer;">
-              <fa-icon [icon]="faScrewdriverWrench"></fa-icon>
+              <fa-icon [icon]="faScrewdriverWrench" class="icon-hover-effect"></fa-icon>
               <span class="fw-bold">Panel de Administración</span>
             </a>
           </li>
@@ -59,7 +60,7 @@
     <div class="cart-widget">
       <a class="nav-link position-relative d-flex align-items-center" routerLink="/cart" routerLinkActive="active">
         <div class="position-relative me-2">
-          <fa-icon [icon]="faCartShopping" class="fs-5"></fa-icon>
+          <fa-icon [icon]="faCartShopping" class="fs-5 icon-hover-effect"></fa-icon>
           <span class="cantidadCart position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange">
                     {{ cantidadCarrito | number : '1.0-2' }}
               </span>
@@ -87,32 +88,32 @@
         <div class="collapse navbar-collapse" id="solarNavbar">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link fw-bold" routerLink="/condicion-meteorologica-list" routerLinkActive="active">
-                <fa-icon [icon]="faSun" class="me-2"></fa-icon>
+              <a class="nav-link fw-bold" routerLink="/condiciones" routerLinkActive="active">
+                <fa-icon [icon]="faSun" class="me-2 icon-hover-effect"></fa-icon>
                 <span class="enlaces">ENERGÍA SOLAR</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bold" routerLink="/simulacion-list" routerLinkActive="active">
-                <fa-icon [icon]="faSolarPanel" class="me-2"></fa-icon>
+              <a class="nav-link fw-bold" routerLink="/simulaciones" routerLinkActive="active">
+                <fa-icon [icon]="faSolarPanel" class="me-2 icon-hover-effect"></fa-icon>
                 <span class="enlaces">SIMULADOR DE CARGA</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" routerLink="/clima-buscador" routerLinkActive="active">
-                <fa-icon [icon]="faCloudSunRain" class="me-2"></fa-icon>
+                <fa-icon [icon]="faCloudSunRain" class="me-2 icon-hover-effect"></fa-icon>
                 <span class="enlaces">CLIMA ACTUAL</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" routerLink="/funda-list" routerLinkActive="active">
-                <fa-icon [icon]="faMobile" class="me-2"></fa-icon>
+                <fa-icon [icon]="faMobile" class="me-2 icon-hover-effect"></fa-icon>
                 <span class="enlaces">MODELOS DE FUNDAS</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" routerLink="/idea-list" routerLinkActive="active">
-                <fa-icon [icon]="faLightbulb" class="me-2"></fa-icon>
+                <fa-icon [icon]="faLightbulb" class="me-2 icon-hover-effect"></fa-icon>
                 <span class="enlaces">BLOG IDEAS</span>
               </a>
             </li>
@@ -129,7 +130,15 @@
   </div>
 
 </header>
-
+<!-- Toast-->
+@if(toastShow){
+  <div class="toast show {{ toast.color }} position-fixed top-0 end-0 m-3" style="z-index: 1200;">
+    <div class="toast-body">
+      {{ toast.body }}
+    </div>
+  </div>
+}
+<!--Fin toast-->
 
 
 

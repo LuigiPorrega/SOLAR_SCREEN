@@ -10,31 +10,48 @@ export class CartService {
   cantidadCarrito: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   precioCarrito: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-  //funciones:
-  addToCart(product:ModeloFunda){
-    var carritoAux = this.carrito.value;
-    var precioCarrito = this.precioCarrito.value;
-    carritoAux.push(product);
-    this.carrito.next(carritoAux);
-    this.cantidadCarrito.next(carritoAux.length);
-    precioCarrito += product.Precio;
-    this.precioCarrito.next(precioCarrito);
+  constructor() {}
+
+  addToCart(product: ModeloFunda) {
+    const carritoAux = this.carrito.value;
+    const existingProduct = carritoAux.find((item) => item.ID === product.ID);
+
+    if (existingProduct) {
+      existingProduct.Cantidad += 1;
+    } else {
+      product.Cantidad = 1;
+      carritoAux.push(product);
+    }
+
+    this.updateCart(carritoAux);
+  }
+
+  decrementarCantidad(product: ModeloFunda) {
+    const carritoAux = this.carrito.value;
+    const existingProduct = carritoAux.find((item) => item.ID === product.ID);
+
+    if (existingProduct && existingProduct.Cantidad > 1) {
+      existingProduct.Cantidad -= 1;
+    } else if (existingProduct) {
+      // Si la cantidad llega a 0, eliminamos el producto
+      this.removeFromCart(product);
+      return;
+    }
+
+    this.updateCart(carritoAux);
   }
 
   removeFromCart(product: ModeloFunda) {
-    const carritoAux = this.carrito.value;
-    const index = carritoAux.findIndex(item => item.ID === product.ID);
-
-    if (index !== -1) {
-      carritoAux.splice(index, 1);
-      this.carrito.next(carritoAux);
-      this.cantidadCarrito.next(carritoAux.length);
-
-      const precioCarrito = this.precioCarrito.value - product.Precio;
-      this.precioCarrito.next(precioCarrito);
-    }
+    const carritoAux = this.carrito.value.filter((item) => item.ID !== product.ID);
+    this.updateCart(carritoAux);
   }
 
+  private updateCart(carritoAux: ModeloFunda[]) {
+    const totalPrecio = carritoAux.reduce((acc, item) => acc + item.Precio * item.Cantidad, 0);
 
-  constructor() { }
+    this.carrito.next(carritoAux);
+    this.cantidadCarrito.next(carritoAux.length);
+    this.precioCarrito.next(totalPrecio);
+  }
 }
+

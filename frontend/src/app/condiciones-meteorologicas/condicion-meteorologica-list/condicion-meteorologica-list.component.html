@@ -1,1 +1,34 @@
-<p>condicion-meteorologica-list works!</p>
+<div class="container mt-4">
+  <h2>Condiciones Meteorológicas</h2>
+  <table class="table table-bordered table-hover mt-3">
+    <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Luz Solar</th>
+      <th>Temperatura</th>
+      <th>Humedad</th>
+      <th>Viento</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of condiciones">
+      <td>{{ c.Fecha }}</td>
+      <td>{{ c.LuzSolar }}</td>
+      <td>{{ c.Temperatura }}</td>
+      <td>{{ c.Humedad }}</td>
+      <td>{{ c.Viento }}</td>
+      <td>
+        <button class="btn btn-primary btn-sm" [routerLink]="['/condiciones/editar', c.ID]">Editar</button>
+        <button class="btn btn-danger btn-sm" (click)="eliminar(c.ID!)">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-secondary" [disabled]="currentPage === 1" (click)="cambiarPagina('anterior')">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button class="btn btn-secondary" [disabled]="currentPage === totalPages" (click)="cambiarPagina('siguiente')">Siguiente</button>
+  </div>
+</div>

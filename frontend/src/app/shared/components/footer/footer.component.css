@@ -1,0 +1,40 @@
+/* Estilo unificado para el fondo */
+.footer-glass {
+  background: linear-gradient(135deg, rgba(0, 48, 73, 0.95), rgba(0, 168, 150, 0.95));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo de links */
+footer .nav-link {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer .nav-link:hover {
+  color: #ffc107 !important; /* Amarillo solar */
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* Íconos con efecto hover */
+.icon-hover-effect {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #f3f4f6;
+}
+
+.icon-hover-effect:hover {
+  transform: scale(1.1);
+  color: #ffffff;
+}
+
+/* Estilo para el texto del footer */
+footer p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); /* Más contraste */
+}

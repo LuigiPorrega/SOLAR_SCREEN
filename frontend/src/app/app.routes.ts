@@ -7,7 +7,6 @@ import {
   CondicionMeteorologicaEditComponent
 } from './condiciones-meteorologicas/condicion-meteorologica-edit/condicion-meteorologica-edit.component';
 import {FundaListComponent} from './fundas/funda-list/funda-list.component';
-import {FundaEditComponent} from './fundas/funda-edit/funda-edit.component';
 import {FundaDetailComponent} from './fundas/funda-detail/funda-detail.component';
 import {IdeaEditComponent} from './ideas/idea-edit/idea-edit.component';
 import {IdeaListComponent} from './ideas/idea-list/idea-list.component';
@@ -21,6 +20,8 @@ import {AboutComponent} from './pages/about/about.component';
 import {UnauthorizedComponent} from './core/unauthorized/unauthorized/unauthorized.component';
 import {RegistrarseComponent} from './registrarse/registrarse.component';
 import {ClimaBuscadorComponent} from './clima/clima-buscador/clima-buscador.component';
+import {ClimaSimuladorComponent} from './components/clima-simulador/clima-simulador.component';
+import {ClimaVisualComponent} from './components/clima-visual/clima-visual.component';
 
 export const routes: Routes = [
   {
@@ -58,34 +59,23 @@ export const routes: Routes = [
     component: ClimaBuscadorComponent,
   },
   {
-    path: 'condicion-meteorologica-list',
+    path: 'condiciones',
     component: CondicionMeteorologicaListComponent,
   },
   {
-    path: 'condicion-meteorologica-add',
+    path: 'condiciones/nueva',
     component: CondicionMeteorologicaEditComponent,
     canActivate: [authGuard],
   },
   {
-    path: 'condicion-meteorologica-edit/:id',
+    path: 'condiciones/editar/:id',
     component: CondicionMeteorologicaEditComponent,
-    canActivate: [authGuard],
   },
   {
     path: 'funda-list',
     component: FundaListComponent,
   },
-  {
-    path: 'funda-add',
-    component: FundaEditComponent,
-    canActivate: [authGuard],
 
-  },
-  {
-    path: 'funda-edit/:id',
-    component: FundaEditComponent,
-    canActivate: [authGuard],
-  },
   {
     path: 'funda-detail/:id',
     component: FundaDetailComponent,
@@ -105,17 +95,21 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'simulacion-list',
-    component: SimulacionListComponent,
+    path: 'simulador',
+    component: ClimaSimuladorComponent,
   },
   {
-    path: 'simulacion-add',
-    component: SimulacionEditComponent,
+    path: 'clima',
+    component: ClimaVisualComponent,
+
   },
   {
-    path: 'simulacion-edit/:id',
-    component: SimulacionEditComponent,
-    canActivate: [authGuard],
+    path: 'simulaciones',
+    children: [
+      { path: 'edit', component: SimulacionEditComponent },
+      { path: 'edit/:id', component: SimulacionEditComponent },
+      { path: 'list', component: SimulacionListComponent, canActivate: [authGuard] },
+    ],
   },
   {
     path: 'cart',

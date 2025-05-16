@@ -20,7 +20,7 @@ export interface ModeloFunda {
   Nombre: string;
   Tamaño: string;
   CapacidadCarga: number;
-  Expansible: boolean;
+  Expansible: number;
   ImagenURL: string;
   Cantidad: number;
   Precio: number;

@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {
@@ -21,9 +21,17 @@ export class FundasService {
   }
 
   //función para listar todas las Fundas paginadas
-  getFundas(page: number, pageLimit: number): Observable<ApiResponseModelosFundas> {
-    return this.http.get<ApiResponseModelosFundas>(environment.baseURL + '/modelosFundas?page=' + page + '&limit=' + pageLimit);
-  };
+  getFundas(page: number, limit: number, tipoFunda?: string) {
+    let params = new HttpParams()
+      .set('page', page.toString())
+      .set('limit', limit.toString());
+
+    if (tipoFunda) {
+      params = params.set('tipoFunda', tipoFunda);
+    }
+
+    return this.http.get<ApiResponseModelosFundas>(environment.baseURL + '/modelosFundas', { params });
+  }
 
   //función para listar una sola Funda con Proveedor
   getFunda(id: number ): Observable<ApiResponseModeloFundaOne>{
