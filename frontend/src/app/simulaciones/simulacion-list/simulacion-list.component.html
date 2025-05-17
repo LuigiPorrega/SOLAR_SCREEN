@@ -1,1 +1,52 @@
-<p>simulacion-list works!</p>
+<div class="container my-4">
+  <h2 class="text-center mb-4">Simulaciones guardadas</h2>
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-4" *ngFor="let sim of simulaciones">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title">Simulación #{{ sim.ID }}</h5>
+          <p class="mb-1"><strong>Fecha:</strong> {{ sim.Fecha | date:'short' }}</p>
+          <p class="mb-1"><strong>Luz:</strong> {{ sim.CondicionLuz }}</p>
+          <p class="mb-1"><strong>Energía:</strong> {{ sim.EnergiaGenerada }} W</p>
+          <p class="mb-1"><strong>Tiempo:</strong> {{ sim.Tiempo }} h</p>
+          <p class="mb-1 text-success"><strong>Funda Recomendada:</strong> {{ sim.fundaRecomendada }}</p>
+
+          <div class="mt-3" id="grafico-{{ sim.ID }}">
+            <canvas
+              baseChart
+              [data]="{ labels: getChartLabels(sim), datasets: [{ data: getChartData(sim).data, label: getChartData(sim).label }] }"
+              [options]="chartOptions"
+              chartType="line">
+            </canvas>
+          </div>
+
+          <div *ngIf="isLoggedIn" class="mt-3 d-flex justify-content-end">
+            <button class="btn btn-outline-primary btn-sm me-2"
+                    (click)="descargarSimulacionPDF(sim)">
+              <fa-icon icon="file-pdf"></fa-icon> Descargar PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGINACIÓN -->
+  <nav *ngIf="totalPages > 1" class="mt-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="cambiarPagina(currentPage - 1)">Anterior</button>
+      </li>
+
+      <li class="page-item"
+          *ngFor="let page of [].constructor(totalPages); let i = index"
+          [class.active]="currentPage === i + 1">
+        <button class="page-link" (click)="cambiarPagina(i + 1)">{{ i + 1 }}</button>
+      </li>
+
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="cambiarPagina(currentPage + 1)">Siguiente</button>
+      </li>
+    </ul>
+  </nav>
+</div>

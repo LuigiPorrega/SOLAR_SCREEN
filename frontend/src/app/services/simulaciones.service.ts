@@ -19,7 +19,7 @@ export class SimulacionesService {
   }
 
   //función para listar todas las Simulaciones paginadas
-  getSimulaciones(page: number, pageLimit: number): Observable<ApiResponseSimulaciones> {
+  getSimulaciones(page?: number, pageLimit?: number): Observable<ApiResponseSimulaciones> {
     return this.http.get<ApiResponseSimulaciones>(environment.baseURL + '/simulaciones?page=' + page + '&limit=' + pageLimit);
   };
 

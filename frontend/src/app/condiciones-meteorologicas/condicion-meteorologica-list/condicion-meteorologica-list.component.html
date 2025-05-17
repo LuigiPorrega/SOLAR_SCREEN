@@ -1,34 +1,50 @@
-<div class="container mt-4">
-  <h2>Condiciones Meteorológicas</h2>
-  <table class="table table-bordered table-hover mt-3">
-    <thead>
-    <tr>
-      <th>Fecha</th>
-      <th>Luz Solar</th>
-      <th>Temperatura</th>
-      <th>Humedad</th>
-      <th>Viento</th>
-      <th>Acciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let c of condiciones">
-      <td>{{ c.Fecha }}</td>
-      <td>{{ c.LuzSolar }}</td>
-      <td>{{ c.Temperatura }}</td>
-      <td>{{ c.Humedad }}</td>
-      <td>{{ c.Viento }}</td>
-      <td>
-        <button class="btn btn-primary btn-sm" [routerLink]="['/condiciones/editar', c.ID]">Editar</button>
-        <button class="btn btn-danger btn-sm" (click)="eliminar(c.ID!)">Eliminar</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-
-  <div class="d-flex justify-content-between">
-    <button class="btn btn-secondary" [disabled]="currentPage === 1" (click)="cambiarPagina('anterior')">Anterior</button>
-    <span>Página {{ currentPage }} de {{ totalPages }}</span>
-    <button class="btn btn-secondary" [disabled]="currentPage === totalPages" (click)="cambiarPagina('siguiente')">Siguiente</button>
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-gradient">Condiciones Meteorológicas</h2>
+    <button *ngIf="isLoggedIn" class="btn btn-success shadow-sm px-4" (click)="abrirModalSimulacion()">
+      <i class="fas fa-plus me-2"></i> Nueva Simulación
+    </button>
   </div>
+
+  <div class="table-responsive rounded shadow-sm overflow-hidden">
+    <table class="table table-hover align-middle">
+      <thead class="table-dark">
+      <tr>
+        <th>Fecha</th>
+        <th>Luz Solar</th>
+        <th>Temperatura</th>
+        <th>Humedad</th>
+        <th>Viento</th>
+        <th *ngIf="isLoggedIn">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of condiciones">
+        <td>{{ c.Fecha }}</td>
+        <td>{{ c.LuzSolar }}</td>
+        <td>{{ c.Temperatura }}</td>
+        <td>{{ c.Humedad }}</td>
+        <td>{{ c.Viento }}</td>
+        <td *ngIf="isLoggedIn">
+          <button class="btn btn-outline-primary btn-sm me-2" [routerLink]="['/condiciones/editar', c.ID]">
+            <fa-icon class="fas fa-edit"></fa-icon>
+          </button>
+          <button class="btn btn-outline-danger btn-sm" (click)="eliminar(c.ID!)">
+            <fa-icon class="fas fa-trash"></fa-icon>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Paginación -->
+  <div class="d-flex justify-content-between align-items-center mt-4">
+    <button class="btn btn-outline-secondary" [disabled]="currentPage === 1" (click)="cambiarPagina('anterior')">Anterior</button>
+    <span class="fw-semibold">Página {{ currentPage }} de {{ totalPages }}</span>
+    <button class="btn btn-outline-secondary" [disabled]="currentPage === totalPages" (click)="cambiarPagina('siguiente')">Siguiente</button>
+  </div>
+
+  <!-- Modal para login requerido -->
+  <app-unauthorized *ngIf="mostrarModal"></app-unauthorized>
 </div>

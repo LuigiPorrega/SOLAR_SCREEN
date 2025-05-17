@@ -26,6 +26,7 @@
     "@emailjs/browser": "^4.4.1",
     "@fontsource/poppins": "^5.2.6",
     "@fortawesome/angular-fontawesome": "^1.0.0",
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.1",
     "@fortawesome/free-regular-svg-icons": "^6.7.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
@@ -35,12 +36,14 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.3.5",
     "chart.js": "^3.9.1",
+    "file-saver": "^2.0.5",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
     "jwt-decode": "^3.1.2",
-    "lucide-angular": "^0.510.0",
+    "lucide-angular": "^0.511.0",
     "ng2-charts": "^3.1.2",
     "ngx-csv": "^0.3.2",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -52,6 +55,7 @@
     "@angular/localize": "^19.1.0",
     "@types/aos": "^3.0.7",
     "@types/bootstrap": "^5.2.10",
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^22.15.18",
     "typescript": "~5.7.2"
   }

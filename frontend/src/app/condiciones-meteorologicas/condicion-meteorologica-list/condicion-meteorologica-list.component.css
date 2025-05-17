@@ -1,0 +1,24 @@
+.text-gradient {
+  background: linear-gradient(45deg, #00B4DB, #0083B0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.btn-outline-primary, .btn-outline-danger {
+  transition: all 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}

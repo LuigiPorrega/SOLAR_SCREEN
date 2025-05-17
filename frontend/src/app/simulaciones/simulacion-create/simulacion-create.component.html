@@ -1,0 +1,68 @@
+<div class="container py-4">
+  <div class="card shadow-lg rounded-4 p-4 bg-light-subtle border border-2 border-primary-subtle">
+    <h2 class="text-center mb-4 text-primary fw-bold">Crear nueva simulación</h2>
+
+    <form [formGroup]="simulacionForm" (ngSubmit)="crearSimulacion()">
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Nombre</label>
+          <input type="text" class="form-control" formControlName="nombre"
+                 [class.is-invalid]="simulacionForm.get('nombre')?.invalid && simulacionForm.get('nombre')?.touched">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Modelo de funda</label>
+          <input type="text" class="form-control" formControlName="modeloFunda"
+                 [class.is-invalid]="simulacionForm.get('modeloFunda')?.invalid && simulacionForm.get('modeloFunda')?.touched">
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Capacidad de carga</label>
+          <input type="number" class="form-control" formControlName="capacidadCarga">
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Tiempo de exposición (h)</label>
+          <input type="number" class="form-control" formControlName="tiempoExposicion">
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Tipo de luz</label>
+          <select class="form-select" formControlName="CondicionLuz">
+            <option value="Luz solar directa">Luz solar directa</option>
+            <option value="Luz artificial">Luz artificial</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Fuente de datos</label>
+          <select class="form-select" formControlName="fuenteDatos">
+            <option value="API">API externa</option>
+            <option value="BD">Base de datos</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Temperatura (°C)</label>
+          <input type="number" class="form-control" formControlName="temperatura">
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Luz solar (W/m²)</label>
+          <input type="number" class="form-control" formControlName="luzSolar">
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Humedad (%)</label>
+          <input type="number" class="form-control" formControlName="humedad">
+        </div>
+      </div>
+
+      <div class="text-end mt-4">
+        <button type="submit" class="btn btn-primary px-4 shadow">Guardar simulación</button>
+      </div>
+    </form>
+  </div>
+
+</div>

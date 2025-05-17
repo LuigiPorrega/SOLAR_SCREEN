@@ -1,4 +1,7 @@
 export interface Simulacion {
+  fundaRecomendada: string | string;
+  condicion: string | string;
+  nombre: string;
   ID?: number;
   UsuarioID: number;
   CondicionLuz: string;

@@ -1,16 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {CondicionMeteorologica} from '../../common/InterfaceCondicionesMeteorologicas';
-import {CondicionesMeteorologicasService} from '../../services/condiciones-meteorologicas.service';
-import {NgForOf} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { CondicionMeteorologica } from '../../common/InterfaceCondicionesMeteorologicas';
+import { CondicionesMeteorologicasService } from '../../services/condiciones-meteorologicas.service';
+import { AuthService } from '../../services/auth.service';
+import { NgForOf, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import {FaIconComponent, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {UnauthorizedComponent} from '../../core/unauthorized/unauthorized/unauthorized.component';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-condicion-meteorologica-list',
+  standalone: true,
   imports: [
     NgForOf,
-    RouterLink
+    NgIf,
+    RouterLink,
+    FaIconComponent,
+    FontAwesomeModule,
+    UnauthorizedComponent
   ],
-  standalone: true,
   templateUrl: './condicion-meteorologica-list.component.html',
   styleUrl: './condicion-meteorologica-list.component.css'
 })
@@ -19,10 +27,18 @@ export class CondicionMeteorologicaListComponent implements OnInit {
   currentPage = 1;
   perPage = 5;
   totalPages = 0;
+  mostrarModal = false;
+  isLoggedIn = false;
 
-  constructor(private service: CondicionesMeteorologicasService) {}
+  faEdit = faEdit;
+  faTrash = faTrash;
+
+
+  private readonly service = inject(CondicionesMeteorologicasService);
+  private readonly authService = inject(AuthService);
 
   ngOnInit(): void {
+    this.isLoggedIn = this.authService.isLoggedIn();
     this.loadCondiciones();
   }
 
@@ -49,7 +65,13 @@ export class CondicionMeteorologicaListComponent implements OnInit {
     if (direccion === 'siguiente' && this.currentPage < this.totalPages) this.currentPage++;
     this.loadCondiciones();
   }
+
+  abrirModalSimulacion(): void {
+    if (!this.isLoggedIn) {
+      this.mostrarModal = true;
+    } else {
+      // Aquí podrías redirigir a /simulaciones/nueva o abrir un modal real si quieres
+      console.log('Usuario autenticado, puedes abrir el formulario');
+    }
+  }
 }
-
-
-

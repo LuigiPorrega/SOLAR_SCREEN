@@ -20,7 +20,7 @@ export class CondicionesMeteorologicasService {
   }
 
   //función para listar todas las Condiciones Meteorologicas paginadas
-  getCondicionesMeteorologicas(page: number, pageLimit: number): Observable<ApiResponseCondicionesMeteorologicas> {
+  getCondicionesMeteorologicas(page?: number, pageLimit?: number): Observable<ApiResponseCondicionesMeteorologicas> {
     return this.http.get<ApiResponseCondicionesMeteorologicas>(environment.baseURL + '/condicionesMeteorologicas?page=' + page + '&limit=' + pageLimit);
   };
 

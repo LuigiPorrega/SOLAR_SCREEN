@@ -11,7 +11,7 @@ import {FundaDetailComponent} from './fundas/funda-detail/funda-detail.component
 import {IdeaEditComponent} from './ideas/idea-edit/idea-edit.component';
 import {IdeaListComponent} from './ideas/idea-list/idea-list.component';
 import {SimulacionListComponent} from './simulaciones/simulacion-list/simulacion-list.component';
-import {SimulacionEditComponent} from './simulaciones/simulacion-edit/simulacion-edit.component';
+import {SimulacionCreateComponent} from './simulaciones/simulacion-create/simulacion-create.component';
 import {CartComponent} from './cart/cart.component';
 import {authGuard} from './guards/auth.guard';
 import {LoginComponent} from './login/login.component';
@@ -106,9 +106,9 @@ export const routes: Routes = [
   {
     path: 'simulaciones',
     children: [
-      { path: 'edit', component: SimulacionEditComponent },
-      { path: 'edit/:id', component: SimulacionEditComponent },
-      { path: 'list', component: SimulacionListComponent, canActivate: [authGuard] },
+      { path: 'simulacion', component: SimulacionCreateComponent },
+      { path: 'simulacion/:id', component: SimulacionCreateComponent, canActivate: [authGuard] },
+      { path: 'list', component: SimulacionListComponent },
     ],
   },
   {

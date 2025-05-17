@@ -73,12 +73,13 @@
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     transition: transform 0.3s ease;
+    cursor: pointer;
 
     &:hover {
       transform: translateY(-10px);
     }
 
-    i {
+    i, fa-icon {
       font-size: 2rem;
       margin-bottom: 1rem;
       color: #ffb74d;
@@ -96,6 +97,89 @@
   }
 }
 
+.recent-simulations {
+  margin-top: 4rem;
+
+  .sim-card {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(10px);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    animation: fadeInUp 1s ease;
+    padding-bottom: 1.5rem;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .progress-circle {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+
+  .progress-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .sim-info {
+    margin-top: 1.5rem;
+    text-align: center;
+
+    p {
+      margin: 0.25rem 0;
+      font-size: 0.95rem;
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+
+    .sim-light {
+      color: #ffd54f;
+    }
+
+    .sim-date {
+      font-style: italic;
+    }
+
+    .sim-time {
+      color: #90caf9;
+    }
+  }
+
+  .view-all-button {
+    text-align: center;
+    margin-top: 2rem;
+
+    a {
+      display: inline-block;
+      background-color: #ff9800;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #fb8c00;
+      }
+    }
+  }
+}
+
 @keyframes fadeInLeft {
   from { opacity: 0; transform: translateX(-30px); }
   to { opacity: 1; transform: translateX(0); }
@@ -104,4 +188,9 @@
 @keyframes fadeInRight {
   from { opacity: 0; transform: translateX(30px); }
   to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
