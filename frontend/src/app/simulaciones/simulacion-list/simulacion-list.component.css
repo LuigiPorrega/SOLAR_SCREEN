@@ -1,0 +1,30 @@
+.progress-circle {
+  position: relative;
+  display: inline-block;
+}
+.progress-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.sim-card {
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+.sim-card:hover {
+  transform: translateY(-5px);
+}
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+.text-gradient {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

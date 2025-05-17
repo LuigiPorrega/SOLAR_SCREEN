@@ -106,8 +106,8 @@ export const routes: Routes = [
   {
     path: 'simulaciones',
     children: [
-      { path: 'simulacion', component: SimulacionCreateComponent },
-      { path: 'simulacion/:id', component: SimulacionCreateComponent, canActivate: [authGuard] },
+      { path: 'create', component: SimulacionCreateComponent },
+      { path: 'create/:id', component: SimulacionCreateComponent, canActivate: [authGuard] },
       { path: 'list', component: SimulacionListComponent },
     ],
   },

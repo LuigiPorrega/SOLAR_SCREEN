@@ -1,5 +1,4 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faSun, faShieldAlt, faLightbulb, faCloud, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +11,6 @@ import { CommonModule, NgForOf } from '@angular/common';
   standalone: true,
   imports: [
     CommonModule,
-    NgbToast,
     RouterLink,
     FaIconComponent,
     NgForOf
@@ -33,7 +31,7 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.simulacionesService.getSimulaciones(1, 100).subscribe({
       next: res => {
-        console.log('👉 Respuesta completa del backend:', res); // 👈 Añade esto
+        console.log('👉 Respuesta completa del backend:', res);
 
         const todas = Array.isArray(res) ? res : res.data ?? [];
 
@@ -42,12 +40,14 @@ export class InicioComponent implements OnInit {
           .slice(0, 3);
 
         this.ultimasSimulaciones = ordenadas.map(sim => {
+          console.log('✅ Últimas simulaciones:', this.ultimasSimulaciones);
+
           const porcentajeCarga = Math.min(Math.round(sim.EnergiaGenerada), 100);
           let color = 'success';
           if (porcentajeCarga < 50) color = 'danger';
           else if (porcentajeCarga < 80) color = 'warning';
 
-          return {...sim, porcentajeCarga, color};
+          return { ...sim, porcentajeCarga, color };
         });
       },
       error: err => console.error('Error cargando simulaciones:', err)
