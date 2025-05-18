@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {
   ApiResponseSimulaciones,
-  ApiResponseSimulacionesCreateUpdate, ApiResponseSimulacionesDelete,
+  ApiResponseSimulacionesCreateUpdate, ApiResponseSimulacionesDelete, NuevaSimulacionDTO,
   Simulacion
 } from '../common/InterfaceSimulaciones';
 import {environment} from '../../environments/environment';
@@ -18,6 +18,7 @@ export class SimulacionesService {
   constructor() {
   }
 
+
   //función para listar todas las Simulaciones paginadas
   getSimulaciones(page?: number, pageLimit?: number): Observable<ApiResponseSimulaciones> {
     return this.http.get<ApiResponseSimulaciones>(environment.baseURL + '/simulaciones?page=' + page + '&limit=' + pageLimit);
@@ -29,7 +30,7 @@ export class SimulacionesService {
   };
 
  //función para crear una nueva simulación
-  addSimulacion(simulacion: Simulacion): Observable<ApiResponseSimulacionesCreateUpdate> {
+  addSimulacion(simulacion: NuevaSimulacionDTO): Observable<ApiResponseSimulacionesCreateUpdate> {
     const userData = JSON.parse(localStorage.getItem('user') || '{}');
     const token = userData.token;
 

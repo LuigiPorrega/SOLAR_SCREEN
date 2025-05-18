@@ -78,7 +78,17 @@ class SimulacionesApi extends BaseController
             return $this->failUnauthorized('No autorizado. Token inválido o expirado');
         }
 
-        // Asignar el UsuarioID al crear la simulación
+        // Limpiar los campos extra antes del insert
+        $data = array_intersect_key($data, array_flip([
+            'CondicionLuz',
+            'EnergiaGenerada',
+            'Tiempo',
+            'Fecha',
+            'CondicionesMeteorologicasID',
+            'FundaID'
+        ]));
+
+        // Asignar el UsuarioID
         $data['UsuarioID'] = $userData->user_id;
 
         // Insertar la nueva simulación
@@ -99,27 +109,22 @@ class SimulacionesApi extends BaseController
     // Actualizar una simulación existente
     public function update($id)
     {
-        // Obtener los datos del usuario desde el JWT
         $userData = $this->getUserDataFromToken();
         if (!$userData) {
             return $this->failUnauthorized('No autorizado. Token inválido o expirado');
         }
 
-        // Obtener la simulación a actualizar
         $simulacion = $this->simulacionesModel->find($id);
         if (!$simulacion) {
             return $this->failNotFound('Simulación no encontrada');
         }
 
-        // Verificar si el usuario es el propietario o es admin
         if ($simulacion['UsuarioID'] !== $userData->user_id && $userData->rol !== 'admin') {
             return $this->failForbidden('No tienes permiso para actualizar esta simulación.');
         }
 
-        // Obtener los datos del cuerpo de la solicitud (body)
         $data = $this->request->getJSON(true);
 
-        // Validar los datos
         if (!$this->validate([
             'CondicionLuz' => 'required|string|max_length[50]',
             'Tiempo' => 'required|decimal',
@@ -128,7 +133,6 @@ class SimulacionesApi extends BaseController
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Actualizar la simulación
         $updated = $this->simulacionesModel->update($id, $data);
 
         if (!$updated) {
@@ -145,24 +149,20 @@ class SimulacionesApi extends BaseController
     // Eliminar una simulación
     public function delete($id)
     {
-        // Obtener los datos del usuario desde el JWT
         $userData = $this->getUserDataFromToken();
         if (!$userData) {
             return $this->failUnauthorized('No autorizado. Token inválido o expirado');
         }
 
-        // Obtener la simulación
         $simulacion = $this->simulacionesModel->find($id);
         if (!$simulacion) {
             return $this->failNotFound('Simulación no encontrada');
         }
 
-        // Verificar si el usuario es el propietario o es admin
         if ($simulacion['UsuarioID'] !== $userData->user_id && $userData->rol !== 'admin') {
             return $this->failForbidden('No tienes permiso para eliminar esta simulación.');
         }
 
-        // Eliminar la simulación
         $this->simulacionesModel->delete($id);
         return $this->respondDeleted([
             'status' => 'success',

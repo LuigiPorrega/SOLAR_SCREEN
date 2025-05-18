@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers\Api;
 
 use CodeIgniter\RESTful\ResourceController;
@@ -81,25 +82,18 @@ class CondicionesMeteorologicasApi extends ResourceController
             return $this->failValidationErrors($this->validator->getErrors());
         }
 
-        // Obtener datos del usuario desde el JWT
-        $userData = $this->getUserDataFromToken();
-        if (!$userData) {
-            return $this->failUnauthorized('No autorizado. Token inválido o expirado');
-        }
+        // Guardar directamente sin usuario
+        $id = $this->model->insert($data);
+        $data['ID'] = $id;
 
-        // Asignar el UsuarioID al crear la condición meteorológica
-        $data['UsuarioID'] = $userData->user_id;
-
-        // Insertar datos en la base de datos
-        $this->model->insert($data);
-
-        // Devolver respuesta con mensaje adicional
         return $this->respondCreated([
             'status' => 'success',
             'message' => 'Condición meteorológica creada correctamente.',
             'data' => $data
         ]);
     }
+
+
 
     // PUT /api/condicionesMeteorologicas/{id}
     public function update($id = null)

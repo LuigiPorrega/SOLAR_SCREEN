@@ -1,50 +1,70 @@
-<!-- Modal -->
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Login</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+<div class="modal-header border-0">
+  <h4 class="modal-title w-100 text-center text-gradient">🔐 Iniciar sesión</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+</div>
+
+<div class="modal-body p-4 glass">
+  <!-- Formulario -->
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off" novalidate>
+    <!-- Usuario -->
+    <div class="mb-3">
+      <label for="username" class="form-label fw-bold">Usuario</label>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        class="form-control input-glass"
+        [ngClass]="{ 'is-invalid': username?.invalid && (username?.dirty || username?.touched) }"
+        placeholder="Tu nombre de usuario"
+      />
+      <div class="invalid-feedback" *ngIf="username?.errors?.['required']">
+        El nombre de usuario es obligatorio.
+      </div>
+      <div class="invalid-feedback" *ngIf="username?.errors?.['notOnlyWhiteSpace']">
+        No puede estar vacío.
+      </div>
     </div>
-  <div class="modal-body">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control"
-               formControlName="username" id="username" placeholder="Username">
-        <label for="username">Username</label>
-      </div>
 
-      <div *ngIf="username.invalid && (username.dirty || username.touched)">
-        <div *ngIf="username.errors?.['required']" class="alert alert-danger">
-          El campo Usuario es obligatorio
-        </div>
-        <div *ngIf="username.errors?.['notOnlyWhiteSpace']" class="alert alert-danger">
-          No puede ser solo espacios en blanco
-        </div>
+    <!-- Contraseña -->
+    <div class="mb-3">
+      <label for="password" class="form-label fw-bold">Contraseña</label>
+      <input
+        #passwordInput
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control input-glass"
+        [ngClass]="{ 'is-invalid': isPasswordInvalid() }"
+        placeholder="********"
+      />
+      <div class="invalid-feedback" *ngIf="password?.errors?.['required']">
+        La contraseña es obligatoria.
       </div>
-
-      <div class="form-floating mb-3">
-        <input type="password" class="form-control"
-               formControlName="password" id="password" placeholder="Contraseña">
-        <label for="password">Contraseña</label>
-      </div>
-
-      <div *ngIf="password.invalid && (password.dirty || password.touched)">
-        <div *ngIf="password.errors?.['required']" class="alert alert-danger">
-          El campo Contraseña es obligatorio
-        </div>
-      </div>
-
-      <div class="modal-footer d-flex justify-content-center">
-        <button type="button" class="btn btn-warning text-white fw-bold" (click)="redirigirARegistro()">Registrarse</button>
-        <button type="submit" class="btn btn-warning text-white fw-bold">Iniciar</button>
-      </div>
-    </form>
-  </div>
-
-    <!-- Toast-->
-@if(toastShow){
-  <div class="toast show {{ toast.color }} position-fixed top-0 end-0 m-3" style="z-index: 1200;">
-    <div class="toast-body">
-      {{ toast.body }}
     </div>
+
+    <!-- Botón enviar -->
+    <button type="submit" class="btn btn-modern w-100 mt-3">
+      Iniciar sesión <i class="fas fa-sign-in-alt ms-2"></i>
+    </button>
+  </form>
+
+  <!-- Redirección a registro -->
+  <div class="text-center mt-3">
+    <button class="btn btn-link text-gradient fw-bold transition-soft" (click)="redirigirARegistro()">
+      ¿No tienes cuenta? <strong>Regístrate</strong>
+    </button>
   </div>
-}
-<!--Fin toast-->
+</div>
+
+<!-- Toast personalizado -->
+<div
+  *ngIf="toastShow"
+  class="toast position-fixed bottom-0 start-50 translate-middle-x mb-4 show animate-fade-in"
+  [class]="toast.color"
+  role="alert"
+  style="z-index: 9999; min-width: 250px;"
+>
+  <div class="toast-body text-center fw-semibold">
+    {{ toast.body }}
+  </div>
+</div>

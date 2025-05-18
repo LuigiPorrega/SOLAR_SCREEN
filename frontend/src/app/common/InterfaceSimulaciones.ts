@@ -1,13 +1,13 @@
 export interface Simulacion {
-  fundaRecomendada: string | string;
-  condicion: string | string;
+  fundaRecomendada?: string;
+  condicion: string;
   nombre: string;
   ID?: number;
   UsuarioID: number;
   CondicionLuz: string;
   EnergiaGenerada: number;
   Tiempo: number;
-  Fecha: string;
+  Fecha: string | Date;
   CondicionesMeteorologicasID: number;
   FundaID: number;
 }
@@ -31,3 +31,14 @@ export interface ApiResponseSimulacionesDelete {
   status: string;
   message: string;
 }
+
+export interface NuevaSimulacionDTO {
+  CondicionLuz: string;
+  EnergiaGenerada: number;
+  Tiempo: number;
+  Fecha: string;
+  CondicionesMeteorologicasID: number;
+  FundaID: number;
+  UsuarioID: number;
+}
+

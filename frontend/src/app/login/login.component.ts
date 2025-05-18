@@ -1,12 +1,11 @@
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormValidators } from '../validators/formValidators';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
-import {timeout} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -16,31 +15,33 @@ import {timeout} from 'rxjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // Servicios e inyección
-  public authService = inject(AuthService);
-  public router: Router = inject(Router);
-  public formBuilder: FormBuilder = inject(FormBuilder);
-  public route: ActivatedRoute = inject(ActivatedRoute);
-  public modalService: NgbModal = inject(NgbModal);
-  public activeModal: NgbActiveModal = inject (NgbActiveModal);
+  authService = inject(AuthService);
+  router = inject(Router);
+  formBuilder = inject(FormBuilder);
+  route = inject(ActivatedRoute);
+  modalService = inject(NgbModal);
+  activeModal = inject(NgbActiveModal, { optional: true });
+
   @ViewChild('passwordInput') passwordInput!: ElementRef;
 
-  // Formulario reactivo
-  loginForm: FormGroup;
+  loginForm: FormGroup = this.formBuilder.group({
+    username: ['', [Validators.required, FormValidators.notOnlyWhiteSpace]],
+    password: ['', [Validators.required]]
+  });
 
-  constructor() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required, FormValidators.notOnlyWhiteSpace]],
-      password: ['', [Validators.required]]
-    });
-  }
+  toast = {
+    body: '',
+    color: 'bg-success',
+    duration: 1500,
+  };
+  toastShow = false;
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       if (params['autoLogin'] === 'true' && params['username']) {
-        this.loginForm.patchValue({
-          username: params['username']
-        });
+        if (this.passwordInput && this.passwordInput.nativeElement) {
+          this.passwordInput.nativeElement.focus();
+        }
 
         setTimeout(() => {
           this.passwordInput?.nativeElement?.focus();
@@ -55,21 +56,17 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    // Obtener las credenciales del formulario
     const credentials = this.loginForm.value;
 
-    // Llamada al servicio de autenticación
     this.authService.login(credentials).subscribe({
       next: value => {
-        const role = value.role || 'usuario';  // Usa el valor devuelto por el backend si viene
+        const role = value.role || 'usuario';
         const nombre = credentials.username;
 
-
-        // Mostrar mensaje de bienvenida
         this.showToast(`Bienvenido ${nombre}`, 'bg-success text-light', 1500);
+
         setTimeout(() => {
           this.cerrarModal();
-
           if (role === 'admin') {
             this.router.navigateByUrl('/admin/inicio');
           } else if (role === 'usuario') {
@@ -77,49 +74,42 @@ export class LoginComponent implements OnInit {
           } else {
             this.router.navigateByUrl('/');
           }
-        }, 1500)},
-      error: (error) => {
-        console.log(error);  // Inspect the error structure
+        }, 1500);
+      },
+      error: error => {
         const errorMsg = error.error?.message || 'Error desconocido';
         this.showToast('Credenciales incorrectas: ' + errorMsg, 'bg-danger text-light', 2000);
       }
     });
   }
 
-  // Mostrar el toast de mensajes
-  toast ={
-    body: '',
-    color: 'bg-success',
-    duration: 1500,
-  }
-  toastShow = false;
-  private showToast(message: string, color: string, duration: number){
+  showToast(message: string, color: string, duration: number): void {
     this.toast.body = message;
     this.toast.color = color;
     this.toastShow = true;
-    setTimeout(() =>{
-      this.toastShow = false;
-    },duration);
+    setTimeout(() => this.toastShow = false, duration);
   }
-  //Fin del Toast
 
-  // Cerrar el modal
   cerrarModal(): void {
-    this.activeModal.close();
-  }
-
-  // Accesores para el formulario
-
-  public get username(): any {
-    return this.loginForm.get('username');
-  }
-
-  public get password(): any {
-    return this.loginForm.get('password');
+    this.activeModal?.close(); // si fue abierto como modal
   }
 
   redirigirARegistro(): void {
-    this.activeModal.close();
+    this.cerrarModal();
     this.router.navigate(['/registrarse']);
+  }
+
+  public get username(): AbstractControl | null {
+    return this.loginForm.get('username');
+  }
+
+  get password(): AbstractControl | null {
+    return this.loginForm.get('password');
+  }
+
+
+  isPasswordInvalid(): boolean {
+    const control = this.loginForm.get('password');
+    return !!(control && control.invalid && (control.dirty || control.touched));
   }
 }

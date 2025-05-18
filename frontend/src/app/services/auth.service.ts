@@ -17,6 +17,7 @@ export class AuthService {
   private loginStatusSubject = new BehaviorSubject<any>(this.getUserData());
   public loginStatus$ = this.loginStatusSubject.asObservable();
 
+
   constructor() {}
 
   login(data: { username: string, password: string }) {
@@ -30,6 +31,7 @@ export class AuthService {
           // Guardar token y datos de usuario
           localStorage.setItem('token', token);
           localStorage.setItem('user', JSON.stringify({
+            id: userData.id,
             username: userData.username,
             role: userData.role || 'user',
             token: userData.token
@@ -137,6 +139,22 @@ export class AuthService {
     return null;
   }
 
+  getUserIDFromToken(): number {
+    const user = localStorage.getItem('user');
+    if (!user) return 0;
+
+    try {
+      const token = JSON.parse(user).token;
+      const decoded: any = jwtDecode(token);
+      console.log('🎯 decoded token:', decoded);
+      return parseInt(decoded.data.id); // <- Esto es clave
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      return 0;
+    }
+  }
+
+
   logout(callBackend: boolean = true): void {
     const userData = JSON.parse(localStorage.getItem('user') || '{}');
     const token = userData.token;
@@ -154,7 +172,8 @@ export class AuthService {
       this.http.post(logoutUrl, {}, {
         headers: {
           Authorization: `Bearer ${token?.trim()}`
-        }
+        },
+        responseType: 'text' as const
       }).subscribe({
         next: async () => {
           await backendLogout();
@@ -214,5 +233,10 @@ export class AuthService {
 
   registrarse(data: RegistroUsuario) {
     return this.http.post<any>(`${environment.baseURL}/usuarios/registrarse`, data);
+  }
+
+  getToken(): string | null {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user?.token ?? null;
   }
 }

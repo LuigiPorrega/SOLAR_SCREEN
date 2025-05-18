@@ -1,0 +1,70 @@
+CRITICAL - 2025-05-18 16:48:02 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/condicionesMeteorologicas]
+in APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php on line 91.
+ 1 APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CondicionesMeteorologicasApi.php', 91)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CondicionesMeteorologicasApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CondicionesMeteorologicasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-18 19:51:30 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/simulaciones]
+in APPPATH/Controllers/Api/SimulacionesApi.php on line 82.
+ 1 APPPATH/Controllers/Api/SimulacionesApi.php(82): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/SimulacionesApi.php', 82)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\SimulacionesApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\SimulacionesApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-18 20:41:04 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/simulaciones]
+in APPPATH/Controllers/Api/SimulacionesApi.php on line 82.
+ 1 APPPATH/Controllers/Api/SimulacionesApi.php(82): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/SimulacionesApi.php', 82)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\SimulacionesApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\SimulacionesApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-18 20:59:56 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/simulaciones]
+in APPPATH/Controllers/Api/SimulacionesApi.php on line 92.
+ 1 APPPATH/Controllers/Api/SimulacionesApi.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/SimulacionesApi.php', 92)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\SimulacionesApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\SimulacionesApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-18 23:33:57 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/simulaciones]
+in APPPATH/Controllers/Api/SimulacionesApi.php on line 92.
+ 1 APPPATH/Controllers/Api/SimulacionesApi.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/SimulacionesApi.php', 92)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\SimulacionesApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\SimulacionesApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-18 23:50:24 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/simulaciones]
+in APPPATH/Controllers/Api/SimulacionesApi.php on line 92.
+ 1 APPPATH/Controllers/Api/SimulacionesApi.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/SimulacionesApi.php', 92)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\SimulacionesApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\SimulacionesApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-18 23:55:46 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/simulaciones]
+in APPPATH/Controllers/Api/SimulacionesApi.php on line 92.
+ 1 APPPATH/Controllers/Api/SimulacionesApi.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/SimulacionesApi.php', 92)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\SimulacionesApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\SimulacionesApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

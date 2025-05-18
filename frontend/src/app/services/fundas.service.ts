@@ -33,6 +33,19 @@ export class FundasService {
     return this.http.get<ApiResponseModelosFundas>(environment.baseURL + '/modelosFundas', { params });
   }
 
+  getFundasFijas(): Observable<ApiResponseModelosFundas> {
+    return this.http.get<ApiResponseModelosFundas>(
+      `${environment.baseURL}/modelosFundas?tipo=Fija`
+    );
+  }
+
+  getFundasExpandibles(): Observable<ApiResponseModelosFundas> {
+    return this.http.get<ApiResponseModelosFundas>(
+      `${environment.baseURL}/modelosFundas?tipo=Expandible`
+    );
+  }
+
+
   //función para listar una sola Funda con Proveedor
   getFunda(id: number ): Observable<ApiResponseModeloFundaOne>{
     return this.http.get<ApiResponseModeloFundaOne>(environment.baseURL +'/modelosFundas/' +id);
