@@ -18,6 +18,7 @@ class SimulacionesApi extends BaseController
         $this->simulacionesModel = new SimulacionesModel();
     }
 
+
     // Función para obtener datos del usuario desde el JWT
     private function getUserDataFromToken()
     {
@@ -59,6 +60,8 @@ class SimulacionesApi extends BaseController
     public function create()
     {
         $data = $this->request->getJSON(true);
+        log_message('debug', json_encode($data));
+
 
         // Validar los datos de entrada
         if (!$this->validate([
@@ -89,7 +92,7 @@ class SimulacionesApi extends BaseController
         ]));
 
         // Asignar el UsuarioID
-        $data['UsuarioID'] = $userData->user_id;
+        $data['UsuarioID'] = $userData->id;
 
         // Insertar la nueva simulación
         $simulacionId = $this->simulacionesModel->insert($data);

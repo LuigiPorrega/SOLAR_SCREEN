@@ -143,7 +143,7 @@ export class HeaderComponent implements OnInit {
 
       // Después de logout, redirige a la página de login
       this.ngZone.run(() => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/inicio']);
       });
     }, 2500); // Duración del spinner
     this.showToast('Hasta luego', 'bg-success text-light', 2000);

@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
           if (role === 'admin') {
             this.router.navigateByUrl('/admin/inicio');
           } else if (role === 'usuario') {
-            this.router.navigateByUrl('/funda-list');
+            this.router.navigateByUrl('/inicio');
           } else {
             this.router.navigateByUrl('/');
           }

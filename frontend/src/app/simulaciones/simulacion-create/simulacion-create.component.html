@@ -19,17 +19,22 @@
       <div class="mb-4">
         <label class="form-label fw-bold">Tipo de luz:</label>
         <div class="btn-group w-100" role="group">
-          <input type="radio" class="btn-check" id="luz1" formControlName="tipoLuz" value="Luz solar directa" checked>
-          <label class="btn btn-outline-success" for="luz1">
+          <input type="radio" class="btn-check" id="luz1" formControlName="tipoLuz" value="Luz solar directa">
+          <label class="btn btn-light-custom"
+                 [ngClass]="{'btn-solar-active': form.get('tipoLuz')?.value === 'Luz solar directa'}"
+                 for="luz1">
             <fa-icon [icon]="faSun" class="me-2"></fa-icon>Solar
           </label>
 
           <input type="radio" class="btn-check" id="luz2" formControlName="tipoLuz" value="Luz artificial">
-          <label class="btn btn-outline-warning" for="luz2">
+          <label class="btn btn-light-custom"
+                 [ngClass]="{'btn-artificial-active': form.get('tipoLuz')?.value === 'Luz artificial'}"
+                 for="luz2">
             <fa-icon [icon]="faLightbulb" class="me-2"></fa-icon>Artificial
           </label>
         </div>
       </div>
+
 
       <!-- Tipo de funda -->
       <div class="mb-4">
@@ -104,6 +109,15 @@
       (click)="guardarSimulacion()">
       💾 Guardar Simulación
     </button>
-
 </div>
 </div>
+@if(toastShow){
+  <div
+    class="toast show {{ toast.color }} position-fixed top-50 start-50 translate-middle shadow-lg"
+    style="z-index: 1200; min-width: 350px; max-width: 90vw; font-size: 1.2rem; padding: 1rem;"
+  >
+    <div class="toast-body text-center">
+      {{ toast.body }}
+    </div>
+  </div>
+}

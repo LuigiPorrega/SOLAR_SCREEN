@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } 
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSun, faLightbulb } from '@fortawesome/free-solid-svg-icons';
-import { ToastrService } from 'ngx-toastr';
 import { FundasService } from '../../services/fundas.service';
 import { ApiClimaService } from '../../services/api-clima.service';
 import { ModeloFunda } from '../../common/InterfaceModelosFundas';
@@ -41,11 +40,29 @@ export class SimulacionCreateComponent implements OnInit {
   private router = inject(Router);
   private fundasService = inject(FundasService);
   private climaService = inject(ApiClimaService);
-  private toastr = inject(ToastrService);
   private fb = inject(FormBuilder);
   private modalService = inject(NgbModal);
   private condicionesService = inject(CondicionesMeteorologicasService);
   private authService = inject(AuthService);
+
+//Toast
+  toast = {
+    body: '',
+    color: 'bg-success',
+    duration: 1500,
+  }
+  toastShow = false;
+
+  protected showToast(message: string, color: string, duration: number) {
+    this.toast.body = message;
+    this.toast.color = color;
+    this.toastShow = true;
+    setTimeout(() => {
+      this.toastShow = false;
+    }, duration);
+  }
+
+  //Fin del Toast
 
   ngOnInit(): void {
     this.isLoggedIn = !!localStorage.getItem('user');
@@ -68,7 +85,13 @@ export class SimulacionCreateComponent implements OnInit {
     this.cargarFundasPorTipo('Fija');
   }
 
+
   buscarClima(): void {
+    if (!this.isLoggedIn || !this.usuarioID) {
+      this.showToast('Si deseas guardar o descargar la simulacion efectua el login.', 'bg-warning text-light', 5000);
+      return;
+    }
+
     if (!this.ciudad.trim()) return;
 
     this.climaService.getClima(this.ciudad).subscribe({
@@ -76,13 +99,14 @@ export class SimulacionCreateComponent implements OnInit {
         this.temperatura = data.main.temp;
         this.humedad = data.main.humidity;
         this.viento = data.wind.speed;
-        this.toastr.success('Datos del clima cargados correctamente 🌤️');
+        this.showToast('Datos del clima cargados correctamente 🌤️', 'bg-success text-light', 1500);
       },
       error: () => {
-        this.toastr.error('No se pudo obtener el clima de la ciudad.');
+        this.showToast('No se pudo obtener el clima de la ciudad.', 'bg-danger text-light', 2000);
       }
     });
   }
+
 
   cargarFundasPorTipo(tipoRaw: string): void {
     const tipo = tipoRaw.charAt(0).toUpperCase() + tipoRaw.slice(1).toLowerCase();
@@ -99,13 +123,13 @@ export class SimulacionCreateComponent implements OnInit {
 
         const sigueExistiendo = this.fundas.some(f => f.ID === modeloActual);
         if (!sigueExistiendo) {
-          this.form.patchValue({ modeloFundaID: null });
+          this.form.patchValue({modeloFundaID: null});
         }
 
-        this.toastr.info(`Fundas ${tipo.toLowerCase()} cargadas correctamente.`);
+        this.showToast(`Fundas ${tipo.toLowerCase()} cargadas correctamente.`, 'bg-info text-light', 2000);
       },
       error: () => {
-        this.toastr.error(`Error al cargar fundas ${tipo.toLowerCase()}`);
+        this.showToast(`Error al cargar fundas ${tipo.toLowerCase()}`, 'bg-danger text-light', 2000);
       }
     });
   }
@@ -114,7 +138,7 @@ export class SimulacionCreateComponent implements OnInit {
 
   continuarSimulacion(): void {
     if (this.form.invalid) {
-      this.toastr.warning('Completa todos los campos para continuar.');
+      this.showToast('Completa todos los campos para continuar.', 'bg-warning text-light', 2000);
       return;
     }
 
@@ -134,7 +158,7 @@ export class SimulacionCreateComponent implements OnInit {
       modelo: this.fundas.find(f => f.ID == this.form.value.modeloFundaID)?.Nombre ?? 'Desconocido'
     };
 
-    this.toastr.success(`⚡ ${energiaGenerada}W generados. Revisa la simulación abajo.`);
+    this.showToast(`⚡ ${energiaGenerada}W generados. Revisa la simulación abajo.`, 'bg-success text-light', 2000);
   }
 
   calcularEnergiaGenerada(): number {
@@ -161,11 +185,12 @@ export class SimulacionCreateComponent implements OnInit {
   }
 
   guardarSimulacion(): void {
-    console.log('🔍 userID actual:', this.usuarioID);
+    console.log('🔍 usuarioID actual:', this.usuarioID);
     console.log(this.isLoggedIn);
 
     if (!this.usuarioID) {
-      this.toastr.error('No se pudo obtener tu ID de usuario para guardar la simulación.');
+      this.showToast('Debes iniciar sesión para guardar la simulación', 'bg-warning text-light', 2000);
+      this.abrirModalLogin();
       return;
     }
 
@@ -174,14 +199,14 @@ export class SimulacionCreateComponent implements OnInit {
       this.humedad === null ||
       this.viento === null
     ) {
-      alert('⚠️ Debes seleccionar una ciudad para obtener datos climáticos antes de guardar la simulación.');
+      this.showToast('⚠️ Debes seleccionar una ciudad para obtener datos climáticos antes de guardar la simulación.', 'bg-warning text-light', 2000);
       return;
     }
 
     if (!this.simulacionCalculada) return;
 
     if (!this.isLoggedIn) {
-      this.toastr.warning('Debes iniciar sesión para guardar la simulación');
+      this.showToast('Debes iniciar sesión para guardar la simulación', 'bg-warning text-light', 2000);
       this.abrirModalLogin();
       return;
     }
@@ -204,10 +229,11 @@ export class SimulacionCreateComponent implements OnInit {
 
     this.condicionesService.addCondicionMeteorologica(condicion, headers).subscribe({
       next: (respuesta) => {
+        console.log(respuesta);
         const idCondicion = respuesta.data?.ID ?? respuesta.ID ?? null;
 
         if (!idCondicion) {
-          this.toastr.error('No se pudo obtener el ID de la condición meteorológica');
+          this.showToast('No se pudo obtener el ID de la condición meteorológica','bg-danger text-light', 2000 );
           return;
         }
 
@@ -226,21 +252,22 @@ export class SimulacionCreateComponent implements OnInit {
         this.simulacionesService.addSimulacion(simulacionPayload).subscribe({
           next: () => {
             console.log('✅ Payload final simulación:', simulacionPayload);
-            this.toastr.success('Simulación guardada exitosamente.');
+            this.showToast('Simulación guardada exitosamente.', 'bg-warning text-light', 2000);
             this.router.navigate(['/simulaciones']);
           },
           error: () => {
-            this.toastr.error('Error al guardar la simulación.');
+            this.showToast('Error al guardar la simulación.', 'bg-danger text-light', 2000);
           }
         });
       },
-      error: () => {
-        this.toastr.error('Error al guardar la condición meteorológica.');
+      error: error => {
+        this.showToast('Error al guardar la condición meteorológica.' + error, 'bg-danger text-light', 2000);
       }
     });
   }
 
   abrirModalLogin(): void {
-    this.modalService.open(LoginComponent, { centered: true });
+    this.modalService.open(LoginComponent, {centered: true});
   }
+
 }

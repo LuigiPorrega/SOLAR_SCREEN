@@ -1,106 +1,106 @@
-/* Estilo general */
-.sim-card {
-  max-width: 900px;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  position: relative;
+/* Mejora de legibilidad en tarjetas glass */
+.card.glass {
+  background: rgba(33, 33, 33, 0.6); /* gris muy oscuro con transparencia */
+  color: #f1f1f1; /* texto claro */
 }
 
-.text-gradient {
+/* Estilos para inputs y selects en tarjetas oscuras */
+.card.glass input,
+.card.glass select,
+.card.glass textarea {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card.glass input::placeholder,
+.card.glass select option,
+.card.glass textarea::placeholder {
+  color: #ccc;
+}
+
+/* Estilo para labels */
+.card.glass label {
+  color: #ddd;
+}
+
+/* Botones dentro de tarjetas oscuras */
+.card.glass .btn {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.card.glass .btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Borde moderno para todas las cards con clase 'glass' */
+.card.glass {
+  border: 1.5px solid #00c6ff;
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Opcional: en hover cambiar el borde a degradado */
+.card.glass:hover {
+  border-color: #0072ff;
+  box-shadow: 0 0 15px rgba(0, 114, 255, 0.4);
+}
+
+/* Por defecto los botones modernos */
+.btn-modern {
   background: linear-gradient(to right, #00c6ff, #0072ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+  opacity: 0.7; /* aspecto más apagado */
+}
+
+/* Botón activo (cuando se elige esa opción) */
+.btn-modern.active {
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+  transform: scale(1.05);
   font-weight: bold;
 }
 
-.card {
-  border: none;
-  border-radius: 1rem;
-  overflow: hidden;
-  transition: transform 0.2s ease-in-out;
-}
-
-.card:hover {
+/* Efecto hover para todos */
+.btn-modern:hover {
+  opacity: 1;
   transform: scale(1.03);
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
 }
 
-.modal-backdrop {
-  z-index: 1040;
-}
-.modal {
-  z-index: 1050;
-}
-
-/* Responsive ajuste */
-@media (max-width: 768px) {
-  .sim-card {
-    padding: 1rem;
-  }
+/* Estilo base común para ambos botones */
+.btn-light-custom {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  width: 50%;
+  font-weight: normal;
 }
 
-/* Botones especiales */
-.btn-glow {
-  box-shadow: 0 0 10px #00c6ff;
-  transition: all 0.2s ease-in-out;
-}
-
-.btn-glow:hover {
-  box-shadow: 0 0 20px #00c6ff, 0 0 30px #0072ff;
-}
-
-/* Gradiente personalizado para títulos */
-h2.text-gradient, h4.text-gradient {
-  font-size: 1.8rem;
-  margin-bottom: 1.2rem;
-  text-align: center;
-}
-
-/* Spinner overlay */
-.spinner-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
-  z-index: 999;
-}
-
-.spinner-border {
-  width: 3rem;
-  height: 3rem;
-  border-width: 0.3em;
-}
-
-.toast-container {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 2000;
-}
-
-.toast {
-  background: rgba(0, 0, 0, 0.8);
+/* Al pasar el mouse, ligero brillo */
+.btn-light-custom:hover {
+  background-color: rgba(255, 255, 255, 0.2);
   color: #fff;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
-  animation: fadeIn 0.5s ease;
+  cursor: pointer;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Botón activo para luz solar */
+.btn-solar-active {
+  background: linear-gradient(to right, #ffcc00, #ff9900);
+  color: #212529;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
 }
 
+/* Botón activo para luz artificial */
+.btn-artificial-active {
+  background: linear-gradient(to right, #ffd700, #ffc107);
+  color: #212529;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
+}

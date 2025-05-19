@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@fontsource/poppins";
 
+
 /* Fuente y fondo principal */
 body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
@@ -48,6 +49,11 @@ body {
   box-shadow: 0 4px 20px rgba(139, 92, 246, 0.6);
 }
 
+.btn-modern:focus {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
+}
+
 /* Estilo para íconos del header */
 .icon-hover-effect {
   transition: transform 0.3s ease, color 0.3s ease;
@@ -81,7 +87,8 @@ body {
 }
 
 /* Input visual estilo glass */
-.input-glass {
+.input-glass,
+select {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
@@ -90,7 +97,8 @@ body {
   transition: border 0.3s ease, background 0.3s ease;
 }
 
-.input-glass:focus {
+.input-glass:focus,
+select:focus {
   background: rgba(255, 255, 255, 0.1);
   border-color: #8b5cf6;
   outline: none;
@@ -110,6 +118,12 @@ body {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilo específico para options dentro de selects */
+select option {
+  background-color: #1f2937; /* gris oscuro */
+  color: white;
+}
+
 /* Dark mode refinado */
 @media (prefers-color-scheme: dark) {
   .header-gradient {
@@ -125,16 +139,29 @@ body {
     background: linear-gradient(to right, #4f46e5, #6366f1);
   }
 
-  .input-glass {
+  .input-glass,
+  select {
     background-color: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: white;
     transition: all 0.3s ease-in-out;
   }
+
   .input-glass::placeholder {
     color: #ccc;
     opacity: 0.7;
+  }
+
+  .input-glass:focus,
+  select:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #8b5cf6;
+  }
+
+  select option {
+    background-color: #0f172a;
+    color: white;
   }
 
   .text-gradient {
@@ -143,8 +170,7 @@ body {
     -webkit-text-fill-color: transparent;
   }
 
-  .input-glass:focus {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: #8b5cf6;
+  .toast-container {
+    z-index: 9999 !important;
   }
 }
