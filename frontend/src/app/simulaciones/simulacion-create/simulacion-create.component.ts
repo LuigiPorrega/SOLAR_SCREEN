@@ -14,6 +14,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { CondicionesMeteorologicasService } from '../../services/condiciones-meteorologicas.service';
 import { NuevaSimulacionDTO } from '../../common/InterfaceSimulaciones';
 import { AuthService } from '../../services/auth.service';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-simulacion-create',
@@ -99,7 +101,7 @@ export class SimulacionCreateComponent implements OnInit {
         this.temperatura = data.main.temp;
         this.humedad = data.main.humidity;
         this.viento = data.wind.speed;
-        this.showToast('Datos del clima cargados correctamente 🌤️', 'bg-success text-light', 1500);
+        //this.showToast('Datos del clima cargados correctamente 🌤️', 'bg-success text-light', 1500);
       },
       error: () => {
         this.showToast('No se pudo obtener el clima de la ciudad.', 'bg-danger text-light', 2000);
@@ -126,7 +128,7 @@ export class SimulacionCreateComponent implements OnInit {
           this.form.patchValue({modeloFundaID: null});
         }
 
-        this.showToast(`Fundas ${tipo.toLowerCase()} cargadas correctamente.`, 'bg-info text-light', 2000);
+        //this.showToast(`Fundas ${tipo.toLowerCase()} cargadas correctamente.`, 'bg-info text-light', 2000);
       },
       error: () => {
         this.showToast(`Error al cargar fundas ${tipo.toLowerCase()}`, 'bg-danger text-light', 2000);
@@ -270,4 +272,72 @@ export class SimulacionCreateComponent implements OnInit {
     this.modalService.open(LoginComponent, {centered: true});
   }
 
+  //Descargar una simulacion en pdf con grafico
+  descargarSimulacionPDF() {
+    const original = document.getElementById('simulacion-preview');
+    if (!original) return;
+
+    const clone = original.cloneNode(true) as HTMLElement;
+
+    // Estilo del contenedor
+    clone.style.background = '#ffffff';
+    clone.style.color = '#000000';
+    clone.style.boxShadow = 'none';
+    clone.style.border = '2px solid #000';
+    clone.style.padding = '20px';
+    clone.style.fontSize = '16px';
+    clone.style.fontWeight = '500';
+
+    // Aplicar a todos los elementos hijos
+    const descendants = clone.querySelectorAll('*');
+    descendants.forEach((el) => {
+      const htmlEl = el as HTMLElement;
+      htmlEl.style.color = '#000000';
+      htmlEl.style.filter = 'none';
+      htmlEl.style.textShadow = 'none';
+      htmlEl.style.boxShadow = 'none';
+      htmlEl.style.borderColor = '#000000';
+      htmlEl.style.fontWeight = '500';
+    });
+
+
+    // Forzar alto contraste para gráfico
+    const canvas = clone.querySelector('canvas') as HTMLCanvasElement;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+          const contrast = avg > 128 ? 255 : 0;
+          data[i] = data[i + 1] = data[i + 2] = contrast;
+        }
+        ctx.putImageData(imageData, 0, 0);
+      }
+    }
+
+    // Añadir a DOM
+    clone.id = 'simulacion-preview-export';
+    clone.style.position = 'fixed';
+    clone.style.top = '-9999px';
+    document.body.appendChild(clone);
+
+    html2canvas(clone).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('simulacion.pdf');
+      document.body.removeChild(clone);
+
+      this.showToast('Simulación exportada exitosamente.', 'bg-success text-light', 2000);
+    }).catch(error => {
+      console.error('❌ Error al generar PDF:', error);
+      this.showToast('Error al generar la simulación en PDF.', 'bg-danger text-light', 2000);
+    });
+  }
 }

@@ -1,108 +1,126 @@
-@defer (when fundas) {
-  <div class="container my-5">
+<div class="container my-5">
 
-    <!-- Búsqueda en vivo -->
-    <div class="row mb-3">
-      <div class="col-md-6 mx-auto">
-        <input
-          type="text"
-          [(ngModel)]="nombreABuscar"
-          (ngModelChange)="onBuscar()"
-          class="form-control"
-          placeholder="🔍 Buscar funda por nombre..."
-        />
-      </div>
-    </div>
-
-    <!-- Contador de resultados -->
-    <div class="text-center mb-4" *ngIf="fundasFiltradas.length > 0">
-      <span class="text-muted">🔎 {{ fundasFiltradas.length }} fundas encontradas</span>
-    </div>
-
-    <!-- Tarjetas de selección -->
-    <div class="row my-4 justify-content-center">
-      <!-- Funda Expandible -->
-      <div class="col-12 col-md-5 mb-3">
-        <div class="card h-100 text-center tipo-card"
-             [ngClass]="{'selected': tipoSeleccionado === 'Expansible'}"
-             (click)="onTipoChange('Expansible')">
-          <div class="card-body">
-            <h4 class="card-title">📦 Fundas Desplegables</h4>
-          </div>
-        </div>
-      </div>
-
-      <!-- Funda Fija -->
-      <div class="col-12 col-md-5 mb-3">
-        <div class="card h-100 text-center tipo-card"
-             [ngClass]="{'selected': tipoSeleccionado === 'Fija'}"
-             (click)="onTipoChange('Fija')">
-          <div class="card-body">
-            <h4 class="card-title">🧱 Fundas Fijas</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Paginación -->
-    <div class="col-md-12 d-flex justify-content-center my-4" *ngIf="totalPages > 1">
-      <ngb-pagination
-        [collectionSize]="totalItems"
-        [page]="currentPage"
-        [pageSize]="perPage"
-        [maxSize]="5"
-        [rotate]="true"
-        [ellipses]="true"
-        [boundaryLinks]="true"
-        (pageChange)="cambiarPagina($event)">
-      </ngb-pagination>
-    </div>
-
-    <!-- Resultados -->
-    <div class="container mt-4">
-      <h2>Listado de Fundas</h2>
-
-      <div *ngIf="fundasPaginadas.length === 0" class="text-center my-4">
-        <p class="text-muted">No se encontraron fundas con los criterios seleccionados.</p>
-      </div>
-
-      <div class="row" *ngIf="fundasPaginadas.length > 0">
-        <div class="col-md-4 mb-4" *ngFor="let funda of fundasPaginadas">
-          <div class="card h-100 shadow-sm">
-            <img [src]="funda.ImagenURL" class="card-img-top" [alt]="funda.Nombre" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <h5 class="card-title">{{ funda.Nombre }}</h5>
-              <p><strong>Capacidad:</strong> {{ funda.CapacidadCarga }} mAh</p>
-              <p><strong>Precio:</strong> {{ funda.Precio | currency:'EUR':'symbol' }}</p>
-              <p><strong>Expansible:</strong> {{ funda.Expansible === 1 ? 'Sí' : 'No' }}</p>
-              <p><strong>Tipo:</strong> {{ funda.TipoFunda }}</p>
-              <button class="btn btn-outline-primary mt-2 w-100" (click)="agregarAlCarrito(funda)">
-                <fa-icon [icon]="faCartPlus"></fa-icon> Añadir al carrito
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <!-- Toast -->
-    @if (toastShow) {
-      <div class="toast show {{ toast.color }} position-fixed top-0 end-0 m-3 shadow" style="z-index: 1200;">
-        <div class="toast-body">
-          {{ toast.body }}
-        </div>
-      </div>
-    }
+  <!-- 🔁 Paginación arriba -->
+  <div class="col-md-12 d-flex justify-content-center mb-3" *ngIf="perPage > 1 && totalItems > perPage">
+    <ngb-pagination
+      [collectionSize]="totalItems"
+      [page]="currentPage"
+      [pageSize]="perPage"
+      [maxSize]="5"
+      [rotate]="true"
+      [ellipses]="true"
+      [boundaryLinks]="true"
+      (pageChange)="cambiarPagina($event)">
+    </ngb-pagination>
   </div>
-}
 
-@placeholder () {
-  <div class="d-flex flex-column align-items-center justify-content-center py-5">
+  <!-- 🔍 Búsqueda -->
+  <div class="row mb-3 justify-content-center">
+    <div class="col-md-6">
+      <input
+        type="text"
+        [(ngModel)]="nombreABuscar"
+        (ngModelChange)="onBuscar()"
+        class="form-control shadow-sm"
+        placeholder="🔍 Buscar funda por nombre..."
+      />
+    </div>
+  </div>
+
+  <!-- 🎯 Filtros -->
+  <div class="row my-4 justify-content-center">
+    <div class="col-12 col-md-4 mb-2">
+      <div class="card tipo-card text-center shadow-sm cursor-pointer"
+           [ngClass]="{'selected': tipoSeleccionado === ''}"
+           (click)="loadFundas()">
+        <div class="card-body py-2">
+          <h5 class="card-title mb-0">📚 Todas las Fundas</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <div class="card tipo-card text-center shadow-sm cursor-pointer"
+           [ngClass]="{'selected': tipoSeleccionado === 'Fija'}"
+           (click)="currentPage = 1; onTipoChange('Fija')">
+        <div class="card-body py-2">
+          <h5 class="card-title mb-0">🧱 Fundas Fijas</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-2">
+      <div class="card tipo-card text-center shadow-sm cursor-pointer"
+           [ngClass]="{'selected': tipoSeleccionado === 'Expandible'}"
+           (click)="currentPage = 1; onTipoChange('Expandible')">
+        <div class="card-body py-2">
+          <h5 class="card-title mb-0">📦 Fundas Desplegables</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔢 Contador -->
+  <div class="text-center mb-4" *ngIf="fundas.length > 0">
+    <span class="text-muted">🔎 {{ fundas.length }} fundas encontradas</span>
+  </div>
+
+  <!-- ⏳ Spinner -->
+  <div *ngIf="isLoading" class="text-center my-5">
     <div class="spinner-border text-warning" role="status" style="width: 3rem; height: 3rem;">
       <span class="visually-hidden">Cargando fundas...</span>
     </div>
     <p class="text-warning mt-3">Cargando fundas, ajustando bolsillos…</p>
   </div>
-}
+
+  <!-- ✅ Resultados -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let funda of fundasPaginadas">
+      <div class="card h-100 funda-card" (click)="irADetalle(funda)">
+        <img [src]="funda.ImagenURL" class="card-img-top" [alt]="funda.Nombre" />
+        <div class="card-body d-flex flex-column justify-content-between">
+          <h5 class="card-title">{{ funda.Nombre }}</h5>
+          <p><strong>Capacidad:</strong> {{ funda.CapacidadCarga }} mAh</p>
+          <p><strong>Precio:</strong> {{ funda.Precio | currency:'EUR':'symbol' }}</p>
+          <p><strong>Expansible:</strong> {{ funda.Expansible === 1 ? 'Sí' : 'No' }}</p>
+          <p><strong>Tipo:</strong> {{ funda.TipoFunda }}</p>
+
+          <button
+            class="btn btn-outline-warning mt-2 w-100"
+            (click)="agregarAlCarrito(funda); $event.stopPropagation()"
+          >
+            <fa-icon [icon]="faCartPlus"></fa-icon> Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🚫 Sin resultados -->
+  <div class="text-center my-4" *ngIf="fundasPaginadas.length === 0 && fundas.length > 0">
+    <p class="text-muted">No se encontraron fundas con los criterios seleccionados.</p>
+  </div>
+
+  <!-- 🔁 Paginación abajo -->
+  <div class="col-md-12 d-flex justify-content-center my-4" *ngIf="perPage > 1 && totalItems > perPage">
+    <ngb-pagination
+      [collectionSize]="totalItems"
+      [page]="currentPage"
+      [pageSize]="perPage"
+      [maxSize]="5"
+      [rotate]="true"
+      [ellipses]="true"
+      [boundaryLinks]="true"
+      (pageChange)="cambiarPagina($event)">
+    </ngb-pagination>
+  </div>
+
+  <!-- 🔔 Toast -->
+  @if (toastShow) {
+    <div class="toast show {{ toast.color }} position-fixed top-0 end-0 m-3 shadow" style="z-index: 1200;">
+      <div class="toast-body text-center fw-semibold">
+        {{ toast.body }}
+      </div>
+    </div>
+  }
+</div>

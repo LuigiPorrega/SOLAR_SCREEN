@@ -1,34 +1,36 @@
-.tipo-card {
-  cursor: pointer;
-  border: 2px dashed #ffc107;
-  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.tipo-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 12px rgba(255, 193, 7, 0.4);
-}
-
-.tipo-card.selected {
-  border-color: #28a745;
-  background-color: #e6ffe6;
-  box-shadow: 0 0 15px rgba(40, 167, 69, 0.5);
-}
-
+/* Fondo oscuro con texto más claro */
 .funda-card {
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  background: #1e1e2f;
+  color: #f1f1f1;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .funda-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
 }
 
-.image {
+.funda-card .card-title {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.funda-card p {
+  color: #dddddd;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.funda-card .btn {
+  margin-top: auto;
+}
+
+.card-img-top {
+  object-fit: cover;
   max-height: 180px;
-  object-fit: contain;
-}
-
-.toast {
-  min-width: 250px;
+  background-color: #2a2a3c;
 }

@@ -173,4 +173,28 @@ select option {
   .toast-container {
     z-index: 9999 !important;
   }
+
+  /*descargar en pdf*/
+  #simulacion-preview {
+    color: black !important;
+    background: white !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+  }
+
+  #simulacion-preview * {
+    color: black !important;
+    background: transparent !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    border-color: black !important;
+  }
+
+  #simulacion-preview canvas {
+    filter: grayscale(100%) !important;
+  }
 }

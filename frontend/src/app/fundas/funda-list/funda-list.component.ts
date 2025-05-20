@@ -8,7 +8,6 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { CurrencyPipe, NgClass, NgForOf, NgIf } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { FormsModule } from '@angular/forms';
-import {query} from '@angular/animations';
 
 @Component({
   selector: 'app-funda-list',
@@ -32,92 +31,114 @@ export class FundaListComponent implements OnInit {
   private readonly cartService = inject(CartService);
   private readonly router = inject(Router);
 
-  // Datos
   fundas: ModeloFunda[] = [];
-  fundasFiltradas: ModeloFunda[] = [];
   fundasPaginadas: ModeloFunda[] = [];
 
-  // Estado de búsqueda y filtro
+  // Filtros
   nombreABuscar: string = '';
-  tipoSeleccionado: 'Fija' | 'Expansible' | '' = '';
+  tipoSeleccionado: 'Fija' | 'Expandible' | '' = '';
 
   // Paginación
   currentPage: number = 1;
   perPage: number = 9;
   totalItems: number = 0;
-  totalPages: number = 1;
+  totalPage: number = 0;
+  isLoading = false;
 
-  // Iconos
+  // Icono
   faCartPlus = faCartPlus;
 
   // Toast
   toast = {
     body: '',
     color: 'bg-success',
-    duration: 1500
+    duration: 1500,
   };
   toastShow = false;
 
   ngOnInit(): void {
-    this.obtenerFundas();
+    this.loadFundas(); // por defecto: carga todas paginadas
   }
 
-  obtenerFundas(): void {
-    this.fundaService.getFundas(1, 1000).subscribe({
+  loadFundas(): void {
+    this.isLoading = true;
+    this.fundaService.getFundas(this.currentPage, this.perPage).subscribe({
       next: (res) => {
-        this.fundas = res.data;
-        this.filtrarFundas();
+        const data = res.data.map(f => ({
+          ...f,
+          CapacidadCarga: Number(f.CapacidadCarga),
+          Precio: Number(f.Precio),
+          Cantidad: Number(f.Cantidad),
+          Expansible: Number(f.Expansible),
+        }));
+
+        this.fundas = data;
+        this.fundasPaginadas = data;
+        this.totalItems = res.totalItems;
+        this.totalPage = res.totalPages;
+        this.tipoSeleccionado = '';
       },
       complete: () => {
-        this.showToast('Fundas cargadas correctamente', 'bg-success text-light', 1500);
+        this.isLoading = false;
+        this.showToast('Modelos de fundas cargados exitosamente.', 'bg-success text-light', 2000);
       },
       error: (error) => {
-        console.error('Error al obtener fundas:', error);
-        this.showToast(error.message, 'bg-danger text-light', 2000);
+        this.isLoading = false;
+        this.showToast('Error al cargar los modelos de fundas: ' + error.message, 'bg-danger text-light', 2000);
       }
     });
   }
 
-  onTipoChange(tipo: 'Fija' | 'Expansible'): void {
+
+  onTipoChange(tipo: 'Fija' | 'Expandible'): void {
     this.tipoSeleccionado = tipo;
-    this.currentPage = 1;
-    this.filtrarFundas();
-  }
+    this.isLoading = true;
 
-  onBuscar(): void {
-    this.currentPage = 1;
-    this.filtrarFundas();
-  }
+    this.fundaService.getFundas(this.currentPage, this.perPage, tipo.toLowerCase()).subscribe({
+      next: (res) => {
+        const data = res.data.map(f => ({
+          ...f,
+          CapacidadCarga: Number(f.CapacidadCarga),
+          Precio: Number(f.Precio),
+          Cantidad: Number(f.Cantidad),
+          Expansible: Number(f.Expansible),
+        }));
 
-  filtrarFundas(): void {
-    const normalizar = (texto: string) =>
-      texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-    this.fundasFiltradas = this.fundas.filter(f => {
-      const coincideTipo = !this.tipoSeleccionado ||
-        normalizar(f.TipoFunda) === normalizar(this.tipoSeleccionado);
-
-      const coincideNombre = !this.nombreABuscar ||
-        normalizar(f.Nombre).includes(normalizar(this.nombreABuscar));
-
-      return coincideTipo && coincideNombre;
+        this.fundas = data;
+        this.fundasPaginadas = data;
+        this.totalItems = res.totalItems;
+        this.totalPage = res.totalPages;
+      },
+      complete: () => {
+        this.isLoading = false;
+        this.showToast(`Fundas ${tipo.toLowerCase()} cargadas correctamente`, 'bg-success text-light', 1500);
+      },
+      error: (err) => {
+        this.isLoading = false;
+        console.error(err);
+        this.showToast('Error al cargar fundas', 'bg-danger text-light', 2000);
+      }
     });
-
-    this.totalItems = this.fundasFiltradas.length;
-    this.totalPages = Math.ceil(this.totalItems / this.perPage);
-    this.actualizarFundasPaginadas();
   }
+
+
 
   actualizarFundasPaginadas(): void {
     const start = (this.currentPage - 1) * this.perPage;
     const end = start + this.perPage;
-    this.fundasPaginadas = this.fundasFiltradas.slice(start, end);
+    this.fundasPaginadas = this.fundas.slice(start, end);
   }
 
   cambiarPagina(nuevaPagina: number): void {
     this.currentPage = nuevaPagina;
-    this.actualizarFundasPaginadas();
+
+    if (this.tipoSeleccionado) {
+      this.onTipoChange(this.tipoSeleccionado);
+    } else {
+      this.loadFundas();
+    }
   }
+
 
   irADetalle(funda: ModeloFunda): void {
     this.router.navigate(['/fundas', funda.ID]);
@@ -141,4 +162,20 @@ export class FundaListComponent implements OnInit {
       this.toastShow = false;
     }, duration);
   }
+
+  onBuscar(): void {
+    const normalizar = (texto: string) =>
+      texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+    const nombre = normalizar(this.nombreABuscar);
+
+    const fundasFiltradas = this.fundas.filter(f =>
+      normalizar(f.Nombre).includes(nombre)
+    );
+
+    this.totalItems = fundasFiltradas.length;
+    this.fundasPaginadas = fundasFiltradas.slice(0, this.perPage);
+    this.currentPage = 1;
+  }
+
 }

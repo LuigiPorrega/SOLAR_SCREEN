@@ -24,24 +24,25 @@ export class FundasService {
   getFundas(page: number, limit: number, tipoFunda?: string) {
     let params = new HttpParams()
       .set('page', page.toString())
-      .set('limit', limit.toString());
+      .set('perPage', limit.toString());
 
     if (tipoFunda) {
-      params = params.set('tipoFunda', tipoFunda);
+      params = params.set('tipoFunda', tipoFunda); // ✅ debe ser 'fija' o 'expandible'
     }
 
     return this.http.get<ApiResponseModelosFundas>(environment.baseURL + '/modelosFundas', { params });
   }
 
+
   getFundasFijas(): Observable<ApiResponseModelosFundas> {
     return this.http.get<ApiResponseModelosFundas>(
-      `${environment.baseURL}/modelosFundas?tipo=Fija`
+      `${environment.baseURL}/modelosFundas?tipoFunda=fija`
     );
   }
 
   getFundasExpandibles(): Observable<ApiResponseModelosFundas> {
     return this.http.get<ApiResponseModelosFundas>(
-      `${environment.baseURL}/modelosFundas?tipo=Expandible`
+      `${environment.baseURL}/modelosFundas?tipoFunda=expandible`
     );
   }
 
