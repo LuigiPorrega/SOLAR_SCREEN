@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, NgForOf, DatePipe } from '@angular/common';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faSun, faLightbulb, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import {Simulacion} from '../../common/InterfaceSimulaciones';
-import {SimulacionesService} from '../../services/simulaciones.service';
-import {RouterLink} from '@angular/router';
+import { Simulacion } from '../../common/InterfaceSimulaciones';
+import { SimulacionesService } from '../../services/simulaciones.service';
+import { RouterLink } from '@angular/router';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-simulacion-list',
@@ -16,73 +17,82 @@ import jsPDF from 'jspdf';
     NgForOf,
     FaIconComponent,
     DatePipe,
-    RouterLink
+    RouterLink,
+    NgbPagination
   ],
   templateUrl: './simulacion-list.component.html',
   styleUrl: './simulacion-list.component.css'
 })
 export class SimulacionListComponent implements OnInit {
-  simulaciones: (Simulacion & { porcentajeCarga: number; color: string })[] = [];
-  isLoggedIn = !!localStorage.getItem('token'); // O usa AuthService si lo tienes
   private readonly simulacionesService = inject(SimulacionesService);
+  simulaciones: (Simulacion & { porcentajeCarga: number; color: string })[] = [];
+  simulacionesPaginadas: (Simulacion & { porcentajeCarga: number; color: string })[] = [];
+
   isLoading = true;
+  isLoggedIn = !!localStorage.getItem('token');
+
+  // Paginación
+  currentPage: number = 1;
+  perPage: number = 9;
+  totalItems: number = 0;
+
+  // Iconos
   faSun = faSun;
   faLightbulb = faLightbulb;
   faCalendarAlt = faCalendarAlt;
 
-  //Toast
+  // Toast
   toast = {
     body: '',
     color: 'bg-success',
     duration: 1500,
-  }
+  };
   toastShow = false;
 
-  protected showToast(message: string, color: string, duration: number) {
-    this.toast.body = message;
-    this.toast.color = color;
-    this.toastShow = true;
-    setTimeout(() => {
-      this.toastShow = false;
-    }, duration);
-  }
-  //Fin del Toast
-
-
   ngOnInit(): void {
-    this.simulacionesService.getSimulaciones(1, 100).subscribe({
+    this.loadSimulaciones();
+  }
+
+  loadSimulaciones(): void {
+    this.isLoading = true;
+    this.simulacionesService.getSimulaciones(1, 1000).subscribe({
       next: (res) => {
-        const todas = Array.isArray(res) ? res : res.data ?? [];
-        this.isLoading = false;
+        const datos = Array.isArray(res) ? res : res.data ?? [];
 
-        this.simulaciones = todas.map(sim => {
+        this.simulaciones = datos.map(sim => {
           const porcentajeCarga = Math.min(Math.round(sim.EnergiaGenerada), 100);
-          this.isLoading = false;
-
-          // Lógica de color corregida
-          let color: string;
-          if (porcentajeCarga < 50) color = 'danger';
-          else if (porcentajeCarga < 80) color = 'warning';
-          else color = 'success';
-
-          return {...sim, porcentajeCarga, color};
+          const color = porcentajeCarga < 50 ? 'danger' : porcentajeCarga < 80 ? 'warning' : 'success';
+          return { ...sim, porcentajeCarga, color };
         });
+
+        this.totalItems = this.simulaciones.length;
+        this.actualizarPaginacion();
       },
       error: (error) => {
         console.error('Error al cargar simulaciones:', error);
+      },
+      complete: () => {
         this.isLoading = false;
       }
     });
   }
 
-  //Descargar una simulacion en pdf con grafico
+  cambiarPagina(nuevaPagina: number): void {
+    this.currentPage = nuevaPagina;
+    this.actualizarPaginacion();
+  }
+
+  actualizarPaginacion(): void {
+    const start = (this.currentPage - 1) * this.perPage;
+    const end = start + this.perPage;
+    this.simulacionesPaginadas = this.simulaciones.slice(start, end);
+  }
+
   descargarSimulacionPDF(id: string) {
     const original = document.getElementById(id);
     if (!original) return;
 
     const clone = original.cloneNode(true) as HTMLElement;
-
-    // Estilos para impresión
     clone.style.background = '#ffffff';
     clone.style.color = '#000000';
     clone.style.boxShadow = 'none';
@@ -91,7 +101,6 @@ export class SimulacionListComponent implements OnInit {
     clone.style.fontSize = '16px';
     clone.style.fontWeight = '500';
 
-    // Ajustar todos los hijos
     const descendants = clone.querySelectorAll('*');
     descendants.forEach((el) => {
       const htmlEl = el as HTMLElement;
@@ -102,11 +111,10 @@ export class SimulacionListComponent implements OnInit {
       htmlEl.style.borderColor = '#000000';
       htmlEl.style.fontWeight = '500';
       if (htmlEl.classList.contains('btn')) {
-        htmlEl.style.display = 'none'; // Oculta el botón dentro del PDF
+        htmlEl.style.display = 'none';
       }
     });
 
-    // Forzar blanco y negro al canvas (gráfico)
     const canvas = clone.querySelector('canvas') as HTMLCanvasElement;
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -122,7 +130,6 @@ export class SimulacionListComponent implements OnInit {
       }
     }
 
-    // Preparar clon invisible en DOM
     clone.id = 'simulacion-preview-export';
     clone.style.position = 'fixed';
     clone.style.top = '-9999px';
@@ -146,5 +153,12 @@ export class SimulacionListComponent implements OnInit {
     });
   }
 
-
+  protected showToast(message: string, color: string, duration: number): void {
+    this.toast.body = message;
+    this.toast.color = color;
+    this.toastShow = true;
+    setTimeout(() => {
+      this.toastShow = false;
+    }, duration);
+  }
 }

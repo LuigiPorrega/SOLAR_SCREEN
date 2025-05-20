@@ -117,6 +117,40 @@
   </button>
 </div>
 
+<!-- 🎯 Fundas recomendadas -->
+<div *ngIf="mostrarRecomendaciones" class="mt-5">
+  <h4 class="text-center text-gradient mb-4 animate-fade-in">⚡ Fundas recomendadas para cargar más rápido</h4>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let funda of fundasRecomendadas">
+      <div class="card h-100 funda-card glass shadow">
+        <img [src]="funda.ImagenURL" class="card-img-top" [alt]="funda.Nombre" />
+        <div class="card-body d-flex flex-column justify-content-between">
+          <h5 class="card-title">{{ funda.Nombre }}</h5>
+          <p><strong>Capacidad:</strong> {{ funda.CapacidadCarga }} mAh</p>
+          <p><strong>Precio:</strong> {{ funda.Precio | currency:'EUR':'symbol' }}</p>
+          <p><strong>Expansible:</strong> {{ funda.Expansible === 1 ? 'Sí' : 'No' }}</p>
+          <p><strong>Tipo:</strong> {{ funda.TipoFunda }}</p>
+
+          <button
+            class="btn btn-outline-warning mt-2 w-100"
+            (click)="agregarAlCarrito(funda); $event.stopPropagation()"
+          >
+            <fa-icon [icon]="faCartPlus"></fa-icon> Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔍 Enlace para explorar más fundas -->
+  <div class="text-center mt-3">
+    <a routerLink="/funda-list" class="btn btn-modern">
+      Ver más fundas <i class="fas fa-arrow-right ms-2"></i>
+    </a>
+  </div>
+</div>
+
 @if(toastShow){
   <div
     class="toast show {{ toast.color }} position-fixed top-50 start-50 translate-middle shadow-lg"

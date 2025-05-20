@@ -1,0 +1,100 @@
+/* Contenedor principal del formulario */
+.modal-form-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* Estilo para inputs y textarea */
+.styled-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  color: #ffffff;
+  transition: 0.3s ease;
+  resize: none;
+}
+
+.styled-input::placeholder {
+  color: #cccccc;
+  opacity: 0.8;
+}
+
+.styled-input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 0.15rem rgba(139, 92, 246, 0.3);
+  outline: none;
+}
+
+/* Etiquetas */
+label.form-label {
+  font-weight: 600;
+  color: #dddddd;
+}
+
+/* Botones */
+.btn-modern {
+  background: linear-gradient(to right, #6366f1, #8b5cf6);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.4);
+  border: none;
+}
+
+.btn-modern:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.6);
+}
+
+.btn-outline-light {
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f8f9fa;
+}
+
+/* Toast */
+.toast {
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+section.modal-form-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem 2rem 1.5rem 2rem; /* 🟢 Espacio interno arreglado */
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  color: white;
+  position: relative;
+}
+
+/* Asegura que el botón de cerrar esté visible y bien posicionado */
+.btn-close {
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+}

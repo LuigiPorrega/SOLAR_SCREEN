@@ -1,1 +1,58 @@
-<p>idea-edit works!</p>
+<section class="modal-form-container glass animate-fade-in p-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="text-gradient m-0">✨ Proponer una nueva idea</h4>
+    <button type="button" class="btn-close" aria-label="Cerrar" (click)="modal.dismiss()"></button>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="guardarIdea()">
+    <!-- Título -->
+    <div class="mb-4">
+      <label for="titulo" class="form-label text-light fw-semibold">
+        Título de tu idea
+      </label>
+      <input id="titulo"
+             type="text"
+             formControlName="Titulo"
+             class="form-control styled-input"
+             placeholder="Ej. Energía solar en mochilas" />
+      <div *ngIf="form.get('Titulo')?.invalid && form.get('Titulo')?.touched" class="text-warning small mt-1">
+        <div *ngIf="form.get('Titulo')?.errors?.['required']">El título es obligatorio.</div>
+        <div *ngIf="form.get('Titulo')?.errors?.['maxLength']">El título es demasiado largo.</div>
+        <div *ngIf="form.get('Titulo')?.errors?.['notOnlyWhiteSpace']">No puede ser solo espacios.</div>
+        <div *ngIf="form.get('Titulo')?.errors?.['forbiddenName']">Contiene palabras no permitidas.</div>
+      </div>
+    </div>
+
+    <!-- Descripción -->
+    <div class="mb-4">
+      <label for="descripcion" class="form-label text-light fw-semibold">
+        Descripción detallada
+      </label>
+      <textarea id="descripcion"
+                formControlName="Descripcion"
+                class="form-control styled-input"
+                rows="4"
+                placeholder="¿Cómo funciona? ¿Por qué es útil?"></textarea>
+      <div *ngIf="form.get('Descripcion')?.invalid && form.get('Descripcion')?.touched" class="text-warning small mt-1">
+        <div *ngIf="form.get('Descripcion')?.errors?.['required']">La descripción es obligatoria.</div>
+        <div *ngIf="form.get('Descripcion')?.errors?.['maxLength']">La descripción es demasiada larga.</div>
+        <div *ngIf="form.get('Descripcion')?.errors?.['notOnlyWhiteSpace']">No puede ser solo espacios.</div>
+        <div *ngIf="form.get('Descripcion')?.errors?.['forbiddenName']">Contiene palabras no permitidas.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-modern w-100">
+      💡 Enviar Idea
+    </button>
+  </form>
+
+  <!-- Toast -->
+  <div
+    *ngIf="toast.show"
+    class="toast show position-fixed bottom-0 start-50 translate-middle-x m-4 {{ toast.color }}"
+    style="z-index: 1055; min-width: 300px;">
+    <div class="toast-body text-center fw-semibold">
+      {{ toast.body }}
+    </div>
+  </div>
+</section>

@@ -1,50 +1,87 @@
 <div class="container my-5">
+  <!-- Paginación + botón de crear condición -->
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="text-gradient">Condiciones Meteorológicas</h2>
-    <button *ngIf="isLoggedIn" class="btn btn-success shadow-sm px-4" (click)="abrirModalSimulacion()">
-      <i class="fas fa-plus me-2"></i> Nueva Simulación
+    <button class="btn btn-outline-secondary"
+            [disabled]="currentPage === 1"
+            (click)="cambiarPagina('anterior')">
+      Anterior
+    </button>
+
+    <h2 class="text-center flex-grow-1 m-0 text-gradient">
+      Últimas Condiciones Meteorológicas Guardadas
+    </h2>
+
+    <button class="btn btn-outline-secondary"
+            [disabled]="currentPage === totalPages"
+            (click)="cambiarPagina('siguiente')">
+      Siguiente
     </button>
   </div>
 
-  <div class="table-responsive rounded shadow-sm overflow-hidden">
-    <table class="table table-hover align-middle">
-      <thead class="table-dark">
-      <tr>
-        <th>Fecha</th>
-        <th>Luz Solar</th>
-        <th>Temperatura</th>
-        <th>Humedad</th>
-        <th>Viento</th>
-        <th *ngIf="isLoggedIn">Acciones</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let c of condiciones">
-        <td>{{ c.Fecha }}</td>
-        <td>{{ c.LuzSolar }}</td>
-        <td>{{ c.Temperatura }}</td>
-        <td>{{ c.Humedad }}</td>
-        <td>{{ c.Viento }}</td>
-        <td *ngIf="isLoggedIn">
-          <button class="btn btn-outline-primary btn-sm me-2" [routerLink]="['/condiciones/editar', c.ID]">
-            <fa-icon class="fas fa-edit"></fa-icon>
-          </button>
-          <button class="btn btn-outline-danger btn-sm" (click)="eliminar(c.ID!)">
-            <fa-icon class="fas fa-trash"></fa-icon>
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+  <!-- Botón para crear nueva condición -->
+  <div class="text-center mb-4">
+    <button class="btn btn-success px-4" (click)="crearCondicion()">
+      <fa-icon [icon]="faPlus" class="me-2"></fa-icon>
+      Crear tu propia condición meteorológica
+    </button>
   </div>
 
-  <!-- Paginación -->
-  <div class="d-flex justify-content-between align-items-center mt-4">
-    <button class="btn btn-outline-secondary" [disabled]="currentPage === 1" (click)="cambiarPagina('anterior')">Anterior</button>
-    <span class="fw-semibold">Página {{ currentPage }} de {{ totalPages }}</span>
-    <button class="btn btn-outline-secondary" [disabled]="currentPage === totalPages" (click)="cambiarPagina('siguiente')">Siguiente</button>
+  <div class="text-center mb-4 fw-semibold">
+    Página {{ currentPage }} de {{ totalPages }}
   </div>
 
-  <!-- Modal para login requerido -->
-  <app-unauthorized *ngIf="mostrarModal"></app-unauthorized>
+  <!-- Spinner -->
+  <div *ngIf="isLoading" class="d-flex justify-content-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="row g-4" *ngIf="!isLoading">
+    <div class="col-md-6 col-lg-4" *ngFor="let c of condiciones">
+      <div class="card bg-dark text-white h-100 shadow-lg border border-secondary rounded-4">
+        <div class="card-body">
+          <h5 class="card-title d-flex align-items-center mb-3">
+            <fa-icon [icon]="getIconoClima(c)"
+                     [ngClass]="getColorClima(c)"
+                     class="me-2"
+                     size="lg"></fa-icon>
+            {{ determinarEstadoDelClima(c) }}
+            <small class="ms-2 text-success">
+              ({{ c.Fecha | date:'dd/MM/yyyy':'UTC' }})
+            </small>
+          </h5>
+
+          <div class="mb-2">
+            <fa-icon [icon]="faSun" class="me-2 text-warning"></fa-icon>
+            <strong>Luz Solar:</strong> {{ c.LuzSolar }} lux
+          </div>
+          <div class="mb-2">
+            <fa-icon [icon]="faThermometerHalf" class="me-2 text-danger"></fa-icon>
+            <strong>Temperatura:</strong> {{ c.Temperatura }} °C
+          </div>
+          <div class="mb-2">
+            <fa-icon [icon]="faTint" class="me-2 text-info"></fa-icon>
+            <strong>Humedad:</strong> {{ c.Humedad }} %
+          </div>
+          <div>
+            <fa-icon [icon]="faWind" class="me-2 text-primary"></fa-icon>
+            <strong>Viento:</strong> {{ c.Viento }} km/h
+          </div>
+        </div>
+
+        <!-- Botón grande y centrado -->
+        <div class="card-footer bg-transparent border-0 pt-0">
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-outline-light btn-lg w-100"
+                    (click)="usarCondicion(c)">
+              <fa-icon [icon]="faPlay" class="me-2"></fa-icon>
+              Usar en simulación
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

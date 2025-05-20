@@ -1,9 +1,10 @@
 export interface Idea {
-  ID?: string;  // El ID puede no estar presente si es una creación
-  UsuarioID: string;
+  ID?: number;  // Puede no estar al crear
+  UsuarioID: number;
   Titulo: string;
   Descripcion: string;
   FechaCreacion: string;
+  UsuarioNombre?: string; // Solo presente si el backend lo incluye
 }
 
 export interface ApiResponseIdeas {
@@ -25,6 +26,3 @@ export interface ApiResponseIdeaDelete {
   status: string;
   message: string;
 }
-
-
-

@@ -5,6 +5,7 @@
 .card img {
   max-height: 150px;
   object-fit: cover;
+  border-radius: 15px;
 }
 
 .btn-outline-primary:hover {
@@ -24,8 +25,21 @@
 img {
   max-height: 150px;
   object-fit: cover;
+  border-radius: 15px;
 }
 
 .modal-body strong {
   color: #dc3545;
+}
+
+.tipo, p, span {
+  color: #e4eaf0; /* un gris muy claro tirando a celeste. Legible y moderno */
+}
+
+.card-title{
+  color: #d39700;
+}
+
+.resumen {
+  color: #fadb60; /* un rojo suave pero vibrante tipo “coral moderno” */
 }

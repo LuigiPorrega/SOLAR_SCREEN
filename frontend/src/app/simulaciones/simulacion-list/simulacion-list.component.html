@@ -10,10 +10,23 @@
   </div>
 
   <!-- Botón para crear simulación -->
-  <div class="text-center mb-3 mt-4">
+  <div class="text-center mb-5 mt-4">
     <a routerLink="/simulaciones/create" class="btn btn-success btn-lg">
       ✨ Realiza tu propia Simulación
     </a>
+  </div>
+
+  <div class="d-flex justify-content-center my-3" *ngIf="totalItems > perPage">
+    <ngb-pagination
+      [collectionSize]="totalItems"
+      [(page)]="currentPage"
+      [pageSize]="perPage"
+      [maxSize]="5"
+      [rotate]="true"
+      [ellipses]="true"
+      [boundaryLinks]="true"
+      (pageChange)="cambiarPagina($event)">
+    </ngb-pagination>
   </div>
 
   <section class="recent-simulations mt-4 mb-4" *ngIf="!isLoading">
@@ -21,9 +34,9 @@
     <div class="row mt-4 justify-content-center">
       <p *ngIf="simulaciones?.length === 0">No hay simulaciones registradas.</p>
 
-      <div class="col-md-4" *ngFor="let sim of simulaciones; let i = index">
+      <div class="col-md-4" *ngFor="let sim of simulacionesPaginadas">
         <!-- ID único necesario para exportar -->
-        <div [id]="'simulacion-card-' + i" class="sim-card glass p-4 shadow mb-4 text-center">
+        <div [id]="'simulacion-card-' + sim.ID" class="sim-card glass p-4 shadow mb-4 text-center">
           <div class="progress-circle mx-auto mb-3">
             <svg width="100" height="100">
               <circle cx="50" cy="50" r="45" stroke="#ccc" stroke-width="10" fill="none" />
@@ -61,7 +74,7 @@
             <button
               *ngIf="isLoggedIn"
               class="btn btn-outline-primary btn-sm"
-              (click)="descargarSimulacionPDF('simulacion-card-' + i)"
+              (click)="descargarSimulacionPDF('simulacion-card-' + sim.ID)"
             >
               <i class="fas fa-file-pdf me-1"></i> Descargar PDF
             </button>

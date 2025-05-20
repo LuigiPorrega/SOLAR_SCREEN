@@ -68,10 +68,6 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'condiciones/editar/:id',
-    component: CondicionMeteorologicaEditComponent,
-  },
-  {
     path: 'funda-list',
     component: FundaListComponent,
   },

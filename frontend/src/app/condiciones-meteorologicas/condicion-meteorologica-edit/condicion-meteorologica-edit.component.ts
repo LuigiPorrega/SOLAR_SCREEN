@@ -6,13 +6,16 @@ import {HttpHeaders} from '@angular/common/http';
 import {CondicionMeteorologica} from '../../common/InterfaceCondicionesMeteorologicas';
 import {NgIf} from '@angular/common';
 import {AuthService} from '../../services/auth.service';
+import {FaIconComponent} from '@fortawesome/angular-fontawesome';
+import {faPlus, faSave} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-condicion-meteorologica-edit',
   imports: [
     RouterLink,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    FaIconComponent
   ],
   standalone: true,
   templateUrl: './condicion-meteorologica-edit.component.html',
@@ -59,4 +62,6 @@ export class CondicionMeteorologicaEditComponent implements OnInit {
     }
   }
 
+  protected readonly faSave = faSave;
+  protected readonly faPlus = faPlus;
 }

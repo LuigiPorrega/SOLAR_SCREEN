@@ -2,12 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSun, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import {faSun, faLightbulb, faCartPlus} from '@fortawesome/free-solid-svg-icons';
 import { FundasService } from '../../services/fundas.service';
 import { ApiClimaService } from '../../services/api-clima.service';
 import { ModeloFunda } from '../../common/InterfaceModelosFundas';
 import { SimulacionesService } from '../../services/simulaciones.service';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from '../../login/login.component';
 import { HttpHeaders } from '@angular/common/http';
@@ -16,15 +16,21 @@ import { NuevaSimulacionDTO } from '../../common/InterfaceSimulaciones';
 import { AuthService } from '../../services/auth.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-simulacion-create',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule, FormsModule, NgbModalModule],
+  imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule, FormsModule, NgbModalModule, RouterLink],
   templateUrl: './simulacion-create.component.html',
   styleUrl: './simulacion-create.component.css'
 })
 export class SimulacionCreateComponent implements OnInit {
+
+  fundasRecomendadas: ModeloFunda[] = [];
+  mostrarRecomendaciones: boolean = false;
+
+
   form!: FormGroup;
   fundas: ModeloFunda[] = [];
   ciudad = '';
@@ -46,6 +52,7 @@ export class SimulacionCreateComponent implements OnInit {
   private modalService = inject(NgbModal);
   private condicionesService = inject(CondicionesMeteorologicasService);
   private authService = inject(AuthService);
+  private readonly cartService = inject(CartService);
 
 //Toast
   toast = {
@@ -120,21 +127,21 @@ export class SimulacionCreateComponent implements OnInit {
     call.subscribe({
       next: res => {
         const modeloActual = this.form.value.modeloFundaID;
-
         this.fundas = res.data;
 
         const sigueExistiendo = this.fundas.some(f => f.ID === modeloActual);
-        if (!sigueExistiendo) {
-          this.form.patchValue({modeloFundaID: null});
-        }
 
-        //this.showToast(`Fundas ${tipo.toLowerCase()} cargadas correctamente.`, 'bg-info text-light', 2000);
+        this.form.patchValue({
+          tipoFunda: tipo,
+          modeloFundaID: sigueExistiendo ? modeloActual : null
+        });
       },
       error: () => {
         this.showToast(`Error al cargar fundas ${tipo.toLowerCase()}`, 'bg-danger text-light', 2000);
       }
     });
   }
+
 
   simulacionCalculada: any = null;
 
@@ -159,6 +166,7 @@ export class SimulacionCreateComponent implements OnInit {
             'danger',
       modelo: this.fundas.find(f => f.ID == this.form.value.modeloFundaID)?.Nombre ?? 'Desconocido'
     };
+    this.recomendarFundas(energiaGenerada);
 
     this.showToast(`⚡ ${energiaGenerada}W generados. Revisa la simulación abajo.`, 'bg-success text-light', 2000);
   }
@@ -340,4 +348,33 @@ export class SimulacionCreateComponent implements OnInit {
       this.showToast('Error al generar la simulación en PDF.', 'bg-danger text-light', 2000);
     });
   }
+
+  protected readonly faCartPlus = faCartPlus;
+
+  agregarAlCarrito(funda: ModeloFunda): void {
+    const yaExiste = this.cartService.carrito.value.some(item => item.ID === funda.ID);
+    if (yaExiste) {
+      this.showToast(`"${funda.Nombre}" ya está en el carrito`, 'bg-warning text-dark', 1500);
+    } else {
+      this.cartService.addToCart(funda);
+      this.showToast(`"${funda.Nombre}" añadida al carrito`, 'bg-primary text-white', 1500);
+    }
+  }
+
+
+private recomendarFundas(energiaEstim: number): void {
+  this.fundasService.getFundas(1, 100).subscribe(res => {
+    const fundas = res.data || [];
+    const fundasConTiempo = fundas.map(f => ({
+      ...f,
+      tiempoCarga: energiaEstim / f.CapacidadCarga
+    }));
+    fundasConTiempo.sort((a, b) => a.tiempoCarga - b.tiempoCarga);
+    this.fundasRecomendadas = fundasConTiempo.slice(0, 3);
+    this.mostrarRecomendaciones = true;
+  }, error => {
+    console.error('Error al obtener fundas para recomendación', error);
+  });
+}
+
 }

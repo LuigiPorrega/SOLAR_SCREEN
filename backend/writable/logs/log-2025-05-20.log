@@ -1,0 +1,518 @@
+ERROR - 2025-05-20 15:20:27 --> mysqli_sql_exception: Table 'solar_screen.ideas' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `i`.*, `...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `...', Array, false)
+#4 /var/www/html/app/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+#6 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+#7 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 /var/www/html/public/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-05-20 15:20:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.ideas' doesn't exist
+[Method: GET, Route: api/ideas]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 2 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:20:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.ideas' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 4 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:20:27 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.ideas' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 5 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-05-20 15:24:00 --> mysqli_sql_exception: Table 'solar_screen.ideas' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `i`.*, `...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `...', Array, false)
+#4 /var/www/html/app/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+#6 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+#7 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 /var/www/html/public/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-05-20 15:24:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.ideas' doesn't exist
+[Method: GET, Route: api/ideas]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 2 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:24:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.ideas' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 4 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:24:01 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.ideas' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 5 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-05-20 15:26:48 --> mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `i`.*, `...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `...', Array, false)
+#4 /var/www/html/app/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+#6 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+#7 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 /var/www/html/public/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-05-20 15:26:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+[Method: GET, Route: api/ideas]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 2 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:26:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 4 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:26:48 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 5 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-05-20 15:27:09 --> mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `i`.*, `...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `...')
+#3 /var/www/html/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `...', Array, false)
+#4 /var/www/html/app/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+#5 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+#6 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+#7 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 /var/www/html/public/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-05-20 15:27:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+[Method: GET, Route: api/ideas]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 2 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 4 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 5 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:27:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 4 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:27:09 --> [Caused by] mysqli_sql_exception: Table 'solar_screen.usuarios' doesn't exist
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `i`.*, `u`.`Nombre` as `UsuarioNombre`
+FROM `Ideas` `i`
+LEFT JOIN `usuarios` `u` ON `u`.`ID` = `i`.`UsuarioID`
+ LIMIT 10', [], false)
+ 5 APPPATH/Controllers/Api/IdeasApi.php(56): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:53:37 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/ideas]
+in APPPATH/Controllers/Api/IdeasApi.php on line 91.
+ 1 APPPATH/Controllers/Api/IdeasApi.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/IdeasApi.php', 91)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:54:44 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/ideas]
+in APPPATH/Controllers/Api/IdeasApi.php on line 91.
+ 1 APPPATH/Controllers/Api/IdeasApi.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/IdeasApi.php', 91)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:56:40 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/ideas]
+in APPPATH/Controllers/Api/IdeasApi.php on line 91.
+ 1 APPPATH/Controllers/Api/IdeasApi.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/IdeasApi.php', 91)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 15:58:15 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/ideas]
+in APPPATH/Controllers/Api/IdeasApi.php on line 91.
+ 1 APPPATH/Controllers/Api/IdeasApi.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/IdeasApi.php', 91)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->create()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-05-20 16:01:41 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`solar_screen`.`Ideas`, CONSTRAINT `Ideas_ibfk_1` FOREIGN KEY (`UsuarioID`) REFERENCES `Usuarios` (`ID`)) in /var/www/html/system/Database/MySQLi/Connection.php:312
+Stack trace:
+#0 /var/www/html/system/Database/MySQLi/Connection.php(312): mysqli->query('INSERT INTO `Id...', 0)
+#1 /var/www/html/system/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `Id...')
+#2 /var/www/html/system/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `Id...')
+#3 /var/www/html/system/Database/BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Id...', Array, false)
+#4 /var/www/html/system/Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 /var/www/html/system/BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 /var/www/html/system/Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 /var/www/html/app/Controllers/Api/IdeasApi.php(95): CodeIgniter\Model->insert(Array)
+#8 /var/www/html/system/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->create()
+#9 /var/www/html/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+#10 /var/www/html/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /var/www/html/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 /var/www/html/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 /var/www/html/public/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-05-20 16:01:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`solar_screen`.`Ideas`, CONSTRAINT `Ideas_ibfk_1` FOREIGN KEY (`UsuarioID`) REFERENCES `Usuarios` (`ID`))
+[Method: POST, Route: api/ideas]
+in SYSTEMPATH/Database/BaseConnection.php on line 688.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Ideas` (`Titulo`, `Descripcion`, `FechaCreacion`) VALUES (:Titulo:, :Descripcion:, :FechaCreacion:)', [...], false)
+ 2 SYSTEMPATH/Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH/Controllers/Api/IdeasApi.php(95): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->create()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 16:01:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`solar_screen`.`Ideas`, CONSTRAINT `Ideas_ibfk_1` FOREIGN KEY (`UsuarioID`) REFERENCES `Usuarios` (`ID`))
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 317.
+ 1 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `Ideas` (`Titulo`, `Descripcion`, `FechaCreacion`) VALUES (\'prueba d einsercion\', \'Desarrollo de paneles solares modulares que se conectan entre sí para aumentar la capacidad de generación de energía de manera flexible.\', \'2025-05-20 16:01:41\')')
+ 2 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `Ideas` (`Titulo`, `Descripcion`, `FechaCreacion`) VALUES (\'prueba d einsercion\', \'Desarrollo de paneles solares modulares que se conectan entre sí para aumentar la capacidad de generación de energía de manera flexible.\', \'2025-05-20 16:01:41\')')
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Ideas` (`Titulo`, `Descripcion`, `FechaCreacion`) VALUES (:Titulo:, :Descripcion:, :FechaCreacion:)', [...], false)
+ 4 SYSTEMPATH/Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH/Controllers/Api/IdeasApi.php(95): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->create()
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 16:01:41 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`solar_screen`.`Ideas`, CONSTRAINT `Ideas_ibfk_1` FOREIGN KEY (`UsuarioID`) REFERENCES `Usuarios` (`ID`))
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 312.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(312): mysqli->query('INSERT INTO `Ideas` (`Titulo`, `Descripcion`, `FechaCreacion`) VALUES (\'prueba d einsercion\', \'Desarrollo de paneles solares modulares que se conectan entre sí para aumentar la capacidad de generación de energía de manera flexible.\', \'2025-05-20 16:01:41\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `Ideas` (`Titulo`, `Descripcion`, `FechaCreacion`) VALUES (\'prueba d einsercion\', \'Desarrollo de paneles solares modulares que se conectan entre sí para aumentar la capacidad de generación de energía de manera flexible.\', \'2025-05-20 16:01:41\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `Ideas` (`Titulo`, `Descripcion`, `FechaCreacion`) VALUES (\'prueba d einsercion\', \'Desarrollo de paneles solares modulares que se conectan entre sí para aumentar la capacidad de generación de energía de manera flexible.\', \'2025-05-20 16:01:41\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `Ideas` (`Titulo`, `Descripcion`, `FechaCreacion`) VALUES (:Titulo:, :Descripcion:, :FechaCreacion:)', [...], false)
+ 5 SYSTEMPATH/Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH/Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH/Controllers/Api/IdeasApi.php(95): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\IdeasApi->create()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\IdeasApi))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:09:48 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:09:48 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:09:48 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:09:48 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:09:49 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:09:49 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:09:50 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:10:29 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:10:29 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:10:29 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: POST, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 67.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 67)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->add()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 17:12:44 --> ErrorException: Undefined property: stdClass::$user_id
+[Method: GET, Route: api/carrito]
+in APPPATH/Controllers/Api/CarritoApi.php on line 45.
+ 1 APPPATH/Controllers/Api/CarritoApi.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', '/var/www/html/app/Controllers/Api/CarritoApi.php', 45)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CarritoApi->index()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CarritoApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-20 21:56:06 --> ErrorException: Undefined array key "UsuarioID"
+[Method: DELETE, Route: api/condicionesMeteorologicas/2]
+in APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php on line 159.
+ 1 APPPATH/Controllers/Api/CondicionesMeteorologicasApi.php(159): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UsuarioID"', '/var/www/html/app/Controllers/Api/CondicionesMeteorologicasApi.php', 159)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Api\CondicionesMeteorologicasApi->delete('2')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Api\CondicionesMeteorologicasApi))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

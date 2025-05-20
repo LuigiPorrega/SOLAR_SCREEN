@@ -1,98 +1,99 @@
 <div class="container my-5">
-  <h2 class="text-center text-primary mb-4">Carrito de Compras</h2>
+  <h2 class="text-center text-gradient mb-4">🛒 Carrito de Compras</h2>
 
-  <!-- Verificar si el carrito está vacío -->
+  <!-- Carrito vacío -->
   <div *ngIf="fundas.length === 0" class="text-center">
     <img src="/images/no-product-found.png" alt="No hay productos" class="img-fluid mb-3" style="max-width: 300px;" />
     <p class="text-muted">Tu carrito está vacío</p>
-    <a routerLink="/funda-list" class="btn btn-primary mt-3">
-      <i class="fas fa-arrow-left me-2"></i> Continuar comprando
+    <a routerLink="/funda-list" class="btn btn-modern mt-3">
+      <fa-icon [icon]="faArrowLeft"></fa-icon> Seguir comprando
     </a>
   </div>
 
-  <!-- Productos en el carrito -->
-  <div *ngIf="fundas.length > 0">
-    <div *ngFor="let funda of fundas" class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img [src]="funda.ImagenURL || 'default-image.jpg'" class="img-fluid rounded-start" alt="{{ funda.Nombre }}" />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ funda.Nombre }}</h5>
-            <p class="card-text text-muted">Modelo: {{ funda.TipoFunda }}</p>
-            <p class="card-text">
-              <strong>{{ funda.Precio | currency: 'EUR' }}</strong>
-            </p>
-            <div class="d-flex align-items-center">
-              <!-- Botón para decrementar cantidad -->
-              <button class="btn btn-outline-primary me-2" (click)="decrementarCantidad(funda)">
-                <i class="fas fa-minus"></i>
-              </button>
-              <span class="fw-bold">{{ funda.Cantidad }}</span>
-              <!-- Botón para incrementar cantidad -->
-              <button class="btn btn-outline-primary ms-2" (click)="incrementarCantidad(funda)">
-                <i class="fas fa-plus"></i>
-              </button>
-              <!-- Botón para eliminar producto -->
-              <button class="btn btn-danger ms-3" (click)="openModal(funda)">
-                <i class="fas fa-trash-alt"></i>
-              </button>
+  <!-- Carrito con productos -->
+  <div *ngIf="fundas.length > 0" class="row">
+    <!-- Lista de productos -->
+    <div class="col-md-8">
+      <div *ngFor="let funda of fundas" class="card glass mb-4 p-3 shadow-sm">
+        <div class="row g-0 align-items-center">
+          <div class="col-md-4">
+            <img [src]="funda.ImagenURL || 'default-image.jpg'" class="img-fluid rounded-start" alt="{{ funda.Nombre }}" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ funda.Nombre }}</h5>
+              <p class="tipo  mb-1">Modelo: {{ funda.TipoFunda }}</p>
+              <p><strong>{{ funda.Precio | currency: 'EUR' }}</strong></p>
+
+              <div class="d-flex align-items-center">
+                <!-- Cantidad -->
+                <button class="btn btn-outline-light btn-sm me-2" (click)="decrementarCantidad(funda)">
+                  <fa-icon [icon]="faMinus"></fa-icon>
+                </button>
+                <span class="fw-bold">{{ funda.Cantidad }}</span>
+                <button class="btn btn-outline-light btn-sm ms-2" (click)="incrementarCantidad(funda)">
+                  <fa-icon [icon]="faPlus"></fa-icon>
+                </button>
+
+                <!-- Eliminar -->
+                <button class="btn btn-danger btn-sm ms-3" (click)="openModal(funda)">
+                  <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Resumen del pedido -->
+    <div class="col-md-4">
+      <div class="card glass shadow-sm p-4">
+        <h5 class="resumen card-title mb-3">📦 Resumen del Pedido</h5>
+        <div class="d-flex justify-content-between">
+          <span>Subtotal</span>
+          <span>{{ precioTotal | currency: 'EUR' }}</span>
+        </div>
+        <div class="d-flex justify-content-between">
+          <span>Envío</span>
+          <span>5.99 €</span>
+        </div>
+        <div class="d-flex justify-content-between border-top pt-2 mt-2 fw-bold">
+          <span>Total</span>
+          <span>{{ precioTotal + 5.99 | currency: 'EUR' }}</span>
+        </div>
+        <button class="btn btn-success w-100 mt-3" (click)="finalizarCompra()">
+          <fa-icon [icon]="faLock" class="me-2"></fa-icon> Finalizar Compra
+        </button>
+      </div>
+    </div>
   </div>
 
-  <!-- Modal de confirmación -->
-  <div
-    class="modal fade"
-    id="confirmModal"
-    tabindex="-1"
-    aria-labelledby="confirmModalLabel"
-    aria-hidden="true"
-  >
+  <!-- Modal confirmación -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="confirmModalLabel">Confirmar eliminación</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-content glass">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="confirmModalLabel">❌ Confirmar eliminación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        <div class="modal-body">
-          ¿Estás seguro de que quieres eliminar <strong>{{ selectedFunda?.Nombre }}</strong> del carrito?
+        <div class="modal-body text-center">
+          ¿Eliminar <strong>{{ selectedFunda?.Nombre }}</strong> del carrito?
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <div class="modal-footer border-0 justify-content-center">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-danger" (click)="confirmDelete()" data-bs-dismiss="modal">Eliminar</button>
         </div>
       </div>
     </div>
   </div>
-
-      <!-- Resumen -->
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Resumen del Pedido</h4>
-            <div class="d-flex justify-content-between">
-              <span>Subtotal</span>
-              <span>{{ precioTotal | currency: 'EUR' }}</span>
-            </div>
-            <div class="d-flex justify-content-between">
-              <span>Envío</span>
-              <span>5.99€</span>
-            </div>
-            <div class="d-flex justify-content-between border-top pt-2">
-              <strong>Total</strong>
-              <strong>{{ precioTotal + 5.99 | currency: 'EUR' }}</strong>
-            </div>
-            <button class="btn btn-success w-100 mt-3">
-              <i class="fas fa-lock me-2"></i> Finalizar Compra
-            </button>
-          </div>
-        </div>
+  <!-- Modal de éxito de compra -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass text-center p-4">
+        <h4 class="text-success mb-3"><fa-icon [icon]="faCheckCircle" class="me-2 text-success"></fa-icon> ¡Compra finalizada!</h4>
+        <p>Gracias por tu compra. Serás redirigido en breve...</p>
       </div>
     </div>
-
-
+  </div>
+</div>

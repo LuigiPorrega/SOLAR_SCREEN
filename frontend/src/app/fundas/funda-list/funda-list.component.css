@@ -1,17 +1,15 @@
 /* Fondo oscuro con texto más claro */
 .funda-card {
-  cursor: pointer;
   background: #1e1e2f;
   color: #f1f1f1;
   border-radius: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
 .funda-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: default;
 }
 
 .funda-card .card-title {

@@ -1,1 +1,65 @@
-<p>idea-list works!</p>
+<div class="container my-5">
+
+  <!-- Encabezado y botón -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-gradient">💡 Ideas de los Usuarios</h2>
+    <button class="btn btn-success" (click)="abrirModalCrearIdea()">
+      <i class="fas fa-plus me-2"></i> Nueva Idea
+    </button>
+  </div>
+
+  <!-- Paginación -->
+  <div class="d-flex justify-content-center mt-4 mb-4" *ngIf="totalItems > perPage">
+    <ngb-pagination
+      [collectionSize]="totalItems"
+      [(page)]="currentPage"
+      [pageSize]="perPage"
+      [maxSize]="5"
+      [rotate]="true"
+      [ellipses]="true"
+      [boundaryLinks]="true"
+      (pageChange)="cambiarPagina($event)">
+    </ngb-pagination>
+  </div>
+
+  <!-- Spinner de carga -->
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-warning" style="width: 3rem; height: 3rem;" role="status"></div>
+    <p class="mt-3 text-muted">Cargando ideas brillantes...</p>
+  </div>
+
+  <!-- Lista de ideas -->
+  <div class="row" *ngIf="!isLoading && ideas.length > 0">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let idea of ideas">
+      <div class="card idea-card p-3 h-100 animate-fade-in">
+        <h5 class="mb-2">
+          <i class="fas fa-lightbulb me-2 text-warning"></i> {{ idea.Titulo }}
+        </h5>
+        <p>{{ idea.Descripcion }}</p>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <p class="text-muted mb-0">
+            📅 {{ idea.FechaCreacion | date: 'mediumDate' }}
+          </p>
+          <p class="text-secondary fst-italic mb-0">
+            🧠 <strong>{{ idea.UsuarioNombre || 'Anónimo' }}</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sin ideas -->
+  <div *ngIf="!isLoading && ideas.length === 0" class="text-center mt-5">
+    <p class="text-muted">Aún no hay ideas registradas. ¡Sé el primero en proponer una!</p>
+  </div>
+
+  <!-- Toast -->
+  @if (toastShow) {
+    <div class="toast show {{ toast.color }} position-fixed bottom-0 end-0 m-4 shadow-lg" style="z-index: 1200;">
+      <div class="toast-body text-center fw-semibold">
+        {{ toast.body }}
+      </div>
+    </div>
+  }
+
+</div>

@@ -1,11 +1,14 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {inject, Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {ModeloFunda} from '../common/InterfaceModelosFundas';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  private http: HttpClient = inject(HttpClient);
   carrito: BehaviorSubject<ModeloFunda[]> = new BehaviorSubject<ModeloFunda[]>([]);
   cantidadCarrito: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   precioCarrito: BehaviorSubject<number> = new BehaviorSubject<number>(0);
@@ -52,6 +55,16 @@ export class CartService {
     this.carrito.next(carritoAux);
     this.cantidadCarrito.next(carritoAux.length);
     this.precioCarrito.next(totalPrecio);
+  }
+
+  guardarItemEnBackend(data: { ModelosFundasId: number, Cantidad: number, Precio: number }): Observable<any> {
+    return this.http.post(`${environment.baseURL}/carrito`, data);
+  }
+
+  vaciarCarrito() {
+    this.carrito.next([]);
+    this.cantidadCarrito.next(0);
+    this.precioCarrito.next(0);
   }
 }
 

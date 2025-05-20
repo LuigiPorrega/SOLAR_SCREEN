@@ -197,4 +197,24 @@ select option {
   #simulacion-preview canvas {
     filter: grayscale(100%) !important;
   }
+
+  .input-glass {
+    background: rgba(255, 255, 255, 0.08); /* 👈 un poco más visible */
+    color: #ffffff;
+    caret-color: #ffffff; /* Asegura que se vea el cursor */
+  }
+
+  .input-glass:focus {
+    background: rgba(255, 255, 255, 0.12); /* Mejora contraste en focus */
+    color: #ffffff;
+    border-color: #8b5cf6;
+    outline: none;
+  }
+
+  /* Para asegurar que el texto quede visible incluso tras escribir y cambiar de campo */
+  .input-glass:not(:focus):not(:placeholder-shown) {
+    color: #ffffff;
+  }
+
+
 }

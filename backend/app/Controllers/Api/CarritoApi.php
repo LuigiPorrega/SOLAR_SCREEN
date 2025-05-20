@@ -42,7 +42,7 @@ class CarritoApi extends ResourceController
         if (!$userData) {
             return $this->failUnauthorized('No autorizado. Token inválido o expirado');
         }
-        $userId = $userData->user_id;
+        $userId = $userData->id;
 
         $items = $this->model
             ->select('Carrito.*, ModelosFundas.Nombre as NombreFunda')
@@ -64,7 +64,7 @@ class CarritoApi extends ResourceController
         if (!$userData) {
             return $this->failUnauthorized('No autorizado. Token inválido o expirado');
         }
-        $userId = $userData->user_id;
+        $userId = $userData->id;
 
         $data = $this->request->getJSON(true);
 

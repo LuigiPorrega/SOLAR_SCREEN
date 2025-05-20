@@ -1,0 +1,36 @@
+.idea-card {
+  background: rgba(255, 255, 255, 0.8); /* fondo claro translúcido */
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.idea-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.idea-card h5 {
+  color: #007bff;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.idea-card p {
+  color: #444;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.idea-card .text-end {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #666;
+}
+.idea-card .d-flex p {
+  font-size: 0.85rem;
+  margin: 0;
+}

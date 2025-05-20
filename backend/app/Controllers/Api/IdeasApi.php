@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers\Api;
 
 use CodeIgniter\RESTful\ResourceController;
@@ -13,6 +14,12 @@ class IdeasApi extends ResourceController
 
     protected $modelName = IdeasModel::class;
     protected $format    = 'json';
+    protected $db; 
+
+    public function __construct()
+    {
+        $this->db = \Config\Database::connect(); 
+    }
 
     // Función para obtener datos del usuario desde el JWT
     private function getUserDataFromToken()
@@ -36,20 +43,29 @@ class IdeasApi extends ResourceController
 
     public function index()
     {
-        // Número de elementos por página, con valor por defecto de 10
         $perPage = $this->request->getGet('perPage') ?? 10;
+        $page = $this->request->getGet('page') ?? 1;
+        $offset = ($page - 1) * $perPage;
 
-        // Obtener ideas paginadas
-        $ideas = $this->model->paginate($perPage);
-        $pager = $this->model->pager;
+        // Usamos el query builder para hacer JOIN
+        $builder = $this->db->table('Ideas i')
+            ->select('i.*, u.Nombre as UsuarioNombre')
+            ->join('Usuarios u', 'u.ID = i.UsuarioID', 'left')
+            ->orderBy('i.FechaCreacion', 'DESC')
+            ->limit($perPage, $offset);
+
+        $ideas = $builder->get()->getResultArray();
+
+        // Contamos total sin límite para paginación
+        $totalIdeas = $this->db->table('Ideas')->countAllResults();
 
         return $this->respond([
             'status'       => 'success',
             'data'         => $ideas,
-            'currentPage'  => $pager->getCurrentPage(),
-            'perPage'      => $pager->getPerPage(),
-            'totalItems'   => $pager->getTotal(),
-            'totalPages'   => $pager->getPageCount(),
+            'currentPage'  => (int)$page,
+            'perPage'      => (int)$perPage,
+            'totalItems'   => $totalIdeas,
+            'totalPages'   => ceil($totalIdeas / $perPage),
         ]);
     }
 
@@ -72,7 +88,7 @@ class IdeasApi extends ResourceController
         }
 
         // Asignar el usuario actual al crear la idea
-        $data['usuario_id'] = $userData->user_id;
+        $data['UsuarioID'] = property_exists($userData, 'id') ? $userData->id : null;
         $data['FechaCreacion'] = date('Y-m-d H:i:s');
 
         // Insertar en la base de datos
