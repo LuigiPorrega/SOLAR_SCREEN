@@ -81,53 +81,76 @@
   <div class="navigation-container">
     <nav class="navbar navbar-expand-lg bg-transparent">
       <div class="container-fluid">
+        <!-- Botón del menú hamburguesa -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#solarNavbar" aria-controls="solarNavbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- Enlaces de navegación -->
         <div class="collapse navbar-collapse" id="solarNavbar">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- Inicio -->
+            <li class="nav-item">
+              <a class="nav-link fw-bold" routerLink="/inicio" routerLinkActive="active">
+                <fa-icon [icon]="faHouse" class="me-2 icon-hover-effect"></fa-icon>
+                <span class="enlaces">Inicio</span>
+              </a>
+            </li>
+
+            <!-- Condiciones -->
             <li class="nav-item">
               <a class="nav-link fw-bold" routerLink="/condiciones" routerLinkActive="active">
-                <fa-icon [icon]="faSun" class="me-2 icon-hover-effect"></fa-icon>
-                <span class="enlaces">ENERGÍA SOLAR</span>
+                <fa-icon [icon]="faThermometerHalf" class="me-2 icon-hover-effect"></fa-icon>
+                <span class="enlaces">Condiciones</span>
               </a>
             </li>
+
+            <!-- Nueva Simulación -->
+            <li class="nav-item">
+              <a class="nav-link fw-bold" routerLink="/simulaciones/create" routerLinkActive="active">
+                <fa-icon [icon]="faRocket" class="me-2 icon-hover-effect"></fa-icon>
+                <span class="enlaces">Nueva Simulación</span>
+              </a>
+            </li>
+
+            <!-- Mis Simulaciones -->
             <li class="nav-item">
               <a class="nav-link fw-bold" routerLink="/simulaciones/list" routerLinkActive="active">
-                <fa-icon [icon]="faSolarPanel" class="me-2 icon-hover-effect"></fa-icon>
-                <span class="enlaces">SIMULADOR DE CARGA</span>
+                <fa-icon [icon]="faClipboardList" class="me-2 icon-hover-effect"></fa-icon>
+                <span class="enlaces">Mis Simulaciones</span>
               </a>
             </li>
+
+            <!-- Clima Hoy -->
             <li class="nav-item">
               <a class="nav-link fw-bold" routerLink="/clima" routerLinkActive="active">
-                <fa-icon [icon]="faCloudSunRain" class="me-2 icon-hover-effect"></fa-icon>
-                <span class="enlaces">CLIMA ACTUAL</span>
+                <fa-icon [icon]="faCloudSun" class="me-2 icon-hover-effect"></fa-icon>
+                <span class="enlaces">Clima Hoy</span>
               </a>
             </li>
+
+            <!-- Fundas Disponibles -->
             <li class="nav-item">
               <a class="nav-link fw-bold" routerLink="/funda-list" routerLinkActive="active">
-                <fa-icon [icon]="faMobile" class="me-2 icon-hover-effect"></fa-icon>
-                <span class="enlaces">MODELOS DE FUNDAS</span>
+                <fa-icon [icon]="faTabletScreenButton" class="me-2 icon-hover-effect"></fa-icon>
+                <span class="enlaces">Fundas Disponibles</span>
               </a>
             </li>
+
+            <!-- Ideas -->
             <li class="nav-item">
               <a class="nav-link fw-bold" routerLink="/idea-list" routerLinkActive="active">
                 <fa-icon [icon]="faLightbulb" class="me-2 icon-hover-effect"></fa-icon>
-                <span class="enlaces">BLOG IDEAS</span>
+                <span class="enlaces">Ideas</span>
               </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
-    <!-- Barra de búsqueda -->
-    <form class="search-form d-flex" role="search" action="/buscar">
-      <input class="form-control me-2 border-warning" type="search" placeholder="Buscar..." aria-label="Buscar">
-      <button class="search btn btn-outline-warning" type="submit">Buscar</button>
-    </form>
   </div>
+
+
 
 </header>
 <!-- Toast-->

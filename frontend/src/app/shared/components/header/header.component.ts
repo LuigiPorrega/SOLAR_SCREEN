@@ -5,12 +5,12 @@ import {CartService} from '../../../services/cart.service';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import {
-  faAddressCard,
-  faCartShopping, faCloudSunRain, faGear, faLightbulb,
-  faMobile,
-  faPhone, faScrewdriverWrench,
+  faAddressCard, faBolt,
+  faCartShopping, faClipboardList, faCloudSun, faCloudSunRain, faFolderOpen, faGear, faHouse, faLightbulb,
+  faMobile, faMobileScreenButton,
+  faPhone, faRocket, faScrewdriverWrench,
   faSolarPanel,
-  faSun,
+  faSun, faTabletScreenButton, faTemperatureThreeQuarters, faThermometerHalf,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import {FormsModule} from '@angular/forms';
@@ -159,5 +159,15 @@ export class HeaderComponent implements OnInit {
   protected readonly faGear = faGear;
   protected readonly faScrewdriverWrench = faScrewdriverWrench;
   protected readonly faCloudSunRain = faCloudSunRain;
+  protected readonly faFolderOpen = faFolderOpen;
+  protected readonly faBolt = faBolt;
+  protected readonly faTemperatureThreeQuarters = faTemperatureThreeQuarters;
+  protected readonly faHouse = faHouse;
+  protected readonly faMobileScreenButton = faMobileScreenButton;
+  protected readonly faCloudSun = faCloudSun;
+  protected readonly faTabletScreenButton = faTabletScreenButton;
+  protected readonly faClipboardList = faClipboardList;
+  protected readonly faRocket = faRocket;
+  protected readonly faThermometerHalf = faThermometerHalf;
 }
 
