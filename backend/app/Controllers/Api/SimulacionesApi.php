@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers\Api;
 
 use App\Controllers\BaseController;
@@ -42,9 +43,40 @@ class SimulacionesApi extends BaseController
     // Obtener todas las simulaciones
     public function index()
     {
+        $page = (int) $this->request->getGet('page') ?: 1;
+        $limit = (int) $this->request->getGet('limit') ?: 10;
+
+        // Calcular offset
+        $offset = ($page - 1) * $limit;
+
+        // Obtener total de simulaciones
+        $total = $this->simulacionesModel->countAll();
+
+        // Obtener simulaciones paginadas
+        $simulaciones = $this->simulacionesModel
+            ->orderBy('Fecha', 'DESC')
+            ->findAll($limit, $offset);
+
+        // Calcular total de páginas
+        $totalPages = ceil($total / $limit);
+
+        // Preparar respuesta
+        return $this->respond([
+            'status' => 'success',
+            'message' => 'Simulaciones obtenidas correctamente',
+            'data' => $simulaciones,
+            'pagination' => [
+                'currentPage' => $page,
+                'perPage' => $limit,
+                'totalItems' => $total,
+                'totalPages' => $totalPages
+            ]
+        ]);
+    }
+    /*{
         $simulaciones = $this->simulacionesModel->findAll();
         return $this->respond($simulaciones);
-    }
+    }*/
 
     // Obtener una simulación por ID
     public function view($id)

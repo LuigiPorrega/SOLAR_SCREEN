@@ -11,7 +11,7 @@ export class ContactoService {
   private readonly http: HttpClient= inject (HttpClient);
 
   private serviceID = 'service_0frzc9n';
-  private templateID = 'template_z21xw0h';
+  private templateID = 'template_vqvaonc';
   private publicKey = 'UdGoweI_lr8ETvuxk';
 
 

@@ -4,10 +4,11 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faSun, faLightbulb, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { Simulacion } from '../../common/InterfaceSimulaciones';
 import { SimulacionesService } from '../../services/simulaciones.service';
-import { RouterLink } from '@angular/router';
+import {NavigationEnd, Router, RouterLink} from '@angular/router';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import {filter} from 'rxjs';
 
 @Component({
   selector: 'app-simulacion-list',
@@ -25,6 +26,7 @@ import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SimulacionListComponent implements OnInit {
   private readonly simulacionesService = inject(SimulacionesService);
+  private router : Router = inject(Router);
   simulaciones: (Simulacion & { porcentajeCarga: number; color: string })[] = [];
   simulacionesPaginadas: (Simulacion & { porcentajeCarga: number; color: string })[] = [];
 
@@ -50,8 +52,12 @@ export class SimulacionListComponent implements OnInit {
   toastShow = false;
 
   ngOnInit(): void {
+    if(history.state.toastMessage) {
+      this.showToast(history.state.toastMessage, 'bg-warning text-light', 2000);
+    }
     this.loadSimulaciones();
   }
+
 
   loadSimulaciones(): void {
     this.isLoading = true;
@@ -59,9 +65,15 @@ export class SimulacionListComponent implements OnInit {
       next: (res) => {
         const datos = Array.isArray(res) ? res : res.data ?? [];
 
+        // Ordenar por fecha descendente (más reciente primero)
+        datos.sort((a, b) => new Date(b.Fecha).getTime() - new Date(a.Fecha).getTime());
+
         this.simulaciones = datos.map(sim => {
-          const porcentajeCarga = Math.min(Math.round(sim.EnergiaGenerada), 100);
-          const color = porcentajeCarga < 50 ? 'danger' : porcentajeCarga < 80 ? 'warning' : 'success';
+          const porcentajeCarga = Math.min(100, Math.round((sim.EnergiaGenerada / 30000) * 100));
+          const color =
+            porcentajeCarga >= 80 ? 'success' :
+              porcentajeCarga >= 50 ? 'warning' :
+                'danger';
           return { ...sim, porcentajeCarga, color };
         });
 

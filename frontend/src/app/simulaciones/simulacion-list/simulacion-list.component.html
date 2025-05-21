@@ -65,6 +65,9 @@
               <fa-icon [icon]="faCalendarAlt" class="me-2"></fa-icon>
               Simulación realizada el <strong>{{ sim.Fecha | date: 'mediumDate' }}</strong>
             </p>
+            <p class="text-primary mb-1">
+              ⚙️ Energía generada: <strong>{{ sim.EnergiaGenerada | number:'1.0-2' }} Wh</strong>
+            </p>
             <p class="text-info mb-1">⚡ Tiempo estimado: <strong>{{ sim.Tiempo }}h</strong></p>
             <p class="text-success">🔋 Carga alcanzada: <strong>{{ sim.porcentajeCarga }}%</strong></p>
           </div>

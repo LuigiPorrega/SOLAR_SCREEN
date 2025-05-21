@@ -1,7 +1,4 @@
 export interface Simulacion {
-  fundaRecomendada?: string;
-  condicion: string;
-  nombre: string;
   ID?: number;
   UsuarioID: number;
   CondicionLuz: string;
@@ -10,6 +7,12 @@ export interface Simulacion {
   Fecha: string | Date;
   CondicionesMeteorologicasID: number;
   FundaID: number;
+
+  // Campo opcional que puede usarse para mostrar recomendaciones, calculado en frontend
+  fundaRecomendada?: string;
+
+  // Campo opcional para visualización amigable (ej: nombre del usuario o funda)
+  nombre?: string;
 }
 
 export interface ApiResponseSimulaciones {
@@ -41,4 +44,3 @@ export interface NuevaSimulacionDTO {
   FundaID: number;
   UsuarioID: number;
 }
-
