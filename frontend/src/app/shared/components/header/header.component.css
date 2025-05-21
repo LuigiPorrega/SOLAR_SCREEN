@@ -28,6 +28,16 @@ li{
   flex: 1;
 }
 
+.main-logo img {
+  width: 100%; /* La imagen ocupará el ancho completo del contenedor */
+  max-width: 500px; /* Limita el ancho máximo */
+  height: auto; /* Ajusta la altura automáticamente para evitar distorsión */
+  object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse ni deformarse */
+}
+
+
+
+
 .main-header-top-nav {
   display: flex;
   justify-content: flex-end;
@@ -192,17 +202,6 @@ body:not(.login-open) .login-box {
 
 
 
-.search {
-  font-weight: bold;
-  color: orange;
-  border-color: orange;
-}
-
-.search:hover {
-  color: white;
-  background-color: orange;
-  border-color: orange;
-}
 
 
 /* General Logo Styling */
@@ -301,3 +300,5 @@ header .enlaces {
   transform: scale(1.2);
   color: #ffffff;
 }
+
+
