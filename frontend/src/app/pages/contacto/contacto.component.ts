@@ -72,8 +72,12 @@ export class ContactoComponent {
           this.contactoForm.reset();
         })
         .catch(error => {
-          console.error('Error al enviar el mensaje:', error);
-          this.showToast(error.message, 'bg-danger text-light', 2000);
+            console.error('Error completo:', JSON.stringify(error, null, 2));
+            alert(JSON.stringify(error));
+
+          // EmailJSResponseStatus tiene propiedades útiles como status y text
+          const mensajeError = error?.text || `Error ${error?.status || ''}: No se pudo enviar el mensaje`;
+          this.showToast(mensajeError, 'bg-danger text-light', 3000);
         });
     }
   }

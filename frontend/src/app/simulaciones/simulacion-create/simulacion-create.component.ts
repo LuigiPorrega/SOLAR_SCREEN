@@ -167,6 +167,7 @@ export class SimulacionCreateComponent implements OnInit {
       modelo: this.fundas.find(f => f.ID == this.form.value.modeloFundaID)?.Nombre ?? 'Desconocido'
     };
     this.recomendarFundas(energiaGenerada);
+    this.mostrarRecomendaciones = true;
 
     this.showToast(`⚡ ${energiaGenerada}W generados. Revisa la simulación abajo.`, 'bg-success text-light', 2000);
   }
@@ -262,8 +263,7 @@ export class SimulacionCreateComponent implements OnInit {
         this.simulacionesService.addSimulacion(simulacionPayload).subscribe({
           next: () => {
             console.log('✅ Payload final simulación:', simulacionPayload);
-            this.showToast('Simulación guardada exitosamente.', 'bg-warning text-light', 2000);
-            this.router.navigate(['/simulaciones']);
+            this.router.navigate(['/simulaciones/list'], { state: { toastMessage: 'Simulación guardada exitosamente.' } });
           },
           error: () => {
             this.showToast('Error al guardar la simulación.', 'bg-danger text-light', 2000);
