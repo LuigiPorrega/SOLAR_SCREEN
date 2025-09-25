@@ -48,19 +48,19 @@ docker-compose build
 docker-compose up -d
 ```
 
-4. Accede a Adminer: [http://localhost:8080](http://localhost:8080)  
+4. Accede a Adminer: [http://65.108.85.99:8080](http://65.108.85.99:8080)  
    - Usuario: `root`  
    - Contraseña: `solvam`  
    - Base de datos: `solar_screen`
 
 5. El backend estará disponible en:  
-   [http://localhost:8000](http://localhost:8000)
+   [http://65.108.85.99:8000/](http://65.108.85.99:8000/)
 
 6.  El backend de la API RestFull estará disponible en:  
-   [http://localhost:8000/api](http://localhost:8000/api)
+   [http://65.108.85.99:8000/api](http://65.108.85.99:8000/api)
 
 7. El frontend estará disponible en:  
-   [http://localhost:4200](http://localhost:4200)
+   [http://65.108.85.99:4200](http://65.108.85.99:4200)
 
 ## 🔐 Credenciales de prueba
 
@@ -79,7 +79,7 @@ Contraseña: `Solvam1234`
 Puedes ver todos los endpoints disponibles accediendo a:
 
 ```
-http://localhost:8000/api
+http://65.108.85.99:8000/api
 ```
 
 Ejemplo:

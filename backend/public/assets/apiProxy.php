@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
 // Configuración de la URL base de la API backend
-$apiBaseUrl = "http://localhost:8000/api"; // URL de tu backend CI dentro del contenedor
+$apiBaseUrl = "http://65.108.85.99:8000/api"; // URL de tu backend CI dentro del contenedor
 
 // Obtener el endpoint de la URL (por ejemplo: /api/condiciones_meteorologicas)
 $path = $_SERVER['REQUEST_URI'];

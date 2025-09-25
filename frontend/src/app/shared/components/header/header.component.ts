@@ -153,7 +153,7 @@ export class HeaderComponent implements OnInit {
 
 
   goToBackend() {
-    window.open('http://localhost:8000/admin/inicio', '_blank');
+    window.open('http://65.108.85.99:8000/admin/inicio', '_blank');
   }
 
   protected readonly faGear = faGear;
