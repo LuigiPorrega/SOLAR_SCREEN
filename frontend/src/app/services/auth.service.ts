@@ -71,7 +71,7 @@ export class AuthService {
   // Función auxiliar para login silencioso en backend PHP
   private async loginBackendPHP(username: string, password: string): Promise<string> {
     try {
-      const response = await fetch('http://localhost:8000/login', {
+      const response = await fetch(environment.baseURL + '/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -168,7 +168,7 @@ export class AuthService {
     };
 
     if (callBackend && token) {
-      const logoutUrl = 'http://localhost:8000/api/usuarios/logout';
+      const logoutUrl =  environment.baseURL + '/api/usuarios/logout';
       this.http.post(logoutUrl, {}, {
         headers: {
           Authorization: `Bearer ${token?.trim()}`
@@ -200,7 +200,7 @@ export class AuthService {
   public async logoutBackendPHP(): Promise<void> {
     console.log('Cerrando sesión, enviando solicitud al backend...');
     try {
-      const response = await fetch('http://localhost:8000/admin/logout', {
+      const response = await fetch(environment.baseURL + '/admin/logout', {
         method: 'POST',
         credentials: 'include',
       });
