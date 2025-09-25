@@ -31,7 +31,7 @@ class Cors extends BaseConfig
          * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
          *
          * E.g.:
-         *   - ['http://localhost:8080']
+         *   - ['http://65.108.85.99:8080']
          *   - ['https://www.example.com']
          */
         'allowedOrigins' => [],
