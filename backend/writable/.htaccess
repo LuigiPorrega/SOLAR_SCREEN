@@ -6,9 +6,9 @@
     Deny from all
 </IfModule>
 
-# Permitir CORS desde localhost:4200
+# Permitir CORS desde http://65.108.85.99:4200
 <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "http://localhost:4200"
+    Header set Access-Control-Allow-Origin "http://65.108.85.99:4200"
     Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
     Header set Access-Control-Allow-Headers "Content-Type, Authorization"
     Header set Access-Control-Allow-Credentials "true"

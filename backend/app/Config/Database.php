@@ -25,30 +25,31 @@ class Database extends Config
      * @var array<string, mixed>
      */
     public array $default = [
-        'DSN'          => '',
-        'hostname'     => 'luigi-mariadb', // Nombre del servicio en Docker Compose
-        'username'     => 'root',          // Usuario de MariaDB
-        'password'     => 'solvam',        // Contraseña definida en docker-compose.yml
-        'database'     => 'solar_screen',  // Nombre de la base de datos
-        'DBDriver'     => 'MySQLi',
-        'DBPrefix'     => '',
-        'pConnect'     => false,
-        'DBDebug'      => (ENVIRONMENT !== 'production'), // Debug en desarrollo
-        'charset'      => 'utf8mb4',
-        'DBCollat'     => 'utf8mb4_general_ci',
-        'swapPre'      => '',
-        'encrypt'      => false,
-        'compress'     => false,
-        'strictOn'     => false,
-        'failover'     => [],
-        'port'         => 3306,
+        'DSN'         => '',
+        'hostname'    => env('database.default.hostname', 'luigi-mariadb'),
+        'username'    => env('database.default.username', 'root'),
+        'password'    => env('database.default.password', 'solvam'),
+        'database'    => env('database.default.database', 'solar_screen'),
+        'DBDriver'    => 'MySQLi',
+        'DBPrefix'    => '',
+        'pConnect'    => false,
+        'DBDebug'     => (ENVIRONMENT !== 'production'),
+        'charset'     => 'utf8mb4',
+        'DBCollat'    => 'utf8mb4_general_ci',
+        'swapPre'     => '',
+        'encrypt'     => false,
+        'compress'    => false,
+        'strictOn'    => false,
+        'failover'    => [],
+        'port'        => 3306,
         'numberNative' => false,
-        'dateFormat'   => [
+        'dateFormat'  => [
             'date'     => 'Y-m-d',
             'datetime' => 'Y-m-d H:i:s',
             'time'     => 'H:i:s',
         ],
     ];
+
 
     /**
      * This database connection is used when

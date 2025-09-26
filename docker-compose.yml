@@ -1,28 +1,31 @@
+version: "3.8"
+
 services:
   mariadb:
     build:
-      context: ./initdb 
-      dockerfile: Dockerfile 
+      context: ./initdb
+      dockerfile: Dockerfile
     restart: always
     container_name: luigi-mariadb
     environment:
       MARIADB_ROOT_PASSWORD: solvam
       MARIADB_DATABASE: solar_screen
       MARIADB_INIT_SCRIPTS_ALWAYS_EXECUTE: "true"
-    ports:
-      - "3306:3306"
+    # No exponer 3306 al host por seguridad
     volumes:
       - mariadb_data:/var/lib/mysql
       - ./initdb:/docker-entrypoint-initdb.d
     networks:
       - solvam
 
+  # Acceso a phpMyAdmin solo desde el host (bind a localhost).
+  # Si quieres acceder remotamente usa Nginx Proxy Manager con autenticación o SSH tunnel.
   phpmyadmin:
     image: phpmyadmin:latest
     restart: always
     container_name: luigi-phpmyadmin
     ports:
-      - "8080:80"
+      - "127.0.0.1:8080:80"   # solo accesible desde el servidor (puedes quitar esto y usar NPM si prefieres)
     environment:
       PMA_HOST: luigi-mariadb
       PMA_PORT: 3306
@@ -41,8 +44,8 @@ services:
     container_name: luigi-backend
     volumes:
       - ./backend:/var/www/html
-    ports:
-      - "8000:80"
+    expose:
+      - "80"            # expuesto solo a la red docker, NO al host
     depends_on:
       - mariadb
     networks:
@@ -52,21 +55,36 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      target: dev  
+      # Si tu Dockerfile tiene multi-stage, usa target: production si lo has definido
+      # target: production
     container_name: luigi-frontend
-    ports:
-      - "4200:4200"  
     volumes:
       - ./frontend:/app
-      - frontend_node_modules:/app/node_modules 
+      - frontend_node_modules:/app/node_modules
+    expose:
+      - "80"            # en producción lo ideal es servir con nginx dentro del contenedor en el puerto 80
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
     depends_on:
       - codeigniter
     networks:
       - solvam
     stdin_open: true
     tty: true
+
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    restart: always
+    container_name: nginx-proxy-manager
+    ports:
+      - "80:80"   # HTTP
+      - "81:81"   # panel de administración NPM
+      - "443:443" # HTTPS
+    volumes:
+      - ./nginx/data:/data
+      - ./nginx/letsencrypt:/etc/letsencrypt
+    networks:
+      - solvam
 
 networks:
   solvam:

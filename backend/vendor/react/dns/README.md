@@ -397,7 +397,7 @@ $executor = new UdpTransportExecutor('8.8.8.8:53');
 $executor = new HostsFileExecutor($hosts, $executor);
 
 $executor->query(
-    new Query('localhost', Message::TYPE_A, Message::CLASS_IN)
+    new Query('0.0.0.0', Message::TYPE_A, Message::CLASS_IN)
 );
 ```
 

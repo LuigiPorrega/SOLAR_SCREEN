@@ -305,7 +305,7 @@ breaks, see below for more details:
     expected across all platforms with no changes required:
 
     ```php
-    $resolver->resolve('localhost')->then(function ($ip) {
+    $resolver->resolve('0.0.0.0')->then(function ($ip) {
         echo 'IP: ' . $ip;
     });
     ```
