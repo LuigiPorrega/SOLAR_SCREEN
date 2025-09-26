@@ -23,7 +23,7 @@ class UsuariosApiController extends BaseController
 
     public function setCorsHeaders()
     {
-        $this->response->setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+        $this->response->setHeader('Access-Control-Allow-Origin', 'http://65.108.85.99:4200');
         $this->response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         $this->response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
         $this->response->setHeader('Access-Control-Allow-Credentials', 'true');
