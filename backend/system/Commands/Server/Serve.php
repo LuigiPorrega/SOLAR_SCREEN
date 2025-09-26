@@ -81,8 +81,8 @@ class Serve extends BaseCommand
      */
     protected $options = [
         '--php'  => 'The PHP Binary [default: "PHP_BINARY"]',
-        '--host' => 'The HTTP Host [default: "localhost"]',
-        '--port' => 'The HTTP Host Port [default: "8080"]',
+        '--host' => 'The HTTP Host [default: "0.0.0.0"]',
+        '--port' => 'The HTTP Host Port [default: "8000"]',
     ];
 
     /**
@@ -92,8 +92,8 @@ class Serve extends BaseCommand
     {
         // Collect any user-supplied options and apply them.
         $php  = escapeshellarg(CLI::getOption('php') ?? PHP_BINARY);
-        $host = CLI::getOption('host') ?? 'localhost';
-        $port = (int) (CLI::getOption('port') ?? 8080) + $this->portOffset;
+        $host = CLI::getOption('host') ?? '0.0.0.0';
+        $port = (int) (CLI::getOption('port') ?? 8000) + $this->portOffset;
 
         // Get the party started.
         CLI::write('CodeIgniter development server started on http://' . $host . ':' . $port, 'green');

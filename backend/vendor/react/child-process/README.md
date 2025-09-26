@@ -358,7 +358,7 @@ $fds = array(
     8 => STDERR,
 
     // example FDs for sockets
-    10 => fsockopen('localhost', 8080),
+    10 => fsockopen('0.0.0.0', 8080),
     12 => stream_socket_server('tcp://0.0.0.0:4711')
 );
 
