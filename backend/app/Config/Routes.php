@@ -2,7 +2,7 @@
 
 // Manejar todas las solicitudes OPTIONS
 $routes->options('(:any)', function() {
-    header('Access-Control-Allow-Origin: http://localhost:4200'); // Reemplaza '*' con tu dominio específico en producción
+    header('Access-Control-Allow-Origin: http://65.108.85.99:4200'); // Reemplaza '*' con tu dominio específico en producción
     header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
     header('Access-Control-Allow-Headers: Content-Type, Authorization');
     header('HTTP/1.1 204 No Content');
