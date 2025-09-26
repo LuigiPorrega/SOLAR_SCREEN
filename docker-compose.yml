@@ -44,6 +44,7 @@ services:
     container_name: luigi-backend
     volumes:
       - ./backend:/var/www/html
+      - ./writable:/var/www/html/writable
     expose:
       - "80"            # expuesto solo a la red docker, NO al host
     depends_on:
