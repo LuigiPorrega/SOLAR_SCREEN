@@ -12,7 +12,7 @@ class Database extends Config
     /**
      * The directory that holds the Migrations and Seeds directories.
      */
-    public string $filesPath = APPPATH . 'Database' . DIRECTORY_SEPARATOR;
+    public string $filesPath;
 
     /**
      * Lets you choose which connection group to use if no other is specified.
@@ -26,14 +26,15 @@ class Database extends Config
      */
     public array $default = [
         'DSN'         => '',
-        'hostname'    => env('database.default.hostname', 'luigi-mariadb'),
-        'username'    => env('database.default.username', 'root'),
-        'password'    => env('database.default.password', 'solvam'),
-        'database'    => env('database.default.database', 'solar_screen'),
+        'hostname'    => 'luigi-mariadb',
+        'username'    => 'root',
+        'password'    => 'solvam',
+        'database'    => 'solar_screen',
         'DBDriver'    => 'MySQLi',
         'DBPrefix'    => '',
         'pConnect'    => false,
-        'DBDebug'     => false, // solo valor literal
+        // 🔑 Ojo aquí: lo dejamos en false literal y luego lo asignamos dinámicamente en __construct()
+        'DBDebug'     => false,
         'charset'     => 'utf8mb4',
         'DBCollat'    => 'utf8mb4_general_ci',
         'swapPre'     => '',
@@ -86,15 +87,17 @@ class Database extends Config
     {
         parent::__construct();
 
-        // Leer entorno real desde .env
+        $this->filesPath = APPPATH . 'Database' . DIRECTORY_SEPARATOR;
+
+        // 🚀 Leemos el entorno desde .env (clave CI_ENVIRONMENT)
         $ciEnv = env('CI_ENVIRONMENT', 'production');
 
-        // Si estamos en testing, usar el grupo de tests
+        // Usar la base de datos de tests si estamos en ambiente de testing
         if ($ciEnv === 'testing') {
             $this->defaultGroup = 'tests';
         }
 
-        // Asignación dinámica de DBDebug según CI_ENVIRONMENT
+        // Asignación dinámica de DBDebug
         $this->default['DBDebug'] = ($ciEnv !== 'production');
     }
 }
