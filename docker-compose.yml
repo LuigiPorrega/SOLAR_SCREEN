@@ -24,8 +24,6 @@ services:
     image: phpmyadmin:latest
     restart: always
     container_name: luigi-phpmyadmin
-    ports:
-      - "127.0.0.1:8080:80"   # solo accesible desde el servidor (puedes quitar esto y usar NPM si prefieres)
     environment:
       PMA_HOST: luigi-mariadb
       PMA_PORT: 3306
