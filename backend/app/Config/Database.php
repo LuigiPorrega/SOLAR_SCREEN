@@ -12,7 +12,7 @@ class Database extends Config
     /**
      * The directory that holds the Migrations and Seeds directories.
      */
-    public string $filesPath = APPPATH . 'Database' . DIRECTORY_SEPARATOR;
+    public string $filesPath;
 
     /**
      * Lets you choose which connection group to use if no other is specified.
@@ -26,10 +26,10 @@ class Database extends Config
      */
     public array $default = [
         'DSN'         => '',
-        'hostname'    => env('database.default.hostname', 'luigi-mariadb'),
-        'username'    => env('database.default.username', 'root'),
-        'password'    => env('database.default.password', 'solvam'),
-        'database'    => env('database.default.database', 'solar_screen'),
+        'hostname'    => 'luigi-mariadb',
+        'username'    => 'root',
+        'password'    => 'solvam',
+        'database'    => 'solar_screen',
         'DBDriver'    => 'MySQLi',
         'DBPrefix'    => '',
         'pConnect'    => false,
@@ -50,10 +50,8 @@ class Database extends Config
         ],
     ];
 
-
     /**
-     * This database connection is used when
-     * running PHPUnit database tests.
+     * This database connection is used when running PHPUnit database tests.
      *
      * @var array<string, mixed>
      */
@@ -64,7 +62,7 @@ class Database extends Config
         'password'    => '',
         'database'    => ':memory:',
         'DBDriver'    => 'SQLite3',
-        'DBPrefix'    => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
+        'DBPrefix'    => 'db_',
         'pConnect'    => false,
         'DBDebug'     => true,
         'charset'     => 'utf8',
@@ -88,9 +86,10 @@ class Database extends Config
     {
         parent::__construct();
 
-        // Ensure that we always set the database group to 'tests' if
-        // we are currently running an automated test suite, so that
-        // we don't overwrite live data on accident.
+        // Inicializar la ruta de archivos de migraciones y seeds
+        $this->filesPath = APPPATH . 'Database' . DIRECTORY_SEPARATOR;
+
+        // Usar la base de datos de tests si estamos en ambiente de testing
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
         }
