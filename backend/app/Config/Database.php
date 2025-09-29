@@ -33,7 +33,7 @@ class Database extends Config
         'DBDriver'    => 'MySQLi',
         'DBPrefix'    => '',
         'pConnect'    => false,
-        'DBDebug'     => false, // asignación en constructor
+        'DBDebug'     => false, // solo valor literal
         'charset'     => 'utf8mb4',
         'DBCollat'    => 'utf8mb4_general_ci',
         'swapPre'     => '',
@@ -94,7 +94,7 @@ class Database extends Config
             $this->defaultGroup = 'tests';
         }
 
-        // Ahora sí podemos asignar DBDebug usando expresión
+        // Asignación dinámica de DBDebug, solo aquí
         $this->default['DBDebug'] = (ENVIRONMENT !== 'production');
     }
 }
