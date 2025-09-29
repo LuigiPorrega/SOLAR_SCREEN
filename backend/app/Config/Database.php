@@ -33,7 +33,7 @@ class Database extends Config
         'DBDriver'    => 'MySQLi',
         'DBPrefix'    => '',
         'pConnect'    => false,
-        'DBDebug'     => (ENVIRONMENT !== 'production'),
+        'DBDebug'     => false, // asignación en constructor
         'charset'     => 'utf8mb4',
         'DBCollat'    => 'utf8mb4_general_ci',
         'swapPre'     => '',
@@ -42,7 +42,7 @@ class Database extends Config
         'strictOn'    => false,
         'failover'    => [],
         'port'        => 3306,
-        'numberNative' => false,
+        'numberNative'=> false,
         'dateFormat'  => [
             'date'     => 'Y-m-d',
             'datetime' => 'Y-m-d H:i:s',
@@ -93,5 +93,8 @@ class Database extends Config
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
         }
+
+        // Ahora sí podemos asignar DBDebug usando expresión
+        $this->default['DBDebug'] = (ENVIRONMENT !== 'production');
     }
 }
