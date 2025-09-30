@@ -38,10 +38,10 @@ services:
       dockerfile: Dockerfile
     container_name: luigi-backend
     volumes:
-      - ./backend:/var/www/html
-      - ./writable:/var/www/html/writable
+      - ./backend:/var/www/html:cached  # Código fuente
+      # No montamos writable desde host, Dockerfile ya crea la carpeta con permisos
     expose:
-      - "80"  # solo a la red docker
+      - "80"
     depends_on:
       - mariadb
     networks:
@@ -50,13 +50,13 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile  # tu Dockerfile de Angular adaptado con Nginx
+      dockerfile: Dockerfile
     container_name: luigi-frontend
     volumes:
       - ./frontend:/app
       - frontend_node_modules:/app/node_modules
     expose:
-      - "80"  # Nginx dentro del contenedor sirve Angular en 80
+      - "80"
     environment:
       - NODE_ENV=production
     depends_on:
@@ -69,9 +69,9 @@ services:
     restart: always
     container_name: nginx-proxy-manager
     ports:
-      - "80:80"   # HTTP público
-      - "81:81"   # panel NPM
-      - "443:443" # HTTPS público
+      - "80:80"
+      - "81:81"
+      - "443:443"
     volumes:
       - ./nginx/data:/data
       - ./nginx/letsencrypt:/etc/letsencrypt

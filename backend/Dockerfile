@@ -17,7 +17,7 @@ RUN a2enmod rewrite headers
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # Pasar cabecera Authorization
-RUN echo "SetEnvIf Authorization \"(.*)\" HTTP_AUTHORIZATION=$1" >> /etc/apache2/apache2.conf
+RUN echo "SetEnvIf Authorization \"(.*)\" HTTP_AUTHORIZATION=\$1" >> /etc/apache2/apache2.conf
 
 # Directorio de trabajo
 WORKDIR /var/www/html
@@ -29,12 +29,13 @@ COPY . /var/www/html
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Permisos correctos para Apache
-RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 775 /var/www/html/writable
+# Crear directorios "writable" y dar permisos correctos
+RUN mkdir -p writable/cache writable/logs writable/session writable/uploads \
+    && chown -R www-data:www-data writable \
+    && chmod -R 775 writable
 
 # Exponer puerto
 EXPOSE 80
 
-# Ejecutar Apache como www-data (usuario por defecto)
+# Ejecutar Apache como www-data
 USER www-data
