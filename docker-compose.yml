@@ -39,7 +39,7 @@ services:
     container_name: luigi-backend
     volumes:
       - ./backend:/var/www/html:cached  # Código fuente
-      # No montamos writable desde host, Dockerfile ya crea la carpeta con permisos
+      # No montamos writable desde host, se crea dentro del contenedor
     expose:
       - "80"
     depends_on:
