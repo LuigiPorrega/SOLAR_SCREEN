@@ -22,6 +22,10 @@ class CorsFilter implements FilterInterface
     }
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Aquí puedes agregar headers CORS también si lo deseas
+        $response->setHeader('Access-Control-Allow-Origin', 'https://app.luigicodes.com');
+        $response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+        $response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        $response->setHeader('Access-Control-Allow-Credentials', 'true');
+        return $response;
     }
 }
