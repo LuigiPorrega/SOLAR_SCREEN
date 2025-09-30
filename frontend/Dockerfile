@@ -1,4 +1,4 @@
-# Etapa build de Angular
+# Etapa de build de Angular
 FROM node:20-alpine AS build
 
 WORKDIR /app
@@ -6,22 +6,24 @@ WORKDIR /app
 # Instala Angular CLI
 RUN npm install -g @angular/cli
 
-# Copia dependencias y proyecto
+# Copia dependencias
 COPY package*.json ./
 RUN npm install
+
+# Copia el resto del proyecto
 COPY . .
 
-# Build de producción
-RUN ng build --configuration production --output-path=dist/frontend
+# Build de Angular con output explícito
+RUN ng build --configuration production --output-path=/app/dist/frontend
 
 # Etapa de producción con Nginx
 FROM nginx:alpine
 
-# Copia la build de Angular a Nginx
+# Copia la build al directorio de Nginx
 COPY --from=build /app/dist/frontend /usr/share/nginx/html
 
-# Exponer puerto 80
+# Expone puerto 80
 EXPOSE 80
 
-# Ejecutar Nginx
+# Arranca Nginx
 CMD ["nginx", "-g", "daemon off;"]
