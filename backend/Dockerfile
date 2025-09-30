@@ -30,9 +30,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Crear directorios "writable" y dar permisos correctos
-RUN mkdir -p writable/cache writable/logs writable/session writable/uploads \
-    && chown -R www-data:www-data writable \
-    && chmod -R 775 writable
+RUN mkdir -p /var/www/html/writable/cache \
+             /var/www/html/writable/logs \
+             /var/www/html/writable/session \
+             /var/www/html/writable/uploads \
+    && chown -R www-data:www-data /var/www/html/writable \
+    && chmod -R 775 /var/www/html/writable
 
 # Exponer puerto
 EXPOSE 80
