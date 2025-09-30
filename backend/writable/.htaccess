@@ -6,7 +6,7 @@
     Deny from all
 </IfModule>
 
-# Permitir CORS desde https://www.app.luigicodes.com
+# Permitir CORS desde https://app.luigicodes.com
 <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "https://www.app.luigicodes.com"
     Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"

@@ -11,7 +11,7 @@ class CorsFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $response = service('response');
-        $response->setHeader('Access-Control-Allow-Origin', 'https://www.app.luigicodes.com');
+        $response->setHeader('Access-Control-Allow-Origin', 'https://app.luigicodes.com');
         $response->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
         $response->setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         $response->setHeader('Access-Control-Allow-Credentials', 'true');
