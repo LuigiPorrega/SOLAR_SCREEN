@@ -13,14 +13,14 @@ RUN npm install
 # Copia el resto del proyecto
 COPY . .
 
-# Build de Angular en producción
+# Build de Angular en producción (salida en /app/dist/frontend/browser)
 RUN ng build --configuration production --output-path=/app/dist/frontend
 
 # Etapa de producción con Nginx
 FROM nginx:alpine
 
-# Copia la build de Angular
-COPY --from=build /app/dist/frontend /usr/share/nginx/html
+# Copia la build de Angular al directorio correcto de Nginx
+COPY --from=build /app/dist/frontend/browser /usr/share/nginx/html
 
 # Copia configuración personalizada de Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
